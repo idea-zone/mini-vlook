@@ -1,27 +1,31 @@
+
+@import url(style/vlook-config.css);
+@import url(style/vlook-c0.css);
+
 :root {
     /* 主色 */
     /* 主题色1-基础色*/
-    --b3-theme-primary: #4285f4;
+    --b3-theme-primary: var(--v-theme1);
 
     /*主题色1-基础色-亮点*/
-    --b3-theme-primary-light: rgba(66, 133, 244, 0.54);
+    --b3-theme-primary-light: rgba(var(--v-theme1-rgb-value), 0.54);
     /*主题色1-基础色-更亮点*/
-    --b3-theme-primary-lighter: rgba(66, 133, 244, 0.38);
+    --b3-theme-primary-lighter: rgba(var(--v-theme1-rgb-value), 0.38);
     /*主题色1-最亮*/
-    --b3-theme-primary-lightest: rgba(66, 133, 244, 0.12);
+    --b3-theme-primary-lightest: rgba(var(--v-theme1-rgb-value), 0.12);
 
     /*主题色2-次要色*/
-    --b3-theme-secondary: #f3a92f;
+    --b3-theme-secondary: var(--v-theme2);
 
     /*编辑区-背景色*/
-    --b3-theme-background: #f8f9fa;
+    --b3-theme-background: var(--v-theme-background);
     /*编辑区-周围的状态栏/左侧选中颜色-背景色*/
-    --b3-theme-background-light: #dfe0e1;
+    --b3-theme-background-light: var(--v-theme-background-light);
     
     /*编辑区-左侧面板颜色-背景色*/
-    --b3-theme-surface: #f3f3f3;
+    --b3-theme-surface: var(--v-theme-surface);
      /*编辑区-左侧面板颜色-亮一些*/
-    --b3-theme-surface-light: rgba(243, 243, 243, .86);
+    --b3-theme-surface-light: rgba(var(--v-theme2-rgb-value), .86);
 
     /* 警告类-背景颜色*/
     --b3-theme-error: #d23f31;
@@ -29,13 +33,13 @@
     /* 文字颜色 */
     
     /* 主题色1-基础色-字体色 */
-    --b3-theme-on-primary: #fff;
+    --b3-theme-on-primary: var(--v-theme1-color);
     /* 主题色2-次要色-字体色 */
-    --b3-theme-on-secondary: #fff;
+    --b3-theme-on-secondary: var(--v-theme2-color);
     /* 编辑区-字体色 */
-    --b3-theme-on-background: #202124;
+    --b3-theme-on-background: var(--v-theme-on-background);
      /* 编辑区-左侧面板颜色-字体色 */
-    --b3-theme-on-surface: #5f6368;
+    --b3-theme-on-surface: var(--v-theme-on-surface);
     
     /* 警告类-字体颜色*/
     --b3-theme-on-error: #fff;
@@ -151,25 +155,25 @@
     --b3-protyle-search-current-background: #a5d3fe;
 
     /* 代码片段背景 */
-    --b3-protyle-code-background: rgba(27, 31, 35, .05);
+    --b3-protyle-code-background: var(--v-block-code-bg-color);
 
     /* 所见即所得行内元素颜色 */
     /* 加粗-字体颜色 */
-    --b3-protyle-inline-strong-color: #202124;
+    --b3-protyle-inline-strong-color: var(--v-block-strong-color);
     /* 斜体-字体颜色 */
-    --b3-protyle-inline-em-color: #202124;
+    --b3-protyle-inline-em-color: var(--v-block-em-color);
     /* 删除线-字体颜色 */
-    --b3-protyle-inline-s-color: #202124;
+    --b3-protyle-inline-s-color: var(--v-block-del-color);
     /* 链接-字体颜色 */
-    --b3-protyle-inline-link-color: #4285f4;
+    --b3-protyle-inline-link-color: var(--v-block-link-color);
     /* 高亮-背景颜色 */
-    --b3-protyle-inline-mark-background: #ffe955;
+    --b3-protyle-inline-mark-background: var(--v-block-mark-bg-color);
     /* 高亮-字体颜色 */
-    --b3-protyle-inline-mark-color: #202124;
+    --b3-protyle-inline-mark-color: var(--v-block-mark-color);
     /* 标签-字体颜色 */
-    --b3-protyle-inline-tag-color: #5f6368;
+    --b3-protyle-inline-tag-color: var(--v-block-tag-color);
     /* 内容引用块-字体颜色 */
-    --b3-protyle-inline-blockref-color: #660e7a;
+    --b3-protyle-inline-blockref-color: var(--v-block-blockref-color);
 
     /* PDF */
     --b3-pdf-selection: #d0e9c8;
@@ -189,3 +193,160 @@
 .pdf__resize {
     mix-blend-mode: darken;
 }
+
+
+/* --------------- 标题 ---------------  */
+.protyle-wysiwyg .h1, .protyle-wysiwyg .h2, .protyle-wysiwyg .h3, .protyle-wysiwyg .h4, .protyle-wysiwyg .h5, .protyle-wysiwyg .h6 {
+    box-shadow: none;
+    border-left: 0;
+    border-right: 0;
+}
+.protyle-wysiwyg .h1, .protyle-wysiwyg .h2 {
+    /* margin: 3em 0 0.5em; */
+    margin: 1.3em 0 0.5em;
+    /* font-size: 2em; */
+    border-top: 9px solid var(--h-box-shadow);
+    counter-reset: h2;
+}
+.protyle-wysiwyg .h1, .protyle-wysiwyg .h2, .protyle-wysiwyg .h3, .protyle-wysiwyg .h4, .protyle-wysiwyg .h5, .protyle-wysiwyg .h6 {
+    color: var(--h-f);
+    text-align: left;
+    position: relative;
+    padding: 10px;
+    line-height: 1.5;
+    /* font: var(--v-f-w-title) 0.5em var(--v-f-fm-h); */
+    border-radius: var(--v-r-b);
+    background: linear-gradient(0deg, var(--h-bg-start), var(--h-bg-end));
+    letter-spacing: .15em;
+}
+.protyle-wysiwyg .h1, .protyle-wysiwyg .h2, .protyle-wysiwyg .h3, .protyle-wysiwyg .h4, .protyle-wysiwyg .h5, .protyle-wysiwyg .h6 {
+    position: relative;
+}
+.protyle-wysiwyg .h1, .protyle-wysiwyg .h2, .protyle-wysiwyg .h3, .protyle-wysiwyg .h4, .protyle-wysiwyg .h5, .protyle-wysiwyg .h6, .protyle-wysiwyg .p {
+    position: relative;
+}
+.protyle-wysiwyg .h1, .protyle-wysiwyg .h2, .protyle-wysiwyg .h3, .protyle-wysiwyg .h4, .protyle-wysiwyg .h5, .protyle-wysiwyg .h6, .protyle-wysiwyg .p, .protyle-wysiwyg pre {
+    width: inherit;
+}
+
+.protyle-wysiwyg .h1, .h2, .h3, .h4, .h5, .h6 {
+    page-break-after: avoid;
+    break-after: avoid-page;
+    page-break-inside: avoid;
+    orphans: 4;
+}
+
+.protyle-wysiwyg .h1+.h2,
+.protyle-wysiwyg .h2+.h3,
+.protyle-wysiwyg .h3+.h4,
+.protyle-wysiwyg .h4+.h5,
+.protyle-wysiwyg .h6 {
+    background: linear-gradient(-10, var(--h-bg-end), var(--h-bg-start), var(--h-bg-end));
+    box-shadow: none;
+    border-top: 0
+}
+
+/* --------------- 标题 end ---------------  */
+
+
+/* --------------- 分割线 ---------------  */
+
+/* ——————————————————————————————————————————分割线—————————————————————————————————————————————— */
+.protyle-wysiwyg [data-node-id].hr>div {
+    border-bottom: none;
+    /* border-bottom: 0.1em solid rgba(128, 128, 128, 0.5); */
+}
+
+/* ——————————给分割线添加渐变颜色—————————— */
+.hr:after {
+    position: absolute;
+    top: 0.2em;
+    left: 0px;
+    content: "";
+    height: 0.1em !important;
+    width: 100%;
+    overflow: hidden;
+    /* background-image: linear-gradient(125deg, #F44336, #E91E63, #9C27B0, #3F51B5, #2196F3); */
+    background-image: linear-gradient(125deg, #eae6f0, #c7d9de, #9C27B0, #cadde2, #b1d5d4);
+    background-size: 400%;
+    animation: bganimation 10s infinite;
+    border-radius: var(--b3-border-radius-none) !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@keyframes bganimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ——————————————————————————————————————————分割线 END—————————————————————————————————————————————— */
+
+
+/* --------------- 引用块 ---------------  */
+
+/*在列表中*/
+.protyle-wysiwyg .li > .bq{
+    border-left: 5px solid rgba(148, 152, 160, .2);
+    background: 0 0;
+    border-radius: 0;
+    padding: 0 0.5em;
+}
+
+/*独立的*/
+.protyle-wysiwyg .bq {
+    color: var(--d-f-c);
+    background: var(--ac-theme1-fade);
+    border-radius: var(--v-r-b);
+    padding: 0.75em 1em;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* --------------- 引用块 end ---------------  */
+
+
+/* --------------- 删除线 ---------------  */
+
+.protyle-wysiwyg s{
+    color: #6670a9 !important;
+    text-decoration: line-through solid !important;
+}
+/* --------------- 删除线 end ---------------  */
+
+
+/* --------------- 键盘块 --------------- */
+.protyle-wysiwyg kbd {
+    font: var(--v-f-w-bd) 0.75em var(--v-f-fm-key);
+    border-radius: var(--v-r-s-small);
+    margin: 0;
+    padding: 0 4px;
+    color: var(--d-bc);
+    border: 2px solid var(--key-shadow);
+    border-left-color: var(--key-reflect);
+    border-top-color: var(--key-reflect);
+    background: var(--key-bg);
+    box-shadow: 0 0 0 1px var(--key-shadow);
+}
+/* --------------- 键盘块 end--------------- */
+
+/* --------------- 代码块 ---------------*/
+.protyle-wysiwyg .code-block
+{
+    color: var(--d-f-c);
+    font-family: var(--v-f-fm-code);
+    border-radius: 8px;;
+    border: 3px solid var(--tbl-bder);
+    margin: 0 0 20px;
+}
+
+/* --------------- 代码块 end---------------*/
+

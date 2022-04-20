@@ -1,0 +1,43 @@
+@import url(vlook-c0.css);
+
+:root{
+
+    /*主题色1*/
+    --v-theme1:var(--ac-theme1);
+    --v-theme1-rgb-value:128, 100, 169;
+    --v-theme1-color:#fff;
+
+    /*主题色2*/
+    --v-theme2:var(--ac-theme2);
+    --v-theme2-rgb-value:42, 168, 153;
+    --v-theme2-color:#fff;
+
+    /*编辑区*/
+    --v-theme-background:#fcf9f2;
+    --v-theme-background-light:rgba(238, 238, 238,.25);
+    /*编辑区/列表区*/
+    --v-theme-on-background:var(--d-f-c);
+
+    /*面板区*/
+    --v-theme-surface: rgba(243, 243, 243,0.75);
+    /*前缀/序号/tab文字*/
+    --v-theme-on-surface: #5f6368;
+
+    /*链接颜色*/
+    --v-block-link-color:var(--a-color);
+    /*高亮/标记颜色*/
+    --v-block-mark-color:var(--d-f-c);
+    --v-block-mark-bg-color:var(--mark-bg);
+    /*内容引用块颜色*/
+    --v-block-blockref-color:#660e7a;
+    /*标签颜色*/
+    --v-block-tag-color:#5f6368;
+    /*代码块颜色*/
+    --v-block-code-bg-color:var(--code-bg);
+    /*删除块颜色*/
+    --v-block-del-color:(--d-f-c-alt);  /*#6670a9*/
+    /*斜体颜色*/
+    --v-block-em-color:(--d-f-c);
+    /*加粗颜色*/
+    --v-block-strong-color:(--d-f-c);
+}
