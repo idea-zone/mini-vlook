@@ -26,7 +26,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between; 
-    max-width: var(--kbline-boarditem-maxwidth);       /*固定宽度*/
+    max-width: var(--kbline-board-maxwidth);       /*固定宽度*/
 }
 
 /* ————————————————————所有子项目的表格（除去第一列其余的列），包含溢出的空白部分，所以才会有边框—————————————————————— */
@@ -81,7 +81,6 @@
 .protyle-wysiwyg :not(.hr)+.hr+.hr+*[data-node-index]:not([data-type="NodeBlockquote"]) > div 
 ,.protyle-wysiwyg :not(.hr)+.hr+.hr+*:not([data-type="NodeBlockquote"]) > div {
     outline-color: #fcf9f2;
-    margin-left: var(--kbline-bord-margin);
 }
 
 /*只处理每个列表的第一行*/
