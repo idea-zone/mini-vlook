@@ -25,7 +25,7 @@
     --b3-theme-surface-light: rgba(var(--v-theme2-rgb-value), .86);
 
     /* 警告类-背景颜色*/
-    --b3-theme-error: #d23f31;
+    --b3-theme-error: var(--v-theme-error);
 
     /* 文字颜色 */
     
@@ -54,22 +54,22 @@
     --b3-font-family-math: KaTeX_Math;
 
     /* 线条 */
-    --b3-border-color: rgba(0, 0, 0, .1);
+    --b3-border-color: var(--v-border-color);
 
     /* 滚动条 */
-    --b3-scroll-color: rgba(0, 0, 0, .2);
+    --b3-scroll-color: var(--v-scroll-color);
 
     /* 列表 */
-    --b3-list-hover: #e9eaea;
+    --b3-list-hover: var(--v-list-hove);
 
     /* 菜单 */
-    --b3-menu-background: #f8f9fa;
+    --b3-menu-background:  var(--v-menu-background);
 
     /* 提示 */
-    --b3-tooltips-color: rgba(0, 0, 0, 0.54);
+    --b3-tooltips-color: var(--v-tooltips-color);
 
     /* 遮罩 */
-    --b3-mask-background: rgba(0, 0, 0, 0.78);
+    --b3-mask-background:var(--v-mask-background);
 
     /* 卡片背景： 错误、警告、信息、成功 */
     --b3-card-error-color: rgb(97, 26, 21);
