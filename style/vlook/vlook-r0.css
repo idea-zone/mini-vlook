@@ -1,7 +1,6 @@
 /* 
  * 从 VLOOK 中直接复制过来的样式
  */
-
 :root {
     --v-f-fm-title-sans: "color-emoji", "VLOOK Sans", "Noto Sans CJK SC", "Noto Sans CJK HK", "Noto Sans CJK TW", "思源黑体", "Source Han Sans SC", "Source Han Sans CN", "Source Han Sans HK", "Source Han Sans HC", "Source Han Sans TW", "Source Han Sans TC", -apple-system, Roboto, "Microsoft YaHei", "微软雅黑", "PingFang SC", "PingFang TC", "PingFang HK", SimHei, "黑体", sans-serif, "Microsoft JhengHei", "微軟正黑體", "PingFang SC", "PingFang TC", "PingFang HK", SimHei, "黑体", sans-serif;
     --v-f-fm-subtitle-sans: "color-emoji", "VLOOK Sans", "Noto Sans CJK SC", "Noto Sans CJK HK", "Noto Sans CJK TW", "思源黑体", "Source Han Sans SC", "Source Han Sans CN", "Source Han Sans HK", "Source Han Sans HC", "Source Han Sans TW", "Source Han Sans TC", -apple-system, Roboto, "Microsoft YaHei", "微软雅黑", "PingFang SC", "PingFang TC", "PingFang HK", SimHei, "黑体", sans-serif, "Microsoft JhengHei", "微軟正黑體", "PingFang SC", "PingFang TC", "PingFang HK", SimHei, "黑体", sans-serif;

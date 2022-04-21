@@ -44,4 +44,11 @@
     --v-block-bq-bg-color: var(--ac-theme1-fade);
     --v-block-bq-border-radius: var(--v-r-b);
 
+    /*h1~h6*/
+    --v-block-heading-top-shadow:var(--h-box-shadow);
+    --v-block-heading-color:var(--h-f);
+    --v-block-heading-border-radius: var(--v-r-b);
+    --v-block-heading-start-bg-color:var(--h-bg-start);
+    --v-block-heading-end-bg-color:var(--h-bg-end);
+
 }
