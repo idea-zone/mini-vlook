@@ -27,20 +27,23 @@
     flex-direction: row;
     justify-content: space-between; 
     max-width: var(--kbline-board-maxwidth);       /*固定宽度*/
-    
 }
 
 /* ————————————————————所有子项目的表格（除去第一列其余的列），包含溢出的空白部分，所以才会有边框—————————————————————— */
 .protyle-wysiwyg *[custom-f~=kb] .li .list ,
 .protyle-wysiwyg .hr:first-child+.hr+* .li .list ,
 .protyle-wysiwyg :not(.hr)+.hr+.hr+* .li .list {
-    outline: var(--kbline-border-normal);
+    /* outline: var(--kbline-border-normal); */
     padding: 0px;
     padding-right: 15px;
     min-width: var(--kbline-boarditem-minwidth);
     min-height: var(--kbline-boarditem-minHight);
     
     border-radius: var(--kbline-board-border-radius);
+    background: var(--v-block-bq-bg-color);
+    padding: 0.75em 1em;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
 /* ————————————————————对所有子列表项设置格式———————————————————— */
@@ -50,6 +53,14 @@
    
     min-height: var(--kbline-boarditem-minHight);
     outline: var(--kbline-border-normal);
+    
+    border-radius: var(--kbline-board-border-radius);
+    background: var(--v-block-bq-bg-color);
+    
+    padding: 0.75em 1em;
+    margin-top: 0;
+    margin-bottom: 20px;
+
     /* word-break:keep-all;
     white-space: pre-wrap; */
 }
@@ -72,6 +83,11 @@
     align-items:center;
     outline: var(--kbline-border-normal);
     border-radius: var(--kbline-board-border-radius);
+
+    
+    padding: 0.75em 1em;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
 /*只处理每个列表第一行的点*/
@@ -82,12 +98,14 @@
 .protyle-wysiwyg :not(.hr)+.hr+.hr+*[data-node-index]:not([data-type="NodeBlockquote"]) > div > div:nth-child(1)
 ,.protyle-wysiwyg :not(.hr)+.hr+.hr+*:not([data-type="NodeBlockquote"]) > div > div:nth-child(1)
 {
-    background-color: var(--kbline-board-title-svg-bg);
 
-    margin-left: auto;
-    margin-right: auto;
-    
+    /* margin-left: auto;
+    margin-right: auto; */
+    transform: translate(10px, 50%);
+
+    background-color: var(--kbline-board-title-svg-bg);
     border-radius: var(--kbline-board-border-radius);
+
 }
 
 /* ————————————————————大神增加代码———————————————————— */
@@ -135,8 +153,12 @@
 .protyle-wysiwyg :not(.hr)+.hr+.hr+* .li .list .protyle-action{
     position: absolute;
     top: 50%;
-    transform: translate(-25px, -50%);
+    transform: translate(12px, -50%);
     width: 20px;
+    height: 20px;
+
+    background: var(--v-block-bq-bg-color);
+    border-radius: var(--kbline-board-border-radius);
 }
 
 /* 对除了第一层之外的子列表 文本 也移动 */
