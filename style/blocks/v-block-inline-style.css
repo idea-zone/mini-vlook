@@ -2,34 +2,34 @@
 /* --------------- 删除线 ---------------  */
 
 .protyle-wysiwyg s{
-    color: #6670a9 !important;
+    color: var(--v-block-del-color) !important;
     text-decoration: line-through solid !important;
 }
 /* --------------- 删除线 end ---------------  */
 
 
-/* --------------- 键盘块 --------------- */
+/* --------------- 键盘按键块 --------------- */
 .protyle-wysiwyg kbd {
-    font: var(--v-f-w-bd) 0.75em var(--v-f-fm-key);
-    border-radius: var(--v-r-s-small);
+    font: var(--v-block-kbd-font);
+    border-radius: var(--v-block-kbd-border-radius);
     margin: 0;
     padding: 0 4px;
-    color: var(--d-bc);
-    border: 2px solid var(--key-shadow);
-    border-left-color: var(--key-reflect);
-    border-top-color: var(--key-reflect);
+    color: var(--v-block-kbd-color);
+    border: 2px solid var(--v-block-kbd-border-shadow);
+    border-left-color: var(--v-block-kbd-border-color);
+    border-top-color: var(--v-block-kbd-border-color);
     background: var(--key-bg);
-    box-shadow: 0 0 0 1px var(--key-shadow);
+    box-shadow: 0 0 0 1px var(--v-block-kbd-border-shadow);
 }
-/* --------------- 键盘块 end--------------- */
+/* --------------- 键盘按键 end--------------- */
 
 /* --------------- 代码块 ---------------*/
 .protyle-wysiwyg .code-block
 {
-    color: var(--d-f-c);
-    font-family: var(--v-f-fm-code);
+    color: var(--v-block-code-bg-color);
+    font-family: var( --v-black-code-font-family);
     border-radius: 8px;;
-    border: 3px solid var(--tbl-bder);
+    border: 3px solid var(--v-black-code-boder-color);
     margin: 0 0 20px;
 }
 
