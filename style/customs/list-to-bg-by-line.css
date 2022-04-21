@@ -12,13 +12,6 @@
  * 更新日志：
  *  1. 完成基本的渲染功能
  */
-
- :root{
-    /* --b3-border-color1: #e2dce4; */
-    --b3-border-normal: 1px solid #ddd4df;
-    /* --b3-border-dashed: 1px dashed #ddd4df; */
- }
-
 /* -----------------------------------------------列表转化为表格------------------------------------------- */
 /* 设置整个列表表格的缩进 */
 .list[custom-f~=bg][data-node-id][data-type="NodeList"],
