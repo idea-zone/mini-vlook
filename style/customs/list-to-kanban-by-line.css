@@ -44,6 +44,9 @@
     padding: 0.75em 1em;
     margin-top: 0;
     margin-bottom: 20px;
+
+    transform: translate(-15px, 0);
+
 }
 
 /* ————————————————————对所有子列表项设置格式———————————————————— */
@@ -65,6 +68,19 @@
     white-space: pre-wrap; */
 }
 
+
+
+
+/*处理最最外层的边框颜色（整个看板）*/
+.protyle-wysiwyg *[custom-f~=kb][data-node-index]:not([data-type="NodeBlockquote"]) > div ,
+.protyle-wysiwyg *[custom-f~=kb]:not([data-type="NodeBlockquote"]) > div ,
+.protyle-wysiwyg .hr:first-child+.hr+*[data-node-index]:not([data-type="NodeBlockquote"]) > div ,
+.protyle-wysiwyg .hr:first-child+.hr+*:not([data-type="NodeBlockquote"]) > div ,
+.protyle-wysiwyg :not(.hr)+.hr+.hr+*[data-node-index]:not([data-type="NodeBlockquote"]) > div 
+,.protyle-wysiwyg :not(.hr)+.hr+.hr+*:not([data-type="NodeBlockquote"]) > div {
+    outline-color: #fcf9f2;
+}
+
 /*只处理每个列表的第一行*/
 .protyle-wysiwyg *[custom-f~=kb][data-node-index]:not([data-type="NodeBlockquote"]) > div > div:nth-child(2),
 .protyle-wysiwyg *[custom-f~=kb]:not([data-type="NodeBlockquote"]) > div > div:nth-child(2),
@@ -76,6 +92,7 @@
 
     color: #fff; 
     background-color: var(--kbline-board-title-bg);
+    /* background: var(--v-block-bq-bg-color); */
     
     /*居中*/
     display:flex;
@@ -84,10 +101,10 @@
     outline: var(--kbline-border-normal);
     border-radius: var(--kbline-board-border-radius);
 
-    
     padding: 0.75em 1em;
     margin-top: 0;
     margin-bottom: 20px;
+
 }
 
 /*只处理每个列表第一行的点*/
@@ -99,8 +116,6 @@
 ,.protyle-wysiwyg :not(.hr)+.hr+.hr+*:not([data-type="NodeBlockquote"]) > div > div:nth-child(1)
 {
 
-    /* margin-left: auto;
-    margin-right: auto; */
     transform: translate(10px, 50%);
 
     background-color: var(--kbline-board-title-svg-bg);
@@ -151,6 +166,7 @@
 .protyle-wysiwyg *[custom-f~=kb] .li .list .protyle-action,
 .protyle-wysiwyg .hr:first-child+.hr+* .li .list .protyle-action,
 .protyle-wysiwyg :not(.hr)+.hr+.hr+* .li .list .protyle-action{
+
     position: absolute;
     top: 50%;
     transform: translate(12px, -50%);
@@ -162,10 +178,14 @@
 }
 
 /* 对除了第一层之外的子列表 文本 也移动 */
-.protyle-wysiwyg *[custom-f~=kb] .li .list .p ,
-.protyle-wysiwyg .hr:first-child+.hr+* .li .list .p ,
-.protyle-wysiwyg :not(.hr)+.hr+.hr+* .li .list .p {
-    transform: translate(-12px, -0);
+.protyle-wysiwyg *[custom-f~=kb] .li .list .p+:not(.list) ,
+.protyle-wysiwyg .hr:first-child+.hr+* .li .list .p+:not(.list) ,
+.protyle-wysiwyg :not(.hr)+.hr+.hr+* .li .list .p+:not(.list) {
+    
+    position: absolute;
+    top: 50%;
+    transform: translate(-12px, -50%);
+
     word-break: break-all;
 }
 
