@@ -1,0 +1,36 @@
+
+/* --------------- 删除线 ---------------  */
+
+.protyle-wysiwyg s{
+    color: #6670a9 !important;
+    text-decoration: line-through solid !important;
+}
+/* --------------- 删除线 end ---------------  */
+
+
+/* --------------- 键盘块 --------------- */
+.protyle-wysiwyg kbd {
+    font: var(--v-f-w-bd) 0.75em var(--v-f-fm-key);
+    border-radius: var(--v-r-s-small);
+    margin: 0;
+    padding: 0 4px;
+    color: var(--d-bc);
+    border: 2px solid var(--key-shadow);
+    border-left-color: var(--key-reflect);
+    border-top-color: var(--key-reflect);
+    background: var(--key-bg);
+    box-shadow: 0 0 0 1px var(--key-shadow);
+}
+/* --------------- 键盘块 end--------------- */
+
+/* --------------- 代码块 ---------------*/
+.protyle-wysiwyg .code-block
+{
+    color: var(--d-f-c);
+    font-family: var(--v-f-fm-code);
+    border-radius: 8px;;
+    border: 3px solid var(--tbl-bder);
+    margin: 0 0 20px;
+}
+
+/* --------------- 代码块 end---------------*/

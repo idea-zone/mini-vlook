@@ -1,0 +1,39 @@
+
+/* ——————————————————————————————————————————分割线—————————————————————————————————————————————— */
+.protyle-wysiwyg [data-node-id].hr>div {
+    border-bottom: none;
+    /* border-bottom: 0.1em solid rgba(128, 128, 128, 0.5); */
+}
+
+/* ——————————给分割线添加渐变颜色—————————— */
+.hr:after {
+    position: absolute;
+    top: 0.2em;
+    left: 0px;
+    content: "";
+    height: 0.1em !important;
+    width: 100%;
+    overflow: hidden;
+    /* background-image: linear-gradient(125deg, #F44336, #E91E63, #9C27B0, #3F51B5, #2196F3); */
+    background-image: linear-gradient(125deg, #eae6f0, #c7d9de, #9C27B0, #cadde2, #b1d5d4);
+    background-size: 400%;
+    animation: bganimation 10s infinite;
+    border-radius: var(--b3-border-radius-none) !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@keyframes bganimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ——————————————————————————————————————————分割线 END—————————————————————————————————————————————— */

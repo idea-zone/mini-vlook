@@ -1,0 +1,21 @@
+/* --------------- 引用块 ---------------  */
+
+/*在列表中*/
+.protyle-wysiwyg .li > .bq{
+    border-left: 5px solid rgba(148, 152, 160, .2);
+    background: 0 0;
+    border-radius: 0;
+    padding: 0 0.5em;
+}
+
+/*独立的*/
+.protyle-wysiwyg .bq {
+    color: var(--d-f-c);
+    background: var(--ac-theme1-fade);
+    border-radius: var(--v-r-b);
+    padding: 0.75em 1em;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* --------------- 引用块 end ---------------  */
