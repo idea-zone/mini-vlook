@@ -68,6 +68,7 @@
 
     --kbline-board-bg-color: var(--ac-theme1-fade);   /* 主背景色 */
     --kbline-theme-hover2: #f8ecec;                 /*鼠标悬浮的背景色*/
+    --kbline-theme-hover1: var(--d-f-c);              /*鼠标悬浮的前景色*/
 
 
     --kbline-border-normal: 1px solid #ddd4df;      /* 边框的颜色 */
