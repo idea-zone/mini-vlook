@@ -38,4 +38,10 @@
     --v-block-em-color:(--d-f-c);
     /*加粗颜色*/
     --v-block-strong-color:(--d-f-c);
+
+    /*引用块设置*/
+    --v-block-bq-color: var(--d-f-c);
+    --v-block-bq-bg-color: var(--ac-theme1-fade);
+    --v-block-bq-border-radius: var(--v-r-b);
+
 }

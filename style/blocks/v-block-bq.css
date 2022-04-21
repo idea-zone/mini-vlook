@@ -10,9 +10,9 @@
 
 /*独立的*/
 .protyle-wysiwyg .bq {
-    color: var(--d-f-c);
-    background: var(--ac-theme1-fade);
-    border-radius: var(--v-r-b);
+    color: var(--v-block-bq-color);
+    background: var(--v-block-bq-bg-color);
+    border-radius: var(--v-block-bq-border-radius);
     padding: 0.75em 1em;
     margin-top: 0;
     margin-bottom: 20px;
