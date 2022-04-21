@@ -7,7 +7,7 @@
 /*加载默认 root 配置*/
 @import url(/appearance/themes/mini-vlook/style/config/theme-conifg.css);
 
-/* ——————————————————————————— 各个块的设置 ——————————————————————————— */
+/* ——————————————————————————— 基础块设置 ——————————————————————————— */
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-bq.css);
 
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-heading.css);
@@ -19,3 +19,6 @@
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-code-block.css);
 
 
+/* ——————————————————————————— 功能块设置 ——————————————————————————— */
+
+@import url(style/customs/list-to-kanban-by-line.css);
