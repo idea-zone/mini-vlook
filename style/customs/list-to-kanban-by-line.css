@@ -176,8 +176,9 @@
 .protyle-wysiwyg .hr:first-child+.hr+* .li .list .protyle-action,
 .protyle-wysiwyg :not(.hr)+.hr+.hr+* .li .list .protyle-action{
 
+    z-index: 1;
     position: absolute;
-    top: 50%;
+    top: 20px;
     transform: translate(0.75em, -50%);
     width: 20px;
     height: 20px;
