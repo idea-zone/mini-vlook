@@ -109,18 +109,24 @@
     --kbline-board-border-color: var(--ac-theme2);     /*边框颜色*/
 
    
-    --kbline-board-title-svg-color: var(--d-f-c);        /*符号·的前景色*/
+    --kbline-board-title-svg-color: #292c33;        /*符号·的前景色*/
     --kbline-board-title-svg-bg:#c0e9fc;               /*符号·的背景色*/
     
-    --kbline-board-title-bg:#292c33;                   /*标题的背景色*/
-    --kbline-board-title-color:var(--d-f-c);             /*标题的前景色*/
+    
+     /*循环标题颜色设置*/
+     --kbline-board-title-bg1:rgba(253, 236, 234, 0.5);                 /*标题的背景色*/
+     --kbline-board-title-bg2:rgba(255, 244, 229, 0.5);                  /*标题的背景色*/
+     --kbline-board-title-bg3:rgba(232, 244, 253, 0.5);                 /*标题的背景色*/
+     --kbline-board-title-bg4:rgba(237, 247, 237, 0.5);     
+
+    --kbline-board-title-color:#292c33;             /*标题的前景色*/
 
     --kbline-board-item-color: var(--d-f-c);              /*看板卡片前景色*/
     --kbline-board-item-code-color:var(--d-f-c);
 
      /*调整下面参数，可能会产生一些渲染bug*/
     --kbline-bord-margin: 10px;                        /*看板列表-之间的间距*/
-    --kbline-boarditem-margin-bottom: 5px;            /*看板卡片-之间的间距*/
+    --kbline-boarditem-margin-bottom: 5px;             /*看板卡片-之间的间距*/
     --kbline-boarditem-maxwidth:   25rem;              /*看板卡片的最大宽度*/
     --kbline-boarditem-minwidth: 14rem;                /*看板卡片的最小宽度*/
     --kbline-boarditem-minHight: 4.5rem;               /*看板卡片的最小高度*/

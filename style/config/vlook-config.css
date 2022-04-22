@@ -103,7 +103,12 @@
     --kbline-board-title-svg-color: var(--d-f-c);        /*符号·的前景色*/
     --kbline-board-title-svg-bg:#c0e9fc;     /*符号·的背景色*/
     
-    --kbline-board-title-bg:#c0e9fc;         /*标题的背景色*/
+     /*循环标题颜色设置*/
+     --kbline-board-title-bg1:rgba(253, 236, 234,1);                 /*标题的背景色*/
+     --kbline-board-title-bg2:rgba(255, 244, 229,1);                  /*标题的背景色*/
+     --kbline-board-title-bg3:rgba(232, 244, 253,1);                 /*标题的背景色*/
+     --kbline-board-title-bg4:rgba(237, 247, 237,1);     
+
     --kbline-board-title-color:var(--d-f-c);             /*标题的前景色*/
 
     --kbline-board-item-color:var(--d-f-c);              /*看板卡片前景色*/
