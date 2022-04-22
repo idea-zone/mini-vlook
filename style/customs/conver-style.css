@@ -21,7 +21,7 @@
     display: block;
     color: var(--conver-font-color1) !important;
     font: var(--v-f-w-title) 2.5em/1.3 var(--v-f-fm-title);
-    text-align: left;
+    text-align: var(--conver-text-align1);
     filter: var(--v-brightness-dk);
     height: var(--conver-height-1);
     /* padding: 240px 80px 60px; */
