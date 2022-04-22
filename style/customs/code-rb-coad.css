@@ -1,0 +1,23 @@
+/*
+ * 微章内容
+ */
+ 
+.protyle-wysiwyg .v-rb-coat {
+    text-shadow: 0 1px var(--d-f-c);
+    box-shadow: none;
+    color: var(--d-bc);
+    font: var(--v-f-w-bd) 1em var(--v-f-fm-code);
+    cursor: pointer
+}
+
+.protyle-wysiwyg .v-rb-coat:hover {
+    box-shadow: 0 0 0 1px #2aa899, 0 2px 0 0 #2aa899 inset !important;
+    display: inline-block;
+    transform: scale(1.2)
+}
+
+.protyle-wysiwyg .v-rb-coat.opened {
+    box-shadow: 0 0 0 1px var(--d-f-c), 0 2px 0 0 var(--d-f-c) inset;
+    background: var(--d-bc) !important;
+    text-shadow: none
+}
