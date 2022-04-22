@@ -55,7 +55,7 @@
 .protyle-wysiwyg :not(.hr)+.hr+.hr+*:not(.bq) .li {
    
     min-height: var(--kbline-boarditem-minHight);
-    outline: var(--kbline-border-normal);
+    outline: var(--kbline-border-normal) !important;
     
     border-radius: var(--kbline-board-border-radius);
     background: var(--kbline-board-bg-color1);
@@ -183,7 +183,7 @@
     width: 20px;
     height: 20px;
 
-    background: var(--kbline-board-bg-color);
+    background: var(--kbline-board-pa-color);
     border-radius: var(--kbline-board-border-radius);
 }
 

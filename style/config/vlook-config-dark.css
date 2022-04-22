@@ -11,12 +11,12 @@
     /*主题色1*/
     --v-theme1: rgb(23, 227, 203);
     --v-theme1-rgb-value:23, 227, 203;
-    --v-theme1-color:#fff;
+    --v-theme1-color:rgb(220, 215, 215);
 
     /*主题色2*/
     --v-theme2:rgb(214, 188, 253);
     --v-theme2-rgb-value:214, 188, 253;
-    --v-theme2-color:#fff;
+    --v-theme2-color:rgb(220, 215, 215);
 
      /* 警告类-背景颜色*/
     --v-theme-error: #d23f31;
@@ -33,7 +33,7 @@
     --v-theme-on-surface: var(--d-f-c);
 
     /*线条*/
-    --v-border-color: rgba(225, 219, 219, 0.1);
+    --v-border-color: rgb(161, 162, 165);
     
     /* 滚动条 */
     --v-scroll-color: rgba(225, 219, 219, .2);
@@ -97,13 +97,14 @@
     /* ———————————————————— 列表2看板 ———————————————————— */
 
     --kbline-board-bg-color: #515459;             /* 主背景色 */
-    --kbline-board-bg-color1: #a1a2a5;            /* 各个子项背景色 */
+    --kbline-board-bg-color1: #515459;            /* 各个子项背景色 */
+    --kbline-board-pa-color: #a1a2a5;             /* 列表项的点 */
 
-    --kbline-theme-hover2: #f8ecec;                 /*鼠标悬浮的背景色*/
+    --kbline-theme-hover2: #cfc0c0fc;                 /*鼠标悬浮的背景色*/
     --kbline-theme-hover1: var(--d-f-c);              /*鼠标悬浮的前景色*/
 
 
-    --kbline-border-normal: 1px solid #ddd4df;      /* 边框的颜色 */
+    --kbline-border-normal: 1px solid #a1a2a5;      /* 边框的颜色 */
     --kbline-board-border-radius: var(--v-r-b);        /*圆角弧度*/
     --kbline-board-border-color: var(--ac-theme2);     /*边框颜色*/
 

@@ -87,7 +87,8 @@
 
     /* ———————————————————— 列表2看板 ———————————————————— */
 
-    --kbline-board-bg-color: #e7e7e7;   /* 主背景色 */
+    --kbline-board-bg-color: #e7e7e7;                   /* 主背景色 */
+    --kbline-board-pa-color: #e7e7e7; /* 列表项的点 */
     --kbline-board-bg-color1: #fdfdfd;            /* 各个子项背景色 */
 
     --kbline-theme-hover2: #f8ecec;                 /*鼠标悬浮的背景色*/
