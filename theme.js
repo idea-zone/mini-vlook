@@ -159,6 +159,8 @@ window.theme.changeThemeMode(
 // window.theme.loadScript("/appearance/themes/Dark+/script/module/html.js", "text/javascript");
 
 /* 加载主题功能 */
+window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel.js");
+
 // window.theme.loadScript("/appearance/themes/Dark+/script/module/background.js");
 // window.theme.loadScript("/appearance/themes/Dark+/script/module/blockattrs.js");
 // window.theme.loadScript("/appearance/themes/Dark+/script/module/doc.js");
