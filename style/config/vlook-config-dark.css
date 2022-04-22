@@ -1,46 +1,54 @@
 :root{
 
+    --ac-theme1: rgb(23, 227, 203);
+    --ac-theme1-alt-dk: #17e3cb;
+    --ac-theme1-fade-dk: rgba(23, 227, 203);
+    --ac-theme2:rgb(214, 188, 253);
+    --ac-theme2-alt-dk: #d6bcfd;
+    --ac-theme2-fade-dk: rgba(214, 188, 253, 0.35);
+    --ac-theme2-title-dk: var(--d-f-c-dk);
+
     /*主题色1*/
-    --v-theme1:var(--ac-theme1);
-    --v-theme1-rgb-value:128, 100, 169;
+    --v-theme1: rgb(23, 227, 203);
+    --v-theme1-rgb-value:23, 227, 203;
     --v-theme1-color:#fff;
 
     /*主题色2*/
-    --v-theme2:var(--ac-theme2);
-    --v-theme2-rgb-value:42, 168, 153;
+    --v-theme2:rgb(214, 188, 253);
+    --v-theme2-rgb-value:214, 188, 253;
     --v-theme2-color:#fff;
 
      /* 警告类-背景颜色*/
     --v-theme-error: #d23f31;
 
     /*编辑区*/
-    --v-theme-background:#fcf9f2;
-    --v-theme-background-light:rgba(238, 238, 238,.25);
+    --v-theme-background:#292c33;
+    --v-theme-background-light:rgba(41, 44, 51,.25);
     /*编辑区/列表区*/
-    --v-theme-on-background:var(--d-f-c);
+    --v-theme-on-background: var(--d-f-c);
 
     /*面板区*/
-    --v-theme-surface: rgba(243, 243, 243,0.75);
+    --v-theme-surface: rgba(41, 44, 51,0.75);
     /*前缀/序号/tab文字*/
     --v-theme-on-surface: var(--d-f-c);
 
     /*线条*/
-    --v-border-color: rgba(0, 0, 0, .1);
+    --v-border-color: rgba(225, 219, 219, 0.1);
     
     /* 滚动条 */
-    --v-scroll-color: rgba(0, 0, 0, .2);
+    --v-scroll-color: rgba(225, 219, 219, .2);
 
     /* 列表 */
     --v-list-hover: rgba(var(--v-theme2-rgb-value),0.65);
 
     /* 右键/cms菜单 */
-    --v-menu-background: #f8f9fa;
+    --v-menu-background: rgba(41, 44, 51,0.9);
 
     /* 提示 */
     --v-tooltips-color: rgba(var(--v-theme2-rgb-value), 0.6);
 
     /* 遮罩 */
-    --v-mask-background: rgba(var(--v-theme1-rgb-value), 0.78);
+    --v-mask-background: rgba(161, 162, 165, 0.78);
 
     /*链接颜色*/
     --v-block-link-color:var(--a-color);
@@ -48,7 +56,8 @@
     --v-block-mark-color:var(--d-f-c);
     --v-block-mark-bg-color:var(--mark-bg);
     /*内容引用块颜色*/
-    --v-block-blockref-color:#660e7a;
+    --v-block-blockref-color:var(--ac-theme1);
+
     /*标签颜色*/
     --v-block-tag-color:#5f6368;
     /*代码块颜色*/
@@ -72,7 +81,7 @@
 
     /*引用块设置*/
     --v-block-bq-color: var(--d-f-c);
-    --v-block-bq-bg-color: var(--ac-theme1-fade);
+    --v-block-bq-bg-color: var(--ac-theme2-fade);
     --v-block-bq-border-radius: var(--v-r-b);
 
     /*h1~h6*/
@@ -87,8 +96,8 @@
 
     /* ———————————— 列表2看板 ———————————— */
 
-    --kbline-board-bg-color: #e7e7e7;   /* 主背景色 */
-    --kbline-board-bg-color1: #fdfdfd;            /* 各个子项背景色 */
+    --kbline-board-bg-color: #515459;             /* 主背景色 */
+    --kbline-board-bg-color1: #a1a2a5;            /* 各个子项背景色 */
 
     --kbline-theme-hover2: #f8ecec;                 /*鼠标悬浮的背景色*/
     --kbline-theme-hover1: var(--d-f-c);              /*鼠标悬浮的前景色*/
@@ -100,12 +109,12 @@
 
    
     --kbline-board-title-svg-color: var(--d-f-c);        /*符号·的前景色*/
-    --kbline-board-title-svg-bg:#c0e9fc;     /*符号·的背景色*/
+    --kbline-board-title-svg-bg:#c0e9fc;               /*符号·的背景色*/
     
-    --kbline-board-title-bg:#c0e9fc;         /*标题的背景色*/
+    --kbline-board-title-bg:#292c33;                   /*标题的背景色*/
     --kbline-board-title-color:var(--d-f-c);             /*标题的前景色*/
 
-    --kbline-board-item-color:var(--d-f-c);              /*看板卡片前景色*/
+    --kbline-board-item-color: var(--d-f-c);              /*看板卡片前景色*/
     --kbline-board-item-code-color:var(--d-f-c);
 
      /*调整下面参数，可能会产生一些渲染bug*/

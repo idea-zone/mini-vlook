@@ -1,10 +1,3 @@
-/*加载 vlook主题的 root 配置*/
-@import url(/appearance/themes/mini-vlook/style/vlook/vlook-r0.css);
-
-/*隔离 vlook root 的变量名 */
-@import url(/appearance/themes/mini-vlook/style/config/vlook-config.css);
-
-/*加载默认 root 配置*/
 @import url(/appearance/themes/mini-vlook/style/config/theme-conifg.css);
 
 /* ——————————————————————————— 基础块设置 ——————————————————————————— */
@@ -33,4 +26,3 @@
 @import url(/appearance/themes/mini-vlook/style/customs/bq-splite-by-line.css); 
 
 @import url(/appearance/themes/mini-vlook/style/customs/conver-style.css);
-
