@@ -67,12 +67,11 @@ async function render() {
             parseInfo.log()
 
             if (!empty(parseInfo.text+parseInfo.pgdata) && e.className!=='vk-pg'){
-                
-                // <ruby>道<rp>(</rp><rt onclick="TextPhonetic.translation(&quot;道&quot;, &quot;dào&quot;)">dào</rt><rp>)&nbsp;</rp></ruby>
-
+                // e.parentElement.setAttribute('contenteditable',false)
                 e.className += 'vk-pg'
-                // e.innerHTML = '<span>'+oldHTML +'</span>'
-                e.innerHTML = `<ruby>${parseInfo.text}<rp>(</rp><rt>${parseInfo.pgdata}</rt><rp>)&nbsp;</rp></ruby>`
+                e.innerHTML = '<span>'+oldHTML +'</span>'
+                // e.innerHTML = `<ruby><span>{</span>${parseInfo.text}<span>}</span><rp>(</rp><rt><span>(</span>${parseInfo.pgdata}<span>)</span></rt><rp>)&nbsp;</rp></ruby>`
+                e.innerHTML = `<ruby><span>{</span>${parseInfo.text}<span>}</span><rp>(</rp><rt>${parseInfo.pgdata}</rt><rp>)</rp></ruby>`
                 e.setAttribute("custom-codelabel-pg-text",parseInfo.text)
                 e.setAttribute("custom-codelabel-pg-data",parseInfo.pgdata)
 

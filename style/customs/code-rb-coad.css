@@ -34,7 +34,7 @@
     /* color: #1f2e3b;  */
     /* color: var(--theme-wz-msg-color);  */
     /* background-color: var(--theme-wz-msg-bgcolor); */
-    /* color: var(--theme-rb-color); */
+    /* color: var(--theme-rb-color); *** /
     content: attr(custom-codelabel-rb-coat-data);
     padding: 3px;
     border-radius: 3px;

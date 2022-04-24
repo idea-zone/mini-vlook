@@ -11,3 +11,8 @@ rt:hover {
     transform-origin: center bottom;
     transform: scale(1.5)
 }
+
+
+.protyle-wysiwyg *[data-node-id] .vk-pg span{
+    display: none;  
+}
