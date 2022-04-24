@@ -66,7 +66,7 @@ class RbParseInfo {
     }
     get coat_text() {
         if (this._coat_text === "" || this._coat_text === undefined)
-            return "﹡﹡﹡﹡"
+            return "****"
         return this._coat_text;
     }
 
@@ -186,7 +186,7 @@ async function render() {
                 RegExp.$4,
             )
 
-            parseInfo.log()
+            // parseInfo.log()
 
             if (!empty(parseInfo.coat_text+parseInfo.coat_data) && e.className!=='v-rb-coat'){
                 

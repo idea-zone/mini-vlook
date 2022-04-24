@@ -99,7 +99,7 @@
   * 渲染解析书签
   */
  async function render() {
-     console.log("[bug320]:wz render")
+    //  console.log("[bug320]:wz render")
      // 获取符合条件的 code 标签
      let elements = getElementWithoutCustomf_wz();
  
