@@ -146,6 +146,10 @@
                         +";--theme-wz-title-color:"+wz.titlecolor+";"
                         +";--theme-wz-msg-color:"+wz.msgcolor+";"
                         +";--theme-wz-msg-bgcolor:"+wz.msgbgcolor+";"
+                // setStyleVariableValue(e,'--theme-wz-bgcolor',wz.bgcolor)
+                // setStyleVariableValue(e,'--theme-wz-title-color',wz.titlecolor)
+                // setStyleVariableValue(e,'--theme-wz-msg-color',wz.msgcolor)
+                // setStyleVariableValue(e,'--theme-wz-msg-bgcolor',wz.msgbgcolor)
              }
  
          }
