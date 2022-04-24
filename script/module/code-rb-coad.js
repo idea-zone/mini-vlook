@@ -33,7 +33,7 @@ function getElementWithoutCustomf_rb() {
     // console.warn(elementAll.length)
     let rst = getElement(
         'div.fn__flex-1 .protyle-wysiwyg *[data-node-id] code',
-        '.protyle-wysiwyg *[data-node-id] code.v-rb-coat'
+        '.protyle-wysiwyg *[data-node-id][custom-f~=rb] code'
     );
     return rst;
 }
@@ -187,22 +187,25 @@ async function render() {
             )
 
             parseInfo.log()
-            
-            e.className += 'v-rb-coat'
-            e.innerHTML = '<span>'+oldHTML +'</span>'
-            e.setAttribute("custom-codelabel-rb-coat-text",parseInfo.coat_text)
-            e.setAttribute("custom-codelabel-rb-coat-data",parseInfo.coat_data)
-            e.setAttribute("custom-codelabel-rb-coat-showe",false)
 
-            let rb = new RbStyleInfo();
-            rb.rerender(parseInfo.color);
+            if (!empty(parseInfo.coat_text+parseInfo.coat_data) && e.className!=='v-rb-coat'){
+                
+                e.className += 'v-rb-coat'
+                e.innerHTML = '<span>'+oldHTML +'</span>'
+                e.setAttribute("custom-codelabel-rb-coat-text",parseInfo.coat_text)
+                e.setAttribute("custom-codelabel-rb-coat-data",parseInfo.coat_data)
+                e.setAttribute("custom-codelabel-rb-coat-showe",false)
 
-            setStyleVariableValue(e.style,'--theme-rb-bgcolor',rb.bgcolor)
-            setStyleVariableValue(e.style,'--theme-rb-title-color',rb.titlecolor)
-            setStyleVariableValue(e.style,'--theme-rb-msg-color',rb.msgcolor)
-            setStyleVariableValue(e.style,'--theme-rb-msg-bgcolor',rb.msgbgcolor)
+                let rb = new RbStyleInfo();
+                rb.rerender(parseInfo.color);
 
-            e.onclick = bingOnClick.bind(e,e);
+                setStyleVariableValue(e.style,'--theme-rb-bgcolor',rb.bgcolor)
+                setStyleVariableValue(e.style,'--theme-rb-title-color',rb.titlecolor)
+                setStyleVariableValue(e.style,'--theme-rb-msg-color',rb.msgcolor)
+                setStyleVariableValue(e.style,'--theme-rb-msg-bgcolor',rb.msgbgcolor)
+
+                e.onclick = bingOnClick.bind(e,e);
+            }
 
         }
 
