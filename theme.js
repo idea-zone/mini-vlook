@@ -161,6 +161,7 @@ window.theme.changeThemeMode(
 /* 加载主题功能 */
 window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel.js");
 window.theme.loadScript("/appearance/themes/mini-vlook/script/module/code-rb-coad.js");
+window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-pg.js");
 
 // window.theme.loadScript("/appearance/themes/Dark+/script/module/background.js");
 // window.theme.loadScript("/appearance/themes/Dark+/script/module/blockattrs.js");
