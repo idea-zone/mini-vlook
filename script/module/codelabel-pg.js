@@ -64,7 +64,7 @@ async function render() {
                 RegExp.$2,
             )
 
-            parseInfo.log()
+            // parseInfo.log()
 
             if (!empty(parseInfo.text+parseInfo.pgdata) && e.className!=='vk-pg'){
                 // e.parentElement.setAttribute('contenteditable',false)
