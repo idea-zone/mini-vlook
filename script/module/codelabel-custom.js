@@ -1,15 +1,20 @@
 
 import { config } from './b320config.js';
 import { isKey } from '../utils/hotkey.js';
-import {CodeLabelParse,config1} from '../utils/codelabel-parse.js'
+import {CodeLabelParse} from '../utils/codelabel-parse.js'
+
+function render(){
+    for(let value of config.theme.codelabel.ptype){
+        new CodeLabelParse(value).render();
+    }
+}
 
 (() => {
     try {
 
         let body = document.body;
         
-
-        window.onload = setTimeout(new CodeLabelParse(config1.theme.codelabel.ptype[0]).render, 0);
+        window.onload = setTimeout(render, 0);
         body.addEventListener('keyup', (e) => {
 
             // // 通过 Ctrl+Alt+0切换开关
@@ -19,8 +24,7 @@ import {CodeLabelParse,config1} from '../utils/codelabel-parse.js'
             // }
 
             if (config.theme.codelabel.render.enable) {
-                let parser = new CodeLabelParse(config1.theme.codelabel.ptype[0]);
-                setTimeout(parser.render, 0);
+                setTimeout(render, 0);
             }
         })
 

@@ -159,10 +159,11 @@ window.theme.changeThemeMode(
 // window.theme.loadScript("/appearance/themes/Dark+/script/module/html.js", "text/javascript");
 
 /* 加载主题功能 */
-window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel.js");
-window.theme.loadScript("/appearance/themes/mini-vlook/script/module/code-rb-coad.js");
-window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-pg.js");
 window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-custom.js");
+
+// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel.js");
+// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/code-rb-coad.js");
+// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-pg.js");
 // window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-todo.js");
 
 // window.theme.loadScript("/appearance/themes/Dark+/script/module/background.js");

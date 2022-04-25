@@ -131,6 +131,35 @@ class RbParseInfo {
 
 class RbStyleInfo{
 
+    
+    // styleinfo:{ // 样式映射信息
+   //      rerender:true,             // 是否计算配色
+    //     color: 'color',  // 主颜色字段
+    //     default:'gray',  // 缺省颜色值
+    //     colors:{
+    //         names: config.theme.common.colors.names,   // 颜色名称-列表
+    //         values: config.theme.common.colors.values, // 适配配色-列表
+    //     }
+    // },
+
+
+    // style:{ // 样式映射信息
+    //     rerender:true,             // 是否计算配色
+    //     color: {
+    //         value:'color',            // 主颜色字段
+    //         suffix:'',                // 颜色后缀对应的字段
+    //     },         
+    //     default:'gray',               // 缺省颜色值
+    //     defaultSuffix:false, // 缺省时,颜色后缀,对应的值.
+    //     colors:{
+    //         suffixs:{
+    //             '!':true,
+    //         },
+    //         names: config.theme.common.colors.names,   // 颜色名称-列表
+    //         values: config.theme.common.colors.values, // 适配配色-列表
+    //     }
+    // },
+
     constructor(){
         let gcolor= config.theme.common.colors.values['gray'];
         this.bgcolor = gcolor.value 

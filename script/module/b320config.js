@@ -163,8 +163,30 @@ export var config = {
             },
         },
 
+        // codelabel: {
+        //     render: {
+        //         enable: true, // 是否启用自定义样式渲染
+        //         toolbar: { // 菜单栏
+        //             enable: true,
+        //             id: 'toolbar-theme-style-codelabel',
+        //             hotkey: () => config.theme.hotkeys.codelabel.render,
+        //             label: {
+        //                 zh_CN: '标签解析增强',
+        //                 zh_CNT: null,
+        //                 fr_FR: null,
+        //                 en_US: null,
+        //                 other: 'Inline Code Parse',
+        //             },
+        //             icon: '#iconSuper',
+        //             index: -3,
+        //         },
+        //     },
+            
+        // },
+
         codelabel: {
-            render: {
+            enable: true, // 是否启用自定义样式渲染
+            render: {     // 渲染信息
                 enable: true, // 是否启用自定义样式渲染
                 toolbar: { // 菜单栏
                     enable: true,
@@ -181,13 +203,138 @@ export var config = {
                     index: -3,
                 },
             },
-            
-        },
+            ptype: [       // 解析类型
+                {   // 计数任务
+                    typeid: "todo",
+                    reg: '\\\+\\\[(\\d+)\\\]\\s*\\\((.*)\\\)',  // 正则表达式
+                    customf: 'todo',                        // 忽略解析的属性值 
+                    className: 'vk-todo',                   // 自定义的属性名称
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': 'count',
+                        '$2': 'data',
+                        '$3': '',
+                        '$4': '',
+                        '$5': '',
+                        '$6': '',
+                        '$7': '',
+                        '$8': '',
+                        '$9': '',
+                    },
 
-        codequote: {
-            render: {
-                enable: true, // 是否启用自定义样式渲染
-            },
+                    emptys: ['count', 'data'],      // 不能为空的字段
+                    emptysValues:{              // 当值为空值的值
+                    },
+                    style:{ // 样式映射信息
+                        rerender:false,             // 是否计算配色
+                    },
+                    customAttr: { // 自定义属性
+                        'custom-codelabel-todo-count': "${count}",
+                        'custom-codelabel-todo-data': "${data}",
+                    },
+                    inlineStyle: {
+                    },
+                    innerHTML: '<button>+</button><span>[${count}]</span><span>(</span>${data}<span>)</span>',
+                    renderEnd: (parse, element,oldHTML) => {
+
+                        function bingOnClick(parse, e,oldHTML) {
+
+                            parse.reinitFormat(parse.ptypeItem)
+                            
+                            let parseInfo = parse.clacParseInfo(oldHTML);
+
+                            let c = 1 + +parseInfo.count;
+                            parseInfo.count = ""+c;
+
+                            parse.parseInfo = parseInfo;
+                            parse.renderSingle(e, parseInfo);
+
+                            // 这里已经更新了，所有旧的 oldHTML 和 parse.Value 就没用了。重新组合
+                            e.firstChild.onclick = bingOnClick.bind(e.firstChild, parse, e,`+[${parse.parseInfo.count}](${parse.parseInfo.data})`)
+
+                            e.firstChild.setAttribute(
+                                "custom-codelabel-todo-count",
+                                parse.parseInfo.count
+                            );
+
+                        }
+
+                        element.firstChild.onclick = bingOnClick.bind(element.firstChild, parse, element,oldHTML)
+                        element.firstChild.setAttribute(
+                            "custom-codelabel-todo-count",
+                            element.getAttribute("custom-codelabel-todo-count"),
+                        );
+
+                    },
+                },
+                {   // 刮刮乐
+                    typeid: "rb",
+                    reg: '^\\\*\\\{(.*)\\\}\\\((.*?)(\\s*\\\"(#?[\\d\\w]+)\\\")?\\\)$',  // 正则表达式
+                    customf: 'rb',                        // 忽略解析的属性值 
+                    className: 'v-rb-coat',                   // 自定义的属性名称
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        /**
+                         * 以下字段名称被占用,不要用于下面列表的值中.
+                         * value,             // code 标签的 InnerHTML
+                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+                         * $0~$9 也不要用.  
+                         */
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': 'coat_text',
+                        '$2': 'coat_data',
+                        '$3': '',
+                        '$4': 'color',
+                        '$5': '',
+                        '$6': '',
+                        '$7': '',
+                        '$8': '',
+                        '$9': '',
+                    },
+
+                    emptys: ['coat_data'],      // 不能为空的字段
+                    emptysValues:{              // 当值为空值的值
+                        'coat_text':'****'
+                    },
+                    style:{ // 样式映射信息
+                        rerender:true,             // 是否计算配色
+                        color: {
+                            value:'color',            // 主颜色字段
+                            suffix:'',                // 颜色后缀对应的字段
+                        },         
+                        default:'gray',               // 缺省颜色值
+                        defaultSuffix:false, // 缺省时,颜色后缀,对应的值.
+                        colors:{
+                            suffixs:{
+                                '!':true,
+                            },
+                            names: ()=>config.theme.common.colors.names,   // 颜色名称-列表
+                            values: ()=>config.theme.common.colors.values, // 适配配色-列表
+                        }
+                    },
+                    customAttr: { // 自定义属性
+                        'custom-codelabel-rb-coat-text': "${coat_text}",
+                        'custom-codelabel-rb-coat-data': "${coat_data}",
+                        'custom-codelabel-rb-coat-showe':'false',
+                    },
+                    inlineStyle: {
+                        '--theme-rb-bgcolor':"${bgcolor1}",
+                        '--theme-rb-title-color':"${color1}",
+                        '--theme-rb-msg-color':"${color2}",
+                        '--theme-rb-msg-bgcolor':"${bgcolor2}",
+                    },
+                    innerHTML: '<span>${value}</span>',
+                    renderEnd: (parse, element,oldHTML) => { // 渲染完单个元素的回调.
+                        function bingOnClick(button){
+                            let value = button.getAttribute('custom-codelabel-rb-coat-showe') === false ||
+                            button.getAttribute('custom-codelabel-rb-coat-showe') === 'false' ?
+                            'true' : 'false';
+                            button.setAttribute('custom-codelabel-rb-coat-showe',value)
+                        }
+                        element.onclick = bingOnClick.bind(element,element);
+                    },
+                },
+            ],
         },
 
         hotkeys: {
