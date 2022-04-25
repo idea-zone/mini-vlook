@@ -3,6 +3,12 @@ export var config = {
     token: '', // API token, 无需填写
     theme: {
         regs: {
+            
+            // 正则表达式
+            url: /^siyuan:\/\/blocks\/(\d{14}\-[0-9a-z]{7})\/*(?:(?:\?)(\w+=\w+)(?:(?:\&)(\w+=\w+))+)?$/, // 思源 URL Scheme 正则表达式
+            time: /^(\d+)(:[0-5]?[0-9]){0,2}(\.\d*)?$/, // 时间戳正则表达式
+            id: /^\d{14}\-[0-9a-z]{7}$/, // 块 ID 正则表达式
+            
             // 正则表达式
             // wz:'#(.*)?[|](.*)?#([\(](#?[\\d\\w]+)(!)?[\)])?',
             wz: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',   // 非贪婪匹配#号，允许用#开头的颜色
@@ -160,7 +166,22 @@ export var config = {
         codelabel: {
             render: {
                 enable: true, // 是否启用自定义样式渲染
+                toolbar: { // 菜单栏
+                    enable: true,
+                    id: 'toolbar-theme-style-codelabel',
+                    hotkey: () => config.theme.hotkeys.codelabel.render,
+                    label: {
+                        zh_CN: '标签解析增强',
+                        zh_CNT: null,
+                        fr_FR: null,
+                        en_US: null,
+                        other: 'Inline Code Parse',
+                    },
+                    icon: '#iconSuper',
+                    index: -3,
+                },
             },
+            
         },
 
         codequote: {
@@ -190,6 +211,17 @@ export var config = {
                     shiftKey: false,
                     altKey: true,
                     key: '9',
+                },
+            },
+            
+            menu: {
+                block: {
+                    // 块菜单开关(Shift + Alt + M)
+                    ctrlKey: false,
+                    metaKey: false,
+                    shiftKey: true,
+                    altKey: true,
+                    key: 'M',
                 },
             },
 

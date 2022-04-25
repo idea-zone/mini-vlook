@@ -16,7 +16,7 @@ export {
     Iterator, // 创建循环迭代器
 }
 
-import { config } from './../module/config.js';
+import { config } from './../module/b320config.js';
 
 // REF [js - 对象递归合并merge - zc-lee - 博客园](https://www.cnblogs.com/zc-lee/p/15873611.html)
 function isObject(obj) {

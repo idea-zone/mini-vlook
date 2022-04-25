@@ -15,7 +15,7 @@ export {
 };
 
 import { url2id } from './misc.js';
-import { config } from './../module/config.js';
+import { config } from './../module/b320config.js';
 
 /**
  * 获得焦点所在的块

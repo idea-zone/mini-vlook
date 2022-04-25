@@ -6,13 +6,18 @@
  *  3. 添加新的特性
  */
 
+ import {
+    minus, // 计算两个数组的差集
+    empty, // 判断字符串是否为空
+} from  '../utils/b320comm.js';
  import { config } from './b320config.js';
  import { isKey } from '../utils/hotkey.js';
+ import { styleHandle } from './../utils/misc.js';
  import {
-     minus, // 计算两个数组的差集
-     empty, // 判断字符串是否为空
- } from  '../utils/b320comm.js';
- 
+    toolbarItemInit,
+    toolbarItemChangeStatu,
+} from './../utils/ui.js';
+
  /**
   * 存储正则匹配后的-分组信息
   */
@@ -165,6 +170,24 @@
      console.warn(elementAll.length)
      return rst;
  }
+
+ function CodelabelEnable(){
+
+    config.theme.codelabel.render.enable=!config.theme.codelabel.render.enable
+
+    console.log("enable:"+config.theme.codelabel.render.enable);
+
+    if (config.theme.codelabel.render.toolbar){
+        // 更改菜单栏按钮状态
+        toolbarItemChangeStatu(
+            config.theme.codelabel.render.toolbar.id,
+            config.theme.codelabel.render.enable,
+            'SVG',
+            undefined,
+            1,
+        );
+    }
+ }
  
  (() => {
      try {
@@ -172,12 +195,22 @@
          let body = document.body;
          window.onload=  setTimeout(render, 0);
  
-         body.addEventListener('keyup',(e)=>{
+         
+         if (config.theme.codelabel.render.toolbar.enable) {
+            let Fn_guidesEnable = toolbarItemInit(
+                config.theme.codelabel.render.toolbar,
+                CodelabelEnable,
+            );
+        }
+
+        body.addEventListener('keyup',(e)=>{
  
              // 通过 Ctrl+Alt+0切换开关
              if (isKey(e,config.theme.hotkeys.codelabel.render)){
-                 config.theme.codelabel.render.enable=!config.theme.codelabel.render.enable;
-                 console.warn("bug320_2:",config.theme.codelabel.render.enable)
+                 
+                CodelabelEnable();
+
+                //  console.warn("bug320_2:",config.theme.codelabel.render.enable)
              }
  
              if(config.theme.codelabel.render.enable){
