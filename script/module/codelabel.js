@@ -28,6 +28,14 @@
      this.wzColorTag = colorTag   // 颜色标记-带括号
      this.wzColor  = color        // 仅颜色名称
      this.wzEndsuffix = endsuffix // 颜色名称后面的后缀
+    //  let parseInfo = new ParseInfo(
+    //     // RegExp.$1, // #微章标题|微章内容#
+    //     RegExp.$2,    // 微章标题
+    //     RegExp.$3,    // 微章内容
+    //     RegExp.$4,    // (颜色名称!) <可为空>, 这个不需要，主要用于调试和测试
+    //     RegExp.$5,    // 颜色名称 <可为空>
+    //     RegExp.$6     // ! <可为空>
+    // )
      }
  }
  
@@ -128,6 +136,7 @@
  
              // #测试|efabcd#(#efabcd!)
              let parseInfo = new ParseInfo(
+                 //title, msg,colorTag,color,endsuffix
                  // RegExp.$1, // #微章标题|微章内容#
                  RegExp.$2,    // 微章标题
                  RegExp.$3,    // 微章内容

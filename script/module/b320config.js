@@ -162,28 +162,6 @@ export var config = {
                 }
             },
         },
-
-        // codelabel: {
-        //     render: {
-        //         enable: true, // 是否启用自定义样式渲染
-        //         toolbar: { // 菜单栏
-        //             enable: true,
-        //             id: 'toolbar-theme-style-codelabel',
-        //             hotkey: () => config.theme.hotkeys.codelabel.render,
-        //             label: {
-        //                 zh_CN: '标签解析增强',
-        //                 zh_CNT: null,
-        //                 fr_FR: null,
-        //                 en_US: null,
-        //                 other: 'Inline Code Parse',
-        //             },
-        //             icon: '#iconSuper',
-        //             index: -3,
-        //         },
-        //     },
-            
-        // },
-
         codelabel: {
             enable: true, // 是否启用自定义样式渲染
             render: {     // 渲染信息
@@ -227,6 +205,19 @@ export var config = {
                     },
                     style:{ // 样式映射信息
                         rerender:false,             // 是否计算配色
+                        // color: {
+                        //     value:'color',            // 主颜色字段
+                        //     suffix:'',                // 颜色后缀对应的字段
+                        // },         
+                        // default:'gray',               // 缺省颜色值
+                        // defaultSuffix:false, // 缺省时,颜色后缀,对应的值.
+                        // colors:{
+                        //     suffixs:{
+                        //         '!':true,
+                        //     },
+                        //     names: ()=>config.theme.common.colors.names,   // 颜色名称-列表
+                        //     values: ()=>config.theme.common.colors.values, // 适配配色-列表
+                        // }
                     },
                     customAttr: { // 自定义属性
                         'custom-codelabel-todo-count': "${count}",
@@ -332,6 +323,118 @@ export var config = {
                             button.setAttribute('custom-codelabel-rb-coat-showe',value)
                         }
                         element.onclick = bingOnClick.bind(element,element);
+                    },
+                },
+                {   // 注音
+                    typeid: "pg",
+                    reg: '^\\\{(.*)\\\}\\s*\\\((.*)\\\)$',  // 正则表达式
+                    customf: 'pg',                        // 忽略解析的属性值 
+                    className: 'vk-pg',                   // 自定义的属性名称
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        /**
+                         * 以下字段名称被占用,不要用于下面列表的值中.
+                         * value,             // code 标签的 InnerHTML
+                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+                         * $0~$9 也不要用.  
+                         */
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': 'text',
+                        '$2': 'pgdata',
+                        '$3': '',
+                        '$4': '',
+                        '$5': '',
+                        '$6': '',
+                        '$7': '',
+                        '$8': '',
+                        '$9': '',
+                    },
+
+                    emptys: ['text','pgdata'],      // 不能为空的字段
+                    emptysValues:{              // 当值为空值的值
+                    },
+                    style:{ // 样式映射信息
+                        rerender:false,             // 是否计算配色
+                        // color: {
+                        //     value:'color',            // 主颜色字段
+                        //     suffix:'',                // 颜色后缀对应的字段
+                        // },         
+                        // default:'gray',               // 缺省颜色值
+                        // defaultSuffix:false, // 缺省时,颜色后缀,对应的值.
+                        // colors:{
+                        //     suffixs:{
+                        //         '!':true,
+                        //     },
+                        //     names: ()=>config.theme.common.colors.names,   // 颜色名称-列表
+                        //     values: ()=>config.theme.common.colors.values, // 适配配色-列表
+                        // }
+                    },
+                    customAttr: { // 自定义属性
+                        'custom-codelabel-pg-text': "${text}",
+                        'custom-codelabel-pg-data': "${pgdata}",
+                    },
+                    inlineStyle: {
+                    },
+                    innerHTML: '<ruby><span>{</span>${text}<span>}</span><rp>(</rp><rt>${pgdata}</rt><rp>)</rp></ruby>',
+                    renderEnd: (parse, element,oldHTML) => { // 渲染完单个元素的回调.
+                    },
+                },
+                {   // 微章
+                    typeid: "wz",
+                    reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    customf: 'wz',                        // 忽略解析的属性值 
+                    className: 'custom-codelabel-wz',                   // 自定义的属性名称
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        /**
+                         * 以下字段名称被占用,不要用于下面列表的值中.
+                         * value,             // code 标签的 InnerHTML
+                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+                         * $0~$9 也不要用.  
+                         */
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': '',
+                        '$2': 'title',
+                        '$3': 'msg',
+                        '$4': '',
+                        '$5': 'color',
+                        '$6': 'endsuffix',
+                        '$7': '',
+                        '$8': '',
+                        '$9': '',
+                    },
+
+                    emptys: ['title','msg'],      // 不能为空的字段
+                    emptysValues:{              // 当值为空值的值
+                    },
+                    style:{ // 样式映射信息
+                        rerender:true,             // 是否计算配色
+                        color: {
+                            value:'color',            // 主颜色字段
+                            suffix:'',                // 颜色后缀对应的字段
+                        },         
+                        default:'theme2',               // 缺省颜色值
+                        defaultSuffix:false, // 缺省时,颜色后缀,对应的值.
+                        colors:{
+                            suffixs:{
+                                '!':true,
+                            },
+                            names: ()=>config.theme.common.colors.names,   // 颜色名称-列表
+                            values: ()=>config.theme.common.colors.values, // 适配配色-列表
+                        }
+                    },
+                    customAttr: { // 自定义属性
+                        'custom-codelabel-wz-title': "${title}",
+                        'custom-codelabel-wz-msg': "${msg}",
+                    },
+                    inlineStyle: {
+                        "--theme-wz-bgcolor":"${bgcolor1}",
+                        "--theme-wz-title-color":"${color1}",
+                        "--theme-wz-msg-color":"${color2}",
+                        "--theme-wz-msg-bgcolor":"${bgcolor2}",
+                    },
+                    innerHTML:  '<span>${value}</span>',
+                    renderEnd: (parse, element,oldHTML) => { // 渲染完单个元素的回调.
                     },
                 },
             ],
