@@ -210,7 +210,6 @@
                  
                 CodelabelEnable();
 
-                //  console.warn("bug320_2:",config.theme.codelabel.render.enable)
              }
  
              if(config.theme.codelabel.render.enable){
