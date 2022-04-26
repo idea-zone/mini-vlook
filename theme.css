@@ -14,6 +14,8 @@
 
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-code-block.css);
 
+@import url(/appearance/themes/mini-vlook/style/blocks/v-block-sb.css);
+
 
 /* ——————————————————————————— 功能块设置 ——————————————————————————— */
 
@@ -39,4 +41,7 @@
 
 @import url(/appearance/themes/mini-vlook/style/customs/icon-link.css);
 @import url(/appearance/themes/mini-vlook/style/customs/span-link.css);
+
+@import url(/appearance/themes/mini-vlook/style/customs/block-heading.css);
+
 
