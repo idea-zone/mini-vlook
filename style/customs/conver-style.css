@@ -9,10 +9,9 @@
     border: 0
 }
 
-.protyle-wysiwyg[custom-theme]  .h1:last-child>div:before,
-.protyle-wysiwyg[custom-theme] > .h6:first-child>div:before{
-
-    content: "";
+.protyle-wysiwyg[custom-theme]  .h1:last-child:before,
+.protyle-wysiwyg[custom-theme] > .h6:first-child:before{
+    content: "" ;
 }
 
 .protyle-wysiwyg[custom-theme]  .h1:last-child,

@@ -2,6 +2,7 @@
 
 /* ——————————————————————————— 菜单块设置 ——————————————————————————— */
 @import url(/appearance/themes/mini-vlook/style/menus/menu.css);
+
 @import url(/appearance/themes/mini-vlook/style/menus/four-menu-splite.css);
 
 /* ——————————————————————————— 基础块设置 ——————————————————————————— */
@@ -19,6 +20,8 @@
 
 
 /* ——————————————————————————— 功能块设置 ——————————————————————————— */
+
+@import url(/appearance/themes/mini-vlook/style/customs/block-heading.css);
 
 @import url(/appearance/themes/mini-vlook/style/customs/bg-grid-style.css); 
 
@@ -43,10 +46,8 @@
 @import url(/appearance/themes/mini-vlook/style/customs/codelabel-todo.css);
 
 @import url(/appearance/themes/mini-vlook/style/customs/icon-link.css);
+
 @import url(/appearance/themes/mini-vlook/style/customs/span-link.css);
-
-@import url(/appearance/themes/mini-vlook/style/customs/block-heading.css);
-
 
 @import url(/appearance/themes/mini-vlook/style/customs/custom-display-mode.css);
 
