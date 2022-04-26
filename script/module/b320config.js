@@ -148,7 +148,7 @@ export var config = {
                 },
             },
         },
-        codelabel: {
+        codelabel: {   // 标签增强解析
             enable: true, // 是否启用自定义样式渲染
             render: {     // 渲染信息
                 enable: true, // 是否启用自定义样式渲染
