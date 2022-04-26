@@ -154,6 +154,10 @@ class CodeLabelParse {
         this.reinitFormat = this.reinitFormat.bind(this)
     }
 
+    /**
+     * 重新初始化变量值
+     * @param {object} ptypeItem 
+     */
     reinitFormat(ptypeItem) {
 
         this.ptypeItem = deepCopy(ptypeItem);
@@ -350,6 +354,11 @@ class CodeLabelParse {
         }
     }
 
+    /**
+     * 计算 ParseInfo 的字段和对应值
+     * @param {string} oldHTML 
+     * @returns 
+     */
     clacParseInfo(oldHTML) {
 
         let parseInfo = {};
