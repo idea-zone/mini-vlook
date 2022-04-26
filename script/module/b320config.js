@@ -349,15 +349,15 @@ export var config = {
                 },
                 {   // 计数任务
                     typeid: "todo",
-                    reg: '\\\+\\\[(\\d+)\\\]\\s*\\\((.*)\\\)',  // 正则表达式
+                    reg: '\\\+\\\[(\\d+)\\\]\\s*\\\((.*?)(\\s*\\\"([\\d\\w]+)\\\")?\\\)',  // 正则表达式
                     customf: 'todo',                        // 忽略解析的属性值 
                     className: 'vk-todo',                   // 自定义的属性名称
                     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
                         '$0': 'value', // 占用，code 原始的 innerHTML 内容
                         '$1': 'count',
                         '$2': 'data',
-                        '$3': '',
-                        '$4': '',
+                        '$3': 'colorTag',
+                        '$4': 'color',
                         '$5': '',
                         '$6': '',
                         '$7': '',
@@ -366,31 +366,34 @@ export var config = {
                     },
 
                     emptys: ['count', 'data'],      // 不能为空的字段
-                    emptysValues:{              // 当值为空值的值
+                    emptysValues:{                  // 当值为空值的值
+                        'colorTag':''
                     },
                     style:{ // 样式映射信息
-                        rerender:false,             // 是否计算配色
-                        // color: {
-                        //     value:'color',            // 主颜色字段
-                        //     suffix:'',                // 颜色后缀对应的字段
-                        // },         
-                        // default:'gray',               // 缺省颜色值
-                        // defaultSuffix:false, // 缺省时,颜色后缀,对应的值.
-                        // colors:{
-                        //     suffixs:{
-                        //         '!':true,
-                        //     },
-                        //     names: ()=>config.theme.common.colors.names,   // 颜色名称-列表
-                        //     values: ()=>config.theme.common.colors.values, // 适配配色-列表
-                        // }
+                        rerender:true,             // 是否计算配色
+                        color: {
+                            value:'color',            // 主颜色字段
+                            suffix:'',                // 颜色后缀对应的字段
+                        },         
+                        default:'black',               // 缺省颜色值
+                        defaultSuffix:false, // 缺省时,颜色后缀,对应的值.
+                        colors:{
+                            suffixs:{
+                                '!':true,
+                            },
+                            names: ()=>config.theme.common.colors.names,   // 颜色名称-列表
+                            values: ()=>config.theme.common.colors.values, // 适配配色-列表
+                        }
                     },
                     customAttr: { // 自定义属性
                         'custom-codelabel-todo-count': "${count}",
                         'custom-codelabel-todo-data': "${data}",
+                        'custom-codelabel-todo-colorTag': "${colorTag}",
                     },
                     inlineStyle: {
+                        'color': "${color}",
                     },
-                    innerHTML: '<button>+</button><span>[${count}]</span><span>(</span>${data}<span>)</span>',
+                    innerHTML: '<button>+</button><span>[${count}]</span><span>(</span>${data}<span>${colorTag})</span>',
                     renderEnd: (parse, element,oldHTML) => {
 
                         function bingOnClick(parse, e,oldHTML) {
@@ -406,7 +409,7 @@ export var config = {
                             parse.renderSingle(e, parseInfo);
 
                             // 这里已经更新了，所有旧的 oldHTML 和 parse.Value 就没用了。重新组合
-                            e.firstChild.onclick = bingOnClick.bind(e.firstChild, parse, e,`+[${parse.parseInfo.count}](${parse.parseInfo.data})`)
+                            e.firstChild.onclick = bingOnClick.bind(e.firstChild, parse, e,`+[${parse.parseInfo.count}](${parse.parseInfo.data}${parse.parseInfo.colorTag})`)
 
                             e.firstChild.setAttribute(
                                 "custom-codelabel-todo-count",
