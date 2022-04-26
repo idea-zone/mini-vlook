@@ -1,6 +1,6 @@
 @import url(/appearance/themes/mini-vlook/style/config/theme-conifg.css);
 
-/* ——————————————————————————— 基础块设置 ——————————————————————————— */
+/* ——————————————————————————— 菜单块设置 ——————————————————————————— */
 @import url(/appearance/themes/mini-vlook/style/menus/menu.css);
 @import url(/appearance/themes/mini-vlook/style/menus/four-menu-splite.css);
 
@@ -19,6 +19,8 @@
 
 
 /* ——————————————————————————— 功能块设置 ——————————————————————————— */
+
+@import url(/appearance/themes/mini-vlook/style/customs/bg-grid-style.css); 
 
 @import url(/appearance/themes/mini-vlook/style/customs/list-to-kanban-by-line.css); 
 

@@ -41,6 +41,12 @@
 
     /* 遮罩 */
     --v-mask-background: rgba(var(--v-theme1-rgb-value), 0.78);
+    
+    /*背景*/
+    --v-fig-grid:var(--v-fig-grid-l-lg);
+    --v-bg-grid-color1:rgba(60, 10, 30, 0.05);
+    --v-bg-grid-color2:rgba(148, 35, 80, 0.05);
+
 
     /*链接颜色*/
     --v-block-link-color:var(--a-color);
@@ -69,6 +75,16 @@
     --v-block-kbd-color:var(--d-bc);
     --v-block-kbd-border-shadow:var(--key-shadow);
     --v-block-kbd-border-color: var(--key-reflect);
+    
+    /*标签设置*/
+    --v-tag-bgcolor:#8064A9;
+    --v-tag-color:#ffffff;
+    --v-tag-icon:#c8b7e3;
+    --v-theme-background-gray: #e7ecef;
+    --v-border-dashed-gray: 1px dashed #c8b7e3;
+
+       /* 圆角左右两端都为半圆形 */
+    --v-border-radius-half-round: 50px;
 
     /*引用块设置*/
     --v-block-bq-color: var(--d-f-c);
