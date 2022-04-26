@@ -1163,7 +1163,8 @@
 
 .protyle-wysiwyg [data-node-id] span[data-type='a'][data-href *="github.com"]:not(:empty)::before,
 .b3-typography a[href *="github.com"]::before {
-    background-image: url(/appearance/themes/mini-vlook/icon/github_icon.png);
+    /* background-image: url(/appearance/themes/mini-vlook/icon/github_icon.png); */
+    background-image: url(/appearance/themes/mini-vlook/icon/github.svg);
 }
 
 .protyle-wysiwyg [data-node-id] span[data-type='a'][data-href *="bing.com"]:not(:empty)::before,
