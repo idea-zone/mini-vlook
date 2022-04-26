@@ -8,7 +8,8 @@
 
  import {
     minus, // 计算两个数组的差集
-    empty, // 判断字符串是否为空
+    empty,
+    deepCopy, // 判断字符串是否为空
 } from  '../utils/b320comm.js';
  import { config } from './b320config.js';
  import { isKey } from '../utils/hotkey.js';
@@ -84,7 +85,8 @@
  
          if (config.theme.common.colors.names.indexOf(color) > -1) {
 
-            let vcolor =  config.theme.common.colors.values[color];
+            
+            let vcolor =  deepCopy(config.theme.common.colors.values[color]);
 
             if (vcolor !== undefined){
                 tmpbgcolor = vcolor.value

@@ -411,7 +411,7 @@ export var config = {
                         rerender:true,             // 是否计算配色
                         color: {
                             value:'color',            // 主颜色字段
-                            suffix:'',                // 颜色后缀对应的字段
+                            suffix:'endsuffix',                // 颜色后缀对应的字段
                         },         
                         default:'theme2',               // 缺省颜色值
                         defaultSuffix:false, // 缺省时,颜色后缀,对应的值.

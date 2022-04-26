@@ -26,7 +26,8 @@ e.parentNode.insertBefore(sg, e.nextElementSibling);
 
  import {
     minus, // 计算两个数组的差集
-    empty, // 判断字符串是否为空
+    empty,
+    deepCopy, // 判断字符串是否为空
 } from  '../utils/b320comm.js';
 
 /**
@@ -137,24 +138,24 @@ function rerenderColor(color,wzEndsuffix,colors,names,defaultName){
         'msgcolor': '2b1c29',
       },
      */
-      let rst = colors[defaultName]
+      let rst = deepCopy(colors[defaultName])
       if  (empty(color)){
-          return rst;
+          return deepCopy(rst);
       }
 
     // 如果不是合法的颜色值，使用默认的值
     if (!isLawColorNameOrValue(color,names)) {
-        return rst;
+        return deepCopy(rst);
     }
 
     if (names.indexOf(color) > -1){
-        rst =  colors[color];
+        rst =  deepCopy(colors[color]);
     }
 
     if(wzEndsuffix){
-        rst.msgbgcolor = rst.value
+        rst.msgcolor = rst.value
     }
 
-    return rst;
+    return deepCopy(rst);
 }
 

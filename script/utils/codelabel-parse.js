@@ -42,7 +42,7 @@ export {
 //                         function bingOnClick(parse, e,oldHTML) {
 
 //                             parse.reinitFormat(parse.ptypeItem)
-                            
+
 //                             let parseInfo = parse.clacParseInfo(oldHTML);
 
 //                             let c = 1 + +parseInfo.count;
@@ -154,12 +154,26 @@ class CodeLabelParse {
         this.reinitFormat = this.reinitFormat.bind(this)
     }
 
-    reinitFormat(ptypeItem){
+    reinitFormat(ptypeItem) {
 
+        this.ptypeItem = deepCopy(ptypeItem);
+        this.styleConfig = deepCopy(ptypeItem.style);
+
+        this.className = ptypeItem.className;         // 属性名称
+        this.customf = ptypeItem.customf;             // 忽略解析的属性值 
+        this.reg = ptypeItem.reg;  // 正则表达式
+        this.parseInfo = {};                          // 解析后内容
+        this.maps = ptypeItem.maps;                   // 映射关系
+        this.emptys = ptypeItem.emptys;               // 不能为空的字段
+        this.emptysValues = ptypeItem.emptysValues;   // 为空字段的默认值
+
+        this.innerHTML = ptypeItem.innerHTML;         // 内置html
+        this.customAttr = ptypeItem.customAttr;       // 自定义属性
+        this.inlineStyle = ptypeItem.inlineStyle;     // 内敛样式
+        
         this.innerHTML = deepCopy(ptypeItem.innerHTML);         // 内置html
         this.customAttr = deepCopy(ptypeItem.customAttr);       // 自定义属性
         this.inlineStyle = deepCopy(ptypeItem.inlineStyle);     // 内敛样式
-
     }
 
     /**
@@ -207,19 +221,19 @@ class CodeLabelParse {
         // 替换 $1~$9 的别名
         for (let k in parseInfo) {
             let tv = parseInfo[k];
-            if (tv === undefined || tv === null || empty(tv)){
-                tv =this.emptysValues[k];
+            if (tv === undefined || tv === null || empty(tv)) {
+                tv = this.emptysValues[k];
             }
             innerHTML = innerHTML.replace(`\$\{${k}\}`, tv);
         }
 
         // 替换 $1~$9
         for (let k in maps) {
-            let tv =  parseInfo[maps[k]];
-            if (tv === undefined || tv === null || empty(tv)){
-                tv =this.maps[k];
+            let tv = parseInfo[maps[k]];
+            if (tv === undefined || tv === null || empty(tv)) {
+                tv = this.maps[k];
             }
-            innerHTML = innerHTML.replace(`\$\{${k}\}`,tv);
+            innerHTML = innerHTML.replace(`\$\{${k}\}`, tv);
         }
 
         return innerHTML;
@@ -238,21 +252,21 @@ class CodeLabelParse {
 
             // 替换 $1~$9 的别名
             for (let k in parseInfo) {
-                
+
                 let tv = parseInfo[k];
-                if (tv === undefined || tv === null || empty(tv)){
-                    tv =this.emptysValues[k];
+                if (tv === undefined || tv === null || empty(tv)) {
+                    tv = this.emptysValues[k];
                 }
-                
+
                 customAttr[ca] = customAttr[ca].replace(`\$\{${k}\}`, tv);
             }
 
             // 替换 $1~$9
             for (let k in maps) {
-                    
-                let tv =  parseInfo[maps[k]];
-                if (tv === undefined || tv === null || empty(tv)){
-                    tv =this.maps[k];
+
+                let tv = parseInfo[maps[k]];
+                if (tv === undefined || tv === null || empty(tv)) {
+                    tv = this.maps[k];
                 }
 
                 customAttr[ca] = customAttr[ca].replace(`\$\{${k}\}`, tv);
@@ -260,7 +274,7 @@ class CodeLabelParse {
 
         }
 
-        
+
         return deepCopy(customAttr);
     }
 
@@ -279,23 +293,23 @@ class CodeLabelParse {
 
             // 替换 $1~$9 的别名
             for (let k in parseInfo) {
-                
+
                 let tv = parseInfo[k];
-                if (tv === undefined || tv === null || empty(tv)){
-                    tv =this.emptysValues[k];
+                if (tv === undefined || tv === null || empty(tv)) {
+                    tv = this.emptysValues[k];
                 }
-                
+
                 inlineStyle[ca] = inlineStyle[ca].replace(`\$\{${k}\}`, tv);
             }
 
             // 替换 $1~$9
             for (let k in maps) {
-                    
-                let tv =  parseInfo[maps[k]];
-                if (tv === undefined || tv === null || empty(tv)){
-                    tv =this.maps[k];
+
+                let tv = parseInfo[maps[k]];
+                if (tv === undefined || tv === null || empty(tv)) {
+                    tv = this.maps[k];
                 }
-                
+
                 inlineStyle[ca] = inlineStyle[ca].replace(`\$\{${k}\}`, tv);
             }
 
@@ -316,7 +330,7 @@ class CodeLabelParse {
 
         // 添加lclassName
         e.classList.add(this.className)
-                
+
         // 重新计算 html
         this.innerHTML = this.formatInlineHtml(this.innerHTML, parseInfo, this.maps);
         e.innerHTML = this.innerHTML;
@@ -338,7 +352,7 @@ class CodeLabelParse {
 
     clacParseInfo(oldHTML) {
 
-        let parseInfo ={};
+        let parseInfo = {};
         let simplePatt = new RegExp(this.reg);
 
         if (simplePatt.test(oldHTML)) {
@@ -366,7 +380,7 @@ class CodeLabelParse {
             parseInfo['value'] = oldHTML;
 
             // 如果需要计算配色
-            if (this.styleConfig.rerender === true){
+            if (this.styleConfig.rerender === true) {
                 let styleinfo = new StyleColorInfo(this.styleConfig);
                 styleinfo.rerender(
                     parseInfo[this.styleConfig.color.value],  // 颜色值
@@ -374,12 +388,12 @@ class CodeLabelParse {
                 );
 
                 // 添加计算结果到 parseInfo
-                for(let k in styleinfo){
+                for (let k in styleinfo) {
                     parseInfo[k] = styleinfo[k];
                 }
             }
         }
-        
+
         return deepCopy(parseInfo);
 
     }
@@ -404,7 +418,7 @@ class CodeLabelParse {
             let oldHTML = e.innerHTML;
 
             if (simplePatt.test(oldHTML)) {
-               
+
                 // 计算 ParseInfo
                 this.parseInfo = this.clacParseInfo(oldHTML)
 
@@ -416,7 +430,7 @@ class CodeLabelParse {
                     this.renderSingle(e, this.parseInfo);
 
                     // 渲染结束事件
-                    this.renderEnd(this, e,oldHTML);
+                    this.renderEnd(this, e, oldHTML);
 
                 }
 
@@ -433,44 +447,49 @@ class CodeLabelParse {
 /**
  * 样式-颜色信息转换类
  */
-class StyleColorInfo{
-    constructor(styleConfig,colorEndsuffix){
-        
+class StyleColorInfo {
+    constructor(styleConfig, colorEndsuffix) {
+
         this.styleConfig = deepCopy(styleConfig)
         this.colorEndsuffix = colorEndsuffix
-        let gcolor= this.styleConfig.colors.values()[this.styleConfig.default];
-        this.bgcolor1 = gcolor.value 
-        this.color1 =gcolor.titlecolor 
-        this.bgcolor2 = gcolor.msgbgcolor 
-        this.color2 =gcolor.msgcolor 
+        let gcolor = deepCopy(this.styleConfig.colors.values()[this.styleConfig.default]);
+        this.bgcolor1 = gcolor.value
+        this.color1 = gcolor.titlecolor
+        this.bgcolor2 = gcolor.msgbgcolor
+        this.color2 = gcolor.msgcolor
     }
 
-    
+
     /**
      * 
      * @param {string} color  主颜色
      * @param {string} suffix 主颜色后缀
      */
-    async rerender(color,suffix){
+    async rerender(color, suffix) {
 
-        let vsuffix=false;
+        let vsuffix = false;
 
-        if (suffix!==undefined &&suffix!==null &&styleConfig.colors.suffixs.hasOwnProperty(suffix)){
+        if (suffix !== undefined && suffix !== null && this.styleConfig.colors.suffixs.hasOwnProperty(suffix)) {
             vsuffix = this.styleConfig.colors.suffixs[suffix];
         }
-        else{
+        else {
             vsuffix = this.styleConfig.defaultSuffix
         }
-    
-        let vlook= rerenderColor(color,vsuffix,
+
+        let vlook = rerenderColor(color, vsuffix,
             this.styleConfig.colors.values(),
             this.styleConfig.colors.names(),
             this.styleConfig.default)
 
-        this.bgcolor1 = vlook.value 
-        this.color1 =vlook.titlecolor 
-        this.bgcolor2 = vlook.msgbgcolor 
-        this.color2 =vlook.msgcolor 
+        this.bgcolor1 = vlook.value
+        this.color1 = vlook.titlecolor
+        this.bgcolor2 = vlook.msgbgcolor
+        this.color2 = vlook.msgcolor
+
+        // this.bgcolor1 = vlook.value
+        // this.color1 = vlook.titlecolor
+        // this.bgcolor2 = vlook.msgcolor 
+        // this.color2 = vlook.msgbgcolor
     }
 
 }
