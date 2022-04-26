@@ -5,47 +5,47 @@
     counter-reset: h1-counter 0;
 } */
 
-.protyle-wysiwyg,
+.protyle-wysiwyg:not([custom-f~="bt"]),
 .b3-typography {
     counter-reset: h1-counter 0 h2-counter 0 h3-counter 0 h4-counter 0 h5-counter 0 h6-counter 0;
 }
 
-.protyle-wysiwyg>.h1,
+.protyle-wysiwyg:not([custom-f~="bt"])>.h1,
 .b3-typography>h1 {
     counter-increment: h1-counter;
     counter-reset: h2-counter 0;
 }
 
-.protyle-wysiwyg>.h2,
+.protyle-wysiwyg:not([custom-f~="bt"])>.h2,
 .b3-typography>h2 {
     counter-increment: h2-counter;
     counter-reset: h3-counter 0;
 }
 
-.protyle-wysiwyg>.h3,
+.protyle-wysiwyg:not([custom-f~="bt"])>.h3,
 .b3-typography>h3 {
     counter-increment: h3-counter;
     counter-reset: h4-counter 0;
 }
 
-.protyle-wysiwyg>.h4,
+.protyle-wysiwyg:not([custom-f~="bt"])>.h4,
 .b3-typography>h4 {
     counter-increment: h4-counter;
     counter-reset: h5-counter 0;
 }
 
-.protyle-wysiwyg>.h5,
+.protyle-wysiwyg:not([custom-f~="bt"])>.h5,
 .b3-typography>h5 {
     counter-increment: h5-counter;
     counter-reset: h6-counter 0;
 }
 
-/* .protyle-wysiwyg>.h6,
+/* .protyle-wysiwyg:not([custom-f~="bt"])>.h6,
 .b3-typography>h6 {
     counter-increment: h6-counter;
 } */
 
-.protyle-wysiwyg>.h1::before,
+.protyle-wysiwyg:not([custom-f~="bt"])>.h1::before,
 .b3-typography>h1::before {
     display: block !important;
     float: left;
@@ -53,7 +53,7 @@
     content: counter(h1-counter) "\00A0";
 }
 
-.protyle-wysiwyg>.h2::before,
+.protyle-wysiwyg:not([custom-f~="bt"])>.h2::before,
 .b3-typography>h2::before {
     display: block !important;
     float: left;
@@ -61,7 +61,7 @@
     content: counter(h1-counter) "." counter(h2-counter) "\00A0";
 }
 
-.protyle-wysiwyg>.h3::before,
+.protyle-wysiwyg:not([custom-f~="bt"])>.h3::before,
 .b3-typography>h3::before {
     display: block !important;
     float: left;
@@ -69,7 +69,7 @@
     content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "\00A0";
 }
 
-.protyle-wysiwyg>.h4::before,
+.protyle-wysiwyg:not([custom-f~="bt"])>.h4::before,
 .b3-typography>h4::before {
     display: block !important;
     float: left;
@@ -77,7 +77,7 @@
     content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "\00A0";
 }
 
-.protyle-wysiwyg>.h5::before,
+.protyle-wysiwyg:not([custom-f~="bt"])>.h5::before,
 .b3-typography>h5::before {
     display: block !important;
     float: left;
@@ -85,7 +85,7 @@
     content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "." counter(h5-counter) "\00A0";
 }
 
-/* .protyle-wysiwyg>.h6::before,
+/* .protyle-wysiwyg:not([custom-f~="bt"])>.h6::before,
 .b3-typography>h6::before {
     display: block !important;
     float: left;
@@ -118,33 +118,33 @@
 }
 
 /* 调整标题空行光标位置 */
-.protyle-wysiwyg>.h1>[contenteditable][spellcheck]:empty {
+.protyle-wysiwyg:not([custom-f~="bt"])>.h1>[contenteditable][spellcheck]:empty {
     padding-left: var(--custom-h1-indentation);
 }
 
-.protyle-wysiwyg>.h2>[contenteditable][spellcheck]:empty {
+.protyle-wysiwyg:not([custom-f~="bt"])>.h2>[contenteditable][spellcheck]:empty {
     padding-left: var(--custom-h2-indentation);
 }
 
-.protyle-wysiwyg>.h3>[contenteditable][spellcheck]:empty {
+.protyle-wysiwyg:not([custom-f~="bt"])>.h3>[contenteditable][spellcheck]:empty {
     padding-left: var(--custom-h3-indentation);
 }
 
-.protyle-wysiwyg>.h4>[contenteditable][spellcheck]:empty {
+.protyle-wysiwyg:not([custom-f~="bt"])>.h4>[contenteditable][spellcheck]:empty {
     padding-left: var(--custom-h4-indentation);
 }
 
-.protyle-wysiwyg>.h5>[contenteditable][spellcheck]:empty {
+.protyle-wysiwyg:not([custom-f~="bt"])>.h5>[contenteditable][spellcheck]:empty {
     padding-left: var(--custom-h5-indentation);
 }
 
-/* .protyle-wysiwyg>.h6>[contenteditable][spellcheck]:empty {
+/* .protyle-wysiwyg:not([custom-f~="bt"])>.h6>[contenteditable][spellcheck]:empty {
     padding-left: var(--custom-h6-indentation);
 } */
 
 /* 标题颜色标识 */
 
-.protyle-wysiwyg [data-node-id].h1,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h1,
 .b3-typography h1 {
     /* font-size: 1.6em !important; */
     /* color: var(--custom-h1-color); */
@@ -152,7 +152,7 @@
     padding-left: 9px;
 }
 
-.protyle-wysiwyg [data-node-id].h2,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h2,
 .b3-typography h2 {
     /* font-size: 1.5em !important; */
     /* color: var(--custom-h2-color); */
@@ -160,7 +160,7 @@
     padding-left: 9px;
 }
 
-.protyle-wysiwyg [data-node-id].h3,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h3,
 .b3-typography h3 {
     /* font-size: 1.4em !important; */
     /* color: var(--custom-h3-color); */
@@ -169,7 +169,7 @@
 
 }
 
-.protyle-wysiwyg [data-node-id].h4,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h4,
 .b3-typography h4 {
     /* font-size: 1.3em !important; */
     /* color: var(--custom-h4-color); */
@@ -177,7 +177,7 @@
     padding-left: 9px;
 }
 
-.protyle-wysiwyg [data-node-id].h5,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h5,
 .b3-typography h5 {
     /* font-size: 1.2em !important; */
     /* color: var(--custom-h5-color); */
@@ -185,7 +185,7 @@
     padding-left: 9px;
 }
 
-/* .protyle-wysiwyg [data-node-id].h6,
+/* .protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h6,
 .b3-typography h6 {
     color: var(--custom-h6-color);
     border-left: 3px solid var(--custom-h6-color);
@@ -193,7 +193,7 @@
 } */
 
 /* 标题前方标注级别编号 */
-/* .protyle-wysiwyg [data-node-id].h1::before,
+/* .protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h1::before,
 .b3-typography h1::before {
     content: var(--custom-h1-mark);
     display: block;
@@ -201,12 +201,12 @@
     margin-right: var(--custom-h-mark-blank);
 }
 
-.protyle-wysiwyg .h1>[contenteditable][spellcheck]:focus:empty {
+.protyle-wysiwyg:not([custom-f~="bt"]) .h1>[contenteditable][spellcheck]:focus:empty {
     padding-left: 1rem;
 }
 
 
-.protyle-wysiwyg [data-node-id].h2::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h2::before,
 .b3-typography h2::before {
     content: var(--custom-h2-mark);
     display: block;
@@ -214,12 +214,12 @@
     margin-right: var(--custom-h-mark-blank);
 }
 
-.protyle-wysiwyg .h2>[contenteditable][spellcheck]:focus:empty {
+.protyle-wysiwyg:not([custom-f~="bt"]) .h2>[contenteditable][spellcheck]:focus:empty {
     padding-left: 1rem;
 }
 
 
-.protyle-wysiwyg [data-node-id].h3::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h3::before,
 .b3-typography h3::before {
     content: var(--custom-h3-mark);
     display: block;
@@ -227,12 +227,12 @@
     margin-right: var(--custom-h-mark-blank);
 }
 
-.protyle-wysiwyg .h3>[contenteditable][spellcheck]:focus:empty {
+.protyle-wysiwyg:not([custom-f~="bt"]) .h3>[contenteditable][spellcheck]:focus:empty {
     padding-left: 1rem;
 }
 
 
-.protyle-wysiwyg [data-node-id].h4::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h4::before,
 .b3-typography h4::before {
     content: var(--custom-h4-mark);
     display: block;
@@ -240,12 +240,12 @@
     margin-right: var(--custom-h-mark-blank);
 }
 
-.protyle-wysiwyg .h4>[contenteditable][spellcheck]:focus:empty {
+.protyle-wysiwyg:not([custom-f~="bt"]) .h4>[contenteditable][spellcheck]:focus:empty {
     padding-left: 1rem;
 }
 
 
-.protyle-wysiwyg [data-node-id].h5::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h5::before,
 .b3-typography h5::before {
     content: var(--custom-h5-mark);
     display: block;
@@ -253,12 +253,12 @@
     margin-right: var(--custom-h-mark-blank);
 }
 
-.protyle-wysiwyg .h5>[contenteditable][spellcheck]:focus:empty {
+.protyle-wysiwyg:not([custom-f~="bt"]) .h5>[contenteditable][spellcheck]:focus:empty {
     padding-left: 1rem;
 }
 
 
-.protyle-wysiwyg [data-node-id].h6::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h6::before,
 .b3-typography h6::before {
     content: var(--custom-h6-mark);
     display: block;
@@ -266,6 +266,6 @@
     margin-right: var(--custom-h-mark-blank);
 }
 
-.protyle-wysiwyg .h6>[contenteditable][spellcheck]:focus:empty {
+.protyle-wysiwyg:not([custom-f~="bt"]) .h6>[contenteditable][spellcheck]:focus:empty {
     padding-left: 1rem;
 } */
