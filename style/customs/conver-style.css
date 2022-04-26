@@ -2,7 +2,7 @@
 
 
 .protyle-wysiwyg[custom-theme] .h1:last-child::after,
-.protyle-wysiwyg[custom-theme] .h6:first-child::after
+.protyle-wysiwyg[custom-theme] > .h6:first-child::after
 {
     margin-left: 0;
     padding-bottom: 0;
@@ -10,13 +10,13 @@
 }
 
 .protyle-wysiwyg[custom-theme]  .h1:last-child>div:before,
-.protyle-wysiwyg[custom-theme]  .h6:first-child>div:before{
+.protyle-wysiwyg[custom-theme] > .h6:first-child>div:before{
 
     content: "";
 }
 
 .protyle-wysiwyg[custom-theme]  .h1:last-child,
-.protyle-wysiwyg[custom-theme]  .h6:first-child{
+.protyle-wysiwyg[custom-theme] > .h6:first-child{
         
     display: block;
     color: var(--conver-font-color1) !important;
@@ -41,34 +41,34 @@
 /*------------------------------ 封面 ------------------------------*/
 
 
-.protyle-wysiwyg[custom-theme]  .h6:first-child  sub{
+.protyle-wysiwyg[custom-theme] > .h6:first-child  sub{
     display: block;
     color: var(--conver-sub-color);
     font: var(--v-f-w-bd) 75% var(--v-f-fm-subtitle)
 }
 
-.protyle-wysiwyg[custom-theme]  .h6:first-child  sup{
+.protyle-wysiwyg[custom-theme] > .h6:first-child  sup{
     display: block;
     color: var(--conver-sup-color);
     font: var(--v-f-w-bd) 75% var(--v-f-fm-subtitle)
 }
 
 
-.protyle-wysiwyg[custom-theme]  .h6:first-child  code{
+.protyle-wysiwyg[custom-theme] > .h6:first-child  code{
     display: inline-block;
     font-size: .5em !important;
     color: var(--conver-code-color);
     background: var(--conver-code-bg-color);
 }
 
-.protyle-wysiwyg[custom-theme]  .h6:first-child strong,
-.protyle-wysiwyg[custom-theme]  .h6:first-child strong::before
+.protyle-wysiwyg[custom-theme] > .h6:first-child strong,
+.protyle-wysiwyg[custom-theme] > .h6:first-child strong::before
 {
     color: var(--conver-strong-color);
     font: .625em var(--v-f-fm-subtitle)
 }
 
-.protyle-wysiwyg[custom-theme]  .h6:first-child strong::before
+.protyle-wysiwyg[custom-theme] > .h6:first-child strong::before
  {
     content: "By ";
     opacity: .6;
@@ -77,7 +77,7 @@
 }
 
 
-.protyle-wysiwyg[custom-theme]  .h6:first-child em{
+.protyle-wysiwyg[custom-theme] > .h6:first-child em{
     display:block;
     color: var(--conver-em-color);
     font: var(--v-f-w-bd) .4em var(--v-f-fm-subtitle)

@@ -26,6 +26,10 @@
     border-radius: 3px;
 }
 
+.custom-codelabel-wz:hover {
+    filter: brightness(1.1)
+}
+
 .protyle-wysiwyg *[data-node-id] .custom-codelabel-wz span{
     display: none;  
 }
