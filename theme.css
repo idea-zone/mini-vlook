@@ -6,49 +6,67 @@
 @import url(/appearance/themes/mini-vlook/style/menus/four-menu-splite.css);
 
 /* ——————————————————————————— 基础块设置 ——————————————————————————— */
+/*引用-配色*/
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-bq.css);
 
+/*标题-配色*/
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-heading.css);
 
+/*分隔线-配色*/
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-hr.css);
 
+/*行内样式配色-配色*/
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-inline-style.css);
 
+/*代码块-配色*/
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-code-block.css);
 
+/*超级块-配色*/
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-sb.css);
 
 
 /* ——————————————————————————— 功能块设置 ——————————————————————————— */
 
+/*自动编号-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/block-heading.css);
 
+/*网格背景-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/bg-grid-style.css); 
 
+/*列表转表格-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/list-to-bg-by-line.css); 
+
+/*列表转看板-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/list-to-kanban-by-line.css); 
 
 /* @import url(/appearance/themes/mini-vlook/style/customs/list-to-kanban-by-line2.css);  */
 
+/*列表转导图-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/list-to-mind-by-line.css); 
 
-@import url(/appearance/themes/mini-vlook/style/customs/list-to-bg-by-line.css); 
-
+/*引用分栏-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/bq-splite-by-line.css); 
 
+/*封底&封面-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/conver-style.css);
 
+/*微章-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/codelabel-wz.css);
 
+/*刮刮乐-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/code-rb-coad.css);
 
+/*注音-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/codelabel-pg.css);
 
+/*计数任务-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/codelabel-todo.css);
 
+/*链接图标-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/icon-link.css);
-
 @import url(/appearance/themes/mini-vlook/style/customs/span-link.css);
 
+/*显示模式-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/custom-display-mode.css);
 
 

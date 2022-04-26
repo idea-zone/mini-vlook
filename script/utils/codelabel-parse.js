@@ -3,114 +3,70 @@ import { getElement, rerenderColor, setStyleVariableValue } from "./codetag.js";
 
 export {
     CodeLabelParse,
-    // config1,
 }
 
-// var config1 = {
-//     theme: {
-//         codelabel: {
-//             enable: true, // 是否启用自定义样式渲染
-//             ptype: [       // 解析类型
-//                 {   // 计数任务
-//                     typeid: "todo",
-//                     reg: '\\\+\\\[(\\d+)\\\]\\s*\\\((.*)\\\)',  // 正则表达式
-//                     customf: 'todo',                        // 忽略解析的属性值 
-//                     className: 'vk-todo',                   // 自定义的属性名称
-//                     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
-//                         '$0': 'value', // 占用，code 原始的 innerHTML 内容
-//                         '$1': 'count',
-//                         '$2': 'data',
-//                         '$3': '',
-//                         '$4': '',
-//                         '$5': '',
-//                         '$6': '',
-//                         '$7': '',
-//                         '$8': '',
-//                         '$9': '',
-//                     },
-
-//                     emptys: ['count', 'data'],      // 不能为空的字段
-//                     customAttr: { // 自定义属性
-//                         'custom-codelabel-todo-count': "${count}",
-//                         'custom-codelabel-todo-data': "${data}",
-//                     },
-//                     inlineStyle: {
-//                     },
-//                     innerHTML: '<button>+</button><span>[${count}]</span><span>(</span>${data}<span>)</span>',
-//                     renderEnd: (parse, element,oldHTML) => {
-
-//                         function bingOnClick(parse, e,oldHTML) {
-
-//                             parse.reinitFormat(parse.ptypeItem)
-
-//                             let parseInfo = parse.clacParseInfo(oldHTML);
-
-//                             let c = 1 + +parseInfo.count;
-//                             parseInfo.count = ""+c;
-
-//                             parse.parseInfo = parseInfo;
-//                             parse.renderSingle(e, parseInfo);
-
-//                             // 这里已经更新了，所有旧的 oldHTML 和 parse.Value 就没用了。重新组合
-//                             e.firstChild.onclick = bingOnClick.bind(e.firstChild, parse, e,`+[${parse.parseInfo.count}](${parse.parseInfo.data})`)
-
-//                             e.firstChild.setAttribute(
-//                                 "custom-codelabel-todo-count",
-//                                 parse.parseInfo.count
-//                             );
-
-//                         }
-
-//                         element.firstChild.onclick = bingOnClick.bind(element.firstChild, parse, element,oldHTML)
-//                         element.firstChild.setAttribute(
-//                             "custom-codelabel-todo-count",
-//                             element.getAttribute("custom-codelabel-todo-count"),
-//                         );
-
-//                     },
-//                 },
-//                 {   // 刮刮乐
-//                     typeid: "rb",
-//                     reg: '^\\\*\\\{(.*)\\\}\\\((.*?)(\\s*\\\"(#?[\\d\\w]+)\\\")?\\\)$',  // 正则表达式
-//                     customf: 'rb',                        // 忽略解析的属性值 
-//                     className: 'v-rb-coat',                   // 自定义的属性名称
-//                     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
-//                         '$0': 'value', // 占用，code 原始的 innerHTML 内容
-//                         '$1': 'coat_text',
-//                         '$2': 'coat_data',
-//                         '$3': '',
-//                         '$4': 'color',
-//                         '$5': '',
-//                         '$6': '',
-//                         '$7': '',
-//                         '$8': '',
-//                         '$9': '',
-//                     },
-
-//                     emptys: ['coat_data'],      // 不能为空的字段
-//                     customAttr: { // 自定义属性
-//                         'custom-codelabel-rb-coat-text': "${coat_text}",
-//                         'custom-codelabel-rb-coat-data': "${coat_data}",
-//                     },
-//                     styleinfo:{ // 样式映射信息
-//                         color: 'color',  // 主颜色字段
-//                     },
-//                     inlineStyle: {
-//                         '--theme-rb-bgcolor':"${bgcolor}",
-//                         '--theme-rb-title-color':"${titlecolor}",
-//                         '--theme-rb-msg-color':"${msgcolor}",
-//                         '--theme-rb-msg-bgcolor':"${msgbgcolor}",
-//                     },
-//                     innerHTML: '<span>${value}</span>',
-//                     renderEnd: (parse, element,oldHTML) => { // 渲染完单个元素的回调.
-//                     },
-//                 },
-//             ],
-//         },
+// ptypeItem 对应的值
+// {   // 解析配置项
+//     typeid: "唯一ID",
+//     reg: '正则表达式',
+//     customf: '禁止渲染的块属性值,如 wz',   // 自定义属性 f=wz 即可。
+//     className: 'css类属性名称', 
+//     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+//         /**
+//          * 以下字段名称被占用,不要用于下面列表的值中.
+//          * value,             // code 标签的 InnerHTML
+//          * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+//          * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+//          * $0~$9 也不要用.  
+//          */
+//         '$0': 'value', // 占用，code 原始的 innerHTML 内容
+//         '$1': '',
+//         '$2': 'title',
+//         '$3': 'msg',
+//         '$4': '',
+//         '$5': 'color',
+//         '$6': 'endsuffix',
+//         '$7': '',
+//         '$8': '',
+//         '$9': '',
 //     },
-// }
-
-
+//     emptys: ['title','msg'],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
+//     emptysValues:{              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
+//          'title':'ke',
+//     },
+//     style:{ // 样式映射信息
+//         rerender:true,                // 是否计算颜色
+//         color: {
+//             value:'color',            // 主颜色对应的字段，用 $0'-'$9' 对应的别名
+//             suffix:'endsuffix',       // 颜色后缀对应的字段，用 $0'-'$9' 对应的别名
+//         },         
+//         default:'theme2',             // 主颜色缺省时，默认的颜色值
+//         defaultSuffix:false,          // 颜色后缀缺省时,默认的后缀内容，表示的值（suffixs中value）
+//         colors:{
+//             suffixs:{                 // 颜色后缀内容，表示的值
+//                 '!':true,
+//             },
+//             names: ()=>config.theme.common.colors.names,     // 主颜色，支持的颜色名称-列表，
+//             values: ()=>config.theme.common.colors.values,   // 主颜色，对应的适配配色-列表
+//         }
+//     },
+//     customAttr: {   // 自定义属性，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+//         'custom-codelabel-wz-title': "${title}",
+//         'custom-codelabel-wz-msg': "${msg}",
+//     },
+//     inlineStyle: {  // 自定义内联样式，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+//         "--theme-wz-bgcolor":"${bgcolor1}",
+//         "--theme-wz-title-color":"${color1}",
+//         "--theme-wz-msg-color":"${color2}",
+//         "--theme-wz-msg-bgcolor":"${bgcolor2}",
+//     },
+//     innerHTML:  '<span>${value}</span>',  // 解析后 code 标签的 innerHTML 内容，支持类似js的模板语法，${别名}, 会被实际的值替换
+//     renderEnd: (parse, element,oldHTML) => { //在每个元素渲染解析完成后的回调函数
+//            // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
+//            // element 当前元素（解析后的）
+//            // oldHTML （解析前的 innerHTML 内容）
+//     },
+// },
 
 
 /**

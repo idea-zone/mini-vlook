@@ -17,7 +17,7 @@ function CodelabelEnable(){
 
     config.theme.codelabel.render.enable=!config.theme.codelabel.render.enable
 
-    console.log("enable:"+config.theme.codelabel.render.enable);
+    // console.log("enable:"+config.theme.codelabel.render.enable);
 
     if (config.theme.codelabel.render.toolbar){
         // 更改菜单栏按钮状态
@@ -50,7 +50,7 @@ function CodelabelEnable(){
             // 通过 Ctrl+Alt+0切换开关
             if (isKey(e, config.theme.hotkeys.codelabel.render)) {
                 config.theme.codelabel.render.enable = !config.theme.codelabel.render.enable;
-                console.warn("bug320_3:", config.theme.codelabel.render.enable)
+                // console.warn("bug320_3:", config.theme.codelabel.render.enable)
             }
 
             if (config.theme.codelabel.render.enable) {
