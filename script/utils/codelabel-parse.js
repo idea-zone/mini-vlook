@@ -8,7 +8,8 @@ export {
 // ptypeItem 对应的值
 // {   // 解析配置项
 //     typeid: "唯一ID",
-//     reg: '正则表达式',
+//     reg: '正则表达式',  // 针对 innerHTML
+//     tagName: "标签名称，如 code、strong",
 //     customf: '禁止渲染的块属性值,如 wz',   // 自定义属性 f=wz 即可。
 //     className: 'css类属性名称', 
 //     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
@@ -70,13 +71,15 @@ export {
 
 
 /**
- * 微章解析帮助类
+ * Tag解析帮助类
  */
 class CodeLabelParse {
 
     constructor(ptypeItem) {
 
         this.ptypeItem = deepCopy(ptypeItem);
+
+        this.tagName = ptypeItem.tagName;
         this.styleConfig = deepCopy(ptypeItem.style);
 
         this.className = ptypeItem.className;         // 属性名称
@@ -117,6 +120,8 @@ class CodeLabelParse {
     reinitFormat(ptypeItem) {
 
         this.ptypeItem = deepCopy(ptypeItem);
+
+        this.tagName=ptypeItem.tagName;
         this.styleConfig = deepCopy(ptypeItem.style);
 
         this.className = ptypeItem.className;         // 属性名称
@@ -141,10 +146,10 @@ class CodeLabelParse {
      * @param {string} customf 
      * @returns 
      */
-    getElementWithoutCustomf(customf) {
+    getElementWithoutCustomf(customf,tagName) {
         let rst = getElement(
-            'div.fn__flex-1 .protyle-wysiwyg *[data-node-id] code',
-            `.protyle-wysiwyg *[data-node-id][custom-f~=${customf}] code`
+            `div.fn__flex-1 .protyle-wysiwyg *[data-node-id] ${tagName}`,
+            `.protyle-wysiwyg *[data-node-id][custom-f~=${customf}] ${tagName}`
         );
         return rst;
     }
@@ -369,7 +374,7 @@ class CodeLabelParse {
      */
     render() {
         // 获取符合条件的 code 标签
-        let elements = this.getElementWithoutCustomf(this.customf);
+        let elements = this.getElementWithoutCustomf(this.customf,this.tagName);
 
         // 正则表达式
         let simplePatt = new RegExp(this.reg);

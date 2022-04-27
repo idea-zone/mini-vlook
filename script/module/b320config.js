@@ -169,10 +169,11 @@ export var config = {
             },
             ptype: [       // 解析类型
 
-                // // 单个解析项的示例和说明
+                // ptypeItem 对应的值
                 // {   // 解析配置项
                 //     typeid: "唯一ID",
-                //     reg: '正则表达式',
+                //     reg: '正则表达式',  // 针对 innerHTML
+                //     tagName: "标签名称，如 code、strong",
                 //     customf: '禁止渲染的块属性值,如 wz',   // 自定义属性 f=wz 即可。
                 //     className: 'css类属性名称', 
                 //     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
@@ -232,9 +233,11 @@ export var config = {
                 //     },
                 // },
 
+
                 {   // 微章
                     typeid: "wz",
                     reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    tagName: "code",
                     customf: 'wz',                        // 忽略解析的属性值 
                     className: 'custom-codelabel-wz',                   // 自定义的属性名称
                     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
@@ -293,6 +296,7 @@ export var config = {
                 {   // 刮刮乐
                     typeid: "rb",
                     reg: '^\\\*\\\{(.*)\\\}\\\((.*?)(\\s*\\\"(#?[\\d\\w]+)\\\")?\\\)$',  // 正则表达式
+                    tagName: "code",
                     customf: 'rb',                        // 忽略解析的属性值 
                     className: 'v-rb-coat',                   // 自定义的属性名称
                     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
@@ -360,6 +364,7 @@ export var config = {
                 {   // 注音
                     typeid: "pg",
                     reg: '^\\\{(.*)\\\}\\s*\\\((.*)\\\)$',  // 正则表达式
+                    tagName: "code",
                     customf: 'pg',                        // 忽略解析的属性值 
                     className: 'vk-pg',                   // 自定义的属性名称
                     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
@@ -413,7 +418,8 @@ export var config = {
                 },
                 {   // 计数任务
                     typeid: "todo",
-                    reg: '\\\+\\\[(\\d+)\\\]\\s*\\\((.*?)(\\s*\\\"([\\d\\w]+)\\\")?\\\)',  // 正则表达式
+                    reg: '^\\\+\\\[(\\d+)\\\]\\s*\\\((.*?)(\\s*\\\"([\\d\\w]+)\\\")?\\\)$',  // 正则表达式
+                    tagName: "code",
                     customf: 'todo',                        // 忽略解析的属性值 
                     className: 'vk-todo',                   // 自定义的属性名称
                     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
