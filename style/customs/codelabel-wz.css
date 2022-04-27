@@ -40,7 +40,7 @@
     padding-right: 3px;
 }
 
-.protyle-wysiwyg *[data-node-id] .custom-codelabel-wz::after{
+.protyle-wysiwyg *[data-node-id] .custom-codelabel-wz:not([custom-codelabel-wz-msg='']):after{
     /* color: #1f2e3b;  */
     color: var(--theme-wz-msg-color); 
     background-color: var(--theme-wz-msg-bgcolor);

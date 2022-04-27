@@ -236,7 +236,8 @@ export var config = {
 
                 {   // 微章
                     typeid: "wz",
-                    reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    reg: '(#(.*?)([|](.*?))?#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
                     tagName: "code",
                     customf: 'wz',                        // 忽略解析的属性值 
                     className: 'custom-codelabel-wz',                   // 自定义的属性名称
@@ -251,17 +252,18 @@ export var config = {
                         '$0': 'value', // 占用，code 原始的 innerHTML 内容
                         '$1': '',
                         '$2': 'title',
-                        '$3': 'msg',
-                        '$4': '',
-                        '$5': 'color',
-                        '$6': 'endsuffix',
-                        '$7': '',
+                        '$3': 'msgG',   // 是否有消息
+                        '$4': 'msg',
+                        '$5': '',
+                        '$6': 'color',
+                        '$7': 'endsuffix',
                         '$8': '',
                         '$9': '',
                     },
 
-                    emptys: ['title','msg'],      // 不能为空的字段
+                    emptys: ['title'],      // 不能为空的字段
                     emptysValues:{              // 当值为空值的值
+                        'msg':''
                     },
                     style:{ // 样式映射信息
                         rerender:true,             // 是否计算配色
