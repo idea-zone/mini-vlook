@@ -497,7 +497,7 @@ export var config = {
                     },
                 },
                 {   // 多级标签
-                    typeid: "tag",
+                    typeid: "mtag",
                     reg: '^(.*)/(.*)$',  // 针对 innerHTML
                     tagName: 'span[data-type="tag"]',
                     customf: 'mtag',   // 自定义属性 f=mtag 即可。
