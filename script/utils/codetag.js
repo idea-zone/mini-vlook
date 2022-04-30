@@ -30,6 +30,10 @@ e.parentNode.insertBefore(sg, e.nextElementSibling);
     deepCopy, // 判断字符串是否为空
 } from  '../utils/b320comm.js';
 
+import {
+    config
+} from '../module/b320config.js';
+
 /**
  * 获取满足 selector 但不满足 exclude 的所有元素。
  * @param {string} selector 要获取元素的 selector  

@@ -91,6 +91,10 @@
     --v-theme-background-gray: #e7ecef;
     --v-border-dashed-gray: 1px dashed #c8b7e3;
 
+    /* 圆角左右两端都为半圆形 */
+    --v-border-radius-half-round: 50px;
+
+
     /*引用块设置*/
     --v-block-bq-color: var(--d-f-c);
     --v-block-bq-bg-color: var(--ac-theme2-fade);
