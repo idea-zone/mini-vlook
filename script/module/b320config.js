@@ -760,6 +760,10 @@ export var config = {
             },
         },
 
+        comment: {
+            // 批注功能开关
+            enable: true,
+        },
         hotkeys: {
             // 快捷键
             codelabel: {

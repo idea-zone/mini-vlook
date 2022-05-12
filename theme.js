@@ -180,7 +180,7 @@ window.theme.loadScript("/appearance/themes/mini-vlook/script/module/rightmenu.j
 // window.theme.loadScript("/appearance/themes/Dark+/script/module/window.js");
 
 /* 加载独立应用 */
-// window.theme.loadScript("/appearance/themes/Dark+/app/comment/index.js");
+window.theme.loadScript("/appearance/themes/mini-vlook/app/comment/index.js");
 
 /* 加载自定义配置文件 */
 // window.theme.loadScript("/widgets/custom.js");
