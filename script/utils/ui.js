@@ -5,7 +5,18 @@ export {
     toolbarItemChangeStatu, // 工具栏项状态改变
     blockMenuInit, // 右键菜单初始化
     CommonMenuObserver, // 右键菜单管理
+
+
+    // 额外开发的部分
+    createMenuItemNode,
+    createMenuItemIconNode,
+    createMenuItemLabelNode,
+    createMenuItemAcceleratorNode,
+    createMenuItemSubMenuIconNode,
+    createMenuItemSubMenuNode,
+    createMenuItemSeparatorNode,
 };
+
 
 import { printHotKey } from './hotkey.js';
 import { setBlockDOMAttrs } from './dom.js';
@@ -108,7 +119,7 @@ const svgClassList = [
  */
 function toolbarItemChangeStatu(
     id,
-    enable = false,
+    enable = true,
     mode = 'DIV',
     node = null,
     svgClassIndex = 0,
@@ -348,6 +359,7 @@ const TASK_HANDLER = {
     }
 };
 
+
 /**
  * 创建右键菜单项
  */
@@ -437,6 +449,8 @@ function blockMenuInit(configs, id, type, subtype) {
     return items.length > 0 ? items : null;
 }
 
+
+
 /**
  * 右键菜单管理
  */
@@ -461,3 +475,4 @@ class CommonMenuObserver {
         this.disconnect = () => this.observer.disconnect();
     }
 }
+

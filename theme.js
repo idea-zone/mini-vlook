@@ -156,10 +156,11 @@ window.theme.changeThemeMode(
 );
 
 /* 加载 HTML 块中使用的小工具 */
-// window.theme.loadScript("/appearance/themes/Dark+/script/module/html.js", "text/javascript");
+window.theme.loadScript("/appearance/themes/mini-vlook/script/module/html.js", "text/javascript");
 
 /* 加载主题功能 */
 window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-custom.js");
+window.theme.loadScript("/appearance/themes/mini-vlook/script/module/rightmenu.js");
 
 // window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel.js");
 // window.theme.loadScript("/appearance/themes/mini-vlook/script/module/code-rb-coad.js");
@@ -186,3 +187,10 @@ window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-c
 
 /* 加载测试模块 */
 // window.theme.loadScript("/appearance/themes/Dark+/script/test/listener.js");
+
+
+// document.body.onclick = function(){
+//     const element = document.activeElement.tagName
+//     console.log("当前选中"+element);
+//     console.log(document.activeElement);
+// }

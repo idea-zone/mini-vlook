@@ -1,3 +1,4 @@
+import { config } from "../module/b320config.js";
 import { deepCopy, empty } from "./b320comm.js";
 import { getElement, rerenderColor, setStyleVariableValue } from "./codetag.js";
 
@@ -237,6 +238,7 @@ class CodeLabelParse {
                 customAttr[ca] = customAttr[ca].replace(`\$\{${k}\}`, tv);
             }
 
+            customAttr["custom-codelabel-value"] = parseInfo.value;
         }
 
 
@@ -313,6 +315,24 @@ class CodeLabelParse {
         for (let k in this.inlineStyle) {
             setStyleVariableValue(e.style, k, this.inlineStyle[k]);
         }
+
+        // 添加事件
+        if (e.tagName.toLowerCase() === "code"){
+
+            e.addEventListener('dblclick',(event)=>{
+
+                config.theme.codelabel.render.enable = false;
+                
+                e.innerHTML = parseInfo["value"];
+    
+                while(e.attributes.length > 0)
+                    e.removeAttribute(e.attributes[0].name);
+
+                e.focus();
+
+            });
+
+        }
     }
 
     /**
@@ -380,7 +400,7 @@ class CodeLabelParse {
         let simplePatt = new RegExp(this.reg);
 
         for (let e of elements) {
-
+            
             // 重新获取模板
             this.reinitFormat(this.ptypeItem);
 
@@ -402,7 +422,18 @@ class CodeLabelParse {
                     // 渲染结束事件
                     this.renderEnd(this, e, oldHTML);
 
+                    // e.addEventListener('focus',(event)=>{
+                    //     event.target.style.background = 'pink';
+                    //     console.warn("1");
+                    // });
+
+                    // e.addEventListener('blur', (event) => {
+                    //     event.target.style.background = '';
+                    //     console.warn("2");
+                    // });
+
                 }
+
 
             }
 

@@ -148,6 +148,7 @@ export var config = {
                 },
             },
         },
+
         codelabel: {   // 标签增强解析
             enable: true, // 是否启用自定义样式渲染
             render: {     // 渲染信息
@@ -282,6 +283,7 @@ export var config = {
                         }
                     },
                     customAttr: { // 自定义属性
+                        // 'custom-codelabel-value':'${value}',
                         'custom-codelabel-wz-title': "${title}",
                         'custom-codelabel-wz-msg': "${msg}",
                     },
@@ -342,6 +344,7 @@ export var config = {
                         }
                     },
                     customAttr: { // 自定义属性
+                        // 'custom-codelabel-value':'${value}',
                         'custom-codelabel-rb-coat-text': "${coat_text}",
                         'custom-codelabel-rb-coat-data': "${coat_data}",
                         'custom-codelabel-rb-coat-showe':'false',
@@ -409,6 +412,7 @@ export var config = {
                         // }
                     },
                     customAttr: { // 自定义属性
+                        // 'custom-codelabel-value':'${value}',
                         'custom-codelabel-pg-text': "${text}",
                         'custom-codelabel-pg-data': "${pgdata}",
                     },
@@ -458,6 +462,7 @@ export var config = {
                         }
                     },
                     customAttr: { // 自定义属性
+                        'custom-codelabel-value':'${value}',
                         'custom-codelabel-todo-count': "${count}",
                         'custom-codelabel-todo-data': "${data}",
                         'custom-codelabel-todo-colorTag': "${colorTag}",
@@ -481,7 +486,11 @@ export var config = {
                             parse.renderSingle(e, parseInfo);
 
                             // 这里已经更新了，所有旧的 oldHTML 和 parse.Value 就没用了。重新组合
-                            e.firstChild.onclick = bingOnClick.bind(e.firstChild, parse, e,`+[${parse.parseInfo.count}](${parse.parseInfo.data}${parse.parseInfo.colorTag})`)
+                            let newInnerHtml =`+[${parse.parseInfo.count}](${parse.parseInfo.data}${parse.parseInfo.colorTag})`
+                            e.firstChild.onclick = bingOnClick.bind(e.firstChild, parse, e, newInnerHtml)
+
+                            // 设置新的 自定义的value
+                            e.setAttribute("custom-codelabel-value",newInnerHtml);
 
                             e.firstChild.setAttribute(
                                 "custom-codelabel-todo-count",
@@ -572,8 +581,183 @@ export var config = {
                         // element.innerHTML = innerHTML
                     },
                 },
+                {   // 下拉框
+                    typeid: "cx",
+                    reg: '\\\^\\\[(\\d+)\\\](&gt;\\\(.+\\\))',  // 针对 innerHTML
+                    tagName: "code",
+                    customf: 'cx',   // 自定义属性 f=wz 即可。
+                    className: 'cw-cbox', 
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        /**
+                         * 以下字段名称被占用,不要用于下面列表的值中.
+                         * value,             // code 标签的 InnerHTML
+                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+                         * $0~$9 也不要用.  
+                         */
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': 'index',
+                        '$2': 'itms',
+                        '$3': '',
+                        '$4': '',
+                        '$5': '',
+                        '$6': '',
+                        '$7': '',
+                        '$8': '',
+                        '$9': '',
+                    },
+                    // reg2mapts:{
+                    //     // key: 上一轮匹配的地方 ; value: 对应的解析规则
+                    //     '$0':{ 
+                    //         reg:'\\\$\\\{(.*?)\\\}',  
+                    //         isMatchAll:true,   // 是否是匹配所有
+                    //         type:'array',      // 类型
+                    //     },
+                    // },
+                    emptys: ['index','itms'],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
+                    emptysValues:{              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
+                    },
+                    style:{ // 样式映射信息
+                        rerender:false,                // 是否计算颜色
+                        // color: {
+                        //     value:'color',            // 主颜色对应的字段，用 $0'-'$9' 对应的别名
+                        //     suffix:'endsuffix',       // 颜色后缀对应的字段，用 $0'-'$9' 对应的别名
+                        // },         
+                        // default:'theme2',             // 主颜色缺省时，默认的颜色值
+                        // defaultSuffix:false,          // 颜色后缀缺省时,默认的后缀内容，表示的值（suffixs中value）
+                        // colors:{
+                        //     suffixs:{                 // 颜色后缀内容，表示的值
+                        //         '!':true,
+                        //     },
+                        //     names: ()=>config.theme.common.colors.names,     // 主颜色，支持的颜色名称-列表，
+                        //     values: ()=>config.theme.common.colors.values,   // 主颜色，对应的适配配色-列表
+                        // }
+                    },
+                    customAttr: {   // 自定义属性，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+                        'custom-codelabel-cx-index': "${index}",
+                        'custom-codelabel-cx-itmes': "${itms}",
+                    },
+                    inlineStyle: {  // 自定义内联样式，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+                        // "--theme-wz-bgcolor":"${bgcolor1}",
+                        // "--theme-wz-title-color":"${color1}",
+                        // "--theme-wz-msg-color":"${color2}",
+                        // "--theme-wz-msg-bgcolor":"${bgcolor2}",
+                    },
+                    innerHTML:  '<span>${value}</span>',  // 解析后 code 标签的 innerHTML 内容，支持类似js的模板语法，${别名}, 会被实际的值替换
+                    renderEnd: (parse, element,oldHTML) => { //在每个元素渲染解析完成后的回调函数
+                        // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
+                        // element 当前元素（解析后的）
+                        // oldHTML （解析前的 innerHTML 内容）
 
+                        let createUL = (e)=>{
+                            let ul = document.createElement('ul');
+                            e.parentNode.insertBefore(ul, e.nextElementSibling);
+                            e.appendChild(ul);
+
+                            // 创建
+                            ul.createli = (text,dataValue,indexValue)=>{
+                                let li = document.createElement('li');
+                                li.setAttribute('custom-li-data',dataValue);
+                                li.setAttribute('custom-li-index',indexValue);
+                                li.innerHTML =text;
+                                ul.appendChild(li);
+
+                                return li;
+                            };
+
+                            return ul;
+                        };
+
+                        let tIndex = parse.parseInfo['index'];
+                        let tItms =parse.parseInfo['itms'];
+
+                        let setHtml =(index,tItms)=>{
+
+                            console.log("index:"+index);
+                            console.log("items:"+tItms);
+                            let itmes = [...tItms.matchAll('\\\((.*?)\\\)')]
+
+                            element.innerHTML = `<span>^[${index}]${tItms}</span>`
+                            console.log("innerHTML:"+element.innerHTML);
+
+                            
+                            let slt =itmes[index][1];
+                            element.setAttribute('custom-select-data',slt)
+                            
+                            element.setAttribute('custom-codelabel-cx-index',index)
+
+                            let mUl = createUL(element);
+                            let i=0;
+                            for(let item of itmes){
+                                let itext = item[1];
+                                let eli =mUl.createli("",itext,i++);
+                                eli.onclick = (e)=>{
+                                    // let idx=e.target.getAttribute('custom-li-data');
+                                    let idx=e.target.getAttribute('custom-li-index');
+                                    let tms = element.getAttribute('custom-codelabel-cx-itmes')
+                                    setHtml(idx,tms);
+                                };
+                            }
+
+                        };
+
+                        setHtml(tIndex,tItms);
+                    },
+                },
             ],
+        },
+
+        menu:{
+            enable:true, // 行内代码编辑增强
+            codelabel:{
+                enable:true, // 行内代码编辑增强
+                toolbar:{   // 菜单栏
+                    enable: true,  //
+                    id: 'toolbar-theme-menu-codelabel',
+                    hotkey: () => config.theme.hotkeys.menu.codelabel,
+                    label: {
+                        zh_CN: '行内代码编辑增强',
+                        zh_CNT: null,
+                        fr_FR:  null,
+                        en_US:  null,
+                        other: 'codelabel Menu Enhancements',
+                    },
+                    icon: '#iconMenu',
+                    index: -4,
+                },
+                items: [
+                    {
+                        enable: true, // 是否启用菜单项
+                        prefixSeparator: true, // 是否添加前缀分隔线
+                        suffixSeparator: false, // 是否添加后缀分隔线
+                        type: null, // 哪些类型的块启用, 值 null 则全部启用
+                        id: 'theme-menu-codelabel-common-editor', // 菜单项 ID
+                        mode: "button",  // 菜单项类型
+                        icon: "#iconEdit",  // 菜单项图标
+                        label: {  // 菜单项标签
+                            zh_CN: "编辑行内代码块",
+                            other: "Edit Inline Code",
+                        },
+                        accelerator: "",  // 菜单项快捷键
+                        click: {          // 菜单项点击事件
+                            enable: true,
+                            callback: null,
+                            tasks: [
+                                {
+                                    type: 'codelabel-editor',
+                                    params: {
+                                        'style': null,
+                                        'custom-font-family': null,
+                                    },
+                                },
+                            ],
+                        },
+                        itemsLoad: false,        // 是否加载子菜单
+                        // itemsIcon: "#iconRight", 
+                        items: null,
+                    },
+                ],
+            },
         },
 
         hotkeys: {
@@ -588,20 +772,9 @@ export var config = {
                     key: '0',
                 },
             },
-
-            codequote: {
-                render: {
-                    // 渲染(Ctrl + Alt + 0)
-                    ctrlKey: true,
-                    metaKey: true,
-                    shiftKey: false,
-                    altKey: true,
-                    key: '9',
-                },
-            },
             
             menu: {
-                block: {
+                codelabel: {
                     // 块菜单开关(Shift + Alt + M)
                     ctrlKey: false,
                     metaKey: false,

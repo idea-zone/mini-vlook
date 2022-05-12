@@ -52,10 +52,12 @@ function CodelabelEnable(){
                 config.theme.codelabel.render.enable = !config.theme.codelabel.render.enable;
                 // console.warn("bug320_3:", config.theme.codelabel.render.enable)
             }
-
-            if (config.theme.codelabel.render.enable) {
+            
+            // console.log("ll:"+config.theme.codelabel.enable);
+            if (config.theme.codelabel.render.enable !== false) {
                 setTimeout(render, 0);
             }
+            
         })
 
 

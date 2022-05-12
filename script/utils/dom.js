@@ -8,6 +8,7 @@ export {
     getFocusedDocID, // 获得焦点所在文档的 ID
     getFocusedID, // 获得焦点所在的块 ID, 否则获得焦点所在文档的 ID
     getTargetBlockID, // 获得目标的块 ID
+    getTargetBlock,   // 获取目标所在的块
     getTargetHref, // 获得目标超链接
     getBlockMark, // 获得块标记
     getBlockSelected, // 获得块选中
@@ -106,6 +107,23 @@ function getTargetBlockID(target) {
         if (config.theme.regs.id.test(element.dataset.nodeId)) return element.dataset.nodeId;
         if (config.theme.regs.id.test(element.dataset.id)) return element.dataset.id;
         if (config.theme.regs.url.test(element.dataset.href)) return url2id(element.dataset.href);
+    }
+    else return null;
+}
+
+function getTargetBlock(target) {
+    let element = target;
+    while (element != null
+        && !(
+            config.theme.regs.id.test(element.dataset.nodeId)
+            || config.theme.regs.id.test(element.dataset.id)
+            || element.dataset.href
+        )) element = element.parentElement;
+
+    if (element != null) {
+        if (config.theme.regs.id.test(element.dataset.nodeId)) return element;
+        if (config.theme.regs.id.test(element.dataset.id)) return element;
+        if (config.theme.regs.url.test(element.dataset.href)) return element;
     }
     else return null;
 }
