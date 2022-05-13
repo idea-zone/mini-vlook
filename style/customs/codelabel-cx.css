@@ -47,7 +47,7 @@
 .protyle-wysiwyg *[data-node-id] .cw-cbox:hover ul{
     display: block;
     list-style: none;
-    margin-left: 20px;
+    /* margin-left: attr(custom-left); */
 }
 
 /* 

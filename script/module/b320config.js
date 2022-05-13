@@ -685,8 +685,14 @@ export var config = {
                             element.setAttribute('custom-select-data',slt)
                             
                             element.setAttribute('custom-codelabel-cx-index',index)
-
+                            let pstion  =element.getBoundingClientRect().left - element.parentNode.getBoundingClientRect().left + 20;
+                            console.log(pstion);
                             let mUl = createUL(element);
+                            // mUl.setAttribute('custom-left',pstion+"px");
+                            // element.setAttribute('custom-left',pstion+"px");
+                            // console.log(pstion)
+                            mUl.setAttribute('style',"margin-left:"+pstion+"px");
+
                             let i=0;
                             for(let item of itmes){
                                 let itext = item[1];
