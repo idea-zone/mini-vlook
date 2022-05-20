@@ -76,9 +76,10 @@ export {
  */
 class CodeLabelParse {
 
-    constructor(ptypeItem) {
+    constructor(ptypeItem,domNode) {
 
         this.ptypeItem = deepCopy(ptypeItem);
+        this.domNode = domNode;
 
         this.tagName = ptypeItem.tagName;
         this.styleConfig = deepCopy(ptypeItem.style);
@@ -147,10 +148,11 @@ class CodeLabelParse {
      * @param {string} customf 
      * @returns 
      */
-    getElementWithoutCustomf(customf,tagName) {
+    getElementWithoutCustomf(customf,tagName,domNode) {
         let rst = getElement(
             `div.fn__flex-1 .protyle-wysiwyg *[data-node-id] ${tagName}`,
-            `.protyle-wysiwyg *[data-node-id][custom-f~=${customf}] ${tagName}`
+            `.protyle-wysiwyg *[data-node-id][custom-f~=${customf}] ${tagName}`,
+            domNode
         );
         return rst;
     }
@@ -394,7 +396,7 @@ class CodeLabelParse {
      */
     render() {
         // 获取符合条件的 code 标签
-        let elements = this.getElementWithoutCustomf(this.customf,this.tagName);
+        let elements = this.getElementWithoutCustomf(this.customf,this.tagName,this.domNode);
 
         // 正则表达式
         let simplePatt = new RegExp(this.reg);

@@ -4,7 +4,7 @@
  */
 
 import Comment from './comment.js'
-import { config } from './../../script/module/b320config.js';
+import { config } from '../../script/module/b320config.js';
 
 class SiyuanUtil {
   constructor() {

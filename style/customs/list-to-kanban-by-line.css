@@ -55,8 +55,8 @@
 .protyle-wysiwyg :not(.hr)+.hr+.hr+*:not(.bq) .li {
    
     min-height: var(--kbline-boarditem-minHight);
-    outline: var(--kbline-border-normal) !important;
-    
+    outline: var(--kbline-border-normal);
+    /* outline: 1px solid #e7e7e7;  */
     border-radius: var(--kbline-board-border-radius);
     background: var(--kbline-board-bg-color1);
     
@@ -79,7 +79,7 @@
 .protyle-wysiwyg .hr:first-child+.hr+*:not(.bq):not([data-type="NodeBlockquote"]) > div ,
 .protyle-wysiwyg :not(.hr)+.hr+.hr+*:not(.bq)[data-node-index]:not([data-type="NodeBlockquote"]) > div 
 ,.protyle-wysiwyg :not(.hr)+.hr+.hr+*:not(.bq):not([data-type="NodeBlockquote"]) > div {
-    outline-color: #fcf9f2;
+    outline-color: var(--kbline-outline-color);
     margin-left: var(--kbline-bord-margin);
     background: var(--kbline-board-bg-color);
 }

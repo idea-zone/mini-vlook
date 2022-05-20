@@ -411,8 +411,8 @@ async function 更新块(id, dataType, data) {
 async function 删除块(id) {
     let url = '/api/block/deleteBlock'
     return 解析响应体(向思源请求数据(
-        url = url,
-        data = {
+        url,
+        {
             id: id,
         },
     ))

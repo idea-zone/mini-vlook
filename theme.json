@@ -2,7 +2,7 @@
   "name": "mini-vlook",
   "author": "路人二",
   "url": "https://github.com/idea-zone/mini-vlook",
-  "version": "1.2.0",
+  "version": "1.0.0",
   "modes": [
     "dark",
     "light"

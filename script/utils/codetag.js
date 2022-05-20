@@ -40,17 +40,17 @@ import {
  * @param {string} exclude  从获取元素中排除的元素的 selector
  * @returns 
  */
-function getElement(selector,exclude){
+function getElement(selector,exclude,domNode){
 
     if (empty(selector)){
         console.warn(" function getElement(): param selector cannot be empty." )
         return null;
     }
-    let elementAll=document.querySelectorAll(selector)
+    let elementAll=domNode.querySelectorAll(selector)
     
     if (empty(exclude)) return elementAll;
 
-    let elementNot=document.querySelectorAll(exclude)
+    let elementNot=domNode.querySelectorAll(exclude)
     let rst = minus(Array.from(elementAll),Array.from(elementNot));
     
     return rst;

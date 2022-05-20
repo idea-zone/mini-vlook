@@ -4,7 +4,7 @@ export{
     codelabelMenuInit,   // 自定义右键菜单初始化
 }
 
-import { config } from '../module/b320config.js';
+import { config, render, updateM } from '../module/b320config.js';
 import { getBlockByID, getFocusedDoc,updateBlock } from './api.js';
 import { empty } from './b320comm.js';
 import { getBlockMark, getFocusedBlock, getFocusedBlockID,getTargetBlock, getTargetBlockID } from './dom.js';
@@ -66,23 +66,23 @@ async function showUtil(element, callback) {
             element.removeAttributeNode(element.attributes[0]);
         }
 
+        // 获取父节点    
+        let parentNode=getTargetBlock(element);
+        let id = getTargetBlockID(element);
+
         element.innerHTML = value;
         
-        let bid =  getTargetBlockID(element);
-        let e = getTargetBlock(element);
-        console.log(bid);
-        console.log(e);
-
+        var tmd=siyuan.layout.centerLayout.children[0]
+            .children[0].model.editor
+            .protyle.lute.BlockDOM2Md(parentNode.innerHTML);
+        updateM(id,tmd).then(d=>{
+            let dom=document.querySelectorAll(`div[data-node-id="${d[0].doOperations[0].id}"]`)[0];
+            render(dom)
+            console.log(d)
+        })
+    
         // let b=siyuan.layout.centerLayout.children[0].children[0].model.editor.protyle.lute.HTML2BlockDOM(e);
         // console.log(b);
-
-        let kk = await updateBlock(
-            bid,
-            'dom',
-            element.parentNode
-        );
-
-        console.log(kk)
 
     };
 

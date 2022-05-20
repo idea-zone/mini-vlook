@@ -1,3 +1,45 @@
+import { insertBlock,deleteBlock, updateBlock, exportMdContent, getBlockByID } from "../utils/api.js";
+import { empty } from "../utils/b320comm.js";
+import { getTargetBlock, getTargetBlockID } from "../utils/dom.js";
+import {CodeLabelParse} from "../utils/codelabel-parse.js"
+
+export const insertM = async (id1,data) =>{
+    if (empty(id1)) return null;
+     return await insertBlock(
+         id1,
+         'markdown',
+         data
+         );
+};
+
+export const updateD = async (id1,data) =>{
+    if (empty(id1)) return null;
+    return await updateBlock(
+        id1,
+        'dom',
+        data
+     );
+};
+
+export const updateM = async (id1,data) =>{
+    if (empty(id1)) return null;
+    return await updateBlock(
+        id1,
+        'markdown',
+        data
+     );
+};
+
+export const getMdContent=async (id1) =>{
+    if (empty(id1)) return null;
+    return await exportMdContent(id1);
+}
+
+export function render(nodoDom){
+    for(let value of config.theme.codelabel.ptype){
+        new CodeLabelParse(value,nodoDom).render();
+    }
+}
 
 export var config = {
     token: '', // API token, 无需填写
@@ -475,18 +517,22 @@ export var config = {
 
                         function bingOnClick(parse, e,oldHTML) {
 
+                            // 获取父节点    
+                            let parentNode=getTargetBlock(e);
+                            let id = getTargetBlockID(e);
+
                             parse.reinitFormat(parse.ptypeItem)
                             
                             let parseInfo = parse.clacParseInfo(oldHTML);
-
                             let c = 1 + +parseInfo.count;
                             parseInfo.count = ""+c;
-
                             parse.parseInfo = parseInfo;
-                            parse.renderSingle(e, parseInfo);
 
+                            // 渲染
+                            parse.renderSingle(e, parseInfo);
                             // 这里已经更新了，所有旧的 oldHTML 和 parse.Value 就没用了。重新组合
                             let newInnerHtml =`+[${parse.parseInfo.count}](${parse.parseInfo.data}${parse.parseInfo.colorTag})`
+
                             e.firstChild.onclick = bingOnClick.bind(e.firstChild, parse, e, newInnerHtml)
 
                             // 设置新的 自定义的value
@@ -497,6 +543,14 @@ export var config = {
                                 parse.parseInfo.count
                             );
 
+                            var tmd=siyuan.layout.centerLayout.children[0]
+                                          .children[0].model.editor
+                                          .protyle.lute.BlockDOM2Md(parentNode.innerHTML);
+                            updateM(id,tmd).then(d=>{
+                                let dom=document.querySelectorAll(`div[data-node-id="${d[0].doOperations[0].id}"]`)[0];
+                                render(dom)
+                            })
+                            
                         }
 
                         element.firstChild.onclick = bingOnClick.bind(element.firstChild, parse, element,oldHTML)
@@ -671,10 +725,13 @@ export var config = {
                         let tIndex = parse.parseInfo['index'];
                         let tItms =parse.parseInfo['itms'];
 
+                        
+                        // 获取父节点    
+                        let parentNode=getTargetBlock(element);
+                        let id = getTargetBlockID(element);
+                        
                         let setHtml =(index,tItms)=>{
 
-                            console.log("index:"+index);
-                            console.log("items:"+tItms);
                             let itmes = [...tItms.matchAll('\\\((.*?)\\\)')]
 
                             element.innerHTML = `<span>^[${index}]${tItms}</span>`
@@ -685,13 +742,10 @@ export var config = {
                             element.setAttribute('custom-select-data',slt)
                             
                             element.setAttribute('custom-codelabel-cx-index',index)
-                            let pstion  =element.getBoundingClientRect().left - element.parentNode.getBoundingClientRect().left + 20;
-                            console.log(pstion);
+                            let pstionX  =element.getBoundingClientRect().left - element.parentNode.getBoundingClientRect().left + 20;
+                            let pstionY = element.getBoundingClientRect().bottom - element.parentNode.getBoundingClientRect().bottom;
                             let mUl = createUL(element);
-                            // mUl.setAttribute('custom-left',pstion+"px");
-                            // element.setAttribute('custom-left',pstion+"px");
-                            // console.log(pstion)
-                            mUl.setAttribute('style',"margin-left:"+pstion+"px");
+                            mUl.setAttribute('style',"margin-left:"+pstionX+"px;margin-top:"+pstionY+"px");
 
                             let i=0;
                             for(let item of itmes){
@@ -702,14 +756,144 @@ export var config = {
                                     let idx=e.target.getAttribute('custom-li-index');
                                     let tms = element.getAttribute('custom-codelabel-cx-itmes')
                                     setHtml(idx,tms);
+
+                                    var tmd=siyuan.layout.centerLayout.children[0]
+                                                .children[0].model.editor
+                                                .protyle.lute.BlockDOM2Md(parentNode.innerHTML);
+
+                                    updateM(id,tmd).then(d=>{
+                                        let dom=document.querySelectorAll(`div[data-node-id="${d[0].doOperations[0].id}"]`)[0];
+                                        render(dom)
+                                    })
                                 };
                             }
-
                         };
 
                         setHtml(tIndex,tItms);
                     },
                 },
+                {   // @@命令
+                    typeid: "cmd",
+                    reg: '^@@((kanban)|(map)|(database))(\\\(.*\\\))?$',  // 针对 innerHTML
+                    tagName: "code",
+                    customf: 'cmd',   // 自定义属性 f=wz 即可。
+                    className: 'custom-codelabel-cmd', 
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        /**
+                         * 以下字段名称被占用,不要用于下面列表的值中.
+                         * value,             // code 标签的 InnerHTML
+                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+                         * $0~$9 也不要用.  
+                         */
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': 'func',
+                        '$2': '',
+                        '$3': 'args',
+                        '$4': '',
+                        '$5': '',
+                        '$6': '',
+                        '$7': '',
+                        '$8': '',
+                        '$9': '',
+                    },
+                    emptys: ['func'],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
+                    emptysValues:{              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
+                        //  'func':'',
+                    },
+                    style:{ // 样式映射信息
+                        rerender:false,                // 是否计算颜色
+                        // color: {
+                        //     value:'color',            // 主颜色对应的字段，用 $0'-'$9' 对应的别名
+                        //     suffix:'endsuffix',       // 颜色后缀对应的字段，用 $0'-'$9' 对应的别名
+                        // },         
+                        // default:'theme2',             // 主颜色缺省时，默认的颜色值
+                        // defaultSuffix:false,          // 颜色后缀缺省时,默认的后缀内容，表示的值（suffixs中value）
+                        // colors:{
+                        //     suffixs:{                 // 颜色后缀内容，表示的值
+                        //         '!':true,
+                        //     },
+                        //     names: ()=>config.theme.common.colors.names,     // 主颜色，支持的颜色名称-列表，
+                        //     values: ()=>config.theme.common.colors.values,   // 主颜色，对应的适配配色-列表
+                        // }
+                    },
+                    customAttr: {   // 自定义属性，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+                        // 'custom-codelabel-cmd-func': "${func}",
+                        // 'custom-codelabel-cmd-args': "${args}",
+                    },
+                    inlineStyle: {  // 自定义内联样式，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+                        // "--theme-wz-bgcolor":"${bgcolor1}",
+                        // "--theme-wz-title-color":"${color1}",
+                        // "--theme-wz-msg-color":"${color2}",
+                        // "--theme-wz-msg-bgcolor":"${bgcolor2}",
+                    },
+                    innerHTML:  '<span>${value}</span>',  // 解析后 code 标签的 innerHTML 内容，支持类似js的模板语法，${别名}, 会被实际的值替换
+                    renderEnd: async (parse, element,oldHTML) => { //在每个元素渲染解析完成后的回调函数
+                           // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
+                           // element 当前元素（解析后的）
+                           // oldHTML （解析前的 innerHTML 内容）
+
+                                                
+                           let simplePatt = new RegExp('^@@((kanban)|(map)|(database))(\\\(.*\\\))?$');  
+                           if (simplePatt.test(element.parentNode.innerText)){
+                            console.log(element.parentNode.innerText)
+                            console.log('ok');
+                           }else{
+                            console.log(element.parentNode.innerText)
+                               return;
+                           }
+
+                           var id = getTargetBlockID(element);
+
+
+                           if  (parse.parseInfo['func'] === 'kanban'){
+
+                                insertM(id,'---').then(a=>{
+                                   insertM(a[0].doOperations[0].id,'---').then(b=>{
+                                       insertM(b[0].doOperations[0].id,'* 未开始 \n  * 任务1 \n* 进行中 \n   * 任务2 \n* 已完成 \n    * 任务3').then(c=>{
+                                            deleteBlock(id);
+                                       })
+                                   })
+                               });
+                               return;
+                           }
+
+                        
+                           if  (parse.parseInfo['func'] === 'map'){
+
+                                insertM(id,'---').then(a=>{
+                                   
+                                   insertM(a[0].doOperations[0].id,'---').then(b=>{
+                                       insertM(b[0].doOperations[0].id,'---').then(c=>{
+                                        insertM(c[0].doOperations[0].id,'* 中心主题 \n  * 分支1 \n  * 分支2 \n  * 分支3 ').then(t=>{
+                                            deleteBlock(id);
+                                        })
+                                      })
+                                   })
+                               });
+                               return;
+                           }
+
+                           if (parse.parseInfo['func'] === 'database'){
+                               let parentNode=getTargetBlock(element);
+                               console.log(parentNode)
+                            
+                            //    element.innerHTML="@@database2;"
+                            //    console.log(parentNode)
+                            let dom ='<div data-node-id="20220520090548-iag9d26" data-node-index="1" data-type="NodeParagraph" class="p" updated="20220520095614"><div contenteditable="true" spellcheck="false"><code>@@database3;</code></div><div class="protyle-attr" contenteditable="false">​</div></div>'
+                                updateD(id,dom).then(t=>{
+                                   console.log("pp");
+                                   console.log(t);
+                               })
+                            
+                               return;
+                           }
+
+                           console.log("markdown")
+                    },
+                },
+
+
             ],
         },
 

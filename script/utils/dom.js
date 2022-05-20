@@ -128,6 +128,7 @@ function getTargetBlock(target) {
     else return null;
 }
 
+
 /**
  * 获得目标超链接
  * @param {HTMLElement} target 目标
