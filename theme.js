@@ -161,6 +161,7 @@ window.theme.loadScript("/appearance/themes/mini-vlook/script/module/html.js", "
 /* 加载主题功能 */
 window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-custom.js");
 window.theme.loadScript("/appearance/themes/mini-vlook/script/module/rightmenu.js");
+window.theme.loadScript("/appearance/themes/mini-vlook/script/module/wordcount.js");
 
 // window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel.js");
 // window.theme.loadScript("/appearance/themes/mini-vlook/script/module/code-rb-coad.js");

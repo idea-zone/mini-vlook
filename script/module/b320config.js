@@ -954,6 +954,13 @@ export var config = {
             // 批注功能开关
             enable: true,
         },
+
+        
+        wordcount: {
+            // 字数统计
+            enable: true,
+        },
+
         hotkeys: {
             // 快捷键
             codelabel: {
