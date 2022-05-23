@@ -44,7 +44,7 @@ import  {
 async function showUtil(element, callback) {
 
     let bid = getFocusedBlockID();
-    console.log("b1:"+bid);
+    // console.log("b1:"+bid);
 
     let oldValue = element.getAttribute('custom-codelabel-value');
     let innerHTML = empty(oldValue) ? element.innerHTML : oldValue;
@@ -78,7 +78,7 @@ async function showUtil(element, callback) {
         updateM(id,tmd).then(d=>{
             let dom=document.querySelectorAll(`div[data-node-id="${d[0].doOperations[0].id}"]`)[0];
             render(dom)
-            console.log(d)
+            // console.log(d)
         })
     
         // let b=siyuan.layout.centerLayout.children[0].children[0].model.editor.protyle.lute.HTML2BlockDOM(e);
@@ -201,7 +201,7 @@ const CL_TASK_HANDLER = {
            await showUtil(element);
         }
         catch (e) {
-            console.log(e)
+            // console.log(e)
             await null;
         }
 

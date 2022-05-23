@@ -16,7 +16,7 @@ function createNode(){
     let bottomDock=document.getElementById('dockBottom');
     bottomDock.parentNode.insertBefore(div,bottomDock)
     // var domNode=document.getElementsByClassName('protyle-scroll');
-    console.log('domNode')
+    // console.log('domNode')
 
     let span1= document.createElement("span");
     let txt1 = document.createTextNode("200");

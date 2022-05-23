@@ -847,7 +847,7 @@ export var config = {
                            }
 
                            var id = getTargetBlockID(element);
-                           console.log(id)
+                        //    console.log(id)
 
 
                            if  (parse.parseInfo['func'] === 'kanban'){

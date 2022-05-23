@@ -57,7 +57,7 @@ var codelabel_mark = null;      // 是否是代码块
         ) {
             // 块菜单添加
             let block = codelabel_mark || null;
-            console.log("rest:"+block);
+            // console.log("rest:"+block);
             if (block) {
                 let items = codelabelMenuInit(
                     config.theme.menu.codelabel.items,
