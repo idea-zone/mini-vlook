@@ -13,6 +13,10 @@ export {
 //     tagName: "标签名称，如 code、strong",
 //     customf: '禁止渲染的块属性值,如 wz',   // 自定义属性 f=wz 即可。
 //     className: 'css类属性名称', 
+
+//    // select1: `.protyle-wysiwyg *[data-node-id] ${this.tagName}`  // 要选择的,默认不用设置
+//    // select2: `.protyle-wysiwyg *[data-node-id][custom-f~=${this.customf}] ${this.tagName}` //  要选择的,默认不用设置
+
 //     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
 //         /**
 //          * 以下字段名称被占用,不要用于下面列表的值中.
@@ -92,6 +96,17 @@ class CodeLabelParse {
         this.emptys = ptypeItem.emptys;               // 不能为空的字段
         this.emptysValues = ptypeItem.emptysValues;   // 为空字段的默认值
 
+        
+        this.select1 = `.protyle-wysiwyg *[data-node-id] ${this.tagName}`  // 要选择的
+        this.select2 = `.protyle-wysiwyg *[data-node-id][custom-f~=${this.customf}] ${this.tagName}` // 排除的
+
+        if (empty(this.ptypeItem.select1) === false){
+            this.select1 = this.ptypeItem.select1
+        }
+        if (empty(this.ptypeItem.select2) === false){
+            this.select2 = this.ptypeItem.select2
+        }
+
         this.innerHTML = ptypeItem.innerHTML;         // 内置html
         this.customAttr = ptypeItem.customAttr;       // 自定义属性
         this.inlineStyle = ptypeItem.inlineStyle;     // 内敛样式
@@ -124,6 +139,7 @@ class CodeLabelParse {
         this.ptypeItem = deepCopy(ptypeItem);
 
         this.tagName=ptypeItem.tagName;
+
         this.styleConfig = deepCopy(ptypeItem.style);
 
         this.className = ptypeItem.className;         // 属性名称
@@ -138,20 +154,39 @@ class CodeLabelParse {
         this.customAttr = ptypeItem.customAttr;       // 自定义属性
         this.inlineStyle = ptypeItem.inlineStyle;     // 内敛样式
         
+        this.select1 = `.protyle-wysiwyg *[data-node-id] ${this.tagName}`  // 要选择的
+        this.select2 = `.protyle-wysiwyg *[data-node-id][custom-f~=${this.customf}] ${this.tagName}` // 排除的
+
+        if (empty(this.ptypeItem.select1) === false){
+            this.select1 = this.ptypeItem.select1
+        }
+        if (empty(this.ptypeItem.select2) === false){
+            this.select2 = this.ptypeItem.select2
+        }
+
         this.innerHTML = deepCopy(ptypeItem.innerHTML);         // 内置html
         this.customAttr = deepCopy(ptypeItem.customAttr);       // 自定义属性
         this.inlineStyle = deepCopy(ptypeItem.inlineStyle);     // 内敛样式
     }
 
+    
     /**
      * 获取不在 customf 属性影响范围内的所有 code 标签
-     * @param {string} customf 
+     * @param {*} select1 
+     * @param {*} select2 
+     * @param {*} domNode 
      * @returns 
      */
-    getElementWithoutCustomf(customf,tagName,domNode) {
+    getElementWithoutCustomf(select1,select2,domNode) {
+
+        // let rst = getElement(
+        //     `.protyle-wysiwyg *[data-node-id] ${tagName}`,
+        //     `.protyle-wysiwyg *[data-node-id][custom-f~=${customf}] ${tagName}`,
+        //     domNode
+        // );
+        
         let rst = getElement(
-            `div.fn__flex-1 .protyle-wysiwyg *[data-node-id] ${tagName}`,
-            `.protyle-wysiwyg *[data-node-id][custom-f~=${customf}] ${tagName}`,
+            select1,select2,
             domNode
         );
         return rst;
@@ -396,8 +431,10 @@ class CodeLabelParse {
      */
     render() {
         // 获取符合条件的 code 标签
-        let elements = this.getElementWithoutCustomf(this.customf,this.tagName,this.domNode);
+        let elements = this.getElementWithoutCustomf(this.select1,this.select2,this.domNode);
 
+        if (elements == null ||elements == undefined ) return;
+ 
         // 正则表达式
         let simplePatt = new RegExp(this.reg);
 

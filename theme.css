@@ -65,6 +65,9 @@
 /*下拉框-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/codelabel-cx.css);
 
+/*block-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/codelabel-block-bq.css);
+
 /*链接图标-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/icon-link.css);
 @import url(/appearance/themes/mini-vlook/style/customs/span-link.css);

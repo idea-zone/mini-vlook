@@ -2,6 +2,7 @@ import { insertBlock,deleteBlock, updateBlock, exportMdContent, getBlockByID } f
 import { empty } from "../utils/b320comm.js";
 import { getTargetBlock, getTargetBlockID } from "../utils/dom.js";
 import {CodeLabelParse} from "../utils/codelabel-parse.js"
+import { setStyleVariableValue } from "../utils/codetag.js";
 
 export const insertM = async (id1,data) =>{
     if (empty(id1)) return null;
@@ -40,6 +41,28 @@ export function render(nodoDom){
         new CodeLabelParse(value,nodoDom).render();
     }
 }
+
+
+
+export const createUL = (e)=>{
+    let ul = document.createElement('ul');
+    e.parentNode.insertBefore(ul, e.nextElementSibling);
+    e.appendChild(ul);
+
+    // 创建
+    ul.createli = (text,dataValue,indexValue)=>{
+        let li = document.createElement('li');
+        li.setAttribute('custom-li-data',dataValue);
+        li.setAttribute('custom-li-index',indexValue);
+        li.innerHTML =text;
+        ul.appendChild(li);
+
+        return li;
+    };
+
+    return ul;
+};
+
 
 export var config = {
     token: '', // API token, 无需填写
@@ -219,6 +242,8 @@ export var config = {
                 //     tagName: "标签名称，如 code、strong",
                 //     customf: '禁止渲染的块属性值,如 wz',   // 自定义属性 f=wz 即可。
                 //     className: 'css类属性名称', 
+                //    // select1: `.protyle-wysiwyg *[data-node-id] ${this.tagName}`  // 要选择的,默认不用设置
+                //    // select2: `.protyle-wysiwyg *[data-node-id][custom-f~=${this.customf}] ${this.tagName}` //  要选择的,默认不用设置
                 //     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
                 //         /**
                 //          * 以下字段名称被占用,不要用于下面列表的值中.
@@ -703,28 +728,8 @@ export var config = {
                         // element 当前元素（解析后的）
                         // oldHTML （解析前的 innerHTML 内容）
 
-                        let createUL = (e)=>{
-                            let ul = document.createElement('ul');
-                            e.parentNode.insertBefore(ul, e.nextElementSibling);
-                            e.appendChild(ul);
-
-                            // 创建
-                            ul.createli = (text,dataValue,indexValue)=>{
-                                let li = document.createElement('li');
-                                li.setAttribute('custom-li-data',dataValue);
-                                li.setAttribute('custom-li-index',indexValue);
-                                li.innerHTML =text;
-                                ul.appendChild(li);
-
-                                return li;
-                            };
-
-                            return ul;
-                        };
-
                         let tIndex = parse.parseInfo['index'];
                         let tItms =parse.parseInfo['itms'];
-
                         
                         // 获取父节点    
                         let parentNode=getTargetBlock(element);
@@ -767,6 +772,7 @@ export var config = {
                                     })
                                 };
                             }
+
                         };
 
                         setHtml(tIndex,tItms);
@@ -890,6 +896,146 @@ export var config = {
                            }
 
                            console.log("markdown")
+                    },
+                },
+                {   // 彩虹引用
+                    typeid: "bq",
+                    reg: '&gt;[\(]((#?[\\d\\w]+)(!)?)[\)]',  // 针对 innerHTML
+                    tagName: "code",
+                    customf: 'bqcolor',   // 自定义属性 f=wz 即可。
+                    className: 'bqcolor', 
+                    //// select1: `.protyle-wysiwyg *[data-node-id] ${this.tagName}`  // 要选择的,默认不用设置
+                    //// select2: `.protyle-wysiwyg *[data-node-id][custom-f~=${this.customf}] ${this.tagName}` //  要选择的,默认不用设置
+                    select1: '.protyle-wysiwyg .bq[data-node-id] .p:first-of-type code:first-of-type',  // 要选择的,默认不用设置
+                    select2: '.protyle-wysiwyg .bq[data-node-id][custom-f~=bqcolor] .p:first-of-type code:first-of-type', //  要选择的,默认不用设置
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        /**
+                         * 以下字段名称被占用,不要用于下面列表的值中.
+                         * value,             // code 标签的 InnerHTML
+                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+                         * $0~$9 也不要用.  
+                         */
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': 'colorTag',
+                        '$2': 'color',
+                        '$3': 'endsuffix',
+                        '$4': '',
+                        '$5': '',
+                        '$6': '',
+                        '$7': '',
+                        '$8': '',
+                        '$9': '',
+                    },
+                    emptys: [
+                        // 'title','msg'
+                    ],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
+                    emptysValues:{              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
+                        //  'title':'ke',
+                    },
+                    style:{ // 样式映射信息
+                        rerender:true,                // 是否计算颜色
+                        color: {
+                            value:'color',            // 主颜色对应的字段，用 $0'-'$9' 对应的别名
+                            suffix:'endsuffix',       // 颜色后缀对应的字段，用 $0'-'$9' 对应的别名
+                        },         
+                        default:'theme2',             // 主颜色缺省时，默认的颜色值
+                        defaultSuffix:false,          // 颜色后缀缺省时,默认的后缀内容，表示的值（suffixs中value）
+                        colors:{
+                            suffixs:{                 // 颜色后缀内容，表示的值
+                                '!':true,
+                            },
+                            names: ()=>config.theme.common.colors.names,     // 主颜色，支持的颜色名称-列表，
+                            values: ()=>config.theme.common.colors.values,   // 主颜色，对应的适配配色-列表
+                        }
+                    },
+                    customAttr: {   // 自定义属性，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+                        // 'custom-codelabel-bq-title': "${title}",
+                        // 'custom-codelabel-bq-msg': "${msg}",
+                    },
+                    inlineStyle: {  // 自定义内联样式，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+                        "--theme-bq-bgcolor":"${bgcolor1}",
+                        "--theme-bq-title-color":"${color1}",
+                        "--theme-bq-msg-color":"${color2}",
+                        "--theme-bq-msg-bgcolor":"${bgcolor2}",
+                    },
+                    innerHTML:  '<span>${value}</span>',  // 解析后 code 标签的 innerHTML 内容，支持类似js的模板语法，${别名}, 会被实际的值替换
+                    renderEnd: (parse, element,oldHTML) => { //在每个元素渲染解析完成后的回调函数
+                           // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
+                           // element 当前元素（解析后的）
+                           // oldHTML （解析前的 innerHTML 内容）
+                           
+                            // 获取父节点    
+                            let parentNode=getTargetBlock(element);
+                            let id = getTargetBlockID(element);
+                        
+                            var itms = []
+                            // var items = config.theme.common.colors.names;
+                            for(let ims of config.theme.common.colors.names){
+                                itms.push(ims)
+                                itms.push(`${ims}!`)
+                            }
+
+                            let setHtml= (slt,slt2)=>{
+
+                                let endsuffix = "";
+                                if (slt2 === '2'){
+                                    endsuffix="!"
+                                }
+
+                                element.innerHTML = `<span>&gt;(${slt})</span>`
+                                
+
+                                var bqNode = element.parentNode.parentNode.parentNode;
+                                setStyleVariableValue(bqNode.style,'--theme-bq-bgcolor',parse.parseInfo.bgcolor1)
+                                setStyleVariableValue(bqNode.style,'--theme-bq-color1',parse.parseInfo.color1)
+                                setStyleVariableValue(bqNode.style,'--theme-bq-bgcolor2',parse.parseInfo.bgcolor2)
+                                setStyleVariableValue(bqNode.style,'--theme-bq-color2',parse.parseInfo.color2)
+
+                                if (empty(endsuffix) === true){
+                                    bqNode.setAttribute("bqtype","color")
+                                }else{
+                                    bqNode.setAttribute("bqtype","color1")
+                                }
+                                
+                                element.setAttribute('custom-select-data',slt)
+                                // element.setAttribute('custom-select-endsuffix',slt2)
+                                let pstionX  =element.getBoundingClientRect().left - element.parentNode.getBoundingClientRect().left + 20;
+                                let pstionY = element.getBoundingClientRect().bottom - element.parentNode.getBoundingClientRect().bottom;
+                                let mUl = createUL(element);
+                                mUl.setAttribute('style',"margin-left:"+pstionX+"px;margin-top:"+pstionY+"px");
+
+                                let i=0; 
+                                for(let item of itms){
+                                    let itext = item;
+                                    let eli =mUl.createli("",itext,i++);
+                                    eli.onclick = (e)=>{
+                                        
+                                        let idx=e.target.getAttribute('custom-li-index');
+                                        let slt1 = itms[idx];
+                                        if (slt1.endsWith('!')){
+                                            slt2="2"
+                                        }else{
+                                            slt2="1"
+                                        }
+                                        setHtml(slt1,slt2);
+
+                                        // element.setAttribute('custom-select-data',parse.parseInfo.color)
+                                        var tmd=siyuan.layout.centerLayout.children[0]
+                                                    .children[0].model.editor
+                                                    .protyle.lute.BlockDOM2Md(parentNode.innerHTML);
+
+                                        updateM(id,tmd).then(d=>{
+                                            let dom=document.querySelectorAll(`div[data-node-id="${d[0].doOperations[0].id}"]`)[0];
+                                            render(dom)
+                                        })
+                                    };
+                                }
+                                
+                           };
+
+                           setHtml(`${parse.parseInfo.color}${parse.parseInfo.endsuffix}`,empty(parse.parseInfo.endsuffix)?"1":"2");
+
                     },
                 },
 
