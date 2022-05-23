@@ -738,7 +738,7 @@ export var config = {
                             let itmes = [...tItms.matchAll('\\\((.*?)\\\)')]
 
                             element.innerHTML = `<span>^[${index}]${tItms}</span>`
-                            console.log("innerHTML:"+element.innerHTML);
+                            // console.log("innerHTML:"+element.innerHTML);
 
                             
                             let slt =itmes[index][1];
@@ -884,7 +884,7 @@ export var config = {
                                return;
                            }
 
-                           console.log("markdown")
+                        //    console.log("markdown")
                     },
                 },
                 {   // 彩虹引用
