@@ -94,6 +94,7 @@ class CodeLabelParse {
         this.parseInfo = {};                          // 解析后内容
         this.maps = ptypeItem.maps;                   // 映射关系
         this.emptys = ptypeItem.emptys;               // 不能为空的字段
+        this.onlyValue = ptypeItem.onlyValue;
         this.emptysValues = ptypeItem.emptysValues;   // 为空字段的默认值
 
         
@@ -148,6 +149,7 @@ class CodeLabelParse {
         this.parseInfo = {};                          // 解析后内容
         this.maps = ptypeItem.maps;                   // 映射关系
         this.emptys = ptypeItem.emptys;               // 不能为空的字段
+        this.onlyValue = ptypeItem.onlyValue;
         this.emptysValues = ptypeItem.emptysValues;   // 为空字段的默认值
 
         this.innerHTML = ptypeItem.innerHTML;         // 内置html
@@ -193,21 +195,34 @@ class CodeLabelParse {
     }
 
     /**
-     * 判断是否为空
-     * @param {Array} emptys 空字符 
+     * 判断是否符合条件
+     * @param {Object} parseInfo 解析后的值
+     * @param {Array} emptys 不能为空的字段
+     * @param {Object} onlyValue 不为空时，必须包含在内的值
      * @returns 
      */
-    isEmptyParse(emptys) {
+    isEmptyParse(parseInfo,emptys,onlyValue) {
 
         let isEmpty = false;
         let count = emptys.length;
         for (let i = 0; i < count; i++) {
-            let s = emptys[i];
-            if (empty(s)) {
+            let key = emptys[i];
+            let value = parseInfo[key];
+            if (empty(value)) {
                 isEmpty = true;
                 break;
             }
+                
+            if (onlyValue!==null&&onlyValue!==undefined){
+                let values = onlyValue[key]();
+                if (values.length > 0 && values.includes(value) === false){
+                    isEmpty = true;
+                    break;
+                }
+            }
+
         }
+
 
         return isEmpty;
     }
@@ -452,7 +467,7 @@ class CodeLabelParse {
                 this.parseInfo = this.clacParseInfo(oldHTML)
 
                 // 判断关键解析结构是否为空，不为空的时候，设置
-                let isEmpty = this.isEmptyParse(this.emptys);
+                let isEmpty = this.isEmptyParse(this.parseInfo,this.emptys,this.onlyValue);
                 if (isEmpty === false && e.className !== this.className) {
 
                     // 渲染当个节点

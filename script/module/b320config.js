@@ -43,7 +43,6 @@ export function render(nodoDom){
 }
 
 
-
 export const createUL = (e)=>{
     let ul = document.createElement('ul');
     e.parentNode.insertBefore(ul, e.nextElementSibling);
@@ -62,7 +61,6 @@ export const createUL = (e)=>{
 
     return ul;
 };
-
 
 export var config = {
     token: '', // API token, 无需填写
@@ -780,7 +778,7 @@ export var config = {
                 },
                 {   // @@命令
                     typeid: "cmd",
-                    reg: '^@@((kanban)|(map)|(database))(\\\(.*\\\))?$',  // 针对 innerHTML
+                    reg: '^@@((kanban)|(map)|(bqcolor))(\\\(.*\\\))?$',  // 针对 innerHTML
                     tagName: "code",
                     customf: 'cmd',   // 自定义属性 f=wz 即可。
                     className: 'custom-codelabel-cmd', 
@@ -838,18 +836,18 @@ export var config = {
                            // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
                            // element 当前元素（解析后的）
                            // oldHTML （解析前的 innerHTML 内容）
-
                                                 
-                           let simplePatt = new RegExp('^@@((kanban)|(map)|(database))(\\\(.*\\\))?$');  
+                           let simplePatt = new RegExp('^@@((kanban)|(map)|(bqcolor))(\\\(.*\\\))?$');  
                            if (simplePatt.test(element.parentNode.innerText)){
-                            console.log(element.parentNode.innerText)
-                            console.log('ok');
+                            // console.log(element.parentNode.innerText)
+                            // console.log('ok');
                            }else{
-                            console.log(element.parentNode.innerText)
+                            // console.log(element.parentNode.innerText)
                                return;
                            }
 
                            var id = getTargetBlockID(element);
+                           console.log(id)
 
 
                            if  (parse.parseInfo['func'] === 'kanban'){
@@ -864,7 +862,6 @@ export var config = {
                                return;
                            }
 
-                        
                            if  (parse.parseInfo['func'] === 'map'){
 
                                 insertM(id,'---').then(a=>{
@@ -880,18 +877,10 @@ export var config = {
                                return;
                            }
 
-                           if (parse.parseInfo['func'] === 'database'){
-                               let parentNode=getTargetBlock(element);
-                               console.log(parentNode)
-                            
-                            //    element.innerHTML="@@database2;"
-                            //    console.log(parentNode)
-                            let dom ='<div data-node-id="20220520090548-iag9d26" data-node-index="1" data-type="NodeParagraph" class="p" updated="20220520095614"><div contenteditable="true" spellcheck="false"><code>@@database3;</code></div><div class="protyle-attr" contenteditable="false">​</div></div>'
-                                updateD(id,dom).then(t=>{
-                                   console.log("pp");
-                                   console.log(t);
+                           if (parse.parseInfo['func'] === 'bqcolor'){
+                               insertM(id,'> `>(red!)` .\n> \n> 彩虹引用').then(b=>{
+                                   deleteBlock(id);
                                })
-                            
                                return;
                            }
 
@@ -900,7 +889,7 @@ export var config = {
                 },
                 {   // 彩虹引用
                     typeid: "bq",
-                    reg: '&gt;[\(]((#?[\\d\\w]+)(!)?)[\)]',  // 针对 innerHTML
+                    reg: '&gt;[\(]((#?[\\d\\w]+)(!)?)[\)]',    // 针对 innerHTML
                     tagName: "code",
                     customf: 'bqcolor',   // 自定义属性 f=wz 即可。
                     className: 'bqcolor', 
@@ -928,10 +917,14 @@ export var config = {
                         '$9': '',
                     },
                     emptys: [
+                        'color'
                         // 'title','msg'
                     ],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
                     emptysValues:{              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
                         //  'title':'ke',
+                    },
+                    onlyValue:{
+                        'color':()=>config.theme.common.colors.names,
                     },
                     style:{ // 样式映射信息
                         rerender:true,                // 是否计算颜色
@@ -984,7 +977,6 @@ export var config = {
                                 }
 
                                 element.innerHTML = `<span>&gt;(${slt})</span>`
-                                
 
                                 var bqNode = element.parentNode.parentNode.parentNode;
                                 setStyleVariableValue(bqNode.style,'--theme-bq-bgcolor',parse.parseInfo.bgcolor1)
@@ -1135,3 +1127,4 @@ export var config = {
 
     },
 };
+
