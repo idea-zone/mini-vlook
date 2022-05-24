@@ -22,7 +22,7 @@
     margin-bottom: 20px;
 }
 
-.protyle-wysiwyg .bq[bqtype="color"] code:first-of-type{
+.protyle-wysiwyg .bq[bqtype="color"] code.bqcolor{
     background: var(--theme-bq-bgcolor);
 }
 
@@ -44,20 +44,20 @@
 }
 
 
-.protyle-wysiwyg .bq[bqtype="color1"] code:first-of-type{
+.protyle-wysiwyg .bq[bqtype="color1"] code.bqcolor{
     background: var(--b3-theme-background);
 }
 
 /* --------------- 引用块 end ---------------  */
 
 
-.protyle-wysiwyg .bq[bqtype^="color"] code:first-of-type span{
+.protyle-wysiwyg .bq[bqtype^="color"] code.bqcolor span{
     display: none;
 }
 
 /* custom-select-endsuffix */
 
-.protyle-wysiwyg .bq[bqtype^="color"] code:first-of-type::before{
+.protyle-wysiwyg .bq[bqtype^="color"] code.bqcolor::before{
 
     content: attr(custom-select-data);
     
@@ -92,7 +92,7 @@
     transform: translate(-3px,-2px) 
 } */
 
-.protyle-wysiwyg .bq[bqtype^="color"] code:first-of-type li::after{
+.protyle-wysiwyg .bq[bqtype^="color"] code.bqcolor li::after{
     
     content: attr(custom-li-data);
 
@@ -109,12 +109,12 @@
     transform: translate(-3px,-2px)
 }
 
-.protyle-wysiwyg .bq[bqtype^="color"] code:first-of-type ul{
+.protyle-wysiwyg .bq[bqtype^="color"] code.bqcolor ul{
     display: none;
     list-style: none;
 }
 
-.protyle-wysiwyg .bq[bqtype^="color"] code:first-of-type:hover ul{
+.protyle-wysiwyg .bq[bqtype^="color"] code.bqcolor:hover ul{
     display: block;
     list-style: none;
     /* margin-left: attr(custom-left); */
