@@ -69,7 +69,7 @@
     border: 2px solid var(--v-block-kbd-border-shadow);
     border-left-color: var(--v-block-kbd-border-color);
     border-top-color: var(--v-block-kbd-border-color);
-    background: var(--v-theme1);
+    background: var(--v-theme2);
     box-shadow: 0 0 0 1px var(--v-block-kbd-border-shadow);
     transform: translate(-3px,-2px) 
 }

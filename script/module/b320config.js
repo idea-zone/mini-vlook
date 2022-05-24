@@ -265,6 +265,9 @@ export var config = {
                 //     emptysValues:{              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
                 //          'title':'ke',
                 //     },
+                //     onlyValue:{                 // 不为null时，必须在这个范围内取值，可以不设置，
+                //          'title':['1','2'],
+                //     },
                 //     style:{ // 样式映射信息
                 //         rerender:true,                // 是否计算颜色
                 //         color: {
@@ -778,7 +781,7 @@ export var config = {
                 },
                 {   // @@命令
                     typeid: "cmd",
-                    reg: '^@@((kanban)|(map)|(bqcolor))(\\\(.*\\\))?$',  // 针对 innerHTML
+                    reg: '^@@((kanban)|(map)|(bqcolor))(\\\((.*)\\\))?$',  // 针对 innerHTML
                     tagName: "code",
                     customf: 'cmd',   // 自定义属性 f=wz 即可。
                     className: 'custom-codelabel-cmd', 
@@ -793,15 +796,18 @@ export var config = {
                         '$0': 'value', // 占用，code 原始的 innerHTML 内容
                         '$1': 'func',
                         '$2': '',
-                        '$3': 'args',
+                        '$3': '',
                         '$4': '',
                         '$5': '',
-                        '$6': '',
+                        '$6': 'args',
                         '$7': '',
                         '$8': '',
                         '$9': '',
                     },
                     emptys: ['func'],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
+                    onlyValue:{                 // 不为null时，必须在这个范围内取值，可以不设置，
+                         'func':['kanban','map','bqcolor'],
+                    },
                     emptysValues:{              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
                         //  'func':'',
                     },
@@ -836,19 +842,8 @@ export var config = {
                            // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
                            // element 当前元素（解析后的）
                            // oldHTML （解析前的 innerHTML 内容）
-                                                
-                           let simplePatt = new RegExp('^@@((kanban)|(map)|(bqcolor))(\\\(.*\\\))?$');  
-                           if (simplePatt.test(element.parentNode.innerText)){
-                            // console.log(element.parentNode.innerText)
-                            // console.log('ok');
-                           }else{
-                            // console.log(element.parentNode.innerText)
-                               return;
-                           }
 
                            var id = getTargetBlockID(element);
-                        //    console.log(id)
-
 
                            if  (parse.parseInfo['func'] === 'kanban'){
 
@@ -878,9 +873,19 @@ export var config = {
                            }
 
                            if (parse.parseInfo['func'] === 'bqcolor'){
-                               insertM(id,'> `>(red!)` .\n> \n> 彩虹引用').then(b=>{
-                                   deleteBlock(id);
+                               let szcolor = 'red!'
+                               if (empty(parse.parseInfo['args']) === false){
+                                    szcolor=parse.parseInfo['args']   
+                               }
+
+                               insertM(id,'> `>('+szcolor+')` .').then(b=>{
+                                   console.log(id)
+                                   console.log(b[0].doOperations[0].id)
+                                //    deleteBlock(id)
+                                   updateM(id,' ')
                                })
+                               
+                            //    setTimeout(()=>{},1000);
                                return;
                            }
 

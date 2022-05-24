@@ -37,6 +37,9 @@ export {
 //         '$9': '',
 //     },
 //     emptys: ['title','msg'],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
+//     onlyValue:{
+//          'title':['1','2'],
+//     },
 //     emptysValues:{              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
 //          'title':'ke',
 //     },
@@ -214,7 +217,13 @@ class CodeLabelParse {
             }
                 
             if (onlyValue!==null&&onlyValue!==undefined){
-                let values = onlyValue[key]();
+                let values = []
+                if (typeof onlyValue[key] === "function"){
+                    values = onlyValue[key]();
+                }else{
+                    values = onlyValue[key];
+                }
+                
                 if (values.length > 0 && values.includes(value) === false){
                     isEmpty = true;
                     break;
