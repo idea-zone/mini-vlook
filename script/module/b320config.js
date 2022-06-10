@@ -990,9 +990,9 @@ export var config = {
                                 setStyleVariableValue(bqNode.style,'--theme-bq-color2',parse.parseInfo.color2)
 
                                 if (empty(endsuffix) === true){
-                                    bqNode.setAttribute("bqtype","color")
-                                }else{
                                     bqNode.setAttribute("bqtype","color1")
+                                }else{
+                                    bqNode.setAttribute("bqtype","color")
                                 }
                                 
                                 element.setAttribute('custom-select-data',slt)

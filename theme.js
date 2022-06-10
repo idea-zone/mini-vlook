@@ -1,3 +1,41 @@
+
+
+const 主题 = {};
+主题.根目录 = "/appearance/themes/mini-vlook";
+//来自dark+主题
+主题.加载程序 = function ( option = { src, type: "module", async: false, defer: false }){
+let { src, type, async, defer } = option;
+    let script = document.createElement("script");
+    if (type) script.setAttribute("type", type);
+    if (async) script.setAttribute("async", true);
+    if (defer) script.setAttribute("defer", true);
+    script.setAttribute("src", src);
+    document.head.appendChild(script);
+};
+
+主题.加载程序body = function ( option = { src, type: "module", async: false, defer: false }){
+    let { src, type, async, defer } = option;
+        let script = document.createElement("script");
+        if (type) script.setAttribute("type", type);
+        if (async) script.setAttribute("async", true);
+        if (defer) script.setAttribute("defer", true);
+        script.setAttribute("src", src);
+        document.body.appendChild(script);
+};
+
+
+// const naive= {
+//     竖线菜单设置:[],
+//     footerWidget:"cc-template"
+// }
+
+// 主题.加载程序({ src: `${主题.根目录}/script/util/siYuanApi.js` });
+// 主题.加载程序({ src: `${主题.根目录}/script/main.js`, type: "module" });
+
+// window.theme.loadScript("/appearance/themes/mini-vlook/script/static/dom-to-image.min.js", "text/javascript");
+// window.theme.loadScript("/appearance/themes/mini-vlook/script/static/moment.min.js", "text/javascript");
+
+
 window.theme = {};
 
 /**
@@ -158,10 +196,19 @@ window.theme.changeThemeMode(
 /* 加载 HTML 块中使用的小工具 */
 window.theme.loadScript("/appearance/themes/mini-vlook/script/module/html.js", "text/javascript");
 
+// 主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js`});
+// 主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js`});
+
 /* 加载主题功能 */
 window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-custom.js");
 window.theme.loadScript("/appearance/themes/mini-vlook/script/module/rightmenu.js");
 window.theme.loadScript("/appearance/themes/mini-vlook/script/module/wordcount.js");
+
+
+主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js`});
+主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js`});
+window.theme.loadScript("/appearance/themes/mini-vlook/script/module/dateicon.js");
+
 
 // window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel.js");
 // window.theme.loadScript("/appearance/themes/mini-vlook/script/module/code-rb-coad.js");
