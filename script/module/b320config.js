@@ -873,7 +873,7 @@ export var config = {
                            }
 
                            if (parse.parseInfo['func'] === 'bqcolor'){
-                               let szcolor = 'red!'
+                               let szcolor = 'red'
                                if (empty(parse.parseInfo['args']) === false){
                                     szcolor=parse.parseInfo['args']   
                                }
