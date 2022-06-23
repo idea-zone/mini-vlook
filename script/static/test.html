@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .box{width:100%; height:500px; border:1px solid #ddd; overflow:hidden;}
+        .list{width:100%; height:500px; line-height:100px; background:#ddd; font-size:80px; text-align:center;}
+        .anchor{width:100%; padding-top:10px; text-align:right;}
+        .click{display:inline-block; width:20px; height:20px; line-height:20px; border:1px solid #ccc; background:#f7f7f7; color:#333; font-size:12px; font-weight:bold; text-align:center; text-decoration:none;}
+        .click:hover{background:#eee; color:#345;}
+        
+        
+        /* .box{width:200px; height:100px; border:1px solid #ddd; overflow:hidden;}
+        .list{width:200px; height:100px; line-height:100px; background:#ddd; font-size:80px; text-align:center;}
+        .anchor{width:200px; padding-top:10px; text-align:right;}
+        .click{display:inline-block; width:20px; height:20px; line-height:20px; border:1px solid #ccc; background:#f7f7f7; color:#333; font-size:12px; font-weight:bold; text-align:center; text-decoration:none;}
+        .click:hover{background:#eee; color:#345;}
+         */
+
+        li{
+            list-style-type:none;
+        }
+    </style>
+
+    <div class="box">
+        <div><hr></div>
+        <div class="list" id="one">1</div>
+        <div class="list" id="two">2</div>
+        <div class="list" id="three">3</div>
+        <div class="list" id="four">4</div>
+    </div>
+    <div class="anchor">
+        <a class="click" href="#one">1</a>
+        <a class="click" href="#two">2</a>
+        <a class="click" href="#three">3</a>
+        <a class="click" href="#four">4</a>
+    </div>
+
+    <ul class="box">
+        <li class="list" id="1">1</li>
+        <li class="list" id="2">2</li>
+        <li class="list" id="3">3</li>
+        <li class="list" id="4">4</li>
+    </ul>
+    <div class="anchor">
+        <a class="click" href="#1">1</a>
+        <a class="click" href="#2">2</a>
+        <a class="click" href="#3">3</a>
+        <a class="click" href="#4">4</a>
+    </div>
+
+
+</body>
+</html>

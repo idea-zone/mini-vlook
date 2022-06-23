@@ -203,7 +203,7 @@ window.theme.loadScript("/appearance/themes/mini-vlook/script/module/html.js", "
 window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-custom.js");
 window.theme.loadScript("/appearance/themes/mini-vlook/script/module/rightmenu.js");
 window.theme.loadScript("/appearance/themes/mini-vlook/script/module/wordcount.js");
-
+// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/tabctl.js");
 
 主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js`});
 主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js`});

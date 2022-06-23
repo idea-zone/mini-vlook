@@ -271,7 +271,7 @@ function isBlockTypeEnabled(config, type, subtype) {
 
 // 任务处理器
 // TODO
-const TASK_HANDLER = {
+export const TASK_HANDLER = {
     /* 插入属性值中空格分隔的一项 */
     'attr-insert': async (id, params) => {
         // console.log('attr-insert');

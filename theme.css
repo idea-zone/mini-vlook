@@ -78,4 +78,19 @@
 /*多级标签*/
 @import url(/appearance/themes/mini-vlook/style/customs/mult-tag-lv.css);
 
+/*多级标签*/
+@import url(/appearance/themes/mini-vlook/style/customs/tab-bqe.css.css);
 
+@import url(/appearance/themes/mini-vlook/style/customs/tab-bqe.css);
+
+/* 
+.protyle-wysiwyg .hr+.render-node::before
+,.protyle-wysiwyg .hr+.render-node+.render-node::before
+{ 
+    content: attr(data-node-id);
+    height:100%;
+    float:left;
+    padding-right:100px ;
+    box-sizing:border-box;
+    cursor: pointer;
+} */
