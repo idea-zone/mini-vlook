@@ -52,6 +52,13 @@ export const appendM = async (id1, data) => {
     );
 };
 
+export const deleteM = async (id1) =>{
+    if (empty(id1)) return null;
+    return await deleteBlock(
+        id1
+    )
+}
+
 
 export const getMdContent = async (id1) => {
     if (empty(id1)) return null;
@@ -900,14 +907,12 @@ export var config = {
                                 szcolor = parse.parseInfo['args']
                             }
 
-                            insertM(id, '> `>(' + szcolor + ')` .').then(b => {
-                                console.log(id)
-                                console.log(b[0].doOperations[0].id)
-                                //    deleteBlock(id)
-                                updateM(id, ' ')
+                            insertM(id, '>  ').then(b => {
+                                appendM(b[0].doOperations[0].id,'`>(' + szcolor + ')` .').then(c=>{
+                                    updateM(id, ' ')
+                                })
                             })
 
-                            //    setTimeout(()=>{},1000);
                             return;
                         }
 
@@ -949,8 +954,8 @@ export var config = {
                     className: 'bqcolor',
                     //// select1: `.protyle-wysiwyg *[data-node-id] ${this.tagName}`  // 要选择的,默认不用设置
                     //// select2: `.protyle-wysiwyg *[data-node-id][custom-f~=${this.customf}] ${this.tagName}` //  要选择的,默认不用设置
-                    select1: '.protyle-wysiwyg .bq[data-node-id] .p:first-of-type code:first-of-type',  // 要选择的,默认不用设置
-                    select2: '.protyle-wysiwyg .bq[data-node-id][custom-f~=bqcolor] .p:first-of-type code:first-of-type', //  要选择的,默认不用设置
+                    select1: '.protyle-wysiwyg .bq[data-node-id] .p code:first-of-type',
+                    select2: '.protyle-wysiwyg .bq[data-node-id][custom-f~=bqcolor] .p code:first-of-type',
                     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
                         /**
                          * 以下字段名称被占用,不要用于下面列表的值中.
