@@ -1,27 +1,37 @@
 // protyle-scroll
 
+import { mv } from '../commons/domex.js';
+import { exportMdContent } from '../utils/api.js';
 import { config } from './b320config.js';
 
 function createNode(){
 
-    let div=document.createElement('div');
-    div.classList.add("dock");
-    let div2 = document.createElement('div');
-    let divCon = document.createElement('div');
-    divCon.classList.add("fn__flex-1");
-    let div4 = document.createElement('div');
-    div.appendChild(div2);
-    div.appendChild(divCon);
-    div.appendChild(div4);
-    let bottomDock=document.getElementById('dockBottom');
-    bottomDock.parentNode.insertBefore(div,bottomDock)
+    // #status -> .fn__flex-1
+    // 
+    // let div=document.createElement('div');
+    // div.classList.add("dock");
+    // let div2 = document.createElement('div');
+    // let divCon = document.createElement('div');
+    // divCon.classList.add("fn__flex-1");
+    // let div4 = document.createElement('div');
+    // div.appendChild(div2);
+    // div.appendChild(divCon);
+    // div.appendChild(div4);
+    // let bottomDock=document.getElementById('dockBottom');
+    // bottomDock.parentNode.insertBefore(div,bottomDock)
+
     // var domNode=document.getElementsByClassName('protyle-scroll');
     // console.log('domNode')
 
+    let div = document.getElementById("status")
+    let space = mv.GetDomByAtrrs(div,"class","fn__flex-1","div")[0];
+    // iconRefresh
     let span1= document.createElement("span");
     let txt1 = document.createTextNode("200");
     span1.appendChild(txt1)
-    div.appendChild(span1);
+    
+    // div.appendChild(span1);
+    div.insertBefore(span1, space.nextElementSibling);
     
     return span1;
 }
@@ -103,6 +113,13 @@ function selectText()
 
 
 const span = createNode();
+export const exportMd= async (id1) => {
+    if (mv.Empty(id1)) return null;
+    return await exportMdContent(
+        id1
+    );
+};
+// 
 
 function render(){
     
@@ -112,15 +129,29 @@ function render(){
 
     span.innerText="词数:";
 
-    let count = ()=>{
+    let count = async ()=>{
 
         if (config.theme.wordcount.enable) {
             // fn__flex-1 protyle fn__none
             // protyle-wysiwyg
             // console.log(domNode.innerText)  
-
+            
             let domNode = document.querySelector('.protyle:not(.fn__none) .protyle-wysiwyg')     
-            let allTxt =domNode.innerText.trim();
+            let titleNode = document.querySelector('.protyle:not(.fn__none) .protyle-background')
+
+            let titleId=mv.GetAttrs(titleNode,'data-node-id');
+            
+            // console.log("ID")
+            let resp= await exportMd(titleId);
+            // console.log(resp)
+            var lute= siyuan.layout.centerLayout.children[0]
+            .children[0].model.editor
+            .protyle.lute;
+
+            let mdtxt = resp.content;
+            let blocktxt = lute.BlockDOM2Text(lute.Md2BlockDOM(mdtxt))
+            // config.log(resp[0].doOperations[0].content)
+            let allTxt = blocktxt;
             let selectTxt  = selectText();
 
             // 统计字数
@@ -139,6 +170,28 @@ function render(){
             if (selectWordCount !== 0){
                 msgWord = selectWordCount+" / ";
             } 
+
+            
+            // // 统计字数
+            // let selecterCharCount = charCount(selectTxt);
+            // let allCharCount = charCount(allTxt);
+            // let msgChar = "";
+            // if (selecterCharCount){
+            //     msgChar = selecterCharCount;
+            // }else{
+            //     msgChar ="0"
+            // }
+            // let chars = `字符数: ${msgChar}`
+
+            // // 统计词数
+            // let selectWordCount= wordCount(selectTxt); 
+            // let allWordCount= wordCount(allTxt); 
+            // let msgWord="";
+            // if (selectWordCount !== 0){
+            //     msgWord = selectWordCount+" / ";
+            // } 
+
+
             let words = `词数: ${msgWord}${allWordCount}`
 
             span.innerText = chars+" "+words;

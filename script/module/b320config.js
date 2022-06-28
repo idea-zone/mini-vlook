@@ -91,6 +91,19 @@ export const createUL = (e) => {
     return ul;
 };
 
+
+// 辅助获取
+let getDom = (tagName, name, value, node) => {
+    var selectDom = [];
+    var dom = node.getElementsByTagName(tagName);
+    for (var i = 0; i < dom.length; i++) {
+        if (value === dom[i].getAttribute(name)) {
+            selectDom.push(dom[i]);
+        }
+    }
+    return selectDom;
+};
+
 export var config = {
     token: '', // API token, 无需填写
     theme: {
@@ -392,6 +405,129 @@ export var config = {
                     },
                     innerHTML: '<span>${value}</span>',
                     renderEnd: (parse, element, oldHTML) => { // 渲染完单个元素的回调.
+                    },
+                },
+                {   // 复选框
+                    typeid: "wz",
+                    // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    // reg: '(\\\+(\\\[()\\\])([|](.*?))?){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    reg: '(\\\+(\\\[(\\s|x)\\\])([|](.*?))?\\\+){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    
+                    tagName: "code",
+                    customf: 'chk',                        // 忽略解析的属性值 
+                    className: 'custom-codelabel-chk',                   // 自定义的属性名称
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        /**
+                         * 以下字段名称被占用,不要用于下面列表的值中.
+                         * value,             // code 标签的 InnerHTML
+                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+                         * $0~$9 也不要用.  
+                         */
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': '',
+                        '$2': 'chkG',
+                        '$3': 'chk',   // 是否有消息
+                        '$4': 'msgG',
+                        '$5': 'msg',
+                        '$6': 'colorG',
+                        '$7': '',
+                        '$8': 'color',
+                        '$9': 'endsuffix',
+                    },
+                    emptys: ['chkG'],      // 不能为空的字段
+                    emptysValues: {              // 当值为空值的值
+                        'chk': ' ',
+                        'msg': ' ',
+                    },
+                    style: { // 样式映射信息
+                        rerender: true,             // 是否计算配色
+                        color: {
+                            value: 'color',            // 主颜色字段
+                            suffix: 'endsuffix',                // 颜色后缀对应的字段
+                        },
+                        default: 'theme2',               // 缺省颜色值
+                        defaultSuffix: false, // 缺省时,颜色后缀,对应的值.
+                        colors: {
+                            suffixs: {
+                                '!': true,
+                            },
+                            names: () => config.theme.common.colors.names,   // 颜色名称-列表
+                            values: () => config.theme.common.colors.values, // 适配配色-列表
+                        }
+                    },
+                    customAttr: { // 自定义属性
+                        // 'custom-codelabel-value':'${value}',
+                        'custom-codelabel-chk-title': "${title}",
+                        'custom-codelabel-chk-msg': "${msg}",
+                    },
+                    inlineStyle: {
+                        "--theme-chk-bgcolor": "${bgcolor1}",
+                        "--theme-chk-title-color": "${color1}",
+                        "--theme-chk-msg-color": "${color2}",
+                        "--theme-chk-msg-bgcolor": "${bgcolor2}",
+                    },
+                    innerHTML: '<span><input type="checkbox" />${value}',
+                    renderEnd: (parse, element, oldHTML) => { // 渲染完单个元素的回调.
+                        let chk=getDom('input','type','checkbox',element)[0];
+                       
+                        chk.checked=empty(parse.parseInfo.chk)==false;
+                        chk.parse = parse
+                        chk.oldHTML = oldHTML;
+                        chk.element = element
+                        chk['onclick'] = function(e){
+                        
+                            // console.log(e.target.oldHTML)
+
+                            let parse = e.target.parse
+                            let element = chk.element;
+
+                            // parse.reinitFormat(parse.ptypeItem)
+                            // let parseInfo1 = parse.clacParseInfo(element.oldHTML);
+                            
+                            // parse.parseInfo = parseInfo1; 
+                            // // // 渲染
+                            // parse.renderSingle(element, parse.parseInfo);
+
+                            let parentNode = getTargetBlock(element);
+                            let id = getTargetBlockID(element)
+                            
+                            let msg = parse.parseInfo.msg
+                            msg = empty(msg)?"":`|${msg}`
+
+                            let colorG = parse.parseInfo.colorG
+                           
+                            console.log(colorG)
+
+                            let newInnerHtml = '';
+                            if (e.target.checked){
+                                newInnerHtml =`+[x]${msg}+${colorG}`
+                                parse.chk = 'x'
+                            }else{
+                                newInnerHtml =`+[ ]${msg}+${colorG}`
+                                parse.chk = ' '
+                            }
+                            
+                            parse.reinitFormat(parse.ptypeItem)
+                            let parseInfo = parse.clacParseInfo(newInnerHtml);
+                            
+                            parse.parseInfo = parseInfo; 
+                            // // 渲染
+                            parse.renderSingle(element, parse.parseInfo);
+                                                            
+                            // 设置新的 自定义的value
+                            element.setAttribute("custom-codelabel-value", newInnerHtml);
+                            element.oldHTML = newInnerHtml
+
+                            // e.target.parentNode.innerHTML
+                            var tmd = siyuan.layout.centerLayout.children[0]
+                            .children[0].model.editor
+                            .protyle.lute.BlockDOM2Md(parentNode.innerHTML);
+                            updateM(id, tmd).then(d => {
+                            let dom = document.querySelectorAll(`div[data-node-id="${d[0].doOperations[0].id}"]`)[0];
+                                render(dom)
+                            })
+                        } 
                     },
                 },
                 {   // 刮刮乐
@@ -1070,6 +1206,7 @@ export var config = {
                                         slt2 = "1"
                                     }
                                     setHtml(slt1, slt2);
+                                    
 
                                     // element.setAttribute('custom-select-data',parse.parseInfo.color)
                                     var tmd = siyuan.layout.centerLayout.children[0]
@@ -1166,17 +1303,6 @@ export var config = {
                         let parentNode = crtLine.parentNode;
                        
 
-                        // 辅助获取
-                        let getDom = (tagName, name, value, node) => {
-                            var selectDom = [];
-                            var dom = node.getElementsByTagName(tagName);
-                            for (var i = 0; i < dom.length; i++) {
-                                if (value === dom[i].getAttribute(name)) {
-                                    selectDom.push(dom[i]);
-                                }
-                            }
-                            return selectDom;
-                        };
 
                         let tab = async (tab_t, tab_t_tag, tab_c, tag_c_tag, evt,rix) => {
                             
