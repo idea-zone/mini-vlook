@@ -1,4 +1,4 @@
-import { appendBlock, exportMdContent, getBlockAttrs, insertBlock, setBlockAttrs, updateBlock } from "../utils/api.js";
+import { appendBlock, deleteBlock, exportMdContent, getBlockAttrs, insertBlock, setBlockAttrs, updateBlock } from "../utils/api.js";
 
 export const mv = {}
 
@@ -103,13 +103,13 @@ mv.GetChildNodes =(dom) =>{
  */
 mv.CreateByTagName = (id,cls,text,tagName)=>{
     let div = document.createElement(tagName);
-    if (id!==null && id!==undefined && mv.Empty(id)){
+    if (id!==null && id!==undefined && mv.Empty(id)===false){
         div.id=id;   
     }
-    if (cls!==null && cls!==undefined && mv.Empty(cls)){
+    if (cls!==null && cls!==undefined && mv.Empty(cls)===false){
         div.classList.add(cls);   
     }
-    if (text!==null && text!==undefined && mv.Empty(text)){
+    if (text!==null && text!==undefined && mv.Empty(text)===false){
         let txt = document.createTextNode(text);
         div.appendChild(txt);
     }
@@ -276,6 +276,24 @@ mv.GetSiyuanBlockId = (dom) =>{
 }
 
 /**
+ * 获取 lute 属性
+ */
+mv.GetLute= ()=>{
+   return siyuan.layout.centerLayout.children[0]
+                                        .children[0].model.editor
+                                        .protyle.lute;
+}
+
+/**
+ * 获取 protyle 属性
+ */
+ mv.GetProtyle = ()=>{
+    return siyuan.layout.centerLayout.children[0]
+                                        .children[0].model.editor
+                                        .protyle;
+}
+
+/**
  * 根据 id 获取 markdown 内容,返回结果 .content 属性即可获取对应的内容
  * @param {*} id 
  * @returns id
@@ -331,11 +349,16 @@ mv.AppendBlockByMd_API = async(pid,md)=>{
  mv.InsertBlockByMd_API = async(id,md)=>{
     if (mv.Empty(id)) return null;
     let rt =await insertBlock(
-        pid,
+        id,
         'markdown',
         md
     );
     return rt[0].doOperations[0].id;
+}
+
+mv.DeleteBlockById_API = async(id)=>{
+    if (mv.Empty(id)) return null;
+    return await deleteBlock(id);
 }
 
 /**

@@ -78,10 +78,11 @@
 /*多级标签*/
 @import url(/appearance/themes/mini-vlook/style/customs/mult-tag-lv.css);
 
-/*多级标签*/
-@import url(/appearance/themes/mini-vlook/style/customs/tab-bqe.css.css);
-
+/*分页引用*/
 @import url(/appearance/themes/mini-vlook/style/customs/tab-bqe.css);
+
+/*tick*/
+@import url(/appearance/themes/mini-vlook/style/customs/codelabel-tick.css);
 
 /* 
 .protyle-wysiwyg .hr+.render-node::before

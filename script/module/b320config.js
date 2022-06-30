@@ -437,9 +437,9 @@ export var config = {
                         '$4': 'msgG',
                         '$5': 'msg',
                         '$6': 'colorG',
-                        '$7': '',
-                        '$8': 'color',
-                        '$9': 'endsuffix',
+                        '$7': 'color',
+                        '$8': 'endsuffix',
+                        '$9': '',
                     },
                     emptys: ['chkG'],      // 不能为空的字段
                     emptysValues: {              // 当值为空值的值
@@ -464,76 +464,118 @@ export var config = {
                     },
                     customAttr: { // 自定义属性
                         // 'custom-codelabel-value':'${value}',
-                        'custom-codelabel-chk-title': "${title}",
+                        'custom-codelabel-chk-chk': "${chk}",
                         'custom-codelabel-chk-msg': "${msg}",
                     },
                     inlineStyle: {
-                        "--theme-chk-bgcolor": "${bgcolor1}",
-                        "--theme-chk-title-color": "${color1}",
-                        "--theme-chk-msg-color": "${color2}",
-                        "--theme-chk-msg-bgcolor": "${bgcolor2}",
+                        "--theme-wz-bgcolor": "${bgcolor1}",
+                        "--theme-wz-title-color": "${color1}",
+                        "--theme-wz-msg-color": "${color2}",
+                        "--theme-wz-msg-bgcolor": "${bgcolor2}",
                     },
-                    innerHTML: '<span><input type="checkbox" />${value}',
+                    innerHTML: '<span class="hide">${value}<span>',
                     renderEnd: (parse, element, oldHTML) => { // 渲染完单个元素的回调.
-                        let chk=getDom('input','type','checkbox',element)[0];
-                       
-                        chk.checked=empty(parse.parseInfo.chk)==false;
-                        chk.parse = parse
-                        chk.oldHTML = oldHTML;
-                        chk.element = element
-                        chk['onclick'] = function(e){
-                        
-                            // console.log(e.target.oldHTML)
 
-                            let parse = e.target.parse
-                            let element = chk.element;
+                        // let parentNode = mv.GetSiyuanBlock(element);
+                        let id = mv.GetSiyuanBlockId(element)
 
-                            // parse.reinitFormat(parse.ptypeItem)
-                            // let parseInfo1 = parse.clacParseInfo(element.oldHTML);
-                            
-                            // parse.parseInfo = parseInfo1; 
-                            // // // 渲染
-                            // parse.renderSingle(element, parse.parseInfo);
+                        let div= mv.GetDomByAtrrs(element,'class','cw-chk-wrap','span')[0];
+                        if (div===null || div===undefined){
+                            div = mv.CreateSpan(null,'cw-chk-wrap',null);
+                            let span1 = mv.CreateSpan(null,'cw-chk-gaph-one',null)
+                            let span2 = mv.CreateSpan(null,'cw-chk-gaph-two',null)
+                            div.appendChild(span1);
+                            div.appendChild(span2);
+                            element.appendChild(div);
+                        }
 
-                            let parentNode = getTargetBlock(element);
-                            let id = getTargetBlockID(element)
-                            
+                        div.classList.remove('cw-chk-tick')
+                        if (parse.parseInfo.chk === 'x'){
+                             div.classList.add('cw-chk-tick')
+                        }
+
+                        div['onclick'] = async function(){
                             let msg = parse.parseInfo.msg
-                            msg = empty(msg)?"":`|${msg}`
-
+                            msg = mv.Empty(msg)?"":`|${msg}`
                             let colorG = parse.parseInfo.colorG
-                           
-                            console.log(colorG)
+                            // let span =mv.GetDomByAtrrs(element,'class','hide','span');
 
-                            let newInnerHtml = '';
-                            if (e.target.checked){
-                                newInnerHtml =`+[x]${msg}+${colorG}`
-                                parse.chk = 'x'
-                            }else{
-                                newInnerHtml =`+[ ]${msg}+${colorG}`
-                                parse.chk = ' '
+                            if (div.classList.contains('cw-chk-tick')){
+                                div.classList.remove('cw-chk-tick')
+                                element.innerHTML = `<span class="hide">+[ ]${msg}+${colorG}</span>`;
+                                parse.parseInfo.chk=' '
+                                mv.SetAttrs(element,'custom-codelabel-chk-chk',' ')
+                                mv.SetAttrs(element,'custom-codelabel-value',`+[ ]${msg}+${colorG}`)
                             }
-                            
-                            parse.reinitFormat(parse.ptypeItem)
-                            let parseInfo = parse.clacParseInfo(newInnerHtml);
-                            
-                            parse.parseInfo = parseInfo; 
-                            // // 渲染
-                            parse.renderSingle(element, parse.parseInfo);
-                                                            
-                            // 设置新的 自定义的value
-                            element.setAttribute("custom-codelabel-value", newInnerHtml);
-                            element.oldHTML = newInnerHtml
+                            else{
+                                div.classList.add('cw-chk-tick')
+                                element.innerHTML =`<span class="hide">+[x]${msg}+${colorG}</span>`;
+                                parse.parseInfo.chk='x'
+                                mv.SetAttrs(element,'custom-codelabel-chk-chk','x')
+                                mv.SetAttrs(element,'custom-codelabel-value',`+[ ]${msg}+${colorG}`)
+                            }
 
-                            // e.target.parentNode.innerHTML
-                            var tmd = siyuan.layout.centerLayout.children[0]
-                            .children[0].model.editor
-                            .protyle.lute.BlockDOM2Md(parentNode.innerHTML);
-                            updateM(id, tmd).then(d => {
-                            let dom = document.querySelectorAll(`div[data-node-id="${d[0].doOperations[0].id}"]`)[0];
-                                render(dom)
-                            })
-                        } 
+                            let md = mv.GetLute().BlockDOM2Md(element.parentNode.parentNode.innerHTML)
+                            console.log(md)
+                            let kid = await mv.UpdateBlockByMd_API(id,md)
+                            let dom = document.querySelectorAll(`div[data-node-id="${kid}"]`)[0];
+                            render(dom)
+                        }
+
+                        // let chk=getDom('input','type','checkbox',element)[0];
+                        // chk.checked=empty(parse.parseInfo.chk)==false;
+                        // chk.parse = parse
+                        // chk.oldHTML = oldHTML;
+                        // chk.element = element
+
+                        // chk['onclick'] = function(e){
+                        
+                        //     let parse = e.target.parse
+                        //     let element = chk.element;
+
+
+                           
+
+
+                        //     let parentNode = getTargetBlock(element);
+                        //     let id = getTargetBlockID(element)
+                            
+                        //     let msg = parse.parseInfo.msg
+                        //     msg = empty(msg)?"":`|${msg}`
+
+                        //     let colorG = parse.parseInfo.colorG
+                           
+                        //     console.log(colorG)
+
+                        //     let newInnerHtml = '';
+                        //     if (e.target.checked){
+                        //         newInnerHtml =`+[x]${msg}+${colorG}`
+                        //         parse.chk = 'x'
+                        //     }else{
+                        //         newInnerHtml =`+[ ]${msg}+${colorG}`
+                        //         parse.chk = ' '
+                        //     }
+                            
+                        //     parse.reinitFormat(parse.ptypeItem)
+                        //     let parseInfo = parse.clacParseInfo(newInnerHtml);
+                            
+                        //     parse.parseInfo = parseInfo; 
+                        //     // // 渲染
+                        //     parse.renderSingle(element, parse.parseInfo);
+                                                            
+                        //     // 设置新的 自定义的value
+                        //     element.setAttribute("custom-codelabel-value", newInnerHtml);
+                        //     element.oldHTML = newInnerHtml
+
+                        //     // e.target.parentNode.innerHTML
+                        //     var tmd = siyuan.layout.centerLayout.children[0]
+                        //     .children[0].model.editor
+                        //     .protyle.lute.BlockDOM2Md(parentNode.innerHTML);
+                        //     updateM(id, tmd).then(d => {
+                        //     let dom = document.querySelectorAll(`div[data-node-id="${d[0].doOperations[0].id}"]`)[0];
+                        //         render(dom)
+                        //     })
+                        // } 
                     },
                 },
                 {   // 刮刮乐
@@ -1030,16 +1072,21 @@ export var config = {
 
                         if (parse.parseInfo['func'] === 'map') {
 
-                            insertM(id, '---').then(a => {
+                            let ida = await mv.InsertBlockByMd_API(id,'---');
+                            let idb = await mv.InsertBlockByMd_API(ida,'---');
+                            let idc = await mv.InsertBlockByMd_API(idb,'---');
+                            let idd = await mv.InsertBlockByMd_API(idc,'* 中心主题 \n  * 分支1 \n  * 分支2 \n  * 分支3 ');
+                            let ide = await mv.DeleteBlockById_API(id);
+                            // insertM(id, '---').then(a => {
 
-                                insertM(a[0].doOperations[0].id, '---').then(b => {
-                                    insertM(b[0].doOperations[0].id, '---').then(c => {
-                                        insertM(c[0].doOperations[0].id, '* 中心主题 \n  * 分支1 \n  * 分支2 \n  * 分支3 ').then(t => {
-                                            deleteBlock(id);
-                                        })
-                                    })
-                                })
-                            });
+                            //     insertM(a[0].doOperations[0].id, '---').then(b => {
+                            //         insertM(b[0].doOperations[0].id, '---').then(c => {
+                            //             insertM(c[0].doOperations[0].id, '* 中心主题 \n  * 分支1 \n  * 分支2 \n  * 分支3 ').then(t => {
+                            //                 deleteBlock(id);
+                            //             })
+                            //         })
+                            //     })
+                            // });
                             return;
                         }
 
