@@ -466,6 +466,8 @@ export var config = {
                         // 'custom-codelabel-value':'${value}',
                         'custom-codelabel-chk-chk': "${chk}",
                         'custom-codelabel-chk-msg': "${msg}",
+                        'custom-codelabel-chk-colorG': "${colorG}",
+                        'custom-codelabel-chk-endsuffix': "${endsuffix}",
                     },
                     inlineStyle: {
                         "--theme-wz-bgcolor": "${bgcolor1}",
@@ -495,22 +497,25 @@ export var config = {
                         }
 
                         div['onclick'] = async function(){
-                            let msg = parse.parseInfo.msg
+                            // let msg = parse.parseInfo.msg
+                            let msg = mv.GetAttrs(element,"custom-codelabel-chk-msg")
+
                             msg = mv.Empty(msg)?"":`|${msg}`
-                            let colorG = parse.parseInfo.colorG
+                            // let colorG = parse.parseInfo.colorG
+                            let colorG = mv.GetAttrs(element,"custom-codelabel-chk-colorG")
                             // let span =mv.GetDomByAtrrs(element,'class','hide','span');
 
                             if (div.classList.contains('cw-chk-tick')){
                                 div.classList.remove('cw-chk-tick')
                                 element.innerHTML = `<span class="hide">+[ ]${msg}+${colorG}</span>`;
-                                parse.parseInfo.chk=' '
+                                // parse.parseInfo.chk=' '
                                 mv.SetAttrs(element,'custom-codelabel-chk-chk',' ')
                                 mv.SetAttrs(element,'custom-codelabel-value',`+[ ]${msg}+${colorG}`)
                             }
                             else{
                                 div.classList.add('cw-chk-tick')
                                 element.innerHTML =`<span class="hide">+[x]${msg}+${colorG}</span>`;
-                                parse.parseInfo.chk='x'
+                                // parse.parseInfo.chk='x'
                                 mv.SetAttrs(element,'custom-codelabel-chk-chk','x')
                                 mv.SetAttrs(element,'custom-codelabel-value',`+[ ]${msg}+${colorG}`)
                             }
@@ -522,60 +527,6 @@ export var config = {
                             render(dom)
                         }
 
-                        // let chk=getDom('input','type','checkbox',element)[0];
-                        // chk.checked=empty(parse.parseInfo.chk)==false;
-                        // chk.parse = parse
-                        // chk.oldHTML = oldHTML;
-                        // chk.element = element
-
-                        // chk['onclick'] = function(e){
-                        
-                        //     let parse = e.target.parse
-                        //     let element = chk.element;
-
-
-                           
-
-
-                        //     let parentNode = getTargetBlock(element);
-                        //     let id = getTargetBlockID(element)
-                            
-                        //     let msg = parse.parseInfo.msg
-                        //     msg = empty(msg)?"":`|${msg}`
-
-                        //     let colorG = parse.parseInfo.colorG
-                           
-                        //     console.log(colorG)
-
-                        //     let newInnerHtml = '';
-                        //     if (e.target.checked){
-                        //         newInnerHtml =`+[x]${msg}+${colorG}`
-                        //         parse.chk = 'x'
-                        //     }else{
-                        //         newInnerHtml =`+[ ]${msg}+${colorG}`
-                        //         parse.chk = ' '
-                        //     }
-                            
-                        //     parse.reinitFormat(parse.ptypeItem)
-                        //     let parseInfo = parse.clacParseInfo(newInnerHtml);
-                            
-                        //     parse.parseInfo = parseInfo; 
-                        //     // // 渲染
-                        //     parse.renderSingle(element, parse.parseInfo);
-                                                            
-                        //     // 设置新的 自定义的value
-                        //     element.setAttribute("custom-codelabel-value", newInnerHtml);
-                        //     element.oldHTML = newInnerHtml
-
-                        //     // e.target.parentNode.innerHTML
-                        //     var tmd = siyuan.layout.centerLayout.children[0]
-                        //     .children[0].model.editor
-                        //     .protyle.lute.BlockDOM2Md(parentNode.innerHTML);
-                        //     updateM(id, tmd).then(d => {
-                        //     let dom = document.querySelectorAll(`div[data-node-id="${d[0].doOperations[0].id}"]`)[0];
-                        //         render(dom)
-                        //     })
-                        // } 
                     },
                 },
                 {   // 刮刮乐

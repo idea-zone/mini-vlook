@@ -78,3 +78,8 @@ code.custom-codelabel-chk[custom-codelabel-chk-chk="x"][custom-codelabel-chk-msg
 code.custom-codelabel-chk[custom-codelabel-chk-chk=" "][custom-codelabel-chk-msg]:not(:empty)::after{
     background-color: #ccc !important;
 }
+
+[custom-codelabel-chk-endsuffix='!'] .cw-chk-tick .cw-chk-gaph-one,
+[custom-codelabel-chk-endsuffix='!'] .cw-chk-tick .cw-chk-gaph-two {
+    background-color: var(--theme-wz-bgcolor) !important;
+}
