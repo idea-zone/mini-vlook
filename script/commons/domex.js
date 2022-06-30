@@ -1,3 +1,5 @@
+import { appendBlock, exportMdContent, getBlockAttrs, insertBlock, setBlockAttrs, updateBlock } from "../utils/api.js";
+
 export const mv = {}
 
 mv.config={
@@ -272,6 +274,102 @@ mv.GetSiyuanBlockId = (dom) =>{
     }
     else return null;
 }
+
+/**
+ * 根据 id 获取 markdown 内容,返回结果 .content 属性即可获取对应的内容
+ * @param {*} id 
+ * @returns id
+ */
+mv.GetMdByBlock_API = async(id)=> 
+{
+    if (mv.Empty(id)) return null;
+    let rt = await exportMdContent(id);
+    return rt.content;
+}
+
+/**
+ * 用 md 更新 id 对应块的内容
+ * @param {*} id 
+ * @param {*} md 
+ * @returns 
+ */
+mv.UpdateBlockByMd_API = async(id,md)=>{
+    if (mv.Empty(id)) return null;
+    let rt =await updateBlock(
+        id,
+        'markdown',
+        md
+    );
+
+    return rt[0].doOperations[0].id;
+}
+
+/**
+ * 用 md 在 pid 对应块中插入孩子节点
+ * @param {*} pid 
+ * @param {*} md 
+ * @returns 
+ */
+mv.AppendBlockByMd_API = async(pid,md)=>{
+    if (mv.Empty(pid)) return null;
+    let rt =await appendBlock(
+        pid,
+        'markdown',
+        md
+    );
+    return rt[0].doOperations[0].id;
+}
+
+
+
+/**
+ * 用 md 在 id 后对应块中插入新块
+ * @param {*} id 
+ * @param {*} md 
+ * @returns 
+ */
+ mv.InsertBlockByMd_API = async(id,md)=>{
+    if (mv.Empty(id)) return null;
+    let rt =await insertBlock(
+        pid,
+        'markdown',
+        md
+    );
+    return rt[0].doOperations[0].id;
+}
+
+/**
+ * 设置属性
+ * @param {*} id 块id
+ * @param {*} customf 属性名，必须是 custom-xxx
+ * @param {*} value 属性值
+ * @returns 
+ */
+mv.SetAttrs_API = async(id,customf,value)=>{
+    if (mv.Empty(id) || mv.Empty(customf)) return null;
+    let data={}
+    data[customf] = value;
+    let rt = await setBlockAttrs(
+        id1,
+        data
+    );
+    return rt[0].doOperations[0].id;
+}
+
+/**
+ * 获取id对应内容快的属性,直接 .custom-xxx 就能返回对应的值,如果
+ * @param {*} id 
+ * @returns 
+ */
+mv.GetAttrs_API = async(id)=>{
+    if (mv.Empty(id)) return null;
+    let rt = await getBlockAttrs(id);
+    return rt;
+}
+
+
+
+
 
 
 

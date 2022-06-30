@@ -1,9 +1,10 @@
-import { insertBlock, deleteBlock, updateBlock, exportMdContent, getBlockByID, setBlockAttrs, appendBlock } from "../utils/api.js";
+import { insertBlock, deleteBlock, updateBlock, exportMdContent, getBlockByID, setBlockAttrs, appendBlock, getBlockAttrs } from "../utils/api.js";
 import { empty } from "../utils/b320comm.js";
 import { getTargetBlock, getTargetBlockID } from "../utils/dom.js";
 import { CodeLabelParse } from "../utils/codelabel-parse.js"
 import { setStyleVariableValue } from "../utils/codetag.js";
 import { TASK_HANDLER } from "../utils/ui.js";
+import { mv } from "../commons/domex.js";
 
 
 export const insertM = async (id1, data) => {
@@ -63,6 +64,11 @@ export const deleteM = async (id1) =>{
 export const getMdContent = async (id1) => {
     if (empty(id1)) return null;
     return await exportMdContent(id1);
+}
+
+export const getAttrS = async (id1)=>{
+    if (empty(id1)) return null;
+    return await getBlockAttrs(id1);
 }
 
 export function render(nodoDom) {
@@ -1055,8 +1061,9 @@ export var config = {
                         if (parse.parseInfo['func'] === 'bqtab'){
 
                             // 插入父容器
-                            insertM(id, '> `::tab`').then(wrap=>{
+                            insertM(id, '> `::tab`').then(async wrap=>{
                                 updateAttr(wrap[0].doOperations[0].id,'custom-type','bq-wrap');
+                               
                                 // 插入选项卡
                                 appendM(wrap[0].doOperations[0].id, '* 选项1 \n * 选项2 \n * 选项3 ').then(tabt=>{
                                     
