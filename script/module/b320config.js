@@ -444,7 +444,7 @@ export var config = {
                     emptys: ['chkG'],      // 不能为空的字段
                     emptysValues: {              // 当值为空值的值
                         'chk': ' ',
-                        'msg': ' ',
+                        'msg': '',
                     },
                     style: { // 样式映射信息
                         rerender: true,             // 是否计算配色
@@ -499,10 +499,14 @@ export var config = {
                         div['onclick'] = async function(){
                             // let msg = parse.parseInfo.msg
                             let msg = mv.GetAttrs(element,"custom-codelabel-chk-msg")
+                            if (msg === undefined) msg=''
 
                             msg = mv.Empty(msg)?"":`|${msg}`
                             // let colorG = parse.parseInfo.colorG
                             let colorG = mv.GetAttrs(element,"custom-codelabel-chk-colorG")
+                            if (colorG === "undefined" || colorG===undefined){
+                                colorG=""   
+                            }
                             // let span =mv.GetDomByAtrrs(element,'class','hide','span');
 
                             if (div.classList.contains('cw-chk-tick')){
