@@ -5,6 +5,7 @@ import { CodeLabelParse } from "../utils/codelabel-parse.js"
 import { setStyleVariableValue } from "../utils/codetag.js";
 import { TASK_HANDLER } from "../utils/ui.js";
 import { mv } from "../commons/domex.js";
+import { Messagebox, MessageboxYesNo } from "../commons/widget.js";
 
 
 export const insertM = async (id1, data) => {
@@ -1438,8 +1439,23 @@ export var config = {
                         }
 
                         tab("bq-tab_t", "li", "bq-tab_c", "bq", "onclick")
-                        crtLine.onclick =(e)=>{
+                        crtLine.onclick = async (e)=>{
                             tab("bq-tab_t", "li", "bq-tab_c", "bq", "onclick")
+
+                            // let msgbox=new Messagebox("测试刷新",5);
+                            // let mgdom = msgbox.Create("bqtmsgbox","bqtmsgbox","width: 480px;top: 45%; left: 45%;");
+                            // document.body.appendChild(mgdom);
+                            // msgbox.Start()
+
+
+                            let msgbox=new MessageboxYesNo("测试刷新",5);
+                            let mgdom = msgbox.Create("bqtmsgbox","bqtmsgbox","width: 480px;top: 45%; left: 45%;");
+                            document.body.appendChild(mgdom);
+                            msgbox.Start(()=>{
+                                console.log("OK")
+                            },()=>{
+                                console.log("NO")
+                            })
                         }
                     },
                 },

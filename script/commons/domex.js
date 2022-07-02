@@ -107,7 +107,11 @@ mv.CreateByTagName = (id,cls,text,tagName)=>{
         div.id=id;   
     }
     if (cls!==null && cls!==undefined && mv.Empty(cls)===false){
-        div.classList.add(cls);   
+        var clsex = cls.split(/\s+/);
+        for(let c1 of clsex){
+            div.classList.add(c1);  
+        }
+        // div.classList.add(cls);   
     }
     if (text!==null && text!==undefined && mv.Empty(text)===false){
         let txt = document.createTextNode(text);

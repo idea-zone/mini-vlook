@@ -84,6 +84,10 @@
 /*tick*/
 @import url(/appearance/themes/mini-vlook/style/customs/codelabel-tick.css);
 
+/* nodeattr 挂件 */
+@import url(/appearance/themes/mini-vlook/style/customs/nodeattr.css);
+
+
 /* 
 .protyle-wysiwyg .hr+.render-node::before
 ,.protyle-wysiwyg .hr+.render-node+.render-node::before

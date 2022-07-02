@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+p {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+}
+</style>
+</head>
+<body>
+
+    <button id="ok">确定</button>
+    <button id ="cancel"  class="ountdown-live"  style="text-align:center;">取消</button>
+    <p id="demo1" class="countdown-live" style="text-align:center;"></p>
+    <p id="demo2"  style="text-align:center;"></p>
+
+    <button id="ok1">确定</button>
+    <button id ="cancel1"  class="ountdown-live"  style="text-align:center;">取消</button>
+    <p id="demo11" class="countdown-live" style="text-align:center;"></p>
+    <p id="demo21"  style="text-align:center;"></p>
+
+<script>
+
+let countdown=(second,okcalled,cancelcalled,loopcalled)=>{
+    this.isAction = false;
+    this.CountSecond = second;
+    this.NowSecond = 0;
+    okcalled.countdown = this;
+    cancelcalled.countdown =this;
+    loopcalled.countdown =this;
+    // let isAction = false;
+    let countDownDate = new Date(Date.now() + second*1000).getTime();
+    let ctd = setInterval(function(){
+        if (countdown.isAction === true) {
+            clearInterval(ctd);
+            return;
+        }
+        let now = new Date().getTime();
+        let distance = countDownDate - now;
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000) +2;
+        countdown.second=seconds;
+        if (distance < 0){
+            clearInterval(ctd);
+            cancelcalled();
+        }
+    }, 1000)
+}
+
+class CountDown{
+    constructor(second){
+        this.IsAction = false;   // 是否停止
+        this.IsTimeDown= false;  // 是否超时
+        this.countDownDate = new Date(Date.now() + second*1000).getTime();
+        this.loop = null;
+        this.Seconds=second;
+        this.downcalled=null;
+        this.loopcalled=null;
+    }
+
+    Loops(obj){
+        if (obj.IsAction === true) {
+                clearInterval(obj.loop);
+                return;
+        }
+        let now = new Date().getTime();
+        let distance = obj.countDownDate - now;
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000) +2;
+        obj.Seconds=seconds;
+        obj.loopcalled();
+        if (distance < 0){
+            clearInterval(obj.loop );
+            obj.downcalled();
+        }
+    }
+
+    Start(downcalled,loopcalled){
+        this.downcalled=downcalled;
+        this.loopcalled=loopcalled;
+        this.loop = setInterval(this.Loops,1000,this);
+    }
+    Stop(){
+        this.IsAction=true;
+        clearInterval(this.loop);
+    }
+}
+
+let a = new CountDown(5)
+a.Start(()=>{
+    document.getElementById("demo1").innerHTML = "countdown over!";
+},()=>{
+    document.getElementById("cancel").innerHTML = `取消(${a.Seconds}秒)`
+})
+document.getElementById("cancel")["onclick"] = function(){
+    a.Stop();
+    document.getElementById("demo2").innerHTML =" STOP By cancel!";
+}
+document.getElementById("ok")["onclick"] = function(){
+    a.Stop();
+   
+    document.getElementById("demo2").innerHTML =" STOP By ok!";
+}
+
+let b = new CountDown(10)
+b.Start(()=>{
+    document.getElementById("demo11").innerHTML = "countdown over1!";
+},()=>{
+    document.getElementById("cancel1").innerHTML = `取消(${b.Seconds}秒)`
+})
+document.getElementById("cancel1")["onclick"] = function(){
+    b.Stop();
+    document.getElementById("demo21").innerHTML =" STOP By cancel1!";
+}
+document.getElementById("ok1")["onclick"] = function(){
+    b.Stop();
+   
+    document.getElementById("demo21").innerHTML =" STOP By ok1!";
+}
+
+
+
+// countdown(5,()=>{
+//     this
+// })
+
+
+// var isAction=false;
+
+// // Set the date we're counting down to
+// var countDownDate = new Date(Date.now() + 5000).getTime();
+
+// document.getElementById("cancel")["onclick"] = function(){
+//     clearInterval(x);
+//     isAction=true;
+//     document.getElementById("demo2").innerHTML =" STOP By cancel!";
+// }
+
+// document.getElementById("ok")["onclick"] = function(){
+//     clearInterval(x);
+//     isAction=true;
+//     document.getElementById("demo2").innerHTML =" STOP By OK!";
+// }
+
+// // Update the count down every 1 second
+// var x = setInterval(function() {
+//     if (isAction === true) {
+//         clearInterval(x);
+//         document.getElementById("demo1").innerHTML = document.getElementById("demo1").innerHTML+" STOP!";
+//         document.getElementById("cancel").innerHTML = document.getElementById("demo1").innerHTML+" STOP!";
+//         return;
+//     }
+//   // Get todays date and time
+//   var now = new Date().getTime();
+
+//   // Find the distance between now and the count down date
+//   var distance = countDownDate - now;
+
+//   // Time calculations for days, hours, minutes and seconds
+// //   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+// //   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+// //   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+// var seconds = Math.floor((distance % (1000 * 60)) / 1000) +1;
+
+//   // Output the result in an element with id="demo"
+// //   document.getElementById("demo1").innerHTML = days + " days, " + hours + " hours, " +
+// //     minutes + " minutes, & " + seconds + " seconds";
+//     document.getElementById("demo1").innerHTML = seconds + " seconds";
+//     document.getElementById("cancel").innerHTML = `取消(${seconds}秒)`
+// //  days + " days, " + hours + " hours, " +
+// //     minutes + " minutes, & " + seconds + " seconds";
+    
+
+//   // If the count down is over, write some text 
+//   if (distance < 0) {
+//     clearInterval(x);
+//     document.getElementById("demo1").innerHTML = "countdown over!";
+//     document.getElementById("cancel")["onclick"]();
+//   }
+// }, 1000);
+</script>
+
+</body>
+</html>
