@@ -5,7 +5,7 @@ import { CodeLabelParse } from "../utils/codelabel-parse.js"
 import { setStyleVariableValue } from "../utils/codetag.js";
 import { TASK_HANDLER } from "../utils/ui.js";
 import { mv } from "../commons/domex.js";
-import { Messagebox, MessageboxYesNo } from "../commons/widget.js";
+import { InputData, Messagebox, MessageboxInputs, MessageboxYesNo } from "../commons/widget.js";
 
 
 export const insertM = async (id1, data) => {
@@ -415,7 +415,7 @@ export var config = {
                     },
                 },
                 {   // 复选框
-                    typeid: "wz",
+                    typeid: "chk",
                     // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
                     // reg: '(\\\+(\\\[()\\\])([|](.*?))?){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
                     reg: '(\\\+(\\\[(\\s|x)\\\])([|](.*?))?\\\+){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
@@ -1327,30 +1327,37 @@ export var config = {
                                 button.setAttribute('bq-button-value',"新建")
                                 element.parentNode.insertBefore(button,element.nextSibling);
                             }
+
                             button[evt] = function () {
+                               
+                                let inner = ()=>{
+                                    var tab_t = getDom("div", "custom-type", "bq-tab_t", parentNode)[0];
+                                    var tab_t_li = getDom("div", "class", "li", tab_t);
+
+                                    var tab_c = getDom("div", "custom-type", "bq-tab_c", parentNode)[0];
+                                    var tab_c_li = getDom("div", "class", "bq", tab_c);
+
+                                    let t_ix=getTargetBlockID(tab_t_li[tab_t_li.length-1])
+                                    let c_ix=getTargetBlockID(tab_c_li[tab_c_li.length-1])
                                     
-                                // tab("bq-tab_t", "li", "bq-tab_c", "bq", "onclick")
-
-                                var tab_t = getDom("div", "custom-type", "bq-tab_t", parentNode)[0];
-                                var tab_t_li = getDom("div", "class", "li", tab_t);
-
-                                var tab_c = getDom("div", "custom-type", "bq-tab_c", parentNode)[0];
-                                var tab_c_li = getDom("div", "class", "bq", tab_c);
-
-                                let t_ix=getTargetBlockID(tab_t_li[tab_t_li.length-1])
-                                let c_ix=getTargetBlockID(tab_c_li[tab_c_li.length-1])
-                                
-                                // 插入 选项卡内容
-                                insertM(c_ix,"> 内容new").then(a=>{
-                                    console.log(a[0].doOperations[0].id);
-                                    // 插入选项卡控制器
-                                    insertM(t_ix, '* 选项卡new').then(a => {
+                                    // 插入 选项卡内容
+                                    insertM(c_ix,"> 内容new").then(a=>{
                                         console.log(a[0].doOperations[0].id);
-                                        let c_li=getDom('div',"data-node-id",a[0].doOperations[0].id,tab_c)[0];
-                                        tab("bq-tab_t", "li", "bq-tab_c", "bq", "onclick",-1)
-                                    });
+                                        // 插入选项卡控制器
+                                        insertM(t_ix, '* 选项卡new').then(a => {
+                                            console.log(a[0].doOperations[0].id);
+                                            let c_li=getDom('div',"data-node-id",a[0].doOperations[0].id,tab_c)[0];
+                                            tab("bq-tab_t", "li", "bq-tab_c", "bq", "onclick",-1)
+                                        });
 
-                                });
+                                    });
+                                }
+                               
+                                let msgbox=new MessageboxYesNo("确定新建一个标签页吗？",5);
+                                let mgdom = msgbox.Create("bqtmsgbox","bqtmsgbox","width: 480px;top: 45%; left: 45%;");
+                                document.body.appendChild(mgdom);
+                                msgbox.Start(inner,()=>{});
+
                             }
 
                             // 设置 bq-none
@@ -1440,22 +1447,7 @@ export var config = {
 
                         tab("bq-tab_t", "li", "bq-tab_c", "bq", "onclick")
                         crtLine.onclick = async (e)=>{
-                            tab("bq-tab_t", "li", "bq-tab_c", "bq", "onclick")
-
-                            // let msgbox=new Messagebox("测试刷新",5);
-                            // let mgdom = msgbox.Create("bqtmsgbox","bqtmsgbox","width: 480px;top: 45%; left: 45%;");
-                            // document.body.appendChild(mgdom);
-                            // msgbox.Start()
-
-
-                            let msgbox=new MessageboxYesNo("测试刷新",5);
-                            let mgdom = msgbox.Create("bqtmsgbox","bqtmsgbox","width: 480px;top: 45%; left: 45%;");
-                            document.body.appendChild(mgdom);
-                            msgbox.Start(()=>{
-                                console.log("OK")
-                            },()=>{
-                                console.log("NO")
-                            })
+                            tab("bq-tab_t", "li", "bq-tab_c", "bq", "onclick");                            
                         }
                     },
                 },

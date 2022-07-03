@@ -107,7 +107,7 @@ mv.CreateByTagName = (id,cls,text,tagName)=>{
         div.id=id;   
     }
     if (cls!==null && cls!==undefined && mv.Empty(cls)===false){
-        var clsex = cls.split(/\s+/);
+        var clsex = cls.trim().split(/\s+/);
         for(let c1 of clsex){
             div.classList.add(c1);  
         }
