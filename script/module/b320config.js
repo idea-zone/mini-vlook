@@ -485,29 +485,24 @@ export var config = {
                         }
 
                         div['onclick'] = async function(){
-                            // let msg = parse.parseInfo.msg
                             let msg = mv.GetAttrs(element,"custom-codelabel-chk-msg")
                             if (msg === undefined) msg=''
 
                             msg = mv.Empty(msg)?"":`|${msg}`
-                            // let colorG = parse.parseInfo.colorG
                             let colorG = mv.GetAttrs(element,"custom-codelabel-chk-colorG")
                             if (colorG === "undefined" || colorG===undefined){
                                 colorG=""   
                             }
-                            // let span =mv.GetDomByAtrrs(element,'class','hide','span');
 
                             if (div.classList.contains('cw-chk-tick')){
                                 div.classList.remove('cw-chk-tick')
                                 element.innerHTML = `<span class="hide">+[ ]${msg}+${colorG}</span>`;
-                                // parse.parseInfo.chk=' '
                                 mv.SetAttrs(element,'custom-codelabel-chk-chk',' ')
                                 mv.SetAttrs(element,'custom-codelabel-value',`+[ ]${msg}+${colorG}`)
                             }
                             else{
                                 div.classList.add('cw-chk-tick')
                                 element.innerHTML =`<span class="hide">+[x]${msg}+${colorG}</span>`;
-                                // parse.parseInfo.chk='x'
                                 mv.SetAttrs(element,'custom-codelabel-chk-chk','x')
                                 mv.SetAttrs(element,'custom-codelabel-value',`+[ ]${msg}+${colorG}`)
                             }
@@ -695,9 +690,9 @@ export var config = {
                         'color': "${color}",
                     },
                     innerHTML: '<button>+</button><span>[${count}]</span><span>(</span>${data}<span>${colorTag})</span>',
-                    renderEnd: (parse, element, oldHTML) => {
+                    renderEnd: async (parse, element, oldHTML) => {
 
-                        function bingOnClick(parse, e, oldHTML) {
+                        async function bingOnClick(parse, e, oldHTML) {
 
                             // 获取父节点    
                             let parentNode = getTargetBlock(e);
@@ -725,13 +720,10 @@ export var config = {
                                 parse.parseInfo.count
                             );
 
-                            var tmd = siyuan.layout.centerLayout.children[0]
-                                .children[0].model.editor
-                                .protyle.lute.BlockDOM2Md(parentNode.innerHTML);
-                            updateM(id, tmd).then(d => {
-                                let dom = document.querySelectorAll(`div[data-node-id="${d[0].doOperations[0].id}"]`)[0];
-                                render(dom)
-                            })
+                            var tmd = mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
+                            let  did = await mv.UpdateBlockByMd_API(id, tmd);
+                            let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
+                            render(dom);
 
                         }
 
@@ -880,7 +872,7 @@ export var config = {
                         // "--theme-wz-msg-bgcolor":"${bgcolor2}",
                     },
                     innerHTML: '<span>${value}</span>',  // 解析后 code 标签的 innerHTML 内容，支持类似js的模板语法，${别名}, 会被实际的值替换
-                    renderEnd: (parse, element, oldHTML) => { //在每个元素渲染解析完成后的回调函数
+                    renderEnd: async (parse, element, oldHTML) => { //在每个元素渲染解析完成后的回调函数
                         // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
                         // element 当前元素（解析后的）
                         // oldHTML （解析前的 innerHTML 内容）
@@ -892,13 +884,11 @@ export var config = {
                         let parentNode = getTargetBlock(element);
                         let id = getTargetBlockID(element);
 
-                        let setHtml = (index, tItms) => {
+                        let setHtml = async (index, tItms) => {
 
                             let itmes = [...tItms.matchAll('\\\((.*?)\\\)')]
 
                             element.innerHTML = `<span>^[${index}]${tItms}</span>`
-                            // console.log("innerHTML:"+element.innerHTML);
-
 
                             let slt = itmes[index][1];
                             element.setAttribute('custom-select-data', slt)
@@ -913,20 +903,17 @@ export var config = {
                             for (let item of itmes) {
                                 let itext = item[1];
                                 let eli = mUl.createli("", itext, i++);
-                                eli.onclick = (e) => {
+                                eli.onclick = async (e) => {
                                     // let idx=e.target.getAttribute('custom-li-data');
                                     let idx = e.target.getAttribute('custom-li-index');
                                     let tms = element.getAttribute('custom-codelabel-cx-itmes')
                                     setHtml(idx, tms);
 
-                                    var tmd = siyuan.layout.centerLayout.children[0]
-                                        .children[0].model.editor
-                                        .protyle.lute.BlockDOM2Md(parentNode.innerHTML);
+                                    var tmd = mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
+                                    let  did = await mv.UpdateBlockByMd_API(id, tmd);
+                                    let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
+                                    render(dom);
 
-                                    updateM(id, tmd).then(d => {
-                                        let dom = document.querySelectorAll(`div[data-node-id="${d[0].doOperations[0].id}"]`)[0];
-                                        render(dom)
-                                    })
                                 };
                             }
 
@@ -1025,11 +1012,9 @@ export var config = {
                             if (empty(parse.parseInfo['args']) === false) {
                                 szcolor = parse.parseInfo['args']
                             }
-
-                            
                             let aid = await mv.InsertBlockByMd_API(id,'>  ');
                             let bid = await mv.AppendBlockByMd_API(aid,'`>(' + szcolor + ')` .');
-                            updateM(id, ' ')
+                            let cid = await mv.UpdateBlockByMd_API(id, ' ')
                             return;
                         }
 
@@ -1052,8 +1037,6 @@ export var config = {
                             
                             window.location.reload();
                         }
-
-                        //    console.log("markdown")
                     },
                 },
                 {   // 彩虹引用
@@ -1138,7 +1121,7 @@ export var config = {
                             itms.push(`${ims}!`)
                         }
 
-                        let setHtml = (slt, slt2) => {
+                        let setHtml = async (slt, slt2) => {
 
                             let endsuffix = "";
                             if (slt2 === '2') {
@@ -1160,7 +1143,6 @@ export var config = {
                             }
 
                             element.setAttribute('custom-select-data', slt)
-                            // element.setAttribute('custom-select-endsuffix',slt2)
                             let pstionX = element.getBoundingClientRect().left - element.parentNode.getBoundingClientRect().left + 20;
                             let pstionY = element.getBoundingClientRect().bottom - element.parentNode.getBoundingClientRect().bottom;
                             let mUl = createUL(element);
@@ -1170,7 +1152,7 @@ export var config = {
                             for (let item of itms) {
                                 let itext = item;
                                 let eli = mUl.createli("", itext, i++);
-                                eli.onclick = (e) => {
+                                eli.onclick = async (e) => {
 
                                     let idx = e.target.getAttribute('custom-li-index');
                                     let slt1 = itms[idx];
@@ -1181,16 +1163,11 @@ export var config = {
                                     }
                                     setHtml(slt1, slt2);
                                     
-
-                                    // element.setAttribute('custom-select-data',parse.parseInfo.color)
-                                    var tmd = siyuan.layout.centerLayout.children[0]
-                                        .children[0].model.editor
-                                        .protyle.lute.BlockDOM2Md(parentNode.innerHTML);
-
-                                    updateM(id, tmd).then(d => {
-                                        let dom = document.querySelectorAll(`div[data-node-id="${d[0].doOperations[0].id}"]`)[0];
-                                        render(dom)
-                                    })
+                                    var tmd =  mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
+                                    let did = await mv.UpdateBlockByMd_API(id, tmd);
+                                    let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
+                                    render(dom)
+                                    
                                 };
                             }
 
