@@ -8,76 +8,11 @@ import { mv } from "../commons/domex.js";
 import { InputData, Messagebox, MessageboxInputs, MessageboxYesNo } from "../commons/widget.js";
 
 
-export const insertM = async (id1, data) => {
-    if (empty(id1)) return null;
-    return await insertBlock(
-        id1,
-        'markdown',
-        data
-    );
-};
-
-export const updateD = async (id1, data) => {
-    if (empty(id1)) return null;
-    return await updateBlock(
-        id1,
-        'dom',
-        data
-    );
-};
-
-export const updateAttr = async (id1, customf,value) => {
-    if (empty(id1)) return null;
-    let data={}
-    data[customf]=value;
-    return await setBlockAttrs(
-        id1,
-        data
-    );
-};
-
-export const updateM = async (id1, data) => {
-    if (empty(id1)) return null;
-    return await updateBlock(
-        id1,
-        'markdown',
-        data
-    );
-};
-
-export const appendM = async (id1, data) => {
-    if (empty(id1)) return null;
-    return await appendBlock(
-        id1,
-        'markdown',
-        data
-    );
-};
-
-export const deleteM = async (id1) =>{
-    if (empty(id1)) return null;
-    return await deleteBlock(
-        id1
-    )
-}
-
-
-export const getMdContent = async (id1) => {
-    if (empty(id1)) return null;
-    return await exportMdContent(id1);
-}
-
-export const getAttrS = async (id1)=>{
-    if (empty(id1)) return null;
-    return await getBlockAttrs(id1);
-}
-
 export function render(nodoDom) {
     for (let value of config.theme.codelabel.ptype) {
         new CodeLabelParse(value, nodoDom).render();
     }
 }
-
 
 export const createUL = (e) => {
     let ul = document.createElement('ul');

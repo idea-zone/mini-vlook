@@ -4,7 +4,8 @@ export{
     codelabelMenuInit,   // 自定义右键菜单初始化
 }
 
-import { config, render, updateM } from '../module/b320config.js';
+import { mv } from '../commons/domex.js';
+import { config, render } from '../module/b320config.js';
 import { getBlockByID, getFocusedDoc,updateBlock } from './api.js';
 import { empty } from './b320comm.js';
 import { getBlockMark, getFocusedBlock, getFocusedBlockID,getTargetBlock, getTargetBlockID } from './dom.js';
@@ -72,18 +73,11 @@ async function showUtil(element, callback) {
 
         element.innerHTML = value;
         
-        var tmd=siyuan.layout.centerLayout.children[0]
-            .children[0].model.editor
-            .protyle.lute.BlockDOM2Md(parentNode.innerHTML);
-        updateM(id,tmd).then(d=>{
-            let dom=document.querySelectorAll(`div[data-node-id="${d[0].doOperations[0].id}"]`)[0];
-            render(dom)
-            // console.log(d)
-        })
+        var tmd = mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
+        let  did = await mv.UpdateBlockByMd_API(id, tmd);
+        let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
+        render(dom);
     
-        // let b=siyuan.layout.centerLayout.children[0].children[0].model.editor.protyle.lute.HTML2BlockDOM(e);
-        // console.log(b);
-
     };
 
 
