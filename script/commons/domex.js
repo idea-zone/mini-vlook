@@ -377,10 +377,10 @@ mv.SetAttrs_API = async(id,customf,value)=>{
     let data={}
     data[customf] = value;
     let rt = await setBlockAttrs(
-        id1,
+        id,
         data
     );
-    return rt[0].doOperations[0].id;
+    return id;
 }
 
 /**

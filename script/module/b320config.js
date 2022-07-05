@@ -1003,13 +1003,10 @@ export var config = {
 
                         if (parse.parseInfo['func'] === 'kanban') {
 
-                            insertM(id, '---').then(a => {
-                                insertM(a[0].doOperations[0].id, '---').then(b => {
-                                    insertM(b[0].doOperations[0].id, '* 未开始 \n  * 任务1 \n* 进行中 \n   * 任务2 \n* 已完成 \n    * 任务3').then(c => {
-                                        deleteBlock(id);
-                                    })
-                                })
-                            });
+                            let aid = await mv.InsertBlockByMd_API(id,'---');
+                            let bid = await mv.InsertBlockByMd_API(aid,'---');
+                            let cid = await mv.InsertBlockByMd_API(bid,'* 未开始 \n  * 任务1 \n* 进行中 \n   * 任务2 \n* 已完成 \n    * 任务3');
+                            deleteBlock(id);
                             return;
                         }
 
@@ -1020,16 +1017,6 @@ export var config = {
                             let idc = await mv.InsertBlockByMd_API(idb,'---');
                             let idd = await mv.InsertBlockByMd_API(idc,'* 中心主题 \n  * 分支1 \n  * 分支2 \n  * 分支3 ');
                             let ide = await mv.DeleteBlockById_API(id);
-                            // insertM(id, '---').then(a => {
-
-                            //     insertM(a[0].doOperations[0].id, '---').then(b => {
-                            //         insertM(b[0].doOperations[0].id, '---').then(c => {
-                            //             insertM(c[0].doOperations[0].id, '* 中心主题 \n  * 分支1 \n  * 分支2 \n  * 分支3 ').then(t => {
-                            //                 deleteBlock(id);
-                            //             })
-                            //         })
-                            //     })
-                            // });
                             return;
                         }
 
@@ -1039,41 +1026,31 @@ export var config = {
                                 szcolor = parse.parseInfo['args']
                             }
 
-                            insertM(id, '>  ').then(b => {
-                                appendM(b[0].doOperations[0].id,'`>(' + szcolor + ')` .').then(c=>{
-                                    updateM(id, ' ')
-                                })
-                            })
-
+                            
+                            let aid = await mv.InsertBlockByMd_API(id,'>  ');
+                            let bid = await mv.AppendBlockByMd_API(aid,'`>(' + szcolor + ')` .');
+                            updateM(id, ' ')
                             return;
                         }
 
                         if (parse.parseInfo['func'] === 'bqtab'){
 
                             // 插入父容器
-                            insertM(id, '> `::tab`').then(async wrap=>{
-                                updateAttr(wrap[0].doOperations[0].id,'custom-type','bq-wrap');
-                               
-                                // 插入选项卡
-                                appendM(wrap[0].doOperations[0].id, '* 选项1 \n * 选项2 \n * 选项3 ').then(tabt=>{
-                                    
-                                    updateAttr(tabt[0].doOperations[0].id,'custom-type','bq-tab_t');
-                                
-                                    // 插入选项卡容器
-                                    appendM(wrap[0].doOperations[0].id, '> > 内容1').then(tabc=>{
-                                        updateAttr(tabc[0].doOperations[0].id,'custom-type','bq-tab_c');
-                                        appendM(tabc[0].doOperations[0].id, '> 内容2').then(b=>{
-                                            appendM(tabc[0].doOperations[0].id, '> 内容3').then(c=>{
-                                                updateM(id, ' ').then(t=>{
-                                                    window.location.reload();
-                                                })
-                                            })
-                                        })
-                                    })
+                            let wid = await mv.InsertBlockByMd_API(id, '> `::tab`');
+                            await mv.SetAttrs_API(wid,'custom-type','bq-wrap');
 
-                                })
+                            // 插入选项卡
+                            let tabtid = await mv.AppendBlockByMd_API(wid,'* 选项1 \n * 选项2 \n * 选项3 ');
+                            await mv.SetAttrs_API(tabtid,'custom-type','bq-tab_t');
 
-                            })
+                            // 插入选项卡容器
+                            let tabcid = await mv.AppendBlockByMd_API(wid,'> > 内容1');
+                            await mv.SetAttrs_API(tabcid,'custom-type','bq-tab_c');
+                            let bid = await mv.AppendBlockByMd_API(tabcid,'> 内容2');
+                            let cid = await mv.AppendBlockByMd_API(tabcid,'> 内容3');
+                            let did = await mv.UpdateBlockByMd_API(id,' ');
+                            
+                            window.location.reload();
                         }
 
                         //    console.log("markdown")
@@ -1299,8 +1276,6 @@ export var config = {
                         let crtLine = getTargetBlock(element);
                         let parentNode = crtLine.parentNode;
                        
-
-
                         let tab = async (tab_t, tab_t_tag, tab_c, tag_c_tag, evt,rix) => {
                             
                             // 设置 button
@@ -1315,9 +1290,9 @@ export var config = {
                                 element.parentNode.insertBefore(button,element.nextSibling);
                             }
 
-                            button[evt] = function () {
+                            button[evt] = async function () {
                                
-                                let inner = ()=>{
+                                let inner = async ()=>{
                                   
                                     var tab_t = mv.GetDomByAtrrs(parentNode, "custom-type", "bq-tab_t", "div")[0];
                                     var tab_t_li = mv.GetDomByAtrrs(tab_t, "class", "li", "div");
@@ -1328,17 +1303,11 @@ export var config = {
                                     let t_ix=getTargetBlockID(tab_t_li[tab_t_li.length-1])
                                     let c_ix=getTargetBlockID(tab_c_li[tab_c_li.length-1])
                                     
-                                    // 插入 选项卡内容
-                                    insertM(c_ix,"> 内容new").then(a=>{
-                                        console.log(a[0].doOperations[0].id);
-                                        // 插入选项卡控制器
-                                        insertM(t_ix, '* 选项卡new').then(a => {
-                                            console.log(a[0].doOperations[0].id);
-                                            let c_li=mv.GetDomByAtrrs(tab_c,"data-node-id",a[0].doOperations[0].id,'div')[0];
-                                            tab("bq-tab_t", "li", "bq-tab_c", "bq", "onclick",-1)
-                                        });
+                                    let aid = await mv.InsertBlockByMd_API(c_ix,"> 内容new"); 
+                                    let bid = await mv.InsertBlockByMd_API(t_ix, '* 选项卡new'); 
+                                    let c_li=mv.GetDomByAtrrs(tab_c,"data-node-id",bid,'div')[0];
+                                    tab("bq-tab_t", "li", "bq-tab_c", "bq", "onclick",-1)
 
-                                    });
                                 }
                                
                                 let msgbox=new MessageboxYesNo("确定新建一个标签页吗？",5);
@@ -1356,7 +1325,7 @@ export var config = {
                                 element.parentNode.insertBefore(button2,element.nextSibling);
                             }
                          
-                            button2[evt] = function(){
+                            button2[evt] = async function(){
 
                                 let str2=parentNode.getAttribute('custom-type');
                                 if (str2.indexOf("bq-none")>=0){
@@ -1368,7 +1337,7 @@ export var config = {
 
                                     console.log(str2)
                                     parentNode.setAttribute("custom-type",str2)
-                                    updateAttr(getTargetBlockID(parentNode),"custom-type",str2)
+                                    let kid = await mv.SetAttrs_API(getTargetBlockID(parentNode),"custom-type",str2)
                                 }
                                 else
                                 {
@@ -1379,7 +1348,7 @@ export var config = {
                                     str2 = str2 + " bq-none "
                                     console.log(str2)
                                     parentNode.setAttribute("custom-type",str2)
-                                    updateAttr(getTargetBlockID(parentNode),"custom-type",str2)
+                                    let kid = await mv.SetAttrs_API(getTargetBlockID(parentNode),"custom-type",str2)
                                 }
                             }
 
@@ -1393,33 +1362,22 @@ export var config = {
                             var i = 0;
                             for (i = 0; i < len; i++) {
                                 tab_t_li[i].index = i;
-                                tab_t_li[i][evt] = function () {
+                                tab_t_li[i][evt] = async function () {
                                     
                                     for (i = 0; i < len; i++) {
                                         tab_t_li[i].setAttribute('custom-type', 'null');
                                         tab_c_li[i].setAttribute('custom-type', 'bq-hide');
-
-                                        updateAttr(getTargetBlockID(tab_t_li[i]),{
-                                            'custom-type':'null'
-                                        })
-
-                                        updateAttr(getTargetBlockID(tab_c_li[i]),{
-                                            'custom-type':'bq-hide'
-                                        })
+                                     
+                                        let kid1 = await mv.SetAttrs_API(getTargetBlockID(tab_t_li[i]),"custom-type",'null')
+                                        let kid2 = await mv.SetAttrs_API(getTargetBlockID(tab_c_li[i]),"custom-type",'bq-hide')
                                     }
 
                                     tab_t_li[this.index].setAttribute('custom-type', 'bq-act');
                                     tab_c_li[this.index].setAttribute('custom-type', 'null');
                                     
                                     let id = getTargetBlockID(tab_t_li[this.index]);
-                                    
-                                    console.log(id+","+'bq-act')
-                                    updateAttr(id,{
-                                        'custom-type':'bq-act'
-                                    })
-                                    updateAttr(getTargetBlockID(tab_c_li[this.index]),{
-                                        'custom-type':'null'
-                                    })
+                                    let kid1 = await mv.SetAttrs_API(id,"custom-type",'bq-act');
+                                    let kid2 = await mv.SetAttrs_API(getTargetBlockID(tab_c_li[this.index]),"custom-type",'null');
                                 }
                             }
                             
