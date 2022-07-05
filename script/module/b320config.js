@@ -1,8 +1,4 @@
-import { insertBlock, deleteBlock, updateBlock, exportMdContent, getBlockByID, setBlockAttrs, appendBlock, getBlockAttrs } from "../utils/api.js";
-import { empty } from "../utils/b320comm.js";
-import { getTargetBlock, getTargetBlockID } from "../utils/dom.js";
 import { CodeLabelParse } from "../utils/codelabel-parse.js"
-import { setStyleVariableValue } from "../utils/codetag.js";
 import { TASK_HANDLER } from "../utils/ui.js";
 import { mv } from "../commons/domex.js";
 import { InputData, Messagebox, MessageboxInputs, MessageboxYesNo } from "../commons/widget.js";
@@ -630,8 +626,8 @@ export var config = {
                         async function bingOnClick(parse, e, oldHTML) {
 
                             // 获取父节点    
-                            let parentNode = getTargetBlock(e);
-                            let id = getTargetBlockID(e);
+                            let parentNode = mv.GetSiyuanBlock(e);
+                            let id = mv.GetSiyuanBlockId(e);
 
                             parse.reinitFormat(parse.ptypeItem)
 
@@ -816,8 +812,8 @@ export var config = {
                         let tItms = parse.parseInfo['itms'];
 
                         // 获取父节点    
-                        let parentNode = getTargetBlock(element);
-                        let id = getTargetBlockID(element);
+                        let parentNode =  mv.GetSiyuanBlock(element);
+                        let id = mv.GetSiyuanBlockId(element);
 
                         let setHtml = async (index, tItms) => {
 
@@ -921,14 +917,14 @@ export var config = {
                         // element 当前元素（解析后的）
                         // oldHTML （解析前的 innerHTML 内容）
 
-                        var id = getTargetBlockID(element);
+                        var id = mv.GetSiyuanBlockId(element);
 
                         if (parse.parseInfo['func'] === 'kanban') {
 
                             let aid = await mv.InsertBlockByMd_API(id,'---');
                             let bid = await mv.InsertBlockByMd_API(aid,'---');
-                            let cid = await mv.InsertBlockByMd_API(bid,'* 未开始 \n  * 任务1 \n* 进行中 \n   * 任务2 \n* 已完成 \n    * 任务3');
-                            deleteBlock(id);
+                            let cid = await mv.InsertBlockByMd_API(bid,'* 未开始 \n  * 任务1 \n* 进行中 \n   * 任务2 \n* 已完成 \n    * 任务3'); 
+                            await mv.DeleteBlockById_API(id);           
                             return;
                         }
 
@@ -944,7 +940,7 @@ export var config = {
 
                         if (parse.parseInfo['func'] === 'bqcolor') {
                             let szcolor = 'red'
-                            if (empty(parse.parseInfo['args']) === false) {
+                            if (mv.Empty(parse.parseInfo['args']) === false) {
                                 szcolor = parse.parseInfo['args']
                             }
                             let aid = await mv.InsertBlockByMd_API(id,'>  ');
@@ -1046,8 +1042,8 @@ export var config = {
                         // oldHTML （解析前的 innerHTML 内容）
 
                         // 获取父节点    
-                        let parentNode = getTargetBlock(element);
-                        let id = getTargetBlockID(element);
+                        let parentNode =  mv.GetSiyuanBlock(element);
+                        let id = mv.GetSiyuanBlockId(element);
 
                         var itms = []
                         // var items = config.theme.common.colors.names;
@@ -1066,12 +1062,12 @@ export var config = {
                             element.innerHTML = `<span>&gt;(${slt})</span>`
 
                             var bqNode = element.parentNode.parentNode.parentNode;
-                            setStyleVariableValue(bqNode.style, '--theme-bq-bgcolor', parse.parseInfo.bgcolor1)
-                            setStyleVariableValue(bqNode.style, '--theme-bq-color1', parse.parseInfo.color1)
-                            setStyleVariableValue(bqNode.style, '--theme-bq-bgcolor2', parse.parseInfo.bgcolor2)
-                            setStyleVariableValue(bqNode.style, '--theme-bq-color2', parse.parseInfo.color2)
+                            mv.SetStyleValue(bqNode.style, '--theme-bq-bgcolor', parse.parseInfo.bgcolor1)
+                            mv.SetStyleValue(bqNode.style, '--theme-bq-color1', parse.parseInfo.color1)
+                            mv.SetStyleValue(bqNode.style, '--theme-bq-bgcolor2', parse.parseInfo.bgcolor2)
+                            mv.SetStyleValue(bqNode.style, '--theme-bq-color2', parse.parseInfo.color2)
 
-                            if (empty(endsuffix) === true) {
+                            if (mv.Empty(endsuffix) === true) {
                                 bqNode.setAttribute("bqtype", "color1")
                             } else {
                                 bqNode.setAttribute("bqtype", "color")
@@ -1108,7 +1104,7 @@ export var config = {
 
                         };
 
-                        setHtml(`${parse.parseInfo.color}${parse.parseInfo.endsuffix}`, empty(parse.parseInfo.endsuffix) ? "1" : "2");
+                        setHtml(`${parse.parseInfo.color}${parse.parseInfo.endsuffix}`, mv.Empty(parse.parseInfo.endsuffix) ? "1" : "2");
 
                     },
                 },
@@ -1185,7 +1181,7 @@ export var config = {
                         // oldHTML （解析前的 innerHTML 内容）
                         // 获取父节点    
 
-                        let crtLine = getTargetBlock(element);
+                        let crtLine =  mv.GetSiyuanBlock(element);
                         let parentNode = crtLine.parentNode;
                        
                         let tab = async (tab_t, tab_t_tag, tab_c, tag_c_tag, evt,rix) => {
@@ -1212,8 +1208,8 @@ export var config = {
                                     var tab_c = mv.GetDomByAtrrs(parentNode, "custom-type", "bq-tab_c", "div")[0];
                                     var tab_c_li = mv.GetDomByAtrrs(tab_c, "class", "bq","div" );
 
-                                    let t_ix=getTargetBlockID(tab_t_li[tab_t_li.length-1])
-                                    let c_ix=getTargetBlockID(tab_c_li[tab_c_li.length-1])
+                                    let t_ix=mv.GetSiyuanBlockId(tab_t_li[tab_t_li.length-1])
+                                    let c_ix=mv.GetSiyuanBlockId(tab_c_li[tab_c_li.length-1])
                                     
                                     let aid = await mv.InsertBlockByMd_API(c_ix,"> 内容new"); 
                                     let bid = await mv.InsertBlockByMd_API(t_ix, '* 选项卡new'); 
@@ -1249,7 +1245,7 @@ export var config = {
 
                                     console.log(str2)
                                     parentNode.setAttribute("custom-type",str2)
-                                    let kid = await mv.SetAttrs_API(getTargetBlockID(parentNode),"custom-type",str2)
+                                    let kid = await mv.SetAttrs_API(mv.GetSiyuanBlockId(parentNode),"custom-type",str2)
                                 }
                                 else
                                 {
@@ -1260,7 +1256,7 @@ export var config = {
                                     str2 = str2 + " bq-none "
                                     console.log(str2)
                                     parentNode.setAttribute("custom-type",str2)
-                                    let kid = await mv.SetAttrs_API(getTargetBlockID(parentNode),"custom-type",str2)
+                                    let kid = await mv.SetAttrs_API(mv.GetSiyuanBlockId(parentNode),"custom-type",str2)
                                 }
                             }
 
@@ -1280,16 +1276,16 @@ export var config = {
                                         tab_t_li[i].setAttribute('custom-type', 'null');
                                         tab_c_li[i].setAttribute('custom-type', 'bq-hide');
                                      
-                                        let kid1 = await mv.SetAttrs_API(getTargetBlockID(tab_t_li[i]),"custom-type",'null')
-                                        let kid2 = await mv.SetAttrs_API(getTargetBlockID(tab_c_li[i]),"custom-type",'bq-hide')
+                                        let kid1 = await mv.SetAttrs_API(mv.GetSiyuanBlockId(tab_t_li[i]),"custom-type",'null')
+                                        let kid2 = await mv.SetAttrs_API(mv.GetSiyuanBlockId(tab_c_li[i]),"custom-type",'bq-hide')
                                     }
 
                                     tab_t_li[this.index].setAttribute('custom-type', 'bq-act');
                                     tab_c_li[this.index].setAttribute('custom-type', 'null');
                                     
-                                    let id = getTargetBlockID(tab_t_li[this.index]);
+                                    let id = mv.GetSiyuanBlockId(tab_t_li[this.index]);
                                     let kid1 = await mv.SetAttrs_API(id,"custom-type",'bq-act');
-                                    let kid2 = await mv.SetAttrs_API(getTargetBlockID(tab_c_li[this.index]),"custom-type",'null');
+                                    let kid2 = await mv.SetAttrs_API(mv.GetSiyuanBlockId(tab_c_li[this.index]),"custom-type",'null');
                                 }
                             }
                             

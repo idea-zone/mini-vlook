@@ -210,6 +210,60 @@ mv.GetDomByAtrrs = (dom,attrs,value,tagName)=>{
 }
 
 /**
+ * 设置 style 中的 css 变量attrName 的值
+ * @param {object} elementStyle DOM 元素的 style 对象
+ * @param {string} attrName 属性名称
+ * @param {string} value    属性值
+ */
+mv.SetStyleValue = (elementStyle,attrName,value)=>{
+    if (elementStyle === null || elementStyle === undefined) {
+        console.warn(" function mv.SetStyleValue(): param elementStyle cannot be null or undefined." )
+        return false;
+    }
+    
+    if (mv.Empty(attrName)){
+        console.warn(" function mv.SetStyleValue(): param attrName cannot be empty." )
+        return false;
+    }
+
+    elementStyle.setProperty(attrName, value);
+}
+
+/**
+ * 判断 style 中的 css 变量attrName 是否是对应的值
+ * @param {object} elementStyle DOM 元素的 style 对象
+ * @param {string} attrName 属性名称
+ * @param {string} value    属性值
+ */
+mv.CheckStyleValue =(elementStyle,attrName,value)=>{
+    if (elementStyle === null || elementStyle === undefined) {
+        console.warn(" function mv.CheckStyleValu(): param elementStyle cannot be null or undefined." )
+        return false;
+    }
+    
+    if (mv.Empty(attrName)){
+        console.warn(" function mv.CheckStyleValu(): param attrName cannot be empty." )
+        return false;
+    }
+
+    return elementStyle.getPropertyValue(attrName).indexOf(value) > -1
+}
+
+/**
+ * 获取 style 中的 css 变量
+ * @param {object} elementStyle DOM 元素的 style 对象
+ * @param {string} attrName 属性名称
+ */
+mv.GetStyleValue = (elementStyle,attrName)=>{
+    if (elementStyle === null || elementStyle === undefined) {
+        console.warn(" function mv.GetStyleValue(): param elementStyle cannot be null or undefined." )
+        return null;
+    }
+
+    return elementStyle.getPropertyValue(attrName)
+}
+
+/**
  * 获取满足 selector1 且不满足 selector2 的所有元素集合
  * @param {HTMLElement} dom 
  * @param {*} selector1 主css选择器，用于获取
@@ -218,13 +272,13 @@ mv.GetDomByAtrrs = (dom,attrs,value,tagName)=>{
  */
 mv.GetDomBySelectors = (dom,selector1,selector2)=>{
     
-    if (empty(selector1)){
+    if (mv.Empty(selector1)){
         console.warn(" function getElement(): param selector1 cannot be empty." )
         return null;
     }
     let elementAll=dom.querySelectorAll(selector1)
     
-    if (empty(selector2)) return elementAll;
+    if (mv.Empty(selector2)) return elementAll;
 
     let elementNot=dom.querySelectorAll(selector2)
     let rst = Minus(Array.from(elementAll),Array.from(elementNot));

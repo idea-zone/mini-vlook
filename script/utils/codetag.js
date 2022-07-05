@@ -4,9 +4,6 @@
 
  export {
     getElement,               //  获取满足 selector 但不满足 exclude 的所有元素。
-    getStyleVariable,         // 获取 style 中的 css 变量
-    setStyleVariableValue,    // 设置 style 中的 css 变量
-    checkStyleVariableValue,  // 判断 style 中的 css 变量
     isLawColorNameOrValue,    // 判断颜色值是否是合法
     rerenderColor,            // 重新渲染颜色值是否是合法
 };
@@ -54,60 +51,6 @@ function getElement(selector,exclude,domNode){
     let rst = minus(Array.from(elementAll),Array.from(elementNot));
     
     return rst;
-}
-
-/**
- * 获取 style 中的 css 变量
- * @param {object} elementStyle DOM 元素的 style 对象
- * @param {string} attrName 属性名称
- */
-function getStyleVariable(elementStyle,attrName){
-    if (elementStyle === null || elementStyle === undefined) {
-        console.warn(" function getStyleVariable(): param elementStyle cannot be null or undefined." )
-        return null;
-    }
-
-    return elementStyle.getPropertyValue(attrName)
-}
-
-/**
- * 设置 style 中的 css 变量attrName 的值
- * @param {object} elementStyle DOM 元素的 style 对象
- * @param {string} attrName 属性名称
- * @param {string} value    属性值
- */
- function setStyleVariableValue(elementStyle,attrName,value){
-    if (elementStyle === null || elementStyle === undefined) {
-        console.warn(" function setStyleVariableValue(): param elementStyle cannot be null or undefined." )
-        return false;
-    }
-    
-    if (empty(attrName)){
-        console.warn(" function setStyleVariableValue(): param attrName cannot be empty." )
-        return false;
-    }
-
-    elementStyle.setProperty(attrName, value);
-}
-
-/**
- * 判断 style 中的 css 变量attrName 是否是对应的值
- * @param {object} elementStyle DOM 元素的 style 对象
- * @param {string} attrName 属性名称
- * @param {string} value    属性值
- */
- function checkStyleVariableValue(elementStyle,attrName,value){
-    if (elementStyle === null || elementStyle === undefined) {
-        console.warn(" function checkStyleVariableValue(): param elementStyle cannot be null or undefined." )
-        return false;
-    }
-    
-    if (empty(attrName)){
-        console.warn(" function checkStyleVariableValue(): param attrName cannot be empty." )
-        return false;
-    }
-
-    return elementStyle.getPropertyValue(attrName).indexOf(value) > -1
 }
 
 

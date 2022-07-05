@@ -1,6 +1,7 @@
+import { mv } from "../commons/domex.js";
 import { config } from "../module/b320config.js";
 import { deepCopy, empty } from "./b320comm.js";
-import { getElement, rerenderColor, setStyleVariableValue } from "./codetag.js";
+import { getElement, rerenderColor } from "./codetag.js";
 
 export {
     CodeLabelParse,
@@ -374,7 +375,7 @@ class CodeLabelParse {
         // 设置 inline style
         this.inlineStyle = this.formatInlineStyle(this.inlineStyle, parseInfo, this.maps);
         for (let k in this.inlineStyle) {
-            setStyleVariableValue(e.style, k, this.inlineStyle[k]);
+            mv.SetStyleValue(e.style, k, this.inlineStyle[k]);
         }
 
         // 添加事件
