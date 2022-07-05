@@ -302,13 +302,14 @@ export class MessageboxYesNo {
  */
 export class InputData {
 
-    constructor(id,tagName, cls, labelName, tooltip = "", nulltext="") {
+    constructor(id,tagName, cls, labelName,defalutValue="", tooltip = "", nulltext="") {
         this.Id = id;             // id 名称
         this.Cls = cls;           // class 名称
         this.TagName = tagName;    // 标签名
         this.Tooltip = tooltip;        // 悬浮提示信息
         this.LabelName = labelName;      // 提示标签名
         this.Nulltext = nulltext;              // 为空时候显示的文本
+        this.DefalutValue = defalutValue;                // 初始值
     }
 
 }
@@ -405,6 +406,9 @@ export class MessageboxInputs {
                     // 处理 input 的一些东西
                     if (input.TagName.toLowerCase() === "input"){
                         ipt.placeholder=input.Nulltext;
+                        if (mv.Empty(input.DefalutValue) == false){
+                            ipt.value = input.DefalutValue;
+                        }
                     }
 
                     ctnDiv.appendChild(mv.CreateDiv(null, "fn__hr", null));

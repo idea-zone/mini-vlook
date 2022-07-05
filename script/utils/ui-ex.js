@@ -1,19 +1,14 @@
 
 export{
-    
     codelabelMenuInit,   // 自定义右键菜单初始化
 }
 
 import { mv } from '../commons/domex.js';
-import { config, render } from '../module/b320config.js';
-import { getBlockByID, getFocusedDoc,updateBlock } from './api.js';
-import { getBlockMark, getFocusedBlock, getFocusedBlockID,getTargetBlock, getTargetBlockID } from './dom.js';
+import { InputData, MessageboxInputs } from '../commons/widget.js';
+import { render } from '../module/b320config.js';
+import { getFocusedBlockID,getTargetBlock, getTargetBlockID } from './dom.js';
 import  {
-    toolbarItemInit, // 工具栏项初始化
-    toolbarItemChangeStatu, // 工具栏项状态改变
-    blockMenuInit, // 右键菜单初始化
     createMenuItemNode,
-
     createMenuItemIconNode,
     createMenuItemLabelNode,
     createMenuItemAcceleratorNode,
@@ -40,165 +35,74 @@ import  {
 </div>
  */
 
-
-async function showUtil(element, callback) {
-
-    let bid = getFocusedBlockID();
-    // console.log("b1:"+bid);
+async function showUtil(element,callback){
 
     let oldValue = element.getAttribute('custom-codelabel-value');
     let innerHTML = mv.Empty(oldValue) ? element.innerHTML : oldValue;
+
+    console.log(innerHTML);
     
+    // 待配置项的测试
+    let its = [];
+    its[0] = new InputData("msg","input",'',"输入",innerHTML,"提示","输入内容");
+    let cts = new MessageboxInputs(its);
+    let idom=cts.Create(
+        async ()=>{
+            console.log("Ok")
+            console.log(cts.Doms.msg.value)
+            let value =cts.Doms.msg.value;
 
-    let okFun = async () => {
+            // 清空所有属性
+            element.className = "";
+            while (element.attributes.length > 0) {
+                element.removeAttributeNode(element.attributes[0]);
+            }
 
-        // 隐藏对话框
-        cbEditor.classList.add('fn__none');
-        
-        // 获取更改后的值
-        let value = cbEditor.children[0]  // 容器
-            .children[0]  // label
-            .children[1]  // 输入框
-            .value;
+            // 获取父节点    
+            let parentNode=mv.GetSiyuanBlock(element);
+            let id = mv.GetSiyuanBlockId(element);
+            
+            element.innerHTML = value;
+            var tmd = mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
+            let did = await mv.UpdateBlockByMd_API(id, tmd);
+            let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
+            render(dom);
 
-        // 清空所有属性
-        element.className = "";
-        while (element.attributes.length > 0) {
-            element.removeAttributeNode(element.attributes[0]);
-        }
-
-        // 获取父节点    
-        let parentNode=getTargetBlock(element);
-        let id = getTargetBlockID(element);
-
-        element.innerHTML = value;
-        
-        var tmd = mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
-        let  did = await mv.UpdateBlockByMd_API(id, tmd);
-        let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
-        render(dom);
+        },
+        async ()=>{
+            console.log("NO")
+            console.log(cts.Doms.msg.value)
+        },"cbeditor","width: 480px;top: 45%; left: 45%;",""
+    );
     
-    };
+    document.body.appendChild(idom);
+    // hideMenu();
+}
 
+ function hideMenu(){
+    let comMenus = document.getElementById("commonMenu");
+    if (comMenus===null||comMenus===undefined) return 0;
 
-    let cbEditors = document.querySelectorAll('.protyle:not(.fn__none) .protyle-util.cbeditor');
-    var cbEditor = cbEditor !== null && cbEditor !== undefined && cbEditor.length !== 0?cbEditors[0]:null;
-    
-    if (cbEditor !== null && cbEditor !== undefined){
-        
-        cbEditor.children[0]  // 容器
-            .children[0]  // label
-            .children[1]  // 输入框
-            .value = innerHTML;
+    var nodes=mv.GetChildNodes(comMenus);
+    if (nodes===null||nodes === undefined || nodes.length===0) return 0;
 
-        cbEditor.classList.remove('fn__none');
-
-        cbEditor.children[0] // 容器
-            .children[2] // 按钮层
-            .children[0] // 确定按钮
-            .onclick = okFun;
-
-        await cbEditor;
+    for(let node of nodes){
+        console.log(node);
+        node.remove();
     }
-
-    if (cbEditor === null || cbEditor === undefined ) {
-        var putil = document.querySelectorAll('.protyle:not(.fn__none) .protyle-util')[0];
-        cbEditor = document.createElement('div');
-
-        // style="width: 480px; top: 248.6px; left: 131px;"
-
-        // 插入
-        cbEditor.classList.add('protyle-util')
-        cbEditor.classList.add('cbeditor')
-        cbEditor.style = "width: 480px;"
-        putil.parentNode.insertBefore(cbEditor, putil.nextElementSibling);
-
-        // 容器 0
-        let subroot = document.createElement('div');
-        subroot.classList.add('b3-form__space--small');
-        cbEditor.appendChild(subroot);
-
-        /**-------------- 输入框 0-0 ----------------------- */
-        //label 
-        let lb = document.createElement('label');
-        lb.classList.add('fn__flex');
-        subroot.appendChild(lb);
-
-        // label-内容--0-0-0
-        let sn = document.createElement('span');
-        sn.classList.add('ft__on-surface');
-        sn.classList.add('fn__flex-center');
-        sn.style.style = "width: 72px";
-        sn.innerHTML = "内容";
-        lb.appendChild(sn);
-
-        // label-空格--0-0-1
-        let space = document.createElement('div');
-        space.classList.add('fn__space')
-        lb.appendChild(space);
-
-        //label-输入--0-0-2
-        let it = document.createElement('input');
-        it.classList.add('b3-text-field')
-        it.classList.add('fn__block')
-        it.placeholder = "内容"
-        it.value = innerHTML
-        lb.appendChild(it);
-        /**-------------- 输入框（end） ----------------------- */
-
-        /**-------------- 风格符 0-1 ----------------------- */
-
-        // <div class="fn__hr"></div>
-        let hr = document.createElement('div');
-        hr.classList.add('fn__hr');
-        subroot.appendChild(hr);
-
-        /**-------------- 按钮层 0-2 ----------------------- */
-        // <div class="fn__flex"><span class="fn__flex-1"></span><button class="b3-button b3-button--cancel">删除</button></div>
-        let buttons = document.createElement('div');
-        buttons.classList.add('fn__flex');
-        subroot.appendChild(buttons);
-
-        // 确定按钮 0-2-0
-        var ok = document.createElement('button');
-        ok.classList.add('b3-button')
-        ok.innerHTML = "确定";
-        ok.onclick = okFun;
-        buttons.appendChild(ok);
-
-        // 分割 0-2-1
-        let space1 = document.createElement('div');
-        space.classList.add('fn__space')
-        buttons.appendChild(space);
-
-        // 取消按钮 0-2-2
-        var cancel = document.createElement('button');
-        cancel.classList.add('b3-button')
-        cancel.classList.add('b3-button--cancel');
-        cancel.innerHTML = "取消";
-        cancel.onclick = () => {
-            cbEditor.classList.add('fn__none');
-        };
-        buttons.appendChild(cancel);
-
-        await cbEditor;
-    }
-
-    await null;
+    
+    comMenus.className.add("fn__none");
+    return 1;
 }
 
 const CL_TASK_HANDLER = {
     'codelabel-editor': async (element, type, params) => {
-
         try {
-
            await showUtil(element);
         }
         catch (e) {
-            // console.log(e)
             await null;
         }
-
     },
 }
 
