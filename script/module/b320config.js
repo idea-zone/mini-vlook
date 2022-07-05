@@ -98,19 +98,6 @@ export const createUL = (e) => {
     return ul;
 };
 
-
-// 辅助获取
-let getDom = (tagName, name, value, node) => {
-    var selectDom = [];
-    var dom = node.getElementsByTagName(tagName);
-    for (var i = 0; i < dom.length; i++) {
-        if (value === dom[i].getAttribute(name)) {
-            selectDom.push(dom[i]);
-        }
-    }
-    return selectDom;
-};
-
 export var config = {
     token: '', // API token, 无需填写
     theme: {
@@ -1321,7 +1308,7 @@ export var config = {
                             element.classList.add('bq-tab-button-mode')
 
                             // 设置插入
-                            let button = getDom("button","bq-button-value","新建",parentNode)[0]
+                            let button = mv.GetDomByAtrrs(parentNode,"bq-button-value","新建","button")[0]
                             if (button === null || button === undefined){
                                 button = document.createElement('button')
                                 button.setAttribute('bq-button-value',"新建")
@@ -1331,11 +1318,12 @@ export var config = {
                             button[evt] = function () {
                                
                                 let inner = ()=>{
-                                    var tab_t = getDom("div", "custom-type", "bq-tab_t", parentNode)[0];
-                                    var tab_t_li = getDom("div", "class", "li", tab_t);
+                                  
+                                    var tab_t = mv.GetDomByAtrrs(parentNode, "custom-type", "bq-tab_t", "div")[0];
+                                    var tab_t_li = mv.GetDomByAtrrs(tab_t, "class", "li", "div");
 
-                                    var tab_c = getDom("div", "custom-type", "bq-tab_c", parentNode)[0];
-                                    var tab_c_li = getDom("div", "class", "bq", tab_c);
+                                    var tab_c = mv.GetDomByAtrrs(parentNode, "custom-type", "bq-tab_c", "div")[0];
+                                    var tab_c_li = mv.GetDomByAtrrs(tab_c, "class", "bq","div" );
 
                                     let t_ix=getTargetBlockID(tab_t_li[tab_t_li.length-1])
                                     let c_ix=getTargetBlockID(tab_c_li[tab_c_li.length-1])
@@ -1346,7 +1334,7 @@ export var config = {
                                         // 插入选项卡控制器
                                         insertM(t_ix, '* 选项卡new').then(a => {
                                             console.log(a[0].doOperations[0].id);
-                                            let c_li=getDom('div',"data-node-id",a[0].doOperations[0].id,tab_c)[0];
+                                            let c_li=mv.GetDomByAtrrs(tab_c,"data-node-id",a[0].doOperations[0].id,'div')[0];
                                             tab("bq-tab_t", "li", "bq-tab_c", "bq", "onclick",-1)
                                         });
 
@@ -1361,7 +1349,7 @@ export var config = {
                             }
 
                             // 设置 bq-none
-                            let button2 = getDom("button","bq-button-value","展开/收缩",parentNode)[0]
+                            let button2 = mv.GetDomByAtrrs(parentNode,"bq-button-value","展开/收缩","button")[0]
                             if (button2 === null || button2 === undefined){
                                 button2 = document.createElement('button')
                                 button2.setAttribute('bq-button-value',"展开/收缩")
@@ -1395,11 +1383,11 @@ export var config = {
                                 }
                             }
 
-                            var tab_t = getDom("div", "custom-type", tab_t, parentNode)[0];
-                            var tab_t_li = getDom("div", "class", tab_t_tag, tab_t);
+                            var tab_t = mv.GetDomByAtrrs(parentNode, "custom-type", tab_t, "div")[0];
+                            var tab_t_li = mv.GetDomByAtrrs(tab_t, "class", tab_t_tag, "div");
 
-                            var tab_c = getDom("div", "custom-type", tab_c, parentNode)[0];
-                            var tab_c_li = getDom("div", "class", tag_c_tag, tab_c);
+                            var tab_c = mv.GetDomByAtrrs(parentNode, "custom-type", tab_c, "div")[0];
+                            var tab_c_li = mv.GetDomByAtrrs(tab_c, "class", tag_c_tag,"div" );
 
                             var len = tab_t_li.length;
                             var i = 0;
