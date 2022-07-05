@@ -7,7 +7,6 @@ export{
 import { mv } from '../commons/domex.js';
 import { config, render } from '../module/b320config.js';
 import { getBlockByID, getFocusedDoc,updateBlock } from './api.js';
-import { empty } from './b320comm.js';
 import { getBlockMark, getFocusedBlock, getFocusedBlockID,getTargetBlock, getTargetBlockID } from './dom.js';
 import  {
     toolbarItemInit, // 工具栏项初始化
@@ -48,7 +47,8 @@ async function showUtil(element, callback) {
     // console.log("b1:"+bid);
 
     let oldValue = element.getAttribute('custom-codelabel-value');
-    let innerHTML = empty(oldValue) ? element.innerHTML : oldValue;
+    let innerHTML = mv.Empty(oldValue) ? element.innerHTML : oldValue;
+    
 
     let okFun = async () => {
 

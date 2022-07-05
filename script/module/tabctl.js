@@ -1,6 +1,4 @@
-import { getElement } from '../utils/codetag.js';
-import { config } from './b320config.js';
-
+import { mv } from '../commons/domex.js';
 // <div data-node-id="20220618114451-9a4ip0q" data-node-index="1" data-type="NodeBlockquote" class="bq" updated="20220618144002" data-eof="true"><div data-node-id="20220618114316-zjjv3yc" data-node-index="166" data-type="NodeThematicBreak" class="hr"><div></div></div><div data-content="select * from blocks where id='20220618112709-5z56stu'" data-node-id="20220618112343-7kv9r0j" data-node-index="167" data-type="NodeBlockQueryEmbed" class="render-node" updated="20220618114349" data-render="true"><div class="protyle-icons">
 //     <span class="protyle-icon protyle-action__reload protyle-icon--first"><svg class=""><use xlink:href="#iconRefresh"></use></svg></span>
 //     <span class="protyle-icon protyle-action__edit"><svg><use xlink:href="#iconEdit"></use></svg></span>
@@ -20,7 +18,7 @@ function render(){
     let select1 = `.protyle-wysiwyg .bq`  // 要选择的
     let select2 = `.protyle-wysiwyg .bq[custom-f~=bqtab]` // 排除的
     
-    let bqs = getElement(select1,select2,document);
+    let bqs = mv.GetDomBySelectors(select1,select2,document);
     
     if (bqs === null ||  bqs === undefined) {
         console.log("Nothing")

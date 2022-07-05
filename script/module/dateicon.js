@@ -3,7 +3,7 @@
 
 // var domtoimage = require('../static/dom-to-image.min.js')
 // var moment = require('../static/moment.min.js')
-import { empty } from '../utils/b320comm.js';
+import { mv } from '../commons/domex.js';
 
 let weeks = {
     '0':'日',
@@ -85,7 +85,7 @@ let createIcon = (toptext, midtext, foottext) => {
     })
 
     // 根据标题是否为空设置 sign 位置
-    if (empty(toptext)) {
+    if (mv.Empty(toptext)) {
         setElmStyle(sign, {
             transform: "translate(43px,-3px)",
             "font-size": "1em",
@@ -115,7 +115,8 @@ let createIcon = (toptext, midtext, foottext) => {
     setElmStyle(footer, {
         transform: "scale(0.5) translate(0px,-20px)",
     })
-    if (empty(foottext)) {
+    
+    if (mv.Empty(foottext)) {
         setElmStyle(footer, {
             display: "none"
         })

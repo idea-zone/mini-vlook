@@ -265,15 +265,15 @@ mv.GetStyleValue = (elementStyle,attrName)=>{
 
 /**
  * 获取满足 selector1 且不满足 selector2 的所有元素集合
- * @param {HTMLElement} dom 
  * @param {*} selector1 主css选择器，用于获取
  * @param {*} selector2 次css选择器，用于排除
+ * @param {HTMLElement} dom 
  * @returns 
  */
-mv.GetDomBySelectors = (dom,selector1,selector2)=>{
+mv.GetDomBySelectors = (selector1,selector2,dom)=>{
     
     if (mv.Empty(selector1)){
-        console.warn(" function getElement(): param selector1 cannot be empty." )
+        console.warn(" function mv.GetDomBySelectors(): param selector1 cannot be empty." )
         return null;
     }
     let elementAll=dom.querySelectorAll(selector1)
@@ -281,7 +281,7 @@ mv.GetDomBySelectors = (dom,selector1,selector2)=>{
     if (mv.Empty(selector2)) return elementAll;
 
     let elementNot=dom.querySelectorAll(selector2)
-    let rst = Minus(Array.from(elementAll),Array.from(elementNot));
+    let rst = mv.Minus(Array.from(elementAll),Array.from(elementNot));
     
     return rst;
 }

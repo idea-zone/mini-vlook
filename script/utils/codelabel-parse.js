@@ -1,7 +1,6 @@
 import { mv } from "../commons/domex.js";
 import { config } from "../module/b320config.js";
-import { deepCopy, empty } from "./b320comm.js";
-import { getElement, rerenderColor } from "./codetag.js";
+import { rerenderColor } from "./codetag.js";
 
 export {
     CodeLabelParse,
@@ -86,11 +85,11 @@ class CodeLabelParse {
 
     constructor(ptypeItem,domNode) {
 
-        this.ptypeItem = deepCopy(ptypeItem);
+        this.ptypeItem = mv.deepCopy(ptypeItem);
         this.domNode = domNode;
 
         this.tagName = ptypeItem.tagName;
-        this.styleConfig = deepCopy(ptypeItem.style);
+        this.styleConfig = mv.deepCopy(ptypeItem.style);
 
         this.className = ptypeItem.className;         // 属性名称
         this.customf = ptypeItem.customf;                        // 忽略解析的属性值 
@@ -105,10 +104,10 @@ class CodeLabelParse {
         this.select1 = `.protyle-wysiwyg *[data-node-id] ${this.tagName}`  // 要选择的
         this.select2 = `.protyle-wysiwyg *[data-node-id][custom-f~=${this.customf}] ${this.tagName}` // 排除的
 
-        if (empty(this.ptypeItem.select1) === false){
+        if (mv.Empty(this.ptypeItem.select1) === false){
             this.select1 = this.ptypeItem.select1
         }
-        if (empty(this.ptypeItem.select2) === false){
+        if (mv.Empty(this.ptypeItem.select2) === false){
             this.select2 = this.ptypeItem.select2
         }
 
@@ -141,11 +140,11 @@ class CodeLabelParse {
      */
     reinitFormat(ptypeItem) {
 
-        this.ptypeItem = deepCopy(ptypeItem);
+        this.ptypeItem = mv.deepCopy(ptypeItem);
 
         this.tagName=ptypeItem.tagName;
 
-        this.styleConfig = deepCopy(ptypeItem.style);
+        this.styleConfig = mv.deepCopy(ptypeItem.style);
 
         this.className = ptypeItem.className;         // 属性名称
         this.customf = ptypeItem.customf;             // 忽略解析的属性值 
@@ -163,16 +162,16 @@ class CodeLabelParse {
         this.select1 = `.protyle-wysiwyg *[data-node-id] ${this.tagName}`  // 要选择的
         this.select2 = `.protyle-wysiwyg *[data-node-id][custom-f~=${this.customf}] ${this.tagName}` // 排除的
 
-        if (empty(this.ptypeItem.select1) === false){
+        if (mv.Empty(this.ptypeItem.select1) === false){
             this.select1 = this.ptypeItem.select1
         }
-        if (empty(this.ptypeItem.select2) === false){
+        if (mv.Empty(this.ptypeItem.select2) === false){
             this.select2 = this.ptypeItem.select2
         }
 
-        this.innerHTML = deepCopy(ptypeItem.innerHTML);         // 内置html
-        this.customAttr = deepCopy(ptypeItem.customAttr);       // 自定义属性
-        this.inlineStyle = deepCopy(ptypeItem.inlineStyle);     // 内敛样式
+        this.innerHTML = mv.deepCopy(ptypeItem.innerHTML);         // 内置html
+        this.customAttr = mv.deepCopy(ptypeItem.customAttr);       // 自定义属性
+        this.inlineStyle = mv.deepCopy(ptypeItem.inlineStyle);     // 内敛样式
     }
 
     
@@ -184,14 +183,8 @@ class CodeLabelParse {
      * @returns 
      */
     getElementWithoutCustomf(select1,select2,domNode) {
-
-        // let rst = getElement(
-        //     `.protyle-wysiwyg *[data-node-id] ${tagName}`,
-        //     `.protyle-wysiwyg *[data-node-id][custom-f~=${customf}] ${tagName}`,
-        //     domNode
-        // );
-        
-        let rst = getElement(
+    
+        let rst = mv.GetDomBySelectors(
             select1,select2,
             domNode
         );
@@ -212,7 +205,7 @@ class CodeLabelParse {
         for (let i = 0; i < count; i++) {
             let key = emptys[i];
             let value = parseInfo[key];
-            if (empty(value)) {
+            if (mv.Empty(value)) {
                 isEmpty = true;
                 break;
             }
@@ -249,7 +242,7 @@ class CodeLabelParse {
         // 替换 $1~$9 的别名
         for (let k in parseInfo) {
             let tv = parseInfo[k];
-            if (tv === undefined || tv === null || empty(tv)) {
+            if (tv === undefined || tv === null || mv.Empty(tv)) {
                 tv = this.emptysValues[k];
             }
             innerHTML = innerHTML.replace(`\$\{${k}\}`, tv);
@@ -258,7 +251,7 @@ class CodeLabelParse {
         // 替换 $1~$9
         for (let k in maps) {
             let tv = parseInfo[maps[k]];
-            if (tv === undefined || tv === null || empty(tv)) {
+            if (tv === undefined || tv === null || mv.Empty(tv)) {
                 tv = this.maps[k];
             }
             innerHTML = innerHTML.replace(`\$\{${k}\}`, tv);
@@ -282,7 +275,7 @@ class CodeLabelParse {
             for (let k in parseInfo) {
 
                 let tv = parseInfo[k];
-                if (tv === undefined || tv === null || empty(tv)) {
+                if (tv === undefined || tv === null || mv.Empty(tv)) {
                     tv = this.emptysValues[k];
                 }
 
@@ -293,7 +286,7 @@ class CodeLabelParse {
             for (let k in maps) {
 
                 let tv = parseInfo[maps[k]];
-                if (tv === undefined || tv === null || empty(tv)) {
+                if (tv === undefined || tv === null || mv.Empty(tv)) {
                     tv = this.maps[k];
                 }
 
@@ -304,7 +297,7 @@ class CodeLabelParse {
         }
 
 
-        return deepCopy(customAttr);
+        return mv.deepCopy(customAttr);
     }
 
 
@@ -324,7 +317,7 @@ class CodeLabelParse {
             for (let k in parseInfo) {
 
                 let tv = parseInfo[k];
-                if (tv === undefined || tv === null || empty(tv)) {
+                if (tv === undefined || tv === null || mv.Empty(tv)) {
                     tv = this.emptysValues[k];
                 }
 
@@ -335,7 +328,7 @@ class CodeLabelParse {
             for (let k in maps) {
 
                 let tv = parseInfo[maps[k]];
-                if (tv === undefined || tv === null || empty(tv)) {
+                if (tv === undefined || tv === null || mv.Empty(tv)) {
                     tv = this.maps[k];
                 }
 
@@ -344,7 +337,7 @@ class CodeLabelParse {
 
         }
 
-        return deepCopy(inlineStyle);
+        return mv.deepCopy(inlineStyle);
 
     }
 
@@ -424,7 +417,7 @@ class CodeLabelParse {
             // 设置 parseInfo 对象
             for (let k in this.maps) {
                 let v = this.maps[k];
-                if (empty(v) === false) {
+                if (mv.Empty(v) === false) {
                     parseInfo[v] = vmap[k];
                 }
             }
@@ -446,7 +439,7 @@ class CodeLabelParse {
             }
         }
 
-        return deepCopy(parseInfo);
+        return mv.deepCopy(parseInfo);
 
     }
 
@@ -515,9 +508,9 @@ class CodeLabelParse {
 class StyleColorInfo {
     constructor(styleConfig, colorEndsuffix) {
 
-        this.styleConfig = deepCopy(styleConfig)
+        this.styleConfig = mv.deepCopy(styleConfig)
         this.colorEndsuffix = colorEndsuffix
-        let gcolor = deepCopy(this.styleConfig.colors.values()[this.styleConfig.default]);
+        let gcolor = mv.deepCopy(this.styleConfig.colors.values()[this.styleConfig.default]);
         this.bgcolor1 = gcolor.value
         this.color1 = gcolor.titlecolor
         this.bgcolor2 = gcolor.msgbgcolor

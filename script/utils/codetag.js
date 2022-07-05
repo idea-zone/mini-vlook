@@ -3,7 +3,6 @@
  */
 
  export {
-    getElement,               //  获取满足 selector 但不满足 exclude 的所有元素。
     isLawColorNameOrValue,    // 判断颜色值是否是合法
     rerenderColor,            // 重新渲染颜色值是否是合法
 };
@@ -21,38 +20,10 @@ e.parentNode.insertBefore(sg, e.nextElementSibling);
    e.classList.remove('opened');
  */
 
- import {
-    minus, // 计算两个数组的差集
-    empty,
-    deepCopy, // 判断字符串是否为空
-} from  '../utils/b320comm.js';
-
 import {
     config
 } from '../module/b320config.js';
-
-/**
- * 获取满足 selector 但不满足 exclude 的所有元素。
- * @param {string} selector 要获取元素的 selector  
- * @param {string} exclude  从获取元素中排除的元素的 selector
- * @returns 
- */
-function getElement(selector,exclude,domNode){
-
-    if (empty(selector)){
-        console.warn(" function getElement(): param selector cannot be empty." )
-        return null;
-    }
-    let elementAll=domNode.querySelectorAll(selector)
-    
-    if (empty(exclude)) return elementAll;
-
-    let elementNot=domNode.querySelectorAll(exclude)
-    let rst = minus(Array.from(elementAll),Array.from(elementNot));
-    
-    return rst;
-}
-
+import { mv } from '../commons/domex.js';
 
 /**
  * 判断是否是合法的颜色值
@@ -60,12 +31,13 @@ function getElement(selector,exclude,domNode){
  * @returns
  */
 function isLawColorNameOrValue(color,names){
-    return !empty(color) &&
+    return !mv.Empty(color) &&
     (
         names.indexOf(color) >-1 ||
         new RegExp(config.theme.regs.colorvalue).test(color)     // 判断是否是 #颜色值
     );
 }
+
 
 /**
  * 重新渲染颜色值
@@ -85,24 +57,24 @@ function rerenderColor(color,wzEndsuffix,colors,names,defaultName){
         'msgcolor': '2b1c29',
       },
      */
-      let rst = deepCopy(colors[defaultName])
-      if  (empty(color)){
-          return deepCopy(rst);
+      let rst = mv.deepCopy(colors[defaultName])
+      if  (mv.Empty(color)){
+          return mv.deepCopy(rst);
       }
 
     // 如果不是合法的颜色值，使用默认的值
     if (!isLawColorNameOrValue(color,names)) {
-        return deepCopy(rst);
+        return mv.deepCopy(rst);
     }
 
     if (names.indexOf(color) > -1){
-        rst =  deepCopy(colors[color]);
+        rst =  mv.deepCopy(colors[color]);
     }
 
     if(wzEndsuffix){
         rst.msgcolor = rst.value
     }
 
-    return deepCopy(rst);
+    return mv.deepCopy(rst);
 }
 
