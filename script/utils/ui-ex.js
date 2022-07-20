@@ -6,7 +6,6 @@ export{
 import { mv } from '../commons/domex.js';
 import { InputData, MessageboxInputs } from '../commons/widget.js';
 import { render } from '../module/b320config.js';
-import { getFocusedBlockID,getTargetBlock, getTargetBlockID } from './dom.js';
 import  {
     createMenuItemNode,
     createMenuItemIconNode,
@@ -44,7 +43,7 @@ async function showUtil(element,callback){
     
     // 待配置项的测试
     let its = [];
-    its[0] = new InputData("msg","input",'',"输入",innerHTML,"提示","输入内容");
+    its[0] = new InputData("msg","input",'',"输入",innerHTML,"提示","输入内容","width: 440px;");
     let cts = new MessageboxInputs(its);
     let idom=cts.Create(
         async ()=>{

@@ -302,7 +302,7 @@ export class MessageboxYesNo {
  */
 export class InputData {
 
-    constructor(id,tagName, cls, labelName,defalutValue="", tooltip = "", nulltext="") {
+    constructor(id,tagName, cls, labelName,defalutValue="", tooltip = "", nulltext="",style="") {
         this.Id = id;             // id 名称
         this.Cls = cls;           // class 名称
         this.TagName = tagName;    // 标签名
@@ -310,6 +310,7 @@ export class InputData {
         this.LabelName = labelName;      // 提示标签名
         this.Nulltext = nulltext;              // 为空时候显示的文本
         this.DefalutValue = defalutValue;                // 初始值
+        this.Style = style;
     }
 
 }
@@ -399,7 +400,9 @@ export class MessageboxInputs {
                     lbl.appendChild(mv.CreateDiv(null, "fn__space", null));
                     let ipt = mv.CreateByTagName("",input.Cls,"",input.TagName);
                     lbl.appendChild(ipt);
-
+                    if (mv.Empty(input.Style) === false){
+                        ipt.style = input.Style;
+                    }
                     this.Doms[input.Id] = ipt;
                     ipt["inputdata"] = input;
                     

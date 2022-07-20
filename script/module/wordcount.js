@@ -27,6 +27,7 @@ function createNode(){
     let space = mv.GetDomByAtrrs(div,"class","fn__flex-1","div")[0];
     // iconRefresh
     let span1= document.createElement("span");
+    span1.style.marginRight ="5px";
     let txt1 = document.createTextNode("200");
     span1.appendChild(txt1)
     
@@ -194,7 +195,7 @@ function render(){
 
             let words = `词数: ${msgWord}${allWordCount}`
 
-            span.innerText = chars+" "+words;
+            span.innerText = chars+" "+words+" ";
 
         }
 
