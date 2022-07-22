@@ -149,7 +149,7 @@ function render(){
             .children[0].model.editor
             .protyle.lute;
 
-            let mdtxt = resp.content;
+            let mdtxt = resp===null||resp===undefined?"": resp.content;
             let blocktxt = lute.BlockDOM2Text(lute.Md2BlockDOM(mdtxt))
             // config.log(resp[0].doOperations[0].content)
             let allTxt = blocktxt;

@@ -1,3 +1,9 @@
+
+/* ----- 文档标题 ----- */
+.protyle-title__input{
+    background-color:transparent;
+}
+
 /* --------------- 标题 ---------------  */
 .protyle-wysiwyg .h1, .protyle-wysiwyg .h2, .protyle-wysiwyg .h3, .protyle-wysiwyg .h4, .protyle-wysiwyg .h5, .protyle-wysiwyg .h6 {
     box-shadow: none;
