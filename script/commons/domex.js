@@ -337,9 +337,11 @@ mv.GetSiyuanBlockId = (dom) =>{
  * 获取 lute 属性
  */
 mv.GetLute= ()=>{
-   return siyuan.layout.centerLayout.children[0]
-                                        .children[0].model.editor
-                                        .protyle.lute;
+    
+    return window.Lute.New();
+    // return siyuan.layout.centerLayout.children[0]
+    //                                     .children[0].model.editor
+    //                                     .protyle.lute;
 }
 
 /**

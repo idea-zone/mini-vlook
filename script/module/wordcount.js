@@ -145,9 +145,8 @@ function render(){
             // console.log("ID")
             let resp= await exportMd(titleId);
             // console.log(resp)
-            var lute= siyuan.layout.centerLayout.children[0]
-            .children[0].model.editor
-            .protyle.lute;
+            
+            var lute= mv.GetLute();
 
             let mdtxt = resp===null||resp===undefined?"": resp.content;
             let blocktxt = lute.BlockDOM2Text(lute.Md2BlockDOM(mdtxt))
