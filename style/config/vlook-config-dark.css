@@ -85,11 +85,11 @@
     --v-block-kbd-border-color: var(--key-reflect);
 
     /*标签设置*/
-    --v-tag-bgcolor:#8064A9;
+    --v-tag-bgcolor:#2eb9a8;
     --v-tag-color:#ffffff;
-    --v-tag-icon:#c8b7e3;
+    --v-tag-icon:#39eed9;
     --v-theme-background-gray: #e7ecef;
-    --v-border-dashed-gray: 1px dashed #c8b7e3;
+    --v-border-dashed-gray: 1px dashed #39eed9;
 
     /* 圆角左右两端都为半圆形 */
     --v-border-radius-half-round: 50px;

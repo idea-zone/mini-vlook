@@ -2,9 +2,9 @@
     position: relative;
     color: var(--v-tag-color);
     background-color: var(--v-tag-bgcolor);
-    border-radius: var(--v-border-radius-half-round);
-    margin: 8px 4px;
-    padding: 5px 2px 5px 6px;
+    margin: 0px 0px;
+    padding: 1px 5px;
+    border-radius:5px;
 }
 
 .protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty)::before{
@@ -13,24 +13,23 @@
 
 .protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) span.mult-tag-lv1{
     margin: 1px 2px;
-    padding: 1px 1px 1px 2px;
+    padding: 1px 2px;
 }
 
 .protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) span.mult-tag-lv1::before{
-    content: "# "; /*★*/
+    content: "# ";
     color: var(--v-tag-icon);
 }
 
 .protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) span.mult-tag-lv2 {
-    position: relative;
     color: var(--v-tag-bgcolor);
     background-color: #ffffff;
-    border-radius: 0 var(--v-border-radius-half-round) var(--v-border-radius-half-round) 0  ;
+    border-radius: 0 5px 5px 0  ;
+    padding: 1px 5px;
     margin: 1px 2px;
-    padding: 1px 10px 1px 5px;
 }
 
 
 .protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) span.mult-tag-none{
     display: none;
-  }
+}

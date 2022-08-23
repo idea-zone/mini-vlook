@@ -28,9 +28,11 @@
     position: relative;
     color: var(--v-tag-color);
     background-color: var(--v-tag-bgcolor);
-    border-radius: var(--v-border-radius-half-round);
-    margin: 5px 3px 5px 8px;
-    padding: 3px 18px;
+    /* border-radius: var(--v-border-radius-half-round); */
+    /* margin: 5px 3px 5px 8px; */
+    margin: 0px 0px;
+    padding: 1px 5px;
+    border-radius:5px;
 }
 
 /* ————————————————————标签#号———————————————————— */
@@ -38,14 +40,19 @@
     content: "# "; /*★*/
     color: var(--v-tag-icon);
 }
+.protyle-wysiwyg [data-node-id] span[data-type='tag']:not(:empty)::after {
+    content: " #"; /*★*/
+    color: var(--v-tag-icon);
+}
 
 
 .protyle-wysiwyg [data-node-id] span[data-type='tag']:hover {
-    color: gray;
-    background-color: var(--v-theme-background-gray);
+    filter: brightness(1.1);
+    /* color: gray;
+    background-color: var(--v-theme-background-gray); */
 }
 
-/* ————————————————————给头图上方的标签设置一样的样式，但是不修改颜色———————————————————— */
+/* ————————————————————给头图上方的标签设置不一样的样式———————————————————— */
 .protyle-background__tags .item {
     border-radius: var(--v-border-radius-half-round);
     margin: 5px 3px 5px 8px;
@@ -58,6 +65,9 @@
 
 .protyle-background__tags .item:before {
     content: "# ";
+}
+.protyle-background__tags .item:after {
+    content: " #"; /*★*/
 }
 
 /* --------------- 标签 end --------------- */
