@@ -1305,7 +1305,68 @@ export var config = {
                         }
                     },
                 },
+                {   // 整行样式
+                    typeid: "wzline",
+                    // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    reg: '(\\:\\:(.*?)([|](.*?))?\\:\\:){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    tagName: "code",
+                    customf: 'wzline',                        // 忽略解析的属性值 
+                    className: 'custom-codelabel-wzline',                   // 自定义的属性名称
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        /**
+                         * 以下字段名称被占用,不要用于下面列表的值中.
+                         * value,             // code 标签的 InnerHTML
+                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+                         * $0~$9 也不要用.  
+                         */
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': '',
+                        '$2': 'title',
+                        '$3': 'msgG',   // 是否有消息
+                        '$4': 'msg',
+                        '$5': '',
+                        '$6': 'color',
+                        '$7': 'endsuffix',
+                        '$8': '',
+                        '$9': '',
+                    },
 
+                    emptys: ['title'],      // 不能为空的字段
+                    emptysValues: {              // 当值为空值的值
+                        'msg': ''
+                    },
+                    style: { // 样式映射信息
+                        rerender: true,             // 是否计算配色
+                        color: {
+                            value: 'color',            // 主颜色字段
+                            suffix: 'endsuffix',                // 颜色后缀对应的字段
+                        },
+                        default: 'theme2',               // 缺省颜色值
+                        defaultSuffix: false, // 缺省时,颜色后缀,对应的值.
+                        colors: {
+                            suffixs: {
+                                '!': true,
+                            },
+                            names: () => config.theme.common.colors.names,   // 颜色名称-列表
+                            values: () => config.theme.common.colors.values, // 适配配色-列表
+                        }
+                    },
+                    customAttr: { // 自定义属性
+                        // 'custom-codelabel-value':'${value}',
+                        'custom-codelabel-wzline-title': "${title}",
+                        'custom-codelabel-wzline-msg': "${msg}",
+                    },
+                    inlineStyle: {
+                        "--theme-wzline-bgcolor": "${bgcolor1}",
+                        "--theme-wzline-title-color": "${color1}",
+                        "--theme-wzline-msg-color": "${color2}",
+                        "--theme-wzline-msg-bgcolor": "${bgcolor2}",
+                    },
+                    innerHTML: '${value}',
+                    renderEnd: (parse, element, oldHTML) => { // 渲染完单个元素的回调.
+                    },
+                },
             ],
         },
 

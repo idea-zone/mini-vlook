@@ -37,7 +37,6 @@
 .protyle-wysiwyg *[data-node-id] .custom-codelabel-wz::before{
     color: var(--theme-wz-title-color);
     content: attr(custom-codelabel-wz-title);
-    padding-right: 3px;
 }
 
 .protyle-wysiwyg *[data-node-id] .custom-codelabel-wz:not([custom-codelabel-wz-msg='']):after{
@@ -46,5 +45,6 @@
     background-color: var(--theme-wz-msg-bgcolor);
     content: attr(custom-codelabel-wz-msg);
     padding: 3px;
+    margin-left: 3px;
     border-radius: 3px;
 }

@@ -5,6 +5,9 @@
 
 @import url(/appearance/themes/mini-vlook/style/menus/four-menu-splite.css);
 
+/* 修改文档树样式 */
+@import url(/appearance/themes/mini-vlook/style/customs/file-tree.css);
+
 /* ——————————————————————————— 基础块设置 ——————————————————————————— */
 /*引用-配色*/
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-bq.css);
@@ -52,6 +55,9 @@
 
 /*微章-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/codelabel-wz.css);
+
+/*微章-整行-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/codelabel-wz-line.css);
 
 /*刮刮乐-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/code-rb-coad.css);
