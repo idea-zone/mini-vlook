@@ -32,6 +32,10 @@
     /*前缀/序号/tab文字*/
     --v-theme-on-surface: var(--d-f-c);
 
+    /*文档树*/
+    --b3-theme-background2:#8f91a0;
+    --b3-filetree-background: #292c33;
+
     /*线条*/
     --v-border-color: rgb(161, 162, 165);
     

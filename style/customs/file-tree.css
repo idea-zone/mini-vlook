@@ -1,36 +1,56 @@
 :root{
-    --b3-theme-background2:#f8f9fa;
+  
     --b3-border-color:rgba(0, 0, 0, .07);
     /* --b3-theme-primary: rgb(119, 25, 170); */
     --b3-transition: all 0.15s cubic-bezier(0, 0, 0.2, 1) 0ms;
-    --b3-filetree-background: #f8f9fa;
     --b3-border-color1: #cfcece;
 
+      /* 8种文档树鼠标悬浮颜色 */
+      --b3-filetree-background1: var(--b3-card-error-background);
+      --b3-filetree-background2: var(--b3-card-warning-background);
+      --b3-filetree-background3: var(--b3-card-info-background);
+      --b3-filetree-background4: var(--b3-card-success-background);
+      --b3-filetree-background5: var(--b3-theme-surface);
+      --b3-filetree-background6: var(--b3-theme-primary-light);
+      --b3-filetree-background7: rgba(217, 211, 215, 0.5);
+      --b3-filetree-background8: rgba(255, 193, 153, 0.5);
+      
     /* 8种文档树鼠标悬浮颜色 */
-    --b3-filetree-background1: #fbd2d4;
+    /* --b3-filetree-background1: #fbd2d4;
     --b3-filetree-background2: #fce1cd;
     --b3-filetree-background3: #fcf4cc;
     --b3-filetree-background4: #cce7e0;
     --b3-filetree-background5: #cde3f4;
     --b3-filetree-background6: #dbdcf4;
     --b3-filetree-background7: #e7d5f5;
-    --b3-filetree-background8: #e4e4e4;
+    --b3-filetree-background8: #e4e4e4; */
+
+    /*8中文档树左侧线条颜色*/
+    --b3-filetree-border-color1:var(--b3-card-error-color);
+    --b3-filetree-border-color2:var(--b3-card-warning-color);
+    --b3-filetree-border-color3:var(--b3-card-info-color);
+    --b3-filetree-border-color4:var(--b3-card-success-color);
+    --b3-filetree-border-color5:var(--b3-theme-on-surface);
+    --b3-filetree-border-color6:var(--b3-theme-primary);
+    --b3-filetree-border-color7:var(--b3-theme-secondary);
+    --b3-filetree-border-color8:var(--b3-theme-error);
 
     /* 8中文档树左侧线条颜色 */
-    --b3-filetree-border-color1: #e84c21cc;
+    /* --b3-filetree-border-color1: #e84c21cc;
     --b3-filetree-border-color2: #ed7d31cc;
     --b3-filetree-border-color3: #ffc000cc;
     --b3-filetree-border-color4: #70ad47cc;
     --b3-filetree-border-color5: #1ec3b4cc;
     --b3-filetree-border-color6: #5b9bd5cc;
     --b3-filetree-border-color7: #8064a2cc;
-    --b3-filetree-border-color8: #7a878bcc;
+    --b3-filetree-border-color8: #7a878bcc; */
 }
 
 /* ————————————————————大纲等文字显示主题色———————————————————— */
 .block__logo {
     font-weight: bold;
-    color: #55555a4d;
+    /* color: #55555a4d; */
+    color: var(--v-theme-on-surface);
 }
 
 /* ————————————————————文档树、大纲、反向链接顶部的背景颜色———————————————————— */
@@ -47,7 +67,8 @@
 
 /* 设置大纲中文章标题的样式 */
 .sy__outline>.b3-list-item .b3-list-item__text {
-    color: var(--b3-theme-primary) !important;
+    /* color: var(--b3-theme-primary) !important; */
+    color: var(--v-theme-on-surface) !important;
     font-weight: 700;
 }
 
@@ -105,7 +126,8 @@ body {
     visibility: visible;
     transition: var(--b3-transition);
     margin-bottom: 2px;
-    color: #80808042;
+    /* color: #80808042; */
+    color: var(--v-theme-on-surface);
 }
 
 /* ——————————————————————————————取消默认的隐藏效果———————————————————————— */
@@ -139,7 +161,8 @@ span.b3-list-item__icon.b3-tooltips.b3-tooltips__n {
 /* -----------------------------------------------------------文档树条目------------------------------------------------- */
 /* ------------------------------------文档树文字设置为灰色------------------------------- */
 .b3-list-item__text {
-    color: #55555a;
+    /* color: #55555a; */
+    color: var(--v-theme-on-surface);
 }
 
 /* 当前笔记本背景颜色和文档树背景颜色一致 */
