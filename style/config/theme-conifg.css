@@ -82,32 +82,49 @@
     --b3-card-success-background: rgb(237, 247, 237);
 
     /* 自定义文字：字体1-13；背景1-13 */
-    --b3-font-color1: var(--b3-card-error-color);
+    /* --b3-font-color1: var(--b3-card-error-color);
     --b3-font-color2: var(--b3-card-warning-color);
     --b3-font-color3: var(--b3-card-info-color);
     --b3-font-color4: var(--b3-card-success-color);
     --b3-font-color5: var(--b3-theme-on-surface);
     --b3-font-color6: var(--b3-theme-primary);
     --b3-font-color7: var(--b3-theme-secondary);
-    --b3-font-color8: var(--b3-theme-error);
-    --b3-font-color9: #f5539e;
-    --b3-font-color10: #944194;
-    --b3-font-color11: #65b84d;
-    --b3-font-color12: #f5822e;
-    --b3-font-color13: var(--b3-theme-background);
-    --b3-font-background1: var(--b3-card-error-background);
+    --b3-font-color8: var(--b3-theme-error); */
+    --b3-font-color1:#2ec7c9;
+    --b3-font-color2: #b6a2de;
+    --b3-font-color3: #5ab1ef;
+    --b3-font-color4: #ffb980;
+    --b3-font-color5: #d87a80;
+    --b3-font-color6: #8d98b3;
+    --b3-font-color7: #e5cf0d;
+    --b3-font-color8: #97b552;
+    --b3-font-color9: #95706d;
+    --b3-font-color10: #dc69aa;
+    --b3-font-color11: #07a2a4;
+    --b3-font-color12: #9a7fd1;
+    --b3-font-color13: #f5994e;
+
+    /* --b3-font-background1: var(--b3-card-error-background);
     --b3-font-background2: var(--b3-card-warning-background);
     --b3-font-background3: var(--b3-card-info-background);
     --b3-font-background4: var(--b3-card-success-background);
     --b3-font-background5: var(--b3-theme-surface);
     --b3-font-background6: var(--b3-theme-primary-light);
     --b3-font-background7: rgba(217, 211, 215, 0.5);
-    --b3-font-background8: rgba(255, 193, 153, 0.5);
-    --b3-font-background9: rgba(189, 201, 255, 0.5);
-    --b3-font-background10: rgba(239, 218, 251, 0.5);
-    --b3-font-background11: rgba(234, 202, 220, 0.5);
-    --b3-font-background12: rgba(253, 198, 200, 0.5);
-    --b3-font-background13: var(--b3-theme-on-background);
+    --b3-font-background8: rgba(255, 193, 153, 0.5); */
+    --b3-font-background1:#2ec7c950;
+    --b3-font-background2: #b6a2de50;
+    --b3-font-background3: #5ab1ef50;
+    --b3-font-background4: #ffb98050;
+    --b3-font-background5: #d87a8050;
+    --b3-font-background6: #8d98b350;
+    --b3-font-background7: #e5cf0d50;
+    --b3-font-background8: #97b55250;
+    --b3-font-background9: #95706d50;
+    --b3-font-background10: #dc69aa50;
+    --b3-font-background11: #07a2a450;
+    --b3-font-background12: #9a7fd150;
+    --b3-font-background13: #f5994e50;
 
     /* 动画效果 */
     --b3-transition: all .15s cubic-bezier(0, 0, .2, 1) 0ms;

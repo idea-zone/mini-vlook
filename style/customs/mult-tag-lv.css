@@ -25,8 +25,7 @@
     color: var(--v-tag-bgcolor);
     background-color: #ffffff;
     border-radius: 0 5px 5px 0  ;
-    padding: 1px 5px;
-    margin: 1px 2px;
+    padding: 0px 3px 1.5px 3px;
 }
 
 

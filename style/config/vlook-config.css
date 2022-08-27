@@ -155,4 +155,26 @@
 
     /*———————————————————— 列表2导图(end)————————————————————*/
 
+    /*一些其他配色 dd */ 
+
+    --v3-cwtag-color1:#CC3140 ; /** 'red' */ 
+    --v3-cwtag-color2:#F87000 ; /** 'orange' */ 
+    --v3-cwtag-color3:#FDC000 ; /** 'yellow' */ 
+    --v3-cwtag-color4:#B2D115 ; /** 'lime' */ 
+    --v3-cwtag-color5:#30A830 ; /** 'green' */ 
+    --v3-cwtag-color6:#2DE0C8 ; /** 'aqua' */ 
+    --v3-cwtag-color7:#17B1C2 ; /** 'cyan' */ 
+    --v3-cwtag-color8:#2290F0 ; /** 'blue' */ 
+    --v3-cwtag-color9:#2D51E0 ; /** 'sea' */ 
+    --v3-cwtag-color10:#7073D6;  /** 'steel' */ 
+    --v3-cwtag-color11:#954ECC;  /** 'purple' */ 
+    --v3-cwtag-color12:#E64ED6;  /** 'magenta' */ 
+    --v3-cwtag-color13:#FAB9D1;  /** 'pink' */ 
+    --v3-cwtag-color14:#E0BF9D;  /** 'gold' */ 
+    --v3-cwtag-color15:#855F3A;  /** 'brown' */ 
+    --v3-cwtag-color16:#9498A0;  /** 'gray' */ 
+    --v3-cwtag-color17:#16192a;  /** 'black' */ 
+    --v3-cwtag-color18:#8064A9;  /** 'theme1' */ 
+    --v3-cwtag-color19:#2AA899;  /** 'theme2' */ 
+
 }
