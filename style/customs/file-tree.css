@@ -1,19 +1,20 @@
 :root{
-  
+
     --b3-border-color:rgba(0, 0, 0, .07);
     /* --b3-theme-primary: rgb(119, 25, 170); */
     --b3-transition: all 0.15s cubic-bezier(0, 0, 0.2, 1) 0ms;
     --b3-border-color1: #cfcece;
 
+
       /* 8种文档树鼠标悬浮颜色 */
-      --b3-filetree-background1: var(--b3-card-error-background);
-      --b3-filetree-background2: var(--b3-card-warning-background);
-      --b3-filetree-background3: var(--b3-card-info-background);
-      --b3-filetree-background4: var(--b3-card-success-background);
-      --b3-filetree-background5: var(--b3-theme-surface);
-      --b3-filetree-background6: var(--b3-theme-primary-light);
-      --b3-filetree-background7: rgba(217, 211, 215, 0.5);
-      --b3-filetree-background8: rgba(255, 193, 153, 0.5);
+    --b3-filetree-background1: #2ec7c950;
+    --b3-filetree-background2: #b6a2de50;
+    --b3-filetree-background3: #5ab1ef50;
+    --b3-filetree-background4: #ffb98050;
+    --b3-filetree-background5: #d87a8050;
+    --b3-filetree-background6: #8d98b350;
+    --b3-filetree-background7: #e5cf0d50;
+    --b3-filetree-background8: #97b55250;
       
     /* 8种文档树鼠标悬浮颜色 */
     /* --b3-filetree-background1: #fbd2d4;
@@ -26,14 +27,14 @@
     --b3-filetree-background8: #e4e4e4; */
 
     /*8中文档树左侧线条颜色*/
-    --b3-filetree-border-color1:var(--b3-card-error-color);
-    --b3-filetree-border-color2:var(--b3-card-warning-color);
-    --b3-filetree-border-color3:var(--b3-card-info-color);
-    --b3-filetree-border-color4:var(--b3-card-success-color);
-    --b3-filetree-border-color5:var(--b3-theme-on-surface);
-    --b3-filetree-border-color6:var(--b3-theme-primary);
-    --b3-filetree-border-color7:var(--b3-theme-secondary);
-    --b3-filetree-border-color8:var(--b3-theme-error);
+    --b3-filetree-border-color1:#2ec7c9;
+    --b3-filetree-border-color2:#b6a2de;
+    --b3-filetree-border-color3:#5ab1ef;
+    --b3-filetree-border-color4:#ffb980;
+    --b3-filetree-border-color5:#d87a80;
+    --b3-filetree-border-color6:#8d98b3;
+    --b3-filetree-border-color7:#e5cf0d;
+    --b3-filetree-border-color8:#97b552;
 
     /* 8中文档树左侧线条颜色 */
     /* --b3-filetree-border-color1: #e84c21cc;
