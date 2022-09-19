@@ -14,8 +14,9 @@
     height: 0.1em !important;
     width: 100%;
     overflow: hidden;
+    background-color: var(--ac-theme1);
     /* background-image: linear-gradient(125deg, #F44336, #E91E63, #9C27B0, #3F51B5, #2196F3); */
-    background-image: linear-gradient(125deg, #eae6f0, #c7d9de, #9C27B0, #cadde2, #b1d5d4);
+    /* background-image: linear-gradient(125deg, #eae6f0, #c7d9de, #9C27B0, #cadde2, #b1d5d4); */
     background-size: 400%;
     animation: bganimation 10s infinite;
     border-radius: var(--v-block-hr-border-radius) !important;

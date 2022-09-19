@@ -54,126 +54,126 @@ export var config = {
                 ],
                 values: {
                     'red': {
-                        'value': 'rgb(204,49,64)', //'#CC3140',
-                        'titlecolor': 'rgb(246,238,243)',//'#f6eef3',
+                        'value': '#CC3140',
+                        'titlecolor': '#f6eef3',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
 
                     'orange': {
-                        'value': 'rgb(248,112,0)',//'#F87000',
-                        'titlecolor':'rgb(246,238,243)',// '#f6eef3',
+                        'value': '#F87000',
+                        'titlecolor': '#f6eef3',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
 
                     'yellow': {
-                        'value': '	rgb(253,192,0)',//'#FDC000',
-                        'titlecolor': 'rgb(43,28,41)',//'#2b1c29',
+                        'value': '#FDC000',
+                        'titlecolor': '#2b1c29',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
 
                     'lime': {
-                        'value': 'rgb(178,209,21)',//'#B2D115',
-                        'titlecolor': 'rgb(43,28,41)',//'#2b1c29',
+                        'value': '#B2D115',
+                        'titlecolor': '#2b1c29',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
 
                     'green': {
-                        'value': 'rgb(48,168,48)',//'#30A830',
-                        'titlecolor': 'rgb(246,238,243)',//'#f6eef3',
+                        'value': '#30A830',
+                        'titlecolor': '#f6eef3',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
 
                     'aqua': {
-                        'value': 'rgb(45,224,200)',//'#2DE0C8',
-                        'titlecolor': 'rgb(43,28,41)',//'#2b1c29',
+                        'value': '#2DE0C8',
+                        'titlecolor': '#2b1c29',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
 
                     'cyan': {
-                        'value': 'rgb(23,177,194)',//'#17B1C2',
-                        'titlecolor': 'rgb(246,238,243)',//'#f6eef3',
+                        'value': '#17B1C2',
+                        'titlecolor': '#f6eef3',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
 
                     'blue': {
-                        'value': 'rgb(34,144,240)',//'#2290F0',
-                        'titlecolor':'rgb(246,238,243)',// '#f6eef3',
+                        'value': '#2290F0',
+                        'titlecolor': '#f6eef3',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
 
                     'sea': {
-                        'value': 'rgb(45,81,224)',//'#2D51E0',
-                        'titlecolor':'rgb(246,238,243)',// '#f6eef3',
+                        'value': '#2D51E0',
+                        'titlecolor': '#f6eef3',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
                     'steel': {
-                        'value': '	rgb(112,115,214)',//'#7073D6',
-                        'titlecolor':'rgb(246,238,243)',// '#f6eef3',
+                        'value': '#7073D6',
+                        'titlecolor': '#f6eef3',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
                     'purple': {
-                        'value': 'rgb(149,78,204)',//'#954ECC',
-                        'titlecolor':'rgb(246,238,243)',// '#f6eef3',
+                        'value': '#954ECC',
+                        'titlecolor': '#f6eef3',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
                     'magenta': {
-                        'value': 'rgb(230,78,214)',//'#E64ED6',
-                        'titlecolor': 'rgb(246,238,243)',//'#f6eef3',
+                        'value': '#E64ED6',
+                        'titlecolor': '#f6eef3',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
                     'pink': {
-                        'value': 'rgb(250,185,209)',//'#FAB9D1',
-                        'titlecolor': 'rgb(43,28,41)',//'#2b1c29',
+                        'value': '#FAB9D1',
+                        'titlecolor': '#2b1c29',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
                     'gold': {
-                        'value': 'rgb(224,191,157)',//'#E0BF9D',
-                        'titlecolor': 'rgb(43,28,41)',//'#2b1c29',
+                        'value': '#E0BF9D',
+                        'titlecolor': '#2b1c29',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
                     'brown': {
-                        'value': 'rgb(133,95,58)',//'#855F3A',
-                        'titlecolor': 'rgb(43,28,41)',//'#2b1c29',
+                        'value': '#855F3A',
+                        'titlecolor': '#2b1c29',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
                     'gray': {
-                        'value':'rgb(148,152,160)',// '#9498A0',
-                        'titlecolor': 'rgb(246,238,243)',//'#f6eef3',
+                        'value': '#9498A0',
+                        'titlecolor': '#f6eef3',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
                     'black': {
-                        'value': 'rgb(22,25,42)',//'#16192a',
-                        'titlecolor':'rgb(246,238,243)',// '#f6eef3',
+                        'value': '#16192a',
+                        'titlecolor': '#f6eef3',
                         'msgbgcolor': 'rgba(255,255,255,0.9)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
                     'theme1': {
-                        'value': 'rgb(128,100,169)',//'#8064A9', //
-                        'titlecolor':'rgb(246,238,243)' ,//'#f6eef3',
+                        'value': '#8064A9',
+                        'titlecolor': '#f6eef3',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     },
                     'theme2': {
-                        'value': 'rgb(42,168,153)',//'#2AA899',
-                        'titlecolor': 'rgb(246,238,243)',//'#f6eef3',
+                        'value': '#2AA899',
+                        'titlecolor': '#f6eef3',
                         'msgbgcolor': 'rgba(255,255,255,0.6)',
-                        'msgcolor': 'rgb(43,28,41)',// 2b1c29,
+                        'msgcolor': '2b1c29',
                     }
                 },
             },
@@ -269,12 +269,12 @@ export var config = {
                 //     },
                 // },
 
-                {   // 微章
+
+                {   // done微章
                     typeid: "wz",
                     // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
                     reg: '(#(.*?)([|](.*?))?#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
-                    tagName: "span",
-                    tagDataType:"code",
+                    tagName: "code",
                     customf: 'wz',                        // 忽略解析的属性值 
                     className: 'custom-codelabel-wz',                   // 自定义的属性名称
                     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
@@ -332,11 +332,125 @@ export var config = {
                     renderEnd: (parse, element, oldHTML) => { // 渲染完单个元素的回调.
                     },
                 },
-                {   // 刮刮乐
+                {   // done复选框
+                    typeid: "chk",
+                    // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    // reg: '(\\\+(\\\[()\\\])([|](.*?))?){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    reg: '(\\\+(\\\[(\\s|x)\\\])([|](.*?))?\\\+){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    
+                    tagName: "code",
+                    customf: 'chk',                        // 忽略解析的属性值 
+                    className: 'custom-codelabel-chk',                   // 自定义的属性名称
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        /**
+                         * 以下字段名称被占用,不要用于下面列表的值中.
+                         * value,             // code 标签的 InnerHTML
+                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+                         * $0~$9 也不要用.  
+                         */
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': '',
+                        '$2': 'chkG',
+                        '$3': 'chk',   // 是否有消息
+                        '$4': 'msgG',
+                        '$5': 'msg',
+                        '$6': 'colorG',
+                        '$7': 'color',
+                        '$8': 'endsuffix',
+                        '$9': '',
+                    },
+                    emptys: ['chkG'],      // 不能为空的字段
+                    emptysValues: {              // 当值为空值的值
+                        'chk': ' ',
+                        'msg': '',
+                    },
+                    style: { // 样式映射信息
+                        rerender: true,             // 是否计算配色
+                        color: {
+                            value: 'color',            // 主颜色字段
+                            suffix: 'endsuffix',                // 颜色后缀对应的字段
+                        },
+                        default: 'theme2',               // 缺省颜色值
+                        defaultSuffix: false, // 缺省时,颜色后缀,对应的值.
+                        colors: {
+                            suffixs: {
+                                '!': true,
+                            },
+                            names: () => config.theme.common.colors.names,   // 颜色名称-列表
+                            values: () => config.theme.common.colors.values, // 适配配色-列表
+                        }
+                    },
+                    customAttr: { // 自定义属性
+                        // 'custom-codelabel-value':'${value}',
+                        'custom-codelabel-chk-chk': "${chk}",
+                        'custom-codelabel-chk-msg': "${msg}",
+                        'custom-codelabel-chk-colorG': "${colorG}",
+                        'custom-codelabel-chk-endsuffix': "${endsuffix}",
+                    },
+                    inlineStyle: {
+                        "--theme-wz-bgcolor": "${bgcolor1}",
+                        "--theme-wz-title-color": "${color1}",
+                        "--theme-wz-msg-color": "${color2}",
+                        "--theme-wz-msg-bgcolor": "${bgcolor2}",
+                    },
+                    innerHTML: '<span class="hide">${value}<span>',
+                    renderEnd: (parse, element, oldHTML) => { // 渲染完单个元素的回调.
+
+                        // let parentNode = mv.GetSiyuanBlock(element);
+                        let id = mv.GetSiyuanBlockId(element)
+
+                        let div= mv.GetDomByAtrrs(element,'class','cw-chk-wrap','span')[0];
+                        if (div===null || div===undefined){
+                            div = mv.CreateSpan(null,'cw-chk-wrap',null);
+                            let span1 = mv.CreateSpan(null,'cw-chk-gaph-one',null)
+                            let span2 = mv.CreateSpan(null,'cw-chk-gaph-two',null)
+                            div.appendChild(span1);
+                            div.appendChild(span2);
+                            element.appendChild(div);
+                        }
+
+                        div.classList.remove('cw-chk-tick')
+                        if (parse.parseInfo.chk === 'x'){
+                             div.classList.add('cw-chk-tick')
+                        }
+
+                        div['onclick'] = async function(){
+                            let msg = mv.GetAttrs(element,"custom-codelabel-chk-msg")
+                            if (msg === undefined) msg=''
+
+                            msg = mv.Empty(msg)?"":`|${msg}`
+                            let colorG = mv.GetAttrs(element,"custom-codelabel-chk-colorG")
+                            if (colorG === "undefined" || colorG===undefined){
+                                colorG=""   
+                            }
+
+                            if (div.classList.contains('cw-chk-tick')){
+                                div.classList.remove('cw-chk-tick')
+                                element.innerHTML = `<span class="hide">+[ ]${msg}+${colorG}</span>`;
+                                mv.SetAttrs(element,'custom-codelabel-chk-chk',' ')
+                                mv.SetAttrs(element,'custom-codelabel-value',`+[ ]${msg}+${colorG}`)
+                            }
+                            else{
+                                div.classList.add('cw-chk-tick')
+                                element.innerHTML =`<span class="hide">+[x]${msg}+${colorG}</span>`;
+                                mv.SetAttrs(element,'custom-codelabel-chk-chk','x')
+                                mv.SetAttrs(element,'custom-codelabel-value',`+[ ]${msg}+${colorG}`)
+                            }
+
+                            let md = mv.GetLute().BlockDOM2Md(element.parentNode.parentNode.innerHTML)
+                            console.log(md)
+                            let kid = await mv.UpdateBlockByMd_API(id,md)
+                            let dom = document.querySelectorAll(`div[data-node-id="${kid}"]`)[0];
+                            render(dom)
+                        }
+
+                    },
+                },
+                {   // done刮刮乐
                     typeid: "rb",
                     reg: '^\\\*\\\{(.*)\\\}\\\((.*?)(\\s*\\\"(#?[\\d\\w]+)\\\")?\\\)$',  // 正则表达式
-                    tagName: "span",
-                    tagDataType:"code",
+                    tagName: "code",
                     customf: 'rb',                        // 忽略解析的属性值 
                     className: 'v-rb-coat',                   // 自定义的属性名称
                     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
@@ -402,11 +516,10 @@ export var config = {
                         element.onclick = bingOnClick.bind(element, element);
                     },
                 },
-                {   // 注音
+                {   // done注音
                     typeid: "pg",
                     reg: '^\\\{(.*)\\\}\\s*\\\((.*)\\\)$',  // 正则表达式
-                    tagName: "span",
-                    tagDataType:"code",
+                    tagName: "code",
                     customf: 'pg',                        // 忽略解析的属性值 
                     className: 'vk-pg',                   // 自定义的属性名称
                     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
@@ -459,18 +572,414 @@ export var config = {
                     renderEnd: (parse, element, oldHTML) => { // 渲染完单个元素的回调.
                     },
                 },
+                {   // done计数任务
+                    typeid: "todo",
+                    reg: '^\\\+\\\[(\\d+)\\\]\\s*\\\((.*?)(\\s*\\\"([\\d\\w]+)\\\")?\\\)$',  // 正则表达式
+                    tagName: "code",
+                    customf: 'todo',                        // 忽略解析的属性值 
+                    className: 'vk-todo',                   // 自定义的属性名称
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': 'count',
+                        '$2': 'data',
+                        '$3': 'colorTag',
+                        '$4': 'color',
+                        '$5': '',
+                        '$6': '',
+                        '$7': '',
+                        '$8': '',
+                        '$9': '',
+                    },
 
-                {   // 彩虹引用
+                    emptys: ['count', 'data'],      // 不能为空的字段
+                    emptysValues: {                  // 当值为空值的值
+                        'colorTag': ''
+                    },
+                    style: { // 样式映射信息
+                        rerender: true,             // 是否计算配色
+                        color: {
+                            value: 'color',            // 主颜色字段
+                            suffix: '',                // 颜色后缀对应的字段
+                        },
+                        default: 'black',               // 缺省颜色值
+                        defaultSuffix: false, // 缺省时,颜色后缀,对应的值.
+                        colors: {
+                            suffixs: {
+                                '!': true,
+                            },
+                            names: () => config.theme.common.colors.names,   // 颜色名称-列表
+                            values: () => config.theme.common.colors.values, // 适配配色-列表
+                        }
+                    },
+                    customAttr: { // 自定义属性
+                        'custom-codelabel-value': '${value}',
+                        'custom-codelabel-todo-count': "${count}",
+                        'custom-codelabel-todo-data': "${data}",
+                        'custom-codelabel-todo-colorTag': "${colorTag}",
+                    },
+                    inlineStyle: {
+                        'color': "${color}",
+                    },
+                    innerHTML: '<button>+</button><span>[${count}]</span><span>(</span>${data}<span>${colorTag})</span>',
+                    renderEnd: async (parse, element, oldHTML) => {
+
+                        async function bingOnClick(parse, e, oldHTML) {
+
+                            // 获取父节点    
+                            let parentNode = mv.GetSiyuanBlock(e);
+                            let id = mv.GetSiyuanBlockId(e);
+
+                            parse.reinitFormat(parse.ptypeItem)
+
+                            let parseInfo = parse.clacParseInfo(oldHTML);
+                            let c = 1 + +parseInfo.count;
+                            parseInfo.count = "" + c;
+                            parse.parseInfo = parseInfo;
+
+                            // 渲染
+                            parse.renderSingle(e, parseInfo);
+                            // 这里已经更新了，所有旧的 oldHTML 和 parse.Value 就没用了。重新组合
+                            let newInnerHtml = `+[${parse.parseInfo.count}](${parse.parseInfo.data}${parse.parseInfo.colorTag})`
+
+                            e.firstChild.onclick = bingOnClick.bind(e.firstChild, parse, e, newInnerHtml)
+
+                            // 设置新的 自定义的value
+                            e.setAttribute("custom-codelabel-value", newInnerHtml);
+
+                            e.firstChild.setAttribute(
+                                "custom-codelabel-todo-count",
+                                parse.parseInfo.count
+                            );
+
+                            var tmd = mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
+                            let  did = await mv.UpdateBlockByMd_API(id, tmd);
+                            let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
+                            render(dom);
+
+                        }
+
+                        element.firstChild.onclick = bingOnClick.bind(element.firstChild, parse, element, oldHTML)
+                        element.firstChild.setAttribute(
+                            "custom-codelabel-todo-count",
+                            element.getAttribute("custom-codelabel-todo-count"),
+                        );
+
+                    },
+                },
+                {   // done多级标签
+                    typeid: "mtag",
+                    reg: '^(.*)/(.*)$',  // 针对 innerHTML
+                    tagName: 'span[data-type="tag"]',
+                    customf: 'mtag',   // 自定义属性 f=mtag 即可。
+                    className: 'mult-tag',
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        /**
+                         * 以下字段名称被占用,不要用于下面列表的值中.
+                         * value,             // code 标签的 InnerHTML
+                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+                         * $0~$9 也不要用.  
+                         */
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': 'lv1',
+                        '$2': 'lv2',
+                        '$3': '',
+                        '$4': '',
+                        '$5': '',
+                        '$6': '',
+                        '$7': '',
+                        '$8': '',
+                        '$9': '',
+                    },
+                    emptys: ['lv1', 'lv2'],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
+                    emptysValues: {              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
+                        //  'title':'ke',
+                    },
+                    style: { // 样式映射信息
+                        rerender: false,                // 是否计算颜色
+                        // color: {
+                        //     value:'color',            // 主颜色对应的字段，用 $0'-'$9' 对应的别名
+                        //     suffix:'endsuffix',       // 颜色后缀对应的字段，用 $0'-'$9' 对应的别名
+                        // },         
+                        // default:'theme2',             // 主颜色缺省时，默认的颜色值
+                        // defaultSuffix:false,          // 颜色后缀缺省时,默认的后缀内容，表示的值（suffixs中value）
+                        // colors:{
+                        //     suffixs:{                 // 颜色后缀内容，表示的值
+                        //         '!':true,
+                        //     },
+                        //     names: ()=>config.theme.common.colors.names,     // 主颜色，支持的颜色名称-列表，
+                        //     values: ()=>config.theme.common.colors.values,   // 主颜色，对应的适配配色-列表
+                        // }
+                    },
+                    customAttr: {   // 自定义属性，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+                        // 'mult-tag-lv1': "${lv1}",
+                        // 'mult-tag-lv2': "${lv2}",
+                    },
+                    inlineStyle: {  // 自定义内联样式，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+                        // "--theme-wz-bgcolor":"${bgcolor1}",
+                        // "--theme-wz-title-color":"${color1}",
+                        // "--theme-wz-msg-color":"${color2}",
+                        // "--theme-wz-msg-bgcolor":"${bgcolor2}",
+                    },
+                    // 解析后 code 标签的 innerHTML 内容，支持类似js的模板语法，${别名}, 会被实际的值替换
+                    innerHTML: "<span class='mult-tag-lv1'>${lv1}</span>"
+                        + "<span class='mult-tag-none'>/</span>"
+                        + "<span class='mult-tag-lv2'>${lv2}</span>",
+                    renderEnd: (parse, element, oldHTML) => { //在每个元素渲染解析完成后的回调函数
+                        // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
+                        // element 当前元素（解析后的）
+                        // oldHTML （解析前的 innerHTML 内容）
+                        // let innerHTML = '';
+                        // if (parse['lv1'] !==undefined && parse['lv1'] !==null && parse['lv1'] !==''){
+                        //     innerHTML += `<span class="mult-tag-lv1">${parse['lv1']}<span>`
+                        // }
+                        // if (parse['lv2'] !==undefined && parse['lv2'] !==null && parse['lv2'] !==''){
+                        //     innerHTML += `<span class="mult-tag-lv2">${parse['lv2']}<span>`
+                        // }
+
+                        // element.innerHTML = innerHTML
+                    },
+                },
+                {   // done下拉框
+                    typeid: "cx",
+                    reg: '\\\^\\\[(\\d+)\\\](&gt;\\\(.+\\\))',  // 针对 innerHTML
+                    tagName: "code",
+                    customf: 'cx',   // 自定义属性 f=wz 即可。
+                    className: 'cw-cbox',
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        /**
+                         * 以下字段名称被占用,不要用于下面列表的值中.
+                         * value,             // code 标签的 InnerHTML
+                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+                         * $0~$9 也不要用.  
+                         */
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': 'index',
+                        '$2': 'itms',
+                        '$3': '',
+                        '$4': '',
+                        '$5': '',
+                        '$6': '',
+                        '$7': '',
+                        '$8': '',
+                        '$9': '',
+                    },
+                    // reg2mapts:{
+                    //     // key: 上一轮匹配的地方 ; value: 对应的解析规则
+                    //     '$0':{ 
+                    //         reg:'\\\$\\\{(.*?)\\\}',  
+                    //         isMatchAll:true,   // 是否是匹配所有
+                    //         type:'array',      // 类型
+                    //     },
+                    // },
+                    emptys: ['index', 'itms'],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
+                    emptysValues: {              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
+                    },
+                    style: { // 样式映射信息
+                        rerender: false,                // 是否计算颜色
+                        // color: {
+                        //     value:'color',            // 主颜色对应的字段，用 $0'-'$9' 对应的别名
+                        //     suffix:'endsuffix',       // 颜色后缀对应的字段，用 $0'-'$9' 对应的别名
+                        // },         
+                        // default:'theme2',             // 主颜色缺省时，默认的颜色值
+                        // defaultSuffix:false,          // 颜色后缀缺省时,默认的后缀内容，表示的值（suffixs中value）
+                        // colors:{
+                        //     suffixs:{                 // 颜色后缀内容，表示的值
+                        //         '!':true,
+                        //     },
+                        //     names: ()=>config.theme.common.colors.names,     // 主颜色，支持的颜色名称-列表，
+                        //     values: ()=>config.theme.common.colors.values,   // 主颜色，对应的适配配色-列表
+                        // }
+                    },
+                    customAttr: {   // 自定义属性，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+                        'custom-codelabel-cx-index': "${index}",
+                        'custom-codelabel-cx-itmes': "${itms}",
+                    },
+                    inlineStyle: {  // 自定义内联样式，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+                        // "--theme-wz-bgcolor":"${bgcolor1}",
+                        // "--theme-wz-title-color":"${color1}",
+                        // "--theme-wz-msg-color":"${color2}",
+                        // "--theme-wz-msg-bgcolor":"${bgcolor2}",
+                    },
+                    innerHTML: '<span>${value}</span>',  // 解析后 code 标签的 innerHTML 内容，支持类似js的模板语法，${别名}, 会被实际的值替换
+                    renderEnd: async (parse, element, oldHTML) => { //在每个元素渲染解析完成后的回调函数
+                        // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
+                        // element 当前元素（解析后的）
+                        // oldHTML （解析前的 innerHTML 内容）
+
+                        let tIndex = parse.parseInfo['index'];
+                        let tItms = parse.parseInfo['itms'];
+
+                        // 获取父节点    
+                        let parentNode =  mv.GetSiyuanBlock(element);
+                        let id = mv.GetSiyuanBlockId(element);
+
+                        let setHtml = async (index, tItms) => {
+
+                            let itmes = [...tItms.matchAll('\\\((.*?)\\\)')]
+
+                            element.innerHTML = `<span>^[${index}]${tItms}</span>`
+
+                            let slt = itmes[index][1];
+                            element.setAttribute('custom-select-data', slt)
+
+                            element.setAttribute('custom-codelabel-cx-index', index)
+                            let pstionX = element.getBoundingClientRect().left - element.parentNode.getBoundingClientRect().left + 20;
+                            let pstionY = element.getBoundingClientRect().bottom - element.parentNode.getBoundingClientRect().bottom;
+                            let mUl = createUL(element);
+                            mUl.setAttribute('style', "margin-left:" + pstionX + "px;margin-top:" + pstionY + "px");
+
+                            let i = 0;
+                            for (let item of itmes) {
+                                let itext = item[1];
+                                let eli = mUl.createli("", itext, i++);
+                                eli.onclick = async (e) => {
+                                    // let idx=e.target.getAttribute('custom-li-data');
+                                    let idx = e.target.getAttribute('custom-li-index');
+                                    let tms = element.getAttribute('custom-codelabel-cx-itmes')
+                                    setHtml(idx, tms);
+
+                                    var tmd = mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
+                                    let  did = await mv.UpdateBlockByMd_API(id, tmd);
+                                    let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
+                                    render(dom);
+
+                                };
+                            }
+
+                        };
+
+                        setHtml(tIndex, tItms);
+                    },
+                },
+                {   // done@@命令
+                    typeid: "cmd",
+                    reg: '^@@((kanban)|(map)|(bqcolor)|(bqtab))(\\\((.*)\\\))?$',  // 针对 innerHTML
+                    tagName: "code",
+                    customf: 'cmd',   // 自定义属性 f=wz 即可。
+                    className: 'custom-codelabel-cmd',
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        /**
+                         * 以下字段名称被占用,不要用于下面列表的值中.
+                         * value,             // code 标签的 InnerHTML
+                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+                         * $0~$9 也不要用.  
+                         */
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': 'func',
+                        '$2': '',
+                        '$3': '',
+                        '$4': '',
+                        '$5': '',
+                        '$6': 'args',
+                        '$7': '',
+                        '$8': '',
+                        '$9': '',
+                    },
+                    emptys: ['func'],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
+                    onlyValue: {                 // 不为null时，必须在这个范围内取值，可以不设置，
+                        'func': ['kanban', 'map', 'bqcolor','bqtab'],
+                    },
+                    emptysValues: {              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
+                        //  'func':'',
+                    },
+                    style: { // 样式映射信息
+                        rerender: false,                // 是否计算颜色
+                        // color: {
+                        //     value:'color',            // 主颜色对应的字段，用 $0'-'$9' 对应的别名
+                        //     suffix:'endsuffix',       // 颜色后缀对应的字段，用 $0'-'$9' 对应的别名
+                        // },         
+                        // default:'theme2',             // 主颜色缺省时，默认的颜色值
+                        // defaultSuffix:false,          // 颜色后缀缺省时,默认的后缀内容，表示的值（suffixs中value）
+                        // colors:{
+                        //     suffixs:{                 // 颜色后缀内容，表示的值
+                        //         '!':true,
+                        //     },
+                        //     names: ()=>config.theme.common.colors.names,     // 主颜色，支持的颜色名称-列表，
+                        //     values: ()=>config.theme.common.colors.values,   // 主颜色，对应的适配配色-列表
+                        // }
+                    },
+                    customAttr: {   // 自定义属性，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+                        // 'custom-codelabel-cmd-func': "${func}",
+                        // 'custom-codelabel-cmd-args': "${args}",
+                    },
+                    inlineStyle: {  // 自定义内联样式，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
+                        // "--theme-wz-bgcolor":"${bgcolor1}",
+                        // "--theme-wz-title-color":"${color1}",
+                        // "--theme-wz-msg-color":"${color2}",
+                        // "--theme-wz-msg-bgcolor":"${bgcolor2}",
+                    },
+                    innerHTML: '<span>${value}</span>',  // 解析后 code 标签的 innerHTML 内容，支持类似js的模板语法，${别名}, 会被实际的值替换
+                    renderEnd: async (parse, element, oldHTML) => { //在每个元素渲染解析完成后的回调函数
+                        // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
+                        // element 当前元素（解析后的）
+                        // oldHTML （解析前的 innerHTML 内容）
+
+                        var id = mv.GetSiyuanBlockId(element);
+
+                        if (parse.parseInfo['func'] === 'kanban') {
+
+                            let aid = await mv.InsertBlockByMd_API(id,'---');
+                            let bid = await mv.InsertBlockByMd_API(aid,'---');
+                            let cid = await mv.InsertBlockByMd_API(bid,'* 未开始 \n  * 任务1 \n* 进行中 \n   * 任务2 \n* 已完成 \n    * 任务3'); 
+                            await mv.DeleteBlockById_API(id);           
+                            return;
+                        }
+
+                        if (parse.parseInfo['func'] === 'map') {
+
+                            let ida = await mv.InsertBlockByMd_API(id,'---');
+                            let idb = await mv.InsertBlockByMd_API(ida,'---');
+                            let idc = await mv.InsertBlockByMd_API(idb,'---');
+                            let idd = await mv.InsertBlockByMd_API(idc,'* 中心主题 \n  * 分支1 \n  * 分支2 \n  * 分支3 ');
+                            let ide = await mv.DeleteBlockById_API(id);
+                            return;
+                        }
+
+                        if (parse.parseInfo['func'] === 'bqcolor') {
+                            let szcolor = 'red'
+                            if (mv.Empty(parse.parseInfo['args']) === false) {
+                                szcolor = parse.parseInfo['args']
+                            }
+                            let aid = await mv.InsertBlockByMd_API(id,'>  ');
+                            let bid = await mv.AppendBlockByMd_API(aid,'`>(' + szcolor + ')` .');
+                            let cid = await mv.UpdateBlockByMd_API(id, ' ')
+                            return;
+                        }
+
+                        if (parse.parseInfo['func'] === 'bqtab'){
+
+                            // 插入父容器
+                            let wid = await mv.InsertBlockByMd_API(id, '> `::tab`');
+                            await mv.SetAttrs_API(wid,'custom-type','bq-wrap');
+
+                            // 插入选项卡
+                            let tabtid = await mv.AppendBlockByMd_API(wid,'* 选项1 \n * 选项2 \n * 选项3 ');
+                            await mv.SetAttrs_API(tabtid,'custom-type','bq-tab_t');
+
+                            // 插入选项卡容器
+                            let tabcid = await mv.AppendBlockByMd_API(wid,'> > 内容1');
+                            await mv.SetAttrs_API(tabcid,'custom-type','bq-tab_c');
+                            let bid = await mv.AppendBlockByMd_API(tabcid,'> 内容2');
+                            let cid = await mv.AppendBlockByMd_API(tabcid,'> 内容3');
+                            let did = await mv.UpdateBlockByMd_API(id,' ');
+                            
+                            window.location.reload();
+                        }
+                    },
+                },
+                {   // done彩虹引用
                     typeid: "bq",
                     reg: '&gt;[\(]((#?[\\d\\w]+)(!)?)[\)]',    // 针对 innerHTML
-                    tagName: "span",
-                    tagDataType:"code",
+                    tagName: "code",
                     customf: 'bqcolor',   // 自定义属性 f=wz 即可。
                     className: 'bqcolor',
                     //// select1: `.protyle-wysiwyg *[data-node-id] ${this.tagName}`  // 要选择的,默认不用设置
                     //// select2: `.protyle-wysiwyg *[data-node-id][custom-f~=${this.customf}] ${this.tagName}` //  要选择的,默认不用设置
-                    select1: '.protyle-wysiwyg .bq[data-node-id] .p span[data-type="code"]:first-of-type',
-                    select2: '.protyle-wysiwyg .bq[data-node-id][custom-f~=bqcolor] .p span[data-type="code"]:first-of-type',
+                    select1: '.protyle-wysiwyg .bq[data-node-id] .p code:first-of-type',
+                    select2: '.protyle-wysiwyg .bq[data-node-id][custom-f~=bqcolor] .p code:first-of-type',
                     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
                         /**
                          * 以下字段名称被占用,不要用于下面列表的值中.
@@ -599,417 +1108,16 @@ export var config = {
 
                     },
                 },
-
-                {   // 多级标签
-                    typeid: "mtag",
-                    reg: '^(.*)/(.*)$',  // 针对 innerHTML
-                    tagName: 'span[data-type="tag"]',
-                    customf: 'mtag',   // 自定义属性 f=mtag 即可。
-                    className: 'mult-tag',
-                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
-                        /**
-                         * 以下字段名称被占用,不要用于下面列表的值中.
-                         * value,             // code 标签的 InnerHTML
-                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
-                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
-                         * $0~$9 也不要用.  
-                         */
-                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
-                        '$1': 'lv1',
-                        '$2': 'lv2',
-                        '$3': '',
-                        '$4': '',
-                        '$5': '',
-                        '$6': '',
-                        '$7': '',
-                        '$8': '',
-                        '$9': '',
-                    },
-                    emptys: ['lv1', 'lv2'],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
-                    emptysValues: {              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
-                        //  'title':'ke',
-                    },
-                    style: { // 样式映射信息
-                        rerender: false,                // 是否计算颜色
-                        // color: {
-                        //     value:'color',            // 主颜色对应的字段，用 $0'-'$9' 对应的别名
-                        //     suffix:'endsuffix',       // 颜色后缀对应的字段，用 $0'-'$9' 对应的别名
-                        // },         
-                        // default:'theme2',             // 主颜色缺省时，默认的颜色值
-                        // defaultSuffix:false,          // 颜色后缀缺省时,默认的后缀内容，表示的值（suffixs中value）
-                        // colors:{
-                        //     suffixs:{                 // 颜色后缀内容，表示的值
-                        //         '!':true,
-                        //     },
-                        //     names: ()=>config.theme.common.colors.names,     // 主颜色，支持的颜色名称-列表，
-                        //     values: ()=>config.theme.common.colors.values,   // 主颜色，对应的适配配色-列表
-                        // }
-                    },
-                    customAttr: {   // 自定义属性，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
-                        // 'mult-tag-lv1': "${lv1}",
-                        // 'mult-tag-lv2': "${lv2}",
-                    },
-                    inlineStyle: {  // 自定义内联样式，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
-                        // "--theme-wz-bgcolor":"${bgcolor1}",
-                        // "--theme-wz-title-color":"${color1}",
-                        // "--theme-wz-msg-color":"${color2}",
-                        // "--theme-wz-msg-bgcolor":"${bgcolor2}",
-                    },
-                    // 解析后 code 标签的 innerHTML 内容，支持类似js的模板语法，${别名}, 会被实际的值替换
-                    innerHTML: "<span class='mult-tag-lv1'>${lv1}</span>"
-                        + "<span class='mult-tag-none'>/</span>"
-                        + "<span class='mult-tag-lv2'>${lv2}</span>",
-                    renderEnd: (parse, element, oldHTML) => { //在每个元素渲染解析完成后的回调函数
-                        // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
-                        // element 当前元素（解析后的）
-                        // oldHTML （解析前的 innerHTML 内容）
-                        // let innerHTML = '';
-                        // if (parse['lv1'] !==undefined && parse['lv1'] !==null && parse['lv1'] !==''){
-                        //     innerHTML += `<span class="mult-tag-lv1">${parse['lv1']}<span>`
-                        // }
-                        // if (parse['lv2'] !==undefined && parse['lv2'] !==null && parse['lv2'] !==''){
-                        //     innerHTML += `<span class="mult-tag-lv2">${parse['lv2']}<span>`
-                        // }
-
-                        // element.innerHTML = innerHTML
-                    },
-                },
-                {   // 下拉框
-                    typeid: "cx",
-                    reg: '\\\^\\\[(\\d+)\\\](&gt;\\\(.+\\\))',  // 针对 innerHTML
-                    tagName: "span",
-                    tagDataType:"code",
-                    customf: 'cx',   // 自定义属性 f=wz 即可。
-                    className: 'cw-cbox',
-                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
-                        /**
-                         * 以下字段名称被占用,不要用于下面列表的值中.
-                         * value,             // code 标签的 InnerHTML
-                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
-                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
-                         * $0~$9 也不要用.  
-                         */
-                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
-                        '$1': 'index',
-                        '$2': 'itms',
-                        '$3': '',
-                        '$4': '',
-                        '$5': '',
-                        '$6': '',
-                        '$7': '',
-                        '$8': '',
-                        '$9': '',
-                    },
-                    // reg2mapts:{
-                    //     // key: 上一轮匹配的地方 ; value: 对应的解析规则
-                    //     '$0':{ 
-                    //         reg:'\\\$\\\{(.*?)\\\}',  
-                    //         isMatchAll:true,   // 是否是匹配所有
-                    //         type:'array',      // 类型
-                    //     },
-                    // },
-                    emptys: ['index', 'itms'],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
-                    emptysValues: {              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
-                    },
-                    style: { // 样式映射信息
-                        rerender: false,                // 是否计算颜色
-                        // color: {
-                        //     value:'color',            // 主颜色对应的字段，用 $0'-'$9' 对应的别名
-                        //     suffix:'endsuffix',       // 颜色后缀对应的字段，用 $0'-'$9' 对应的别名
-                        // },         
-                        // default:'theme2',             // 主颜色缺省时，默认的颜色值
-                        // defaultSuffix:false,          // 颜色后缀缺省时,默认的后缀内容，表示的值（suffixs中value）
-                        // colors:{
-                        //     suffixs:{                 // 颜色后缀内容，表示的值
-                        //         '!':true,
-                        //     },
-                        //     names: ()=>config.theme.common.colors.names,     // 主颜色，支持的颜色名称-列表，
-                        //     values: ()=>config.theme.common.colors.values,   // 主颜色，对应的适配配色-列表
-                        // }
-                    },
-                    customAttr: {   // 自定义属性，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
-                        'custom-codelabel-cx-index': "${index}",
-                        'custom-codelabel-cx-itmes': "${itms}",
-                    },
-                    inlineStyle: {  // 自定义内联样式，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
-                        // "--theme-wz-bgcolor":"${bgcolor1}",
-                        // "--theme-wz-title-color":"${color1}",
-                        // "--theme-wz-msg-color":"${color2}",
-                        // "--theme-wz-msg-bgcolor":"${bgcolor2}",
-                    },
-                    innerHTML: '<span>${value}</span>',  // 解析后 code 标签的 innerHTML 内容，支持类似js的模板语法，${别名}, 会被实际的值替换
-                    renderEnd: async (parse, element, oldHTML) => { //在每个元素渲染解析完成后的回调函数
-                        // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
-                        // element 当前元素（解析后的）
-                        // oldHTML （解析前的 innerHTML 内容）
-
-                        let tIndex = parse.parseInfo['index'];
-                        let tItms = parse.parseInfo['itms'];
-
-                        // 获取父节点    
-                        let parentNode =  mv.GetSiyuanBlock(element);
-                        let id = mv.GetSiyuanBlockId(element);
-
-                        let setHtml = async (index, tItms) => {
-
-                            let itmes = [...tItms.matchAll('\\\((.*?)\\\)')]
-
-                            element.innerHTML = `<span>^[${index}]${tItms}</span>`
-
-                            let slt = itmes[index][1];
-                            element.setAttribute('custom-select-data', slt)
-
-                            element.setAttribute('custom-codelabel-cx-index', index)
-                            let pstionX = element.getBoundingClientRect().left - element.parentNode.getBoundingClientRect().left + 20;
-                            let pstionY = element.getBoundingClientRect().bottom - element.parentNode.getBoundingClientRect().bottom;
-                            let mUl = createUL(element);
-                            mUl.setAttribute('style', "margin-left:" + pstionX + "px;margin-top:" + pstionY + "px");
-
-                            let i = 0;
-                            for (let item of itmes) {
-                                let itext = item[1];
-                                let eli = mUl.createli("", itext, i++);
-                                eli.onclick = async (e) => {
-                                    // let idx=e.target.getAttribute('custom-li-data');
-                                    let idx = e.target.getAttribute('custom-li-index');
-                                    let tms = element.getAttribute('custom-codelabel-cx-itmes')
-                                    setHtml(idx, tms);
-
-                                    var tmd = mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
-                                    let  did = await mv.UpdateBlockByMd_API(id, tmd);
-                                    let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
-                                    render(dom);
-
-                                };
-                            }
-
-                        };
-
-                        setHtml(tIndex, tItms);
-                    },
-                },
-                {   // 复选框
-                    typeid: "chk",
-                    // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
-                    // reg: '(\\\+(\\\[()\\\])([|](.*?))?){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
-                    reg: '(\\\+(\\\[(\\s|x)\\\])([|](.*?))?\\\+){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
-                    tagName: "span",
-                    tagDataType:"code",
-                    customf: 'chk',                        // 忽略解析的属性值 
-                    className: 'custom-codelabel-chk',                   // 自定义的属性名称
-                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
-                        /**
-                         * 以下字段名称被占用,不要用于下面列表的值中.
-                         * value,             // code 标签的 InnerHTML
-                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
-                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
-                         * $0~$9 也不要用.  
-                         */
-                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
-                        '$1': '',
-                        '$2': 'chkG',
-                        '$3': 'chk',   // 是否有消息
-                        '$4': 'msgG',
-                        '$5': 'msg',
-                        '$6': 'colorG',
-                        '$7': 'color',
-                        '$8': 'endsuffix',
-                        '$9': '',
-                    },
-                    emptys: ['chkG'],      // 不能为空的字段
-                    emptysValues: {              // 当值为空值的值
-                        'chk': ' ',
-                        'msg': '',
-                    },
-                    style: { // 样式映射信息
-                        rerender: true,             // 是否计算配色
-                        color: {
-                            value: 'color',            // 主颜色字段
-                            suffix: 'endsuffix',                // 颜色后缀对应的字段
-                        },
-                        default: 'theme2',               // 缺省颜色值
-                        defaultSuffix: false, // 缺省时,颜色后缀,对应的值.
-                        colors: {
-                            suffixs: {
-                                '!': true,
-                            },
-                            names: () => config.theme.common.colors.names,   // 颜色名称-列表
-                            values: () => config.theme.common.colors.values, // 适配配色-列表
-                        }
-                    },
-                    customAttr: { // 自定义属性
-                        // 'custom-codelabel-value':'${value}',
-                        'custom-codelabel-chk-chk': "${chk}",
-                        'custom-codelabel-chk-msg': "${msg}",
-                        'custom-codelabel-chk-colorG': "${colorG}",
-                        'custom-codelabel-chk-endsuffix': "${endsuffix}",
-                    },
-                    inlineStyle: {
-                        "--theme-wz-bgcolor": "${bgcolor1}",
-                        "--theme-wz-title-color": "${color1}",
-                        "--theme-wz-msg-color": "${color2}",
-                        "--theme-wz-msg-bgcolor": "${bgcolor2}",
-                    },
-                    innerHTML: '<span class="hide">${value}<span>',
-                    renderEnd: (parse, element, oldHTML) => { // 渲染完单个元素的回调.
-
-                        // let parentNode = mv.GetSiyuanBlock(element);
-                        let id = mv.GetSiyuanBlockId(element)
-
-                        let div= mv.GetDomByAtrrs(element,'class','cw-chk-wrap','span')[0];
-                        if (div===null || div===undefined){
-                            div = mv.CreateSpan(null,'cw-chk-wrap',null);
-                            let span1 = mv.CreateSpan(null,'cw-chk-gaph-one',null)
-                            let span2 = mv.CreateSpan(null,'cw-chk-gaph-two',null)
-                            div.appendChild(span1);
-                            div.appendChild(span2);
-                            element.appendChild(div);
-                        }
-
-                        div.classList.remove('cw-chk-tick')
-                        if (parse.parseInfo.chk === 'x'){
-                             div.classList.add('cw-chk-tick')
-                        }
-
-                        div['onclick'] = async function(){
-                            let msg = mv.GetAttrs(element,"custom-codelabel-chk-msg")
-                            if (msg === undefined) msg=''
-
-                            msg = mv.Empty(msg)?"":`|${msg}`
-                            let colorG = mv.GetAttrs(element,"custom-codelabel-chk-colorG")
-                            if (colorG === "undefined" || colorG===undefined){
-                                colorG=""   
-                            }
-
-                            if (div.classList.contains('cw-chk-tick')){
-                                div.classList.remove('cw-chk-tick')
-                                element.innerHTML = `<span class="hide">+[ ]${msg}+${colorG}</span>`;
-                                mv.SetAttrs(element,'custom-codelabel-chk-chk',' ')
-                                mv.SetAttrs(element,'custom-codelabel-value',`+[ ]${msg}+${colorG}`)
-                            }
-                            else{
-                                div.classList.add('cw-chk-tick')
-                                element.innerHTML =`<span class="hide">+[x]${msg}+${colorG}</span>`;
-                                mv.SetAttrs(element,'custom-codelabel-chk-chk','x')
-                                mv.SetAttrs(element,'custom-codelabel-value',`+[ ]${msg}+${colorG}`)
-                            }
-
-                            let md = mv.GetLute().BlockDOM2Md(element.parentNode.parentNode.innerHTML)
-                            console.log(md)
-                            let kid = await mv.UpdateBlockByMd_API(id,md)
-                            let dom = document.querySelectorAll(`div[data-node-id="${kid}"]`)[0];
-                            render(dom)
-                        }
-
-                    },
-                },
-
-                {   // 计数任务
-                    typeid: "todo",
-                    reg: '^\\\+\\\[(\\d+)\\\]\\s*\\\((.*?)(\\s*\\\"([\\d\\w]+)\\\")?\\\)$',  // 正则表达式
-                    tagName: "span",
-                    tagDataType:"code",
-                    customf: 'todo',                        // 忽略解析的属性值 
-                    className: 'vk-todo',                   // 自定义的属性名称
-                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
-                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
-                        '$1': 'count',
-                        '$2': 'data',
-                        '$3': 'colorTag',
-                        '$4': 'color',
-                        '$5': '',
-                        '$6': '',
-                        '$7': '',
-                        '$8': '',
-                        '$9': '',
-                    },
-
-                    emptys: ['count', 'data'],      // 不能为空的字段
-                    emptysValues: {                  // 当值为空值的值
-                        'colorTag': ''
-                    },
-                    style: { // 样式映射信息
-                        rerender: true,             // 是否计算配色
-                        color: {
-                            value: 'color',            // 主颜色字段
-                            suffix: '',                // 颜色后缀对应的字段
-                        },
-                        default: 'black',               // 缺省颜色值
-                        defaultSuffix: false, // 缺省时,颜色后缀,对应的值.
-                        colors: {
-                            suffixs: {
-                                '!': true,
-                            },
-                            names: () => config.theme.common.colors.names,   // 颜色名称-列表
-                            values: () => config.theme.common.colors.values, // 适配配色-列表
-                        }
-                    },
-                    customAttr: { // 自定义属性
-                        'custom-codelabel-value': '${value}',
-                        'custom-codelabel-todo-count': "${count}",
-                        'custom-codelabel-todo-data': "${data}",
-                        'custom-codelabel-todo-colorTag': "${colorTag}",
-                    },
-                    inlineStyle: {
-                        'color': "${color}",
-                    },
-                    innerHTML: '<button>+</button><span>[${count}]</span><span>(</span>${data}<span>${colorTag})</span>',
-                    renderEnd: async (parse, element, oldHTML) => {
-
-                        async function bingOnClick(parse, e, oldHTML) {
-
-                            // 获取父节点    
-                            let parentNode = mv.GetSiyuanBlock(e);
-                            let id = mv.GetSiyuanBlockId(e);
-
-                            parse.reinitFormat(parse.ptypeItem)
-
-                            let parseInfo = parse.clacParseInfo(oldHTML);
-                            let c = 1 + +parseInfo.count;
-                            parseInfo.count = "" + c;
-                            parse.parseInfo = parseInfo;
-
-                            // 渲染
-                            parse.renderSingle(e, parseInfo);
-                            // 这里已经更新了，所有旧的 oldHTML 和 parse.Value 就没用了。重新组合
-                            let newInnerHtml = `+[${parse.parseInfo.count}](${parse.parseInfo.data}${parse.parseInfo.colorTag})`
-
-                            e.firstChild.onclick = bingOnClick.bind(e.firstChild, parse, e, newInnerHtml)
-
-                            // 设置新的 自定义的value
-                            e.setAttribute("custom-codelabel-value", newInnerHtml);
-
-                            e.firstChild.setAttribute(
-                                "custom-codelabel-todo-count",
-                                parse.parseInfo.count
-                            );
-
-                            var tmd = mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
-                            let  did = await mv.UpdateBlockByMd_API(id, tmd);
-                            let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
-                            render(dom);
-
-                        }
-
-                        element.firstChild.onclick = bingOnClick.bind(element.firstChild, parse, element, oldHTML)
-                        element.firstChild.setAttribute(
-                            "custom-codelabel-todo-count",
-                            element.getAttribute("custom-codelabel-todo-count"),
-                        );
-
-                    },
-                },
-                {   // Tab引用
+                {   // doneTab引用
                     typeid: "bqtab",
                     reg: '::(tab)(\\d*)',    // 针对 innerHTML
-                    tagName: "span",
-                    tagDataType:"code",
+                    tagName: "code",
                     customf: 'bqtab',   // 自定义属性 f=wz 即可。
                     className: 'bqtab',
                     //// select1: `.protyle-wysiwyg *[data-node-id] ${this.tagName}`  // 要选择的,默认不用设置
                     //// select2: `.protyle-wysiwyg *[data-node-id][custom-f~=${this.customf}] ${this.tagName}` //  要选择的,默认不用设置
-                    select1: '.protyle-wysiwyg .bq[data-node-id] .p:first-of-type span[data-type="code"]:first-of-type',  // 要选择的,默认不用设置
-                    select2: '.protyle-wysiwyg .bq[data-node-id][custom-f~=bqtab] .p:first-of-type span[data-type="code"]:first-of-type', //  要选择的,默认不用设置
+                    select1: '.protyle-wysiwyg .bq[data-node-id] .p:first-of-type code:first-of-type',  // 要选择的,默认不用设置
+                    select2: '.protyle-wysiwyg .bq[data-node-id][custom-f~=bqtab] .p:first-of-type code:first-of-type', //  要选择的,默认不用设置
 
                     // select1: `.protyle-wysiwyg *[data-node-id] ${this.tagName}`  // 要选择的,默认不用设置
                     // select2: `.protyle-wysiwyg *[data-node-id][custom-f~=${this.customf}] ${this.tagName}` //  要选择的,默认不用设置
@@ -1197,15 +1305,13 @@ export var config = {
                         }
                     },
                 },
-
-                
-                {   // @@命令
-                    typeid: "cmd",
-                    reg: '^@@((kanban)|(map)|(bqcolor)|(bqtab))(\\\((.*)\\\))?$',  // 针对 innerHTML
-                    tagName: "span",
-                    tagDataType:"code",
-                    customf: 'cmd',   // 自定义属性 f=wz 即可。
-                    className: 'custom-codelabel-cmd',
+                {   // 整行样式
+                    typeid: "wzline",
+                    // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    reg: '(\\:\\:(.*?)([|](.*?))?\\:\\:){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    tagName: "code",
+                    customf: 'wzline',                        // 忽略解析的属性值 
+                    className: 'custom-codelabel-wzline',                   // 自定义的属性名称
                     maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
                         /**
                          * 以下字段名称被占用,不要用于下面列表的值中.
@@ -1215,109 +1321,52 @@ export var config = {
                          * $0~$9 也不要用.  
                          */
                         '$0': 'value', // 占用，code 原始的 innerHTML 内容
-                        '$1': 'func',
-                        '$2': '',
-                        '$3': '',
-                        '$4': '',
+                        '$1': '',
+                        '$2': 'title',
+                        '$3': 'msgG',   // 是否有消息
+                        '$4': 'msg',
                         '$5': '',
-                        '$6': 'args',
-                        '$7': '',
+                        '$6': 'color',
+                        '$7': 'endsuffix',
                         '$8': '',
                         '$9': '',
                     },
-                    emptys: ['func'],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
-                    onlyValue: {                 // 不为null时，必须在这个范围内取值，可以不设置，
-                        'func': ['kanban', 'map', 'bqcolor','bqtab'],
-                    },
-                    emptysValues: {              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
-                        //  'func':'',
+
+                    emptys: ['title'],      // 不能为空的字段
+                    emptysValues: {              // 当值为空值的值
+                        'msg': ''
                     },
                     style: { // 样式映射信息
-                        rerender: false,                // 是否计算颜色
-                        // color: {
-                        //     value:'color',            // 主颜色对应的字段，用 $0'-'$9' 对应的别名
-                        //     suffix:'endsuffix',       // 颜色后缀对应的字段，用 $0'-'$9' 对应的别名
-                        // },         
-                        // default:'theme2',             // 主颜色缺省时，默认的颜色值
-                        // defaultSuffix:false,          // 颜色后缀缺省时,默认的后缀内容，表示的值（suffixs中value）
-                        // colors:{
-                        //     suffixs:{                 // 颜色后缀内容，表示的值
-                        //         '!':true,
-                        //     },
-                        //     names: ()=>config.theme.common.colors.names,     // 主颜色，支持的颜色名称-列表，
-                        //     values: ()=>config.theme.common.colors.values,   // 主颜色，对应的适配配色-列表
-                        // }
+                        rerender: true,             // 是否计算配色
+                        color: {
+                            value: 'color',            // 主颜色字段
+                            suffix: 'endsuffix',                // 颜色后缀对应的字段
+                        },
+                        default: 'theme2',               // 缺省颜色值
+                        defaultSuffix: false, // 缺省时,颜色后缀,对应的值.
+                        colors: {
+                            suffixs: {
+                                '!': true,
+                            },
+                            names: () => config.theme.common.colors.names,   // 颜色名称-列表
+                            values: () => config.theme.common.colors.values, // 适配配色-列表
+                        }
                     },
-                    customAttr: {   // 自定义属性，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
-                        // 'custom-codelabel-cmd-func': "${func}",
-                        // 'custom-codelabel-cmd-args': "${args}",
+                    customAttr: { // 自定义属性
+                        // 'custom-codelabel-value':'${value}',
+                        'custom-codelabel-wzline-title': "${title}",
+                        'custom-codelabel-wzline-msg': "${msg}",
                     },
-                    inlineStyle: {  // 自定义内联样式，key表示属性名，value是属性值，支持类似js的模板语法，${别名}, 会被实际的值替换
-                        // "--theme-wz-bgcolor":"${bgcolor1}",
-                        // "--theme-wz-title-color":"${color1}",
-                        // "--theme-wz-msg-color":"${color2}",
-                        // "--theme-wz-msg-bgcolor":"${bgcolor2}",
+                    inlineStyle: {
+                        "--theme-wzline-bgcolor": "${bgcolor1}",
+                        "--theme-wzline-title-color": "${color1}",
+                        "--theme-wzline-msg-color": "${color2}",
+                        "--theme-wzline-msg-bgcolor": "${bgcolor2}",
                     },
-                    innerHTML: '<span>${value}</span>',  // 解析后 code 标签的 innerHTML 内容，支持类似js的模板语法，${别名}, 会被实际的值替换
-                    renderEnd: async (parse, element, oldHTML) => { //在每个元素渲染解析完成后的回调函数
-                        // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
-                        // element 当前元素（解析后的）
-                        // oldHTML （解析前的 innerHTML 内容）
-
-                        var id = mv.GetSiyuanBlockId(element);
-
-                        if (parse.parseInfo['func'] === 'kanban') {
-
-                            let aid = await mv.InsertBlockByMd_API(id,'---');
-                            let bid = await mv.InsertBlockByMd_API(aid,'---');
-                            let cid = await mv.InsertBlockByMd_API(bid,'* 未开始 \n  * 任务1 \n* 进行中 \n   * 任务2 \n* 已完成 \n    * 任务3'); 
-                            await mv.DeleteBlockById_API(id);           
-                            return;
-                        }
-
-                        if (parse.parseInfo['func'] === 'map') {
-
-                            let ida = await mv.InsertBlockByMd_API(id,'---');
-                            let idb = await mv.InsertBlockByMd_API(ida,'---');
-                            let idc = await mv.InsertBlockByMd_API(idb,'---');
-                            let idd = await mv.InsertBlockByMd_API(idc,'* 中心主题 \n  * 分支1 \n  * 分支2 \n  * 分支3 ');
-                            let ide = await mv.DeleteBlockById_API(id);
-                            return;
-                        }
-
-                        if (parse.parseInfo['func'] === 'bqcolor') {
-                            let szcolor = 'red'
-                            if (mv.Empty(parse.parseInfo['args']) === false) {
-                                szcolor = parse.parseInfo['args']
-                            }
-                            let aid = await mv.InsertBlockByMd_API(id,'>  ');
-                            let bid = await mv.AppendBlockByMd_API(aid,'`>(' + szcolor + ')` .');
-                            let cid = await mv.UpdateBlockByMd_API(id, ' ')
-                            return;
-                        }
-
-                        if (parse.parseInfo['func'] === 'bqtab'){
-
-                            // 插入父容器
-                            let wid = await mv.InsertBlockByMd_API(id, '> `::tab`');
-                            await mv.SetAttrs_API(wid,'custom-type','bq-wrap');
-
-                            // 插入选项卡
-                            let tabtid = await mv.AppendBlockByMd_API(wid,'* 选项1 \n * 选项2 \n * 选项3 ');
-                            await mv.SetAttrs_API(tabtid,'custom-type','bq-tab_t');
-
-                            // 插入选项卡容器
-                            let tabcid = await mv.AppendBlockByMd_API(wid,'> > 内容1');
-                            await mv.SetAttrs_API(tabcid,'custom-type','bq-tab_c');
-                            let bid = await mv.AppendBlockByMd_API(tabcid,'> 内容2');
-                            let cid = await mv.AppendBlockByMd_API(tabcid,'> 内容3');
-                            let did = await mv.UpdateBlockByMd_API(id,' ');
-                            
-                            // window.location.reload();
-                        }
+                    innerHTML: '${value}',
+                    renderEnd: (parse, element, oldHTML) => { // 渲染完单个元素的回调.
                     },
                 },
-
             ],
         },
 

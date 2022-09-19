@@ -89,7 +89,6 @@ class CodeLabelParse {
         this.domNode = domNode;
 
         this.tagName = ptypeItem.tagName;
-        this.tagDataType = ptypeItem.tagDataType;
         this.styleConfig = mv.deepCopy(ptypeItem.style);
 
         this.className = ptypeItem.className;         // 属性名称
@@ -144,7 +143,6 @@ class CodeLabelParse {
         this.ptypeItem = mv.deepCopy(ptypeItem);
 
         this.tagName=ptypeItem.tagName;
-        this.tagDataType = ptypeItem.tagDataType;
 
         this.styleConfig = mv.deepCopy(ptypeItem.style);
 
@@ -161,8 +159,8 @@ class CodeLabelParse {
         this.customAttr = ptypeItem.customAttr;       // 自定义属性
         this.inlineStyle = ptypeItem.inlineStyle;     // 内敛样式
         
-        this.select1 = `.protyle-wysiwyg *[data-node-id] ${this.tagName}[data-type="${this.tagDataType}"]`  // 要选择的
-        this.select2 = `.protyle-wysiwyg *[data-node-id][custom-f~=${this.customf}] ${this.tagName}[data-type="${this.tagDataType}"]` // 排除的
+        this.select1 = `.protyle-wysiwyg *[data-node-id] ${this.tagName}`  // 要选择的
+        this.select2 = `.protyle-wysiwyg *[data-node-id][custom-f~=${this.customf}] ${this.tagName}` // 排除的
 
         if (mv.Empty(this.ptypeItem.select1) === false){
             this.select1 = this.ptypeItem.select1
@@ -370,12 +368,11 @@ class CodeLabelParse {
         // 设置 inline style
         this.inlineStyle = this.formatInlineStyle(this.inlineStyle, parseInfo, this.maps);
         for (let k in this.inlineStyle) {
-            mv.SetStyleValue(e.style, k, this.inlineStyle[k].trim());
+            mv.SetStyleValue(e.style, k, this.inlineStyle[k]);
         }
 
         // 添加事件
-        // if (e.tagName.toLowerCase() === "code"){
-        if (e.tagName.toLowerCase() === "span" && e.getAttribute('data-type')=="code"){
+        if (e.tagName.toLowerCase() === "code"){
 
             e.addEventListener('dblclick',(event)=>{
 
@@ -384,12 +381,10 @@ class CodeLabelParse {
                 e.innerHTML = parseInfo["value"];
     
                 while(e.attributes.length > 0)
-                {
                     e.removeAttribute(e.attributes[0].name);
-                }
 
-                e.setAttribute('data-type','code')
                 e.focus();
+
             });
 
         }

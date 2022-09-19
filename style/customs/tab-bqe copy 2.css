@@ -4,12 +4,12 @@
 [custom-type~="bq-wrap"] .li,
 [custom-type~="bq-wrap"] .bq,
 [custom-type~="bq-wrap"] button,
-[custom-type~="bq-wrap"] span[data-type="code"].bq-tab-button-mode{
+[custom-type~="bq-wrap"] code.bq-tab-button-mode{
     margin: 0 !important;
     padding: 0 !important;
 }
 
-[custom-type~="bq-wrap"] span[data-type="code"].bq-tab-button-mode{
+[custom-type~="bq-wrap"] code.bq-tab-button-mode{
     /* display: none; */
     /* background-color: ;
     color: #f6eef3;
@@ -35,13 +35,13 @@
 }
 
 
-[custom-type~="bq-wrap"] span[data-type="code"].bq-tab-button-mode:hover {
+[custom-type~="bq-wrap"] code.bq-tab-button-mode:hover {
     filter: brightness(1.1);
     font-size: 1em !important;
     margin: 3px !important;
 }
 
-[custom-type~="bq-wrap"] span[data-type="code"].bq-tab-button-mode::after{
+[custom-type~="bq-wrap"] code.bq-tab-button-mode::after{
     content: "刷新";
     color: #2b1c29; 
     background-color: rgba(255,255,255,0.9);
