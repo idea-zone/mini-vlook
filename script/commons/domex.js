@@ -276,6 +276,9 @@ mv.GetDomBySelectors = (selector1,selector2,dom)=>{
         console.warn(" function mv.GetDomBySelectors(): param selector1 cannot be empty." )
         return null;
     }
+
+    if (dom === null|| dom === undefined) return null;
+
     let elementAll=dom.querySelectorAll(selector1)
     
     if (mv.Empty(selector2)) return elementAll;

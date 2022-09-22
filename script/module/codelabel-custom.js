@@ -6,8 +6,15 @@ import {
     toolbarItemInit,
     toolbarItemChangeStatu,
 } from './../utils/ui.js';
+import { mv } from '../commons/domex.js';
 
-function render(){
+function render(el){
+    for(let value of config.theme.codelabel.ptype){
+        new CodeLabelParse(value,el).render();
+    }
+}
+
+function renderAll(){
     for(let value of config.theme.codelabel.ptype){
         new CodeLabelParse(value,document).render();
     }
@@ -19,6 +26,7 @@ function CodelabelEnable(){
 
     // console.log("enable:"+config.theme.codelabel.render.enable);
 
+
     if (config.theme.codelabel.render.toolbar){
         // 更改菜单栏按钮状态
         toolbarItemChangeStatu(
@@ -29,6 +37,25 @@ function CodelabelEnable(){
             1,
         );
     }
+
+
+ }
+
+ function CodelabelEnable2(){
+
+    renderAll();
+    
+    if (config.theme.codelabelrender.render.toolbar){
+        // 更改菜单栏按钮状态
+        toolbarItemChangeStatu(
+           config.theme.codelabelrender.render.toolbar.id,
+           config.theme.codelabelrender.render.enable,
+           'SVG',
+           undefined,
+           1,
+       );
+   }
+
  }
 
 // fn__flex layout-tab-bar
@@ -41,11 +68,11 @@ const tab_callback = function(mutationsList, observer) {
     for(let mutation of mutationsList) {
         if (mutation.type === 'childList') {
             // console.log('A child node has been added or removed.');
-            setTimeout(render, 500);
+            setTimeout(renderAll, 500);
         }
         else if (mutation.type === 'attributes') {
             // console.log('The ' + mutation.attributeName + ' attribute was modified.');
-            setTimeout(render, 500);
+            setTimeout(renderAll, 500);
             
         }
     }
@@ -56,7 +83,7 @@ const tab_callback = function(mutationsList, observer) {
 
         let body = document.body;
         
-        window.onload = setTimeout(render, 0);
+        window.onload = setTimeout(renderAll, 0);
 
         if (config.theme.codelabel.render.toolbar.enable) {
             let Fn_guidesEnable = toolbarItemInit(
@@ -65,7 +92,16 @@ const tab_callback = function(mutationsList, observer) {
             );
         }
 
+        if (config.theme.codelabelrender.render.toolbar.enable) {
+            let Fn_guidesEnable2 =  toolbarItemInit(
+                config.theme.codelabelrender.render.toolbar,
+                CodelabelEnable2,
+            );
+        }
+
         body.addEventListener('keyup', (e) => {
+
+            var el=mv.GetSiyuanBlock(document.getSelection().focusNode.parentElement);
 
             // 通过 Ctrl+Alt+0切换开关
             if (isKey(e, config.theme.hotkeys.codelabel.render)) {
@@ -75,7 +111,12 @@ const tab_callback = function(mutationsList, observer) {
             
             // console.log("ll:"+config.theme.codelabel.enable);
             if (config.theme.codelabel.render.enable !== false) {
-                setTimeout(render, 0);
+                // setTimeout(render, 0);
+                render(el)
+            }
+
+            if (isKey(e, config.theme.hotkeys.codelabel.render2)){
+                setTimeout(renderAll, 0); 
             }
             
         })

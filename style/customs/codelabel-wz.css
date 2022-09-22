@@ -19,7 +19,7 @@
  */
 
 /* ****************** custom-codelabel-wz *******************/
-.protyle-wysiwyg *[data-node-id] :not([custom-f~=wz]) span[data-type="code"].custom-codelabel-wz,
+.protyle-wysiwyg *[data-node-id] :not([custom-f~=wz]) span[data-type~="code"].custom-codelabel-wz,
 .protyle-wysiwyg *[data-node-id] :not([custom-f~=wz]) span[data-type=" code"].custom-codelabel-wz {
     /* background-color: #2aa899;   */
     background-color: var(--theme-wz-bgcolor);  

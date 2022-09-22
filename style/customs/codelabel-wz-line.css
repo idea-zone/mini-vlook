@@ -1,5 +1,5 @@
 /* ****************** custom-codelabel-wzline *******************/
-.protyle-wysiwyg *[data-node-id] :not([custom-f~=wzline]) code.custom-codelabel-wzline {
+.protyle-wysiwyg *[data-node-id] :not([custom-f~=wzline]) span[data-type='code'].custom-codelabel-wzline {
     /* background-color: #2aa899;   */
     background-color: var(--theme-wzline-bgcolor);  
     padding: 5px;

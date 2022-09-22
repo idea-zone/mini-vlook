@@ -99,6 +99,7 @@ class CodeLabelParse {
         this.maps = ptypeItem.maps;                   // 映射关系
         this.emptys = ptypeItem.emptys;               // 不能为空的字段
         this.onlyValue = ptypeItem.onlyValue;
+        this.ignoreValue = ptypeItem.ignoreValue;
         this.emptysValues = ptypeItem.emptysValues;   // 为空字段的默认值
 
         
@@ -125,6 +126,7 @@ class CodeLabelParse {
         this.renderEnd = this.renderEnd.bind(this);
         this.getElementWithoutCustomf = this.getElementWithoutCustomf.bind(this)
         this.isEmptyParse = this.isEmptyParse.bind(this)
+        this.isIgnoreParse = this.isIgnoreParse.bind(this)
         this.formatInlineHtml = this.formatInlineHtml.bind(this)
         this.formatInlineHtml = this.formatInlineHtml.bind(this)
         this.formatCustomAttr = this.formatCustomAttr.bind(this)
@@ -155,6 +157,8 @@ class CodeLabelParse {
         this.maps = ptypeItem.maps;                   // 映射关系
         this.emptys = ptypeItem.emptys;               // 不能为空的字段
         this.onlyValue = ptypeItem.onlyValue;
+        this.ignoreValue = ptypeItem.ignoreValue;
+     
         this.emptysValues = ptypeItem.emptysValues;   // 为空字段的默认值
 
         this.innerHTML = ptypeItem.innerHTML;         // 内置html
@@ -185,7 +189,7 @@ class CodeLabelParse {
      * @returns 
      */
     getElementWithoutCustomf(select1,select2,domNode) {
-    
+
         let rst = mv.GetDomBySelectors(
             select1,select2,
             domNode
@@ -228,6 +232,47 @@ class CodeLabelParse {
 
         }
 
+
+        return isEmpty;
+    }
+
+     /**
+     * 判断是否是忽略处理的值
+     * @param {Object} parseInfo 解析后的值
+     * @param {Array} emptys 不能为空的字段
+     * @param {Object} onlyValue 不为空时，必须包含在内的值
+     * @returns 
+     */
+    isIgnoreParse(parseInfo,emptys,ignoreValue){
+
+        let isEmpty = false;
+        let count = emptys.length;
+
+        for (let i = 0; i < count; i++) {
+
+            let key = emptys[i];
+            let value = parseInfo[key];
+
+            if (mv.Empty(value)) {
+                isEmpty = true;
+                break;
+            }
+                
+            if (ignoreValue!==null&&ignoreValue!==undefined){
+                let values = []
+                if (typeof ignoreValue[key] === "function"){
+                    values = ignoreValue[key]();
+                }else{
+                    values = ignoreValue[key];
+                }
+                
+                if (values.length > 0 && values.includes(value) === true){
+                    isEmpty = true;
+                    break;
+                }
+            }
+
+        }
 
         return isEmpty;
     }
@@ -476,7 +521,8 @@ class CodeLabelParse {
 
                 // 判断关键解析结构是否为空，不为空的时候，设置
                 let isEmpty = this.isEmptyParse(this.parseInfo,this.emptys,this.onlyValue);
-                if (isEmpty === false && e.className !== this.className) {
+                let isIngore = this.isIgnoreParse(this.parseInfo,this.emptys,this.ignoreValue);
+                if (isEmpty === false && isIngore==false && e.className !== this.className) {
 
                     // 渲染当个节点
                     this.renderSingle(e, this.parseInfo);

@@ -235,6 +235,9 @@ export var config = {
                 //     onlyValue:{                 // 不为null时，必须在这个范围内取值，可以不设置，
                 //          'title':['1','2'],
                 //     },
+                //     ignoreValue:{               // 不为null时，必须不在这个范围内的取，可以不设置，
+                //          'title':['1','2'],
+                //     },
                 //     style:{ // 样式映射信息
                 //         rerender:true,                // 是否计算颜色
                 //         color: {
@@ -269,6 +272,7 @@ export var config = {
                 //     },
                 // },
 
+
                 {   // 微章
                     typeid: "wz",
                     // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
@@ -298,8 +302,11 @@ export var config = {
                     },
 
                     emptys: ['title'],      // 不能为空的字段
-                    emptysValues: {              // 当值为空值的值
+                    emptysValues: {         // 当值为空值的值
                         'msg': ''
+                    }, 
+                    ignoreValue:{               // 当取值是对应的值时，不处理
+                        'title':['[ ]','[x]'],
                     },
                     style: { // 样式映射信息
                         rerender: true,             // 是否计算配色
@@ -585,7 +592,7 @@ export var config = {
                                     }
                                     setHtml(slt1, slt2);
                                     
-                                    var tmd =  mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
+                                    var tmd =  mv.GetLute().BlockDOM2StdMd(parentNode.innerHTML);
                                     let did = await mv.UpdateBlockByMd_API(id, tmd);
                                     let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
                                     render(dom)
@@ -775,7 +782,7 @@ export var config = {
                                     let tms = element.getAttribute('custom-codelabel-cx-itmes')
                                     setHtml(idx, tms);
 
-                                    var tmd = mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
+                                    var tmd = mv.GetLute().BlockDOM2StdMd(parentNode.innerHTML);
                                     let  did = await mv.UpdateBlockByMd_API(id, tmd);
                                     let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
                                     render(dom);
@@ -894,7 +901,134 @@ export var config = {
                                 mv.SetAttrs(element,'custom-codelabel-value',`+[ ]${msg}+${colorG}`)
                             }
 
-                            let md = mv.GetLute().BlockDOM2Md(element.parentNode.parentNode.innerHTML)
+                            if (colorG!==null &&colorG!==undefined && colorG.includes("!")){
+                                div.classList.add('cw-chk-endsuffix')
+                            }else{
+                                div.classList.remove('cw-chk-endsuffix')
+                            }
+
+                            let md = mv.GetLute().BlockDOM2StdMd(element.parentNode.parentNode.innerHTML)
+                            console.log(md)
+                            let kid = await mv.UpdateBlockByMd_API(id,md)
+                            let dom = document.querySelectorAll(`div[data-node-id="${kid}"]`)[0];
+                            render(dom)
+                        }
+
+                    },
+                },
+                {   // 微章+复选框
+                    typeid: "chk-wz",
+                    // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    // reg: '(\\\+(\\\[()\\\])([|](.*?))?){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    reg: '(\\\#(\\\[(\\s|x)\\\])([|](.*?))?\\\#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
+                    tagName: "span",
+                    tagDataType:"code",
+                    customf: 'chk-wz',                        // 忽略解析的属性值 
+                    className: 'custom-codelabel-chk',                   // 自定义的属性名称
+                    maps: { // 解析后-分组的别名，也是 parseInfo 中的字段
+                        /**
+                         * 以下字段名称被占用,不要用于下面列表的值中.
+                         * value,             // code 标签的 InnerHTML
+                         * color1,bgcolor1,   // 主颜色计算结果和适配背景色
+                         * color2,bgcolor2,   // 次颜色计算结果和适配背景色
+                         * $0~$9 也不要用.  
+                         */
+                        '$0': 'value', // 占用，code 原始的 innerHTML 内容
+                        '$1': '',
+                        '$2': 'chkG',
+                        '$3': 'chk',   // 是否有消息
+                        '$4': 'msgG',
+                        '$5': 'msg',
+                        '$6': 'colorG',
+                        '$7': 'color',
+                        '$8': 'endsuffix',
+                        '$9': '',
+                    },
+                    emptys: ['chkG'],      // 不能为空的字段
+                    emptysValues: {              // 当值为空值的值
+                        'chk': ' ',
+                        'msg': '',
+                    },
+                    style: { // 样式映射信息
+                        rerender: true,             // 是否计算配色
+                        color: {
+                            value: 'color',            // 主颜色字段
+                            suffix: 'endsuffix',                // 颜色后缀对应的字段
+                        },
+                        default: 'theme2',               // 缺省颜色值
+                        defaultSuffix: false, // 缺省时,颜色后缀,对应的值.
+                        colors: {
+                            suffixs: {
+                                '!': true,
+                            },
+                            names: () => config.theme.common.colors.names,   // 颜色名称-列表
+                            values: () => config.theme.common.colors.values, // 适配配色-列表
+                        }
+                    },
+                    customAttr: { // 自定义属性
+                        // 'custom-codelabel-value':'${value}',
+                        'custom-codelabel-chk-chk': "${chk}",
+                        'custom-codelabel-chk-msg': "${msg}",
+                        'custom-codelabel-chk-colorG': "${colorG}",
+                        'custom-codelabel-chk-endsuffix': "${endsuffix}",
+                    },
+                    inlineStyle: {
+                        "--theme-wz-bgcolor": "${bgcolor1}",
+                        "--theme-wz-title-color": "${color1}",
+                        "--theme-wz-msg-color": "${color2}",
+                        "--theme-wz-msg-bgcolor": "${bgcolor2}",
+                    },
+                    innerHTML: '<span class="hide">${value}<span>',
+                    renderEnd: (parse, element, oldHTML) => { // 渲染完单个元素的回调.
+
+                        // let parentNode = mv.GetSiyuanBlock(element);
+                        let id = mv.GetSiyuanBlockId(element)
+
+                        let div= mv.GetDomByAtrrs(element,'class','cw-chk-wrap','span')[0];
+                        if (div===null || div===undefined){
+                            div = mv.CreateSpan(null,'cw-chk-wrap',null);
+                            let span1 = mv.CreateSpan(null,'cw-chk-gaph-one',null)
+                            let span2 = mv.CreateSpan(null,'cw-chk-gaph-two',null)
+                            div.appendChild(span1);
+                            div.appendChild(span2);
+                            element.appendChild(div);
+                        }
+
+                        div.classList.remove('cw-chk-tick')
+                        if (parse.parseInfo.chk === 'x'){
+                             div.classList.add('cw-chk-tick')
+                        }
+
+                        div['onclick'] = async function(){
+                            let msg = mv.GetAttrs(element,"custom-codelabel-chk-msg")
+                            if (msg === undefined) msg=''
+
+                            msg = mv.Empty(msg)?"":`|${msg}`
+                            let colorG = mv.GetAttrs(element,"custom-codelabel-chk-colorG")
+                            if (colorG === "undefined" || colorG===undefined){
+                                colorG=""   
+                            }
+
+                            if (div.classList.contains('cw-chk-tick')){
+                                div.classList.remove('cw-chk-tick')
+                                element.innerHTML = `<span class="hide">#[ ]${msg}#${colorG}</span>`;
+                                mv.SetAttrs(element,'custom-codelabel-chk-chk',' ')
+                                mv.SetAttrs(element,'custom-codelabel-value',`#[ ]${msg}#${colorG}`)
+                            }
+                            else{
+                                div.classList.add('cw-chk-tick')
+                                element.innerHTML =`<span class="hide">#[x]${msg}#${colorG}</span>`;
+                                mv.SetAttrs(element,'custom-codelabel-chk-chk','x')
+                                mv.SetAttrs(element,'custom-codelabel-value',`#[ ]${msg}#${colorG}`)
+                            }
+
+                            if (colorG!==null &&colorG!==undefined && colorG.includes("!")){
+                                div.classList.add('cw-chk-endsuffix')
+                            }else{
+                                div.classList.remove('cw-chk-endsuffix')
+                            }
+                            
+                            let md = mv.GetLute().BlockDOM2StdMd(element.parentNode.parentNode.innerHTML)
                             console.log(md)
                             let kid = await mv.UpdateBlockByMd_API(id,md)
                             let dom = document.querySelectorAll(`div[data-node-id="${kid}"]`)[0];
@@ -984,7 +1118,7 @@ export var config = {
                                 parse.parseInfo.count
                             );
 
-                            var tmd = mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
+                            var tmd = mv.GetLute().BlockDOM2StdMd(parentNode.innerHTML);
                             let  did = await mv.UpdateBlockByMd_API(id, tmd);
                             let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
                             render(dom);
@@ -1321,6 +1455,27 @@ export var config = {
             ],
         },
 
+        codelabelrender:{ // 渲染自定义样式
+            enable: true, // 是否启用自定义样式渲染
+            render:{
+                enable: true, // 是否启用自定义样式渲染
+                toolbar:{ // 菜单栏
+                    enable: true, // 是否启用自定义样式渲染
+                    id: 'toolbar-theme-style-codelabelrender',
+                    hotkey: () => config.theme.hotkeys.codelabel.render2,
+                    label: {
+                        zh_CN: '渲染整个页面',
+                        zh_CNT: null,
+                        fr_FR: null,
+                        en_US: null,
+                        other: 'Render Inline Code Parse',
+                    },
+                    icon: '#iconPreview',
+                    index: -5,
+                },
+            },
+        },
+
         menu: {
             enable: true, // 行内代码编辑增强
             codelabel: {
@@ -1391,6 +1546,15 @@ export var config = {
                 render: {
                     // 渲染(Ctrl + Alt + 0)
                     ctrlKey: true,
+                    metaKey: true,
+                    shiftKey: false,
+                    altKey: true,
+                    key: '0',
+                },
+
+                render2: {
+                    // 渲染( Alt + 0)
+                    ctrlKey: false,
                     metaKey: true,
                     shiftKey: false,
                     altKey: true,

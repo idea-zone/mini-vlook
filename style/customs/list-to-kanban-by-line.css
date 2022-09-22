@@ -65,9 +65,9 @@
     margin-bottom: var(--kbline-boarditem-margin-bottom);
 }
 
-.protyle-wysiwyg *[custom-f~=kb] .li .p code,
-.protyle-wysiwyg .hr:first-child+.hr+*:not(.bq) .li .p  code,
-.protyle-wysiwyg :not(.hr)+.hr+.hr+*:not(.bq) .li .p code{
+.protyle-wysiwyg *[custom-f~=kb] .li .p span[data-type='code'],
+.protyle-wysiwyg .hr:first-child+.hr+*:not(.bq) .li .p  span[data-type='code'],
+.protyle-wysiwyg :not(.hr)+.hr+.hr+*:not(.bq) .li .p span[data-type='code']{
     color: var(--kbline-board-item-code-color);
 }
 

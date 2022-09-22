@@ -3,21 +3,24 @@ span.hide{
 }
 .cw-chk-wrap {
     display: inline-block;
-    width: 22px;
-    height: 22px;
+    width: 21px;
+    /* width: 22px; */
+    height: 15px;
+    /* height: 22px; */
     -ms-transform: rotate(45deg);
     /* IE 9 */
     -webkit-transform: rotate(45deg);
     /* Chrome, Safari, Opera */
-    transform: rotate(45deg) translate(4px,3px);
+    transform: rotate(45deg) translate(2px,-2px);
     /* background-color: var(--theme-wz-title-color) !important; */
 }
 
 span.custom-codelabel-chk[custom-codelabel-chk-msg]:not(:empty)::after{
     content: attr(custom-codelabel-chk-msg);
-    height: 22px;
+    height: 15px;
+    /* height: 22px; */
     margin: 0px !important;
-    padding: 3px 4px !important;
+    /* padding: 3px 4px !important; */
     background-color: var(--theme-wz-bgcolor) !important;
     color: var(--theme-wz-title-color) !important;
     /* transform: translate(-10px,0px) !important; */
@@ -44,6 +47,13 @@ span.custom-codelabel-chk[custom-codelabel-chk-msg]:not(:empty)::after{
 .cw-chk-tick .cw-chk-gaph-one,
 .cw-chk-tick .cw-chk-gaph-two {
     background-color: #4caf50 !important;
+    /* background-color: var(--theme-wz-bgcolor) !important; */
+}
+
+span.cw-chk-endsuffix  .cw-chk-tick .cw-chk-gaph-one,
+span.cw-chk-endsuffix   .cw-chk-tick .cw-chk-gaph-two {
+    /* background-color: #4caf50 !important; */
+    background-color: var(--theme-wz-bgcolor) !important;
 }
 
 span.custom-codelabel-chk{
@@ -66,7 +76,7 @@ span.custom-codelabel-chk[custom-codelabel-chk-msg]:not(:empty)::after{
     content: attr(custom-codelabel-chk-msg);
     height: 22px;
     margin: 0px !important;
-    padding: 3px 4px !important;
+    padding: 3px 5px !important;
     color: var(--theme-wz-title-color) !important;
 }
 

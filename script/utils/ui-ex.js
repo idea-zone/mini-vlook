@@ -47,22 +47,26 @@ async function showUtil(element,callback){
     let cts = new MessageboxInputs(its);
     let idom=cts.Create(
         async ()=>{
-            console.log("Ok")
-            console.log(cts.Doms.msg.value)
+            // console.log("Ok")
+            // console.log(cts.Doms.msg.value)
             let value =cts.Doms.msg.value;
-
             // 清空所有属性
-            element.className = "";
+            // element.className = "";
+            console.log("showUtil")
+            console.log(element)
+
             while (element.attributes.length > 0) {
                 element.removeAttributeNode(element.attributes[0]);
             }
+
+            mv.SetAttrs(element,'data-type','code');
 
             // 获取父节点    
             let parentNode=mv.GetSiyuanBlock(element);
             let id = mv.GetSiyuanBlockId(element);
             
             element.innerHTML = value;
-            var tmd = mv.GetLute().BlockDOM2Md(parentNode.innerHTML);
+            var tmd = mv.GetLute().BlockDOM2StdMd(parentNode.innerHTML);
             let did = await mv.UpdateBlockByMd_API(id, tmd);
             let dom = document.querySelectorAll(`div[data-node-id="${did}"]`)[0];
             render(dom);
@@ -70,7 +74,7 @@ async function showUtil(element,callback){
         },
         async ()=>{
             console.log("NO")
-            console.log(cts.Doms.msg.value)
+            // console.log(cts.Doms.msg.value)
         },"cbeditor","width: 480px;top: 45%; left: 45%;",""
     );
     

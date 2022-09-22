@@ -22,7 +22,7 @@
     margin-bottom: 20px;
 }
 
-.protyle-wysiwyg .bq[bqtype="color"] code.bqcolor{
+.protyle-wysiwyg .bq[bqtype="color"] span[data-type='code'].bqcolor{
     background: var(--theme-bq-bgcolor);
 }
 

@@ -1,13 +1,13 @@
 /* --------------- 删除线 ---------------  */
 
-.protyle-wysiwyg s{
+.protyle-wysiwyg span[data-type='s']{
     color: var(--v-block-del-color) !important;
     text-decoration: line-through solid !important;
 }
 /* --------------- 删除线 end ---------------  */
 
 /* --------------- 键盘按键块 --------------- */
-.protyle-wysiwyg kbd {
+.protyle-wysiwyg span[data-type='kbd'] {
     font: var(--v-block-kbd-font);
     border-radius: var(--v-block-kbd-border-radius);
     margin: 0;
@@ -76,8 +76,8 @@
  * 悬浮提示
  */
 
-kbd:hover,  
-code:hover
+span[data-type='kbd']:hover,  
+span[data-type='code']:hover
 {
     filter: brightness(1.1)
 }

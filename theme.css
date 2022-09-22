@@ -5,7 +5,7 @@
 
 @import url(/appearance/themes/mini-vlook/style/menus/four-menu-splite.css);
 
-/* 修改文档树样式 */
+/* 修改文档树样式  */
 @import url(/appearance/themes/mini-vlook/style/customs/file-tree.css);
 
 /* ——————————————————————————— 基础块设置 ——————————————————————————— */
@@ -15,7 +15,7 @@
 /*标题-配色*/
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-heading.css);
 
-/*分隔线-配色*/
+/*分隔线-配色 */
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-hr.css);
 
 /*行内样式配色-配色*/

@@ -138,7 +138,7 @@ setTimeout(() => {
 function getCodeLabelMark(target){
     let node = target;
 
-    if (node.localName === 'code') {
+    if (node.localName === 'span' && node.getAttribute('data-type') === 'code') {
         return {
             element: target,
             type:'code',
