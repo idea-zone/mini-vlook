@@ -56,8 +56,8 @@
 
     /*背景*/
     --v-fig-grid:var(--v-fig-grid-l-dk);
-    --v-bg-grid-color1:rgba(66, 191, 233, 0.5);
-    --v-bg-grid-color2:rgba(64, 159, 190, 0.5);
+    --v-bg-grid-color1:rgba(66, 191, 233, 0.13);
+    --v-bg-grid-color2:rgba(64, 159, 190, 0.13);
 
     /*链接颜色*/
     --v-block-link-color:var(--a-color);

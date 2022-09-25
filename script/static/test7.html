@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box-container">
+        <div class="square"></div>
+        <div class="circle"></div>
+        <div class="ring"></div>
+        <div class="yin-yang"></div>
+        <div class="moon"></div>
+        <div class="litiqiuxing1 "></div>
+    </div>
+
+    <div class="box-container">
+        <div class="space-invader "></div>
+        <div class="curvedarrow"></div>
+        <div class="egg"></div>
+    </div>
+    
+
+    <style>
+
+        .egg {
+          
+            width: 25px;
+            height: 60px;
+         
+            background: white;
+            border-left: 0px solid white;
+            border-top-right-radius: 50%;
+            
+            border-right: 7px solid red;
+            border-top: 7px solid red;
+
+            border-bottom: 0px solid red;
+            border-radius: 60% 75% 15% 20% / 60% 60% 40% 40%;
+        }
+
+
+        .box-container {
+            display: flex;
+            flex-flow: row wrap;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+        .square {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .circle {
+            width: 100px;
+            height: 100px;
+            background: red;
+            border-radius: 50%
+        }
+        .ring {
+            width: 100px;
+            height: 100px;
+            border: 10px solid #317ef3;
+            border-radius: 100%;
+            box-sizing: border-box;
+        }
+
+        /* start -------------------- 太极图*/
+        
+        .yin-yang {
+            width: 96px;
+            height: 48px;
+            background: #eee;
+            border-color: red;
+            border-style: solid;
+            border-width: 2px 2px 50px 2px;
+            border-radius: 100%;
+            position: relative;
+        }
+        
+        .yin-yang:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            background: #eee;
+            border: 18px solid red;
+            border-radius: 100%;
+            width: 12px;
+            height: 12px;
+        }
+        
+        .yin-yang:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: red;
+            border: 18px solid #eee;
+            border-radius:100%;
+            width: 12px;
+            height: 12px;
+        }
+        /* 太极图 -------------------- end*/
+        
+
+        .moon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            box-shadow: 15px 15px 0 0 red;
+        }
+
+        .litiqiuxing1 {
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            background: #317ef3;
+            background: radial-gradient(circle at 25% 35%, #fff, #317ef3, #071529);
+        }
+
+        .space-invader{
+         box-shadow:
+            0 0 0 1em red,
+            0 1em 0 1em red,
+            -2.5em 1.5em 0 .5em red,
+            2.5em 1.5em 0 .5em red,
+            -3em -3em 0 0 red,
+            3em -3em 0 0 red,
+            -2em -2em 0 0 red,
+            2em -2em 0 0 red,
+            -3em -1em 0 0 red,
+            -2em -1em 0 0 red,
+            2em -1em 0 0 red,
+            3em -1em 0 0 red,
+            -4em 0 0 0 red,
+            -3em 0 0 0 red,
+            3em 0 0 0 red,
+            4em 0 0 0 red,
+            -5em 1em 0 0 red,
+            -4em 1em 0 0 red,
+            4em 1em 0 0 red,
+            5em 1em 0 0 red,
+            -5em 2em 0 0 red,
+            5em 2em 0 0 red,
+            -5em 3em 0 0 red,
+            -3em 3em 0 0 red,
+            3em 3em 0 0 red,
+            5em 3em 0 0 red,
+            -2em 4em 0 0 red,
+            -1em 4em 0 0 red,
+            1em 4em 0 0 red,
+            2em 4em 0 0 red;
+    
+        background: red;
+        width: 1em;
+        height: 1em;
+        overflow: hidden;
+    
+        margin: 50px 0 70px 65px;
+        }
+
+        
+/*start -------------------- 箭头*/
+    .curvedarrow {
+        position: relative;
+        width: 0;
+        height: 0;
+        border-top: 9px solid transparent;
+        border-right: 9px solid red;
+        transform: rotate(10deg);
+    }
+    .curvedarrow:after {
+         width: 0;
+        height: 0;
+        content: "";
+        position: absolute;
+        border: 0 solid transparent;
+        border-top: 3px solid red;
+        border-radius: 20px 0 0 0;
+        top: -12px;
+        left: -9px;
+        width: 12px;
+        height: 12px;
+        transform: rotate(45deg);
+    }
+/* start -------------------- 箭头*/
+
+    </style>
+
+</body>
+</html>

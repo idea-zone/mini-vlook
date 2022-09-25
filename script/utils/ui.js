@@ -356,7 +356,66 @@ export const TASK_HANDLER = {
         item.itemsLoad = !item.itemsLoad;
         item = window.siyuan.menus.menu.element.querySelector(`#${params.id}`);
         item.remove();
-    }
+    },
+    
+    /* 在新窗口打开 */
+    'window-open': async (e, id, params) => {
+        if (params.src) { // 如果需要打开资源
+            const BLOCK = await getBlockByID(id);
+            if (BLOCK) {
+                const DIV = document.createElement('div');
+                DIV.innerHTML = BLOCK.markdown;
+                window.theme.openNewWindow(
+                    'browser',
+                    DIV.firstElementChild.src,
+                    BLOCK.type === 'widget'
+                        ? { id: id }
+                        : undefined,
+                    config.theme.window.windowParams,
+                    config.theme.window.menu.template,
+                );
+                return null;
+            }
+            return null;
+        }
+        else if (params.href) { // 如果需要打开链接
+            window.theme.openNewWindow(
+                'browser',
+                params.href,
+                Object.assign({ id: id }, params.urlParams),
+                config.theme.window.windowParams,
+                config.theme.window.menu.template,
+            );
+            return null;
+        }
+        else { // 默认打开 Web 端
+            window.theme.openNewWindow(
+                undefined,
+                undefined,
+                Object.assign({ id: id }, params),
+                config.theme.window.windowParams,
+                config.theme.window.menu.template,
+            );
+        }
+    },
+    /* 在新窗口打开编辑器 */
+    'window-open-editor': async (e, id, params) => {
+        window.theme.openNewWindow(
+            'editor',
+            undefined,
+            Object.assign({ id: id }, params),
+            config.theme.window.windowParams,
+            config.theme.window.menu.template,
+            config.theme.window.open.editor.path.index,
+        );
+    },
+    /* 在新窗口打开编辑器并编辑 kramdown 文档源代码 */
+    'window-open-editor-kramdown': async (e, id, params) => {
+        if (compareVersion(window.theme.kernelVersion, '2.0.24') > 0)
+            editBlockKramdown(id);
+        else
+            editDocKramdown(id);
+    },
 };
 
 
@@ -448,7 +507,6 @@ function blockMenuInit(configs, id, type, subtype) {
     });
     return items.length > 0 ? items : null;
 }
-
 
 
 /**

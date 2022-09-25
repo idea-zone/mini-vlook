@@ -38,17 +38,94 @@ let { src, type, async, defer } = option;
 
 window.theme = {};
 
+
+/**
+ * 静态资源请求 URL 添加参数
+ * @params {string} url 资源请求 URL
+ * @return {string} 返回添加参数后的 URL
+ */
+ window.theme.addURLParam = function (
+    url,
+    param = {
+        // t: Date.now().toString(),
+        v: window.siyuan.config.appearance.themeVer,
+    },
+) {
+    let new_url;
+    switch (true) {
+        case url.startsWith('//'):
+            new_url = new URL(`https:${url}`);
+            break;
+        case url.startsWith('http://'):
+        case url.startsWith('https://'):
+            new_url = new URL(url);
+            break;
+        case url.startsWith('/'):
+            new_url = new URL(url, window.location.origin);
+            break;
+        default:
+            new_url = new URL(url, window.location.origin + window.location.pathname);
+            break;
+    }
+    for (let [key, value] of Object.entries(param)) {
+        new_url.searchParams.set(key, value);
+    }
+    switch (true) {
+        case url.startsWith('//'):
+            return new_url.href.substring(new_url.protocol.length);
+        case url.startsWith('http://'):
+        case url.startsWith('https://'):
+            return new_url.href;
+        case url.startsWith('/'):
+            return new_url.href.substring(new_url.origin.length);
+        default:
+            return new_url.href.substring((window.location.origin + window.location.pathname).length);
+    }
+}
+
+/**
+ * 加载 meta 标签
+ * @params {object} attributes 属性键值对
+ */
+ window.theme.loadMeta = function (attributes) {
+    let meta = document.createElement('meta');
+    for (let [key, value] of Object.entries(attributes)) {
+        meta.setAttribute(key, value);
+    }
+    document.head.insertBefore(meta, document.head.firstChild);
+}
+
 /**
  * 加载脚本文件
  * @param {string} url 脚本地址
  * @param {string} type 脚本类型
  */
 window.theme.loadScript = function (src, type = 'module', async = false, defer = false) {
-    let script = document.createElement('script');
-    if (type) script.setAttribute('type', type);
-    if (async) script.setAttribute('async', true);
-    if (defer) script.setAttribute('defer', true);
-    script.setAttribute('src', src);
+    // let script = document.createElement('script');
+    // if (type) script.setAttribute('type', type);
+    // if (async) script.setAttribute('async', true);
+    // if (defer) script.setAttribute('defer', true);
+    // script.setAttribute('src', src);
+    // document.head.appendChild(script);
+    const script = document.createElement('script');
+    if (type) script.type = type;
+    if (async) script.async = true;
+    if (defer) script.defer = true;
+    script.src = src;
+    document.head.appendChild(script);
+}
+
+/**
+ * 加载脚本文件
+ * @params {string} url 脚本地址
+ * @params {string} type 脚本类型
+ */
+ window.theme.loadScript = function (src, type = 'module', async = false, defer = false) {
+    const script = document.createElement('script');
+    if (type) script.type = type;
+    if (async) script.async = true;
+    if (defer) script.defer = true;
+    script.src = src;
     document.head.appendChild(script);
 }
 
@@ -133,12 +210,27 @@ window.theme.clientMode = (() => {
  * 获取语言模式
  * @returns {string} 'zh_CN', 'zh_CNT', 'fr_FR', 'en_US'
  */
-window.theme.languageMode = (() => window.siyuan.config.lang)();
+// window.theme.languageMode = (() => window.siyuan.config.lang)();
+window.theme.languageMode = window.siyuan.config.lang;
+
+/**
+ * 获取思源版本号
+ * @return {string} 思源版本号
+ */
+ window.theme.kernelVersion = window.siyuan.config.system.kernelVersion;
 
 /**
  * 获取操作系统
  */
-window.theme.OS = (() => window.siyuan.config.system.os)();
+// window.theme.OS = (() => window.siyuan.config.system.os)();
+// window.theme.kernelVersion = window.siyuan.config.system.kernelVersion;
+window.theme.OS = window.siyuan.config.system.os;
+
+/**
+ * 获取一个 Lute 对象
+ * @return {Lute} Lute 对象
+ */
+ window.theme.lute = Lute.New();
 
 /**
  * 更换主题模式
@@ -194,20 +286,30 @@ window.theme.changeThemeMode(
 );
 
 /* 加载 HTML 块中使用的小工具 */
-window.theme.loadScript("/appearance/themes/mini-vlook/script/module/html.js", "text/javascript");
+// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/html.js", "text/javascript");
+window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/html.js"), "text/javascript", undefined, true);
 
 // 主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js`});
 // 主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js`});
 
 /* 加载主题功能 */
-window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-custom.js");
-window.theme.loadScript("/appearance/themes/mini-vlook/script/module/rightmenu.js");
-window.theme.loadScript("/appearance/themes/mini-vlook/script/module/wordcount.js");
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/tabctl.js");
+// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-custom.js");
+window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/codelabel-custom.js"), undefined, true);
 
-主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js`});
-主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js`});
-window.theme.loadScript("/appearance/themes/mini-vlook/script/module/dateicon.js");
+// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/rightmenu.js");
+window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/rightmenu.js"), undefined, true);
+
+// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/wordcount.js");
+window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/wordcount.js"), undefined, true);
+
+// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/tabctl.js");
+// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/window.js");
+window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/window.js"), undefined, true);
+
+
+// 主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js`});
+// 主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js`});
+// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/dateicon.js");
 
 
 // window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel.js");
@@ -228,7 +330,8 @@ window.theme.loadScript("/appearance/themes/mini-vlook/script/module/dateicon.js
 // window.theme.loadScript("/appearance/themes/Dark+/script/module/window.js");
 
 /* 加载独立应用 */
-window.theme.loadScript("/appearance/themes/mini-vlook/app/comment/index.js");
+// window.theme.loadScript("/appearance/themes/mini-vlook/app/comment/index.js");
+window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/app/comment/index.js"), undefined, true);
 
 /* 加载自定义配置文件 */
 // window.theme.loadScript("/widgets/custom.js");

@@ -2,7 +2,13 @@ import { CodeLabelParse } from "../utils/codelabel-parse.js"
 import { TASK_HANDLER } from "../utils/ui.js";
 import { mv } from "../commons/domex.js";
 import { InputData, Messagebox, MessageboxInputs, MessageboxYesNo } from "../commons/widget.js";
+import {
+    getFile,
+    putFile,
+} from './../utils/api.js';
+import { merge } from './../utils/misc.js';
 
+const THEME_PATHNAME = "/appearance/themes/mini-vlook";
 
 export function render(nodoDom) {
     for (let value of config.theme.codelabel.ptype) {
@@ -31,6 +37,10 @@ export const createUL = (e) => {
 
 export var config = {
     token: '', // API token, 无需填写
+    custom: {
+        // 自定义配置
+        path: '/data/widgets/custom.json', // 自定义配置文件路径
+    },
     theme: {
         regs: {
 
@@ -1534,6 +1544,224 @@ export var config = {
             enable: true,
         },
 
+        window: {
+            enable: true, // 窗口功能开关
+            windowParams: {
+                // 窗口参数
+                width: 720, // 窗口宽度
+                height: 480, // 窗口高度
+                frame: true, // 是否显示边缘框
+                fullscreen: false, // 是否全屏显示
+                alwaysOnTop: true, // 是否置顶显示
+                autoHideMenuBar: true, // 是否隐藏菜单栏(使用 Alt 显示)
+                // backgroundColor: window.siyuan.config.appearance.mode // 窗口默认背景色
+                //     ? '#1e1e1e'
+                //     : '#f5f5f5',
+                webPreferences: {
+                    nodeIntegration: true, // 是否启用 Node.js 内置模块
+                    nativeWindowOpen: true,
+                    // webviewTag: true,
+                    webSecurity: false, // 是否启用 Web 安全
+                    // contextIsolation: false,
+                    // defaultFontFamily: { // 默认字体
+                    //     standard: window.siyuan.config.editor.fontFamily,
+                    // },
+                },
+            },
+            menu: {
+                template:null,
+                // // 新窗口菜单
+                // template: [
+                //     // 新窗口菜单模板
+                //     // REF [菜单项 | Electron](https://www.electronjs.org/zh/docs/latest/api/menu-item)
+                //     {
+                //         label: 'SiYuan',
+                //         submenu: [
+                //             {
+                //                 label: 'About SiYuan',
+                //                 role: 'about',
+                //             },
+                //             { type: 'separator' },
+                //             { role: 'services' },
+                //             { type: 'separator' },
+                //             {
+                //                 label: 'Hide SiYuan',
+                //                 role: 'hide',
+                //             },
+                //             { role: 'hideOthers' },
+                //             { role: 'unhide' },
+                //             { type: 'separator' },
+                //             {
+                //                 label: 'Quit SiYuan',
+                //                 role: 'quit',
+                //             },
+                //         ],
+                //     },
+                //     {
+                //         role: 'editMenu',
+                //         submenu: [
+                //             { role: 'selectAll' },
+                //             { role: 'cut' },
+                //             { role: 'copy' },
+                //             { role: 'paste' },
+                //             { role: 'pasteAndMatchStyle', accelerator: 'CmdOrCtrl+Shift+V' },
+                //             { type: 'separator' },
+                //             { role: 'toggleSpellChecker' },
+                //         ],
+                //     },
+                //     {
+                //         role: 'viewMenu',
+                //         submenu: [
+                //             { role: 'resetZoom' },
+                //             { role: 'zoomIn', accelerator: 'CmdOrCtrl+=' },
+                //             { role: 'zoomOut' },
+                //         ],
+                //     },
+                //     {
+                //         role: 'windowMenu',
+                //         submenu: [
+                //             { role: 'minimize' },
+                //             { role: 'zoom' },
+                //             { role: 'togglefullscreen' },
+                //             { type: 'separator' },
+                //             { role: 'toggledevtools' },
+                //             { type: 'separator' },
+                //             { role: 'front' },
+                //             { type: 'separator' },
+                //             { role: 'reload', accelerator: 'F5' },
+                //             { role: 'forcereload', accelerator: 'CmdOrCtrl+F5' },
+                //             { role: 'close' },
+                //             { type: 'separator' },
+                //             {
+                //                 label: 'Pinned',
+                //                 click: (menuItem, browserWindow, event) => {
+                //                     if (browserWindow) browserWindow.setAlwaysOnTop(!browserWindow.isAlwaysOnTop());
+                //                 },
+                //                 type: 'checkbox',
+                //                 checked: true,
+                //                 // REF [快捷键 | Electron](https://www.electronjs.org/zh/docs/latest/api/accelerator)
+                //                 accelerator: 'Alt+Shift+P',
+                //             },
+                //         ],
+                //     },
+                // ],
+            },
+            open: {
+                enable: true, // 打开窗口功能开关
+                panel: {
+                    enable: true, // 打开一个新窗口
+                    url: null, // 新窗口的 URL, 值 null 则为 '/stage/build/desktop/'
+                    toolbar: { // 菜单栏
+                        enable: true,
+                        display: true,
+                        id: 'toolbar-theme-window-open-panel',
+                        label: {
+                            zh_CN: '打开一个新窗口',
+                            other: 'Open a New Window',
+                        },
+                        icon: '#iconExport',
+                        index: 1,
+                    },
+                },
+                block: {
+                    // 新窗口打开当前块, 否则打开当前文档
+                    enable: true,
+                    editable: false, // 新窗口默认是否可编辑
+                    outfocus: {
+                        // 新窗口打开当前块, 否则打开当前文档
+                        enable: true,
+                        toolbar: { // 菜单栏
+                            enable: true,
+                            display: true,
+                            id: 'toolbar-theme-window-open-block-outfocus',
+                            hotkey: () => config.theme.hotkeys.window.open.block.outfocus,
+                            label: {
+                                zh_CN: '在新窗口打开当前块',
+                                other: 'Open the Current Block in a New Window',
+                            },
+                            icon: '#iconExport',
+                            index: 2,
+                        },
+                    },
+                    infocus: {
+                        // 新窗口打开当前块并聚焦, 否则打开当前文档
+                        enable: true,
+                        toolbar: { // 菜单栏
+                            enable: true,
+                            display: true,
+                            id: 'toolbar-theme-window-open-block-infocus',
+                            hotkey: () => config.theme.hotkeys.window.open.block.infocus,
+                            label: {
+                                zh_CN: '在新窗口打开当前块并聚焦',
+                                other: 'Open the Current Block in a New Window and Focus',
+                            },
+                            icon: '#iconExport',
+                            index: 3,
+                        },
+                    },
+                },
+                link: {
+                    enable: true, // 新窗口打开当链接/块引用
+                    outfocus: {
+                        enable: true, // 不聚焦
+                    },
+                    infocus: {
+                        enable: true, // 聚焦
+                    },
+                },
+                editor: {
+                    enable: true, // 启用新窗口打开当编辑器
+                    labels: {
+                        openFile: { zh_CN: '打开文件', other: 'Open File', },
+                        open: { zh_CN: '打开', other: 'Open', },
+                    },
+                    path: {
+                        // 路径
+                        index: `${THEME_PATHNAME}/app/editor/`, // 编辑器路径
+                        temp: {
+                            // 临时文件路径
+                            relative: '/temp/theme/editor/', // 临时文件相对路径
+                            absolute: `${window.siyuan.config.system.workspaceDir}/temp/theme/editor/`.replaceAll('\\', '/').replaceAll('//', '/'), // 临时文件绝对路径
+                        },
+                    },
+                    kramdown: {
+                        // 编辑文档 kramdown 源代码
+                        message: {
+                            error: {
+                                zh_CN: "编辑文档 kramdown 源代码功能仅能在桌面端使用",
+                                other: "The feature to edit the kramdown source code of a document is only available on the desktop client",
+                            },
+                        },
+                    },
+                },
+            },
+        },
+
+        toolbar: {
+            // 工具栏
+            id: 'custom-toolbar', // 工具栏 ID
+            more: {
+                id: 'custom-toolbar-more',
+                enable: true,
+                status: {
+                    default: "fold",
+                    fold: {
+                        icon: '#iconFullscreen',
+                        label: {
+                            zh_CN: '展开扩展工具栏',
+                            other: 'Expand the Expansion Toolbar',
+                        },
+                    },
+                    unfold: {
+                        icon: '#iconContract',
+                        label: {
+                            zh_CN: '收起扩展工具栏',
+                            other: 'Collapse the Expansion Toolbar',
+                        },
+                    },
+                },
+            },
+        },
 
         wordcount: {
             // 字数统计
@@ -1573,8 +1801,110 @@ export var config = {
                 },
             },
 
+            
+            window: {
+                open: {
+                    block: {
+                        outfocus: {
+                            // 新窗口打开当前块, 否则打开当前文档(Shift + Alt + N)
+                            enable: true,
+                            CtrlCmd: false,
+                            WinCtrl: false,
+                            Shift: true,
+                            Alt: true,
+                            key: 'N',
+                        },
+                        infocus: {
+                            // 新窗口打开当前块并聚焦, 否则打开当前文档(Ctrl + Shift + Alt + N)
+                            enable: true,
+                            CtrlCmd: true,
+                            WinCtrl: false,
+                            Shift: true,
+                            Alt: true,
+                            key: 'N',
+                        },
+                    },
+                    link: {
+                        outfocus: {
+                            // 新窗口打开链接(鼠标中键)
+                            enable: true,
+                            CtrlCmd: false,
+                            WinCtrl: false,
+                            Shift: false,
+                            Alt: false,
+                            button: 1, // 鼠标中键
+                        },
+                        infocus: {
+                            // 新窗口打开链接并聚焦(Shift + 鼠标中键)
+                            enable: true,
+                            CtrlCmd: false,
+                            WinCtrl: false,
+                            Shift: true,
+                            Alt: false,
+                            button: 1, // 鼠标中键
+                        },
+                    },
+                    editor: {
+                        // 新窗口打开编辑器(Alt + 鼠标中键)
+                        enable: true,
+                        CtrlCmd: false,
+                        WinCtrl: false,
+                        Shift: false,
+                        Alt: true,
+                        button: 1, // 鼠标中键
+                    },
+                    markdown: {
+                        // 以 markdown 模式在新窗口打开编辑器(Shift + Alt + 鼠标中键)
+                        enable: true,
+                        CtrlCmd: false,
+                        WinCtrl: false,
+                        Shift: true,
+                        Alt: true,
+                        button: 1, // 鼠标中键
+                    },
+                },
+            },
+
         },
 
     },
 };
 
+// 用户配置
+export var custom = {
+    theme: {
+        toolbar: {
+            [config.theme.toolbar.more.id]: { default: true }, // 工具栏是否展开
+            // [config.theme.location.record.toolbar.id]: { default: false }, // 当前浏览位置
+            // [config.theme.menu.block.toolbar.id]: { default: false }, // 块功能增强
+            // [config.theme.style.itemtext.toolbar.id]: { default: false }, // 完整显示文本内容
+            // [config.theme.style.tabbar.toolbar.id]: { default: false }, // 纵向排列选项卡
+            // [config.theme.style.guides.toolbar.id]: { default: false }, // 列表辅助线
+            // [config.theme.style.mark.toolbar.id]: { default: false }, // 显示标记文本
+            // [config.theme.invert.toolbar.id]: { default: false }, // 反色显示
+            // [config.theme.typewriter.switch.toolbar.id]: { default: false }, // 打字机模式
+            // [config.theme.dock.fold.toolbar.id]: { default: false }, // 专注模式
+            // [config.theme.readonly.toolbar.id]: { default: false }, // 只读模式
+        },
+        location: {},
+        dock: {},
+    },
+};
+
+/* 保存用户配置至文件 */
+export async function saveCustomFile(data = custom, path = config.custom.path) {
+    const response = await putFile(path, JSON.stringify(data, undefined, 4));
+    // console.log(response);
+    return response;
+}
+
+try {
+    // 合并配置文件 custom.json
+    let customjson = await getFile(config.custom.path);
+    if (customjson) customjson = await customjson.json();
+    if (customjson) merge(custom, customjson);
+} catch (err) {
+    console.warn(err);
+} finally {
+    console.log(custom);
+}

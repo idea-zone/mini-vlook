@@ -120,3 +120,12 @@
     /* margin-left: attr(custom-left); */
 }
 
+.protyle-wysiwyg .bq[bqtype="color1"] .h6{
+    color: var(--theme-bq-bgcolor);
+}
+
+.protyle-wysiwyg .bq[bqtype="color"] .h6{
+    /* color: var(--theme-bq-title-color); */
+    color: var(--theme-bq-msg-bgcolor);
+    
+}

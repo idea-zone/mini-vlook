@@ -151,6 +151,27 @@
 }
 
 
+[custom-type~="bq-wrap"]:not([custom-type~="bq-none"]) [custom-type~="bq-tab_c"] .bq[bqtype="color"]
+{
+    border: 0px;
+    border-left: 5px solid var(--theme-bq-bgcolor);
+    background: 0 0 var(--theme-bq-bgcolor);
+    border-radius: 0;
+    padding: 0 01.5em;
+    margin-bottom: 15px !important;
+}
+
+
+[custom-type~="bq-wrap"]:not([custom-type~="bq-none"]) [custom-type~="bq-tab_c"] .bq[bqtype="color1"]
+{
+    border: 0px;
+    border-left: 5px solid var(--theme-bq-bgcolor);
+    background: 0 0;
+    border-radius: 0;
+    padding: 0 01.5em;
+    margin-bottom: 15px !important;
+}
+
 
 
 [custom-type~="bq-wrap"][custom-type~="bq-none"] [custom-type~="bq-tab_c"] .bq

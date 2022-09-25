@@ -1,0 +1,15 @@
+# 发行包文件目录
+/release
+
+# 自定义样式
+/custom.css
+
+# 测试样式
+/style/test
+
+# 测试脚本
+/script/test
+
+# 编辑器
+# /app/editor
+/app/min-maps
