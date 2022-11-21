@@ -1,5 +1,3 @@
-
-
 const 主题 = {};
 主题.根目录 = "/appearance/themes/mini-vlook";
 //来自dark+主题
@@ -23,21 +21,7 @@ let { src, type, async, defer } = option;
         document.body.appendChild(script);
 };
 
-
-// const naive= {
-//     竖线菜单设置:[],
-//     footerWidget:"cc-template"
-// }
-
-// 主题.加载程序({ src: `${主题.根目录}/script/util/siYuanApi.js` });
-// 主题.加载程序({ src: `${主题.根目录}/script/main.js`, type: "module" });
-
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/static/dom-to-image.min.js", "text/javascript");
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/static/moment.min.js", "text/javascript");
-
-
 window.theme = {};
-
 
 /**
  * 静态资源请求 URL 添加参数
@@ -101,12 +85,6 @@ window.theme = {};
  * @param {string} type 脚本类型
  */
 window.theme.loadScript = function (src, type = 'module', async = false, defer = false) {
-    // let script = document.createElement('script');
-    // if (type) script.setAttribute('type', type);
-    // if (async) script.setAttribute('async', true);
-    // if (defer) script.setAttribute('defer', true);
-    // script.setAttribute('src', src);
-    // document.head.appendChild(script);
     const script = document.createElement('script');
     if (type) script.type = type;
     if (async) script.async = true;
@@ -168,15 +146,6 @@ window.theme.ID_CUSTOM_STYLE = 'customStyle';
  * @returns {string} light 或 dark
  */
 window.theme.themeMode = (() => {
-    /* 根据浏览器主题判断颜色模式 */
-    // switch (true) {
-    //     case window.matchMedia('(prefers-color-scheme: light)').matches:
-    //         return 'light';
-    //     case window.matchMedia('(prefers-color-scheme: dark)').matches:
-    //         return 'dark';
-    //     default:
-    //         return null;
-    // }
     /* 根据配置选项判断主题 */
     switch (window.siyuan.config.appearance.mode) {
         case 0:
@@ -222,8 +191,6 @@ window.theme.languageMode = window.siyuan.config.lang;
 /**
  * 获取操作系统
  */
-// window.theme.OS = (() => window.siyuan.config.system.os)();
-// window.theme.kernelVersion = window.siyuan.config.system.kernelVersion;
 window.theme.OS = window.siyuan.config.system.os;
 
 /**
@@ -286,62 +253,12 @@ window.theme.changeThemeMode(
 );
 
 /* 加载 HTML 块中使用的小工具 */
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/html.js", "text/javascript");
-window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/html.js"), "text/javascript", undefined, true);
-
-// 主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js`});
-// 主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js`});
-
-/* 加载主题功能 */
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-custom.js");
 window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/codelabel-custom.js"), undefined, true);
-
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/rightmenu.js");
+window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/html.js"), "text/javascript", undefined, true);
 window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/rightmenu.js"), undefined, true);
-
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/wordcount.js");
-window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/wordcount.js"), undefined, true);
-
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/tabctl.js");
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/window.js");
+// window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/wordcount.js"), undefined, true);
 window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/window.js"), undefined, true);
-
-
-// 主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js`});
-// 主题.加载程序({ src: `https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js`});
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/dateicon.js");
-
-
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel.js");
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/code-rb-coad.js");
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-pg.js");
-// window.theme.loadScript("/appearance/themes/mini-vlook/script/module/codelabel-todo.js");
-
-// window.theme.loadScript("/appearance/themes/Dark+/script/module/background.js");
-// window.theme.loadScript("/appearance/themes/Dark+/script/module/blockattrs.js");
-// window.theme.loadScript("/appearance/themes/Dark+/script/module/doc.js");
-// window.theme.loadScript("/appearance/themes/Dark+/script/module/goto.js");
-// window.theme.loadScript("/appearance/themes/Dark+/script/module/invert.js");
-// window.theme.loadScript("/appearance/themes/Dark+/script/module/menu.js");
-// window.theme.loadScript("/appearance/themes/Dark+/script/module/reload.js");
-// window.theme.loadScript("/appearance/themes/Dark+/script/module/style.js");
-// window.theme.loadScript("/appearance/themes/Dark+/script/module/timestamp.js");
-// window.theme.loadScript("/appearance/themes/Dark+/script/module/typewriter.js");
-// window.theme.loadScript("/appearance/themes/Dark+/script/module/window.js");
 
 /* 加载独立应用 */
 // window.theme.loadScript("/appearance/themes/mini-vlook/app/comment/index.js");
-window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/app/comment/index.js"), undefined, true);
-
-/* 加载自定义配置文件 */
-// window.theme.loadScript("/widgets/custom.js");
-
-/* 加载测试模块 */
-// window.theme.loadScript("/appearance/themes/Dark+/script/test/listener.js");
-
-
-// document.body.onclick = function(){
-//     const element = document.activeElement.tagName
-//     console.log("当前选中"+element);
-//     console.log(document.activeElement);
-// }
+// window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/app/comment/index.js"), undefined, true);

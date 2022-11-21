@@ -27,6 +27,15 @@
     border-radius: 3px;
 }
 
+/*对引用块的适配*/
+.protyle-wysiwyg *[data-node-id] :not([custom-f~=wz]) span[data-type~="block-ref"].custom-codelabel-wz,
+.protyle-wysiwyg *[data-node-id] :not([custom-f~=wz]) span[data-type=" block-ref"].custom-codelabel-wz {
+    /* background-color: #2aa899;   */
+    background-color: var(--theme-wz-bgcolor);  
+    padding: 5px;
+    border-radius: 3px;
+}
+
 .custom-codelabel-wz:hover {
     filter: brightness(1.1)
 }

@@ -1217,6 +1217,7 @@ export var config = {
                         // oldHTML （解析前的 innerHTML 内容）
                         // 获取父节点    
 
+
                         let crtLine =  mv.GetSiyuanBlock(element);
                         let parentNode = crtLine.parentNode;
                        
@@ -1339,6 +1340,7 @@ export var config = {
                         crtLine.onclick = async (e)=>{
                             tab("bq-tab_t", "li", "bq-tab_c", "bq", "onclick");                            
                         }
+
                     },
                 },
 
