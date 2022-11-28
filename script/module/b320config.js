@@ -476,7 +476,6 @@ export var config = {
                     renderEnd: (parse, element, oldHTML) => { // 渲染完单个元素的回调.
                     },
                 },
-
                 {   // 彩虹引用
                     typeid: "bq",
                     reg: '&gt;[\(]((#?[\\d\\w]+)(!)?)[\)]',    // 针对 innerHTML
@@ -616,7 +615,6 @@ export var config = {
 
                     },
                 },
-
                 {   // 多级标签
                     typeid: "mtag",
                     reg: '^(.*)/(.*)$',  // 针对 innerHTML
@@ -680,15 +678,24 @@ export var config = {
                         // parse是解析信息，$0~$9 的别名，如果开启 style.rerender为true，还有 color1,bgcolor1,color2,bgcolor2 (主颜色和适配颜色)
                         // element 当前元素（解析后的）
                         // oldHTML （解析前的 innerHTML 内容）
-                        // let innerHTML = '';
-                        // if (parse['lv1'] !==undefined && parse['lv1'] !==null && parse['lv1'] !==''){
-                        //     innerHTML += `<span class="mult-tag-lv1">${parse['lv1']}<span>`
-                        // }
-                        // if (parse['lv2'] !==undefined && parse['lv2'] !==null && parse['lv2'] !==''){
-                        //     innerHTML += `<span class="mult-tag-lv2">${parse['lv2']}<span>`
-                        // }
+                        let innerHTML = '';
 
-                        // element.innerHTML = innerHTML
+                        if (parse!==undefined && parse!==null)
+                            parse =  parse["parseInfo"];
+                        console.log("lv1"+parse['lv1']);
+                        console.log("lv1"+parse['lv2']);
+                        console.log(parse);
+
+                        if (parse['lv1'] !==undefined && parse['lv1'] !==null && parse['lv1'] !==''){
+                            innerHTML += `<span class="mult-tag-lv1">${parse['lv1']}<span>`
+                        }
+
+                        if (parse['lv2'] !==undefined && parse['lv2'] !==null && parse['lv2'] !==''){
+                            innerHTML += "<span class='mult-tag-none'>/</span>"
+                            innerHTML += `<span class="mult-tag-lv2">${parse['lv2']}<span>`
+                        }
+
+                        element.innerHTML = innerHTML
                     },
                 },
                 {   // 下拉框
