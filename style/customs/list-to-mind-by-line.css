@@ -1,5 +1,5 @@
 /**
- * 代码参考自: 集市主题[Dark+]。 
+ * 代码参考自: 集市主题[Savor+]。 
  * 
  *  列表渲染成思维导图
  *
@@ -7,7 +7,13 @@
  * 时间: 2022-04-19
  * 更新日志：
  */
+ :root{
+	/*导图*/
+	--b3-border-daotu: 2px solid #ffb8b8 !important;
+	--b3-block-daotu:#FFF !important;
+ }
 
+ /*————————————————————————列表转导图————————————————————————*/
 /*整个导图取消缩进*/
 .protyle-wysiwyg *[custom-f~=map] .li .list,
 .protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li .list,
@@ -15,21 +21,21 @@
     padding: 0px;
     margin: 0px;
 	transition: all 0.5s;
-}
-
-.protyle-wysiwyg *[custom-f~=map].list[data-node-index],
-.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq).list[data-node-index],
-.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq).list[data-node-index]{
-	width:100%;
+} 
+.protyle-wysiwyg *[custom-f~=map].list,
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq).list,
+.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq).list{
+	width:100%-50!important;
 	overflow-x:auto;/*溢出滚动*/
-	padding-bottom:50px;
+	padding-bottom:30px!important;
+	margin:10px 4px;
 }
 /*子项设偏移调整*/
 .protyle-wysiwyg *[custom-f~=map] [data-node-id].li>[data-node-id],
 .protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) [data-node-id].li>[data-node-id],
 .protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) [data-node-id].li>[data-node-id]{
     margin-left: 20px !important;
-	margin-right: -14px !important;
+	margin-right: -24px !important;
 }
 .protyle-wysiwyg *[custom-f~=map] [data-node-id].li>.list,
 .protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) [data-node-id].li>.list,
@@ -49,37 +55,70 @@
 	align-items: center;
 	left:6px;
     margin: 0;
+	flex-shrink:0;/*不压缩宽度*/
 }
 .protyle-wysiwyg *[custom-f~=map] .li [data-type="NodeHeading"]>[spellcheck="false"]:after,
 .protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li [data-type="NodeHeading"]>[spellcheck="false"]:after,
 .protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li [data-type="NodeHeading"]>[spellcheck="false"]:after{
 	display:none;
+}/*取消标题层级提示*/
+.protyle-wysiwyg *[custom-f~=map] .li div,
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li div,
+.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li div{
+	border-right:10px solid transparent;
 }
-
 /*文字框*/
-.protyle-wysiwyg *[custom-f~=map][data-subtype="u"] .li div>div[spellcheck="false"],
-.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq)[data-subtype="u"] .li div>div[spellcheck="false"],
-.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq)[data-subtype="u"] .li div>div[spellcheck="false"]{
-	margin-left:-6px;
-	padding:5px 10px;
+.protyle-wysiwyg *[custom-f~=map] .li div>div[spellcheck="false"],
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li div>div[spellcheck="false"],
+.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li div>div[spellcheck="false"]{
+	margin-left:-8px;
+	padding:5px 0 5px 10px;
 	margin-top:2px;
-	background-color:var(--mapline-p-bg-color);
+	background-color:var(--b3-block-daotu);
 	border-radius:3px;
 	box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px;
-	white-space: nowrap;
+	max-width:15vw;
 }
-
-/*文字框-非无序列表*/
-.protyle-wysiwyg *[custom-f~=map]:not([data-subtype="u"]) .li div>div[spellcheck="false"],
-.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq):not([data-subtype="u"]) .li div>div[spellcheck="false"],
-.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq):not([data-subtype="u"]) .li div>div[spellcheck="false"]{
-	margin-left:-6px;
+.protyle-wysiwyg *[custom-f~=map] .li[data-subtype="t"]>[data-node-id]>div[spellcheck="false"],
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li[data-subtype="t"]>[data-node-id]>div[spellcheck="false"],
+.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li[data-subtype="t"]>[data-node-id]>div[spellcheck="false"]
+{
+	padding:5px 0px 5px 35px;
+}
+.protyle-wysiwyg *[custom-f~=map] .li[data-subtype="o"]>[data-node-id]>div[spellcheck="false"],
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li[data-subtype="o"]>[data-node-id]>div[spellcheck="false"],
+.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li[data-subtype="o"]>[data-node-id]>div[spellcheck="false"]
+{
 	padding:5px 10px 5px 25px;
-	margin-top:2px;
-	background-color:var(--mapline-p-bg-color);
-	border-radius:3px;
-	box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px;
-	white-space: nowrap;
+}
+.protyle-wysiwyg *[custom-f~=map] .li[data-subtype="t"]>.code-block>.protyle-action,
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li[data-subtype="t"]>.code-block>.protyle-action,
+.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li[data-subtype="t"]>.code-block>.protyle-action{
+	padding:5px 0px 5px 30px;
+}
+.protyle-wysiwyg *[custom-f~=map] .li[data-subtype="t"]>[data-node-id]>div.hljs,
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li[data-subtype="t"]>[data-node-id]>div.hljs,
+.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li[data-subtype="t"]>[data-node-id]>div.hljs
+{
+	padding:30px 0px 22px 30px;
+}
+.protyle-wysiwyg *[custom-f~=map] .li[data-subtype="o"]>.code-block>.protyle-action,
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li[data-subtype="o"]>.code-block>.protyle-action,
+.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li[data-subtype="o"]>.code-block>.protyle-action{
+	padding:5px 0px 5px 30px;
+}
+.protyle-wysiwyg *[custom-f~=map] .li[data-subtype="o"]>[data-node-id]>div.hljs,
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li[data-subtype="o"]>[data-node-id]>div.hljs,
+.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li[data-subtype="o"]>[data-node-id]>div.hljs
+{
+	padding:30px 0px 22px 30px;
+}
+.protyle-wysiwyg *[custom-f~=map] .li div>div.hljs,
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li div>div.hljs,
+.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li div>div.hljs{
+	padding:30px 10px 22px;
+	margin-left: 2px;
+	background-color:var(--b3-menu-background);
 }
 
 /*去除竖线*/
@@ -90,44 +129,63 @@
 }
 
 /*圆点符号居中对齐*/
-.list[data-node-id][custom-f~=map][data-subtype="u"]  .protyle-action ,
-.hr:first-child+.hr+.hr+.list[data-node-id][data-subtype="u"]  .protyle-action ,
-:not(.hr)+.hr+.hr+.hr+.list[data-node-id][data-subtype="u"]  .protyle-action {
-    top: 50%;
-	position: absolute;
-	transform: translate(-25%, -50%);
-	margin-left:10px;
-	z-index:2;
+.protyle-content *[custom-f~=map] [data-subtype="u"][data-node-id].li>div.protyle-action ,
+.protyle-content .hr:first-child+.hr+.hr+*:not(.bq) [data-subtype="u"][data-node-id].li>div.protyle-action ,
+.protyle-content :not(.hr)+.hr+.hr+.hr+*:not(.bq) [data-subtype="u"][data-node-id].li>div.protyle-action {
+	top:50%;
+	margin-left:-18px;
+}/*无序列表*/
+.protyle-content *[custom-f~=map] [data-subtype="o"][data-node-id].li>div.protyle-action ,
+.protyle-content .hr:first-child+.hr+.hr+*:not(.bq) [data-subtype="o"][data-node-id].li>div.protyle-action ,
+.protyle-content :not(.hr)+.hr+.hr+.hr+*:not(.bq) [data-subtype="o"][data-node-id].li>div.protyle-action {
+	top:calc(50% + 1px);
+	margin-left:17px;
+}/*有序列表*/
+.list[custom-f~=map][data-node-id] .li>.protyle-action,
+.hr:first-child+.hr+.hr+.list[data-node-id] .li>.protyle-action,
+:not(.hr)+.hr+.hr+.hr+.list[data-node-id] .li>.protyle-action{
+    top:calc(50% + 1px);
+	left:3px;
+    position: absolute;
+    transform: translate(0, -50%);
+    z-index: 2;
 }
-
-/*圆点符号居中对齐-非无序列表*/
-.list[data-node-id][custom-f~=map]:not([data-subtype="u"])  .protyle-action ,
-.hr:first-child+.hr+.hr+.list[data-node-id]:not([data-subtype="u"])  .protyle-action ,
-:not(.hr)+.hr+.hr+.hr+.list[data-node-id]:not([data-subtype="u"])  .protyle-action {
-    top: 50%;
-	position: absolute;
-	transform: translate(0, -50%);
-	margin-left:20px;
-	z-index:2;
+.protyle-wysiwyg *[custom-f~=map] [data-subtype="u"][data-node-id].li>.protyle-action:after,
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) [data-subtype="u"][data-node-id].li>.protyle-action:after,
+.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) [data-subtype="u"][data-node-id].li>.protyle-action:after{
+	left:37px;
+}
+.list[custom-f~=map][data-node-id] .protyle-action svg,
+.hr:first-child+.hr+.hr+.list[data-node-id] .protyle-action svg,
+:not(.hr)+.hr+.hr+.hr+.list[data-node-id] .protyle-action svg{
+	left:20px;
 }
 
 /*前继承线*/
-.protyle-wysiwyg *[custom-f~=map] .li::before,
-.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li::before,
-.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li::before{   
+.protyle-wysiwyg *[custom-f~=map] .li::before,.protyle-wysiwyg *[custom-f~=map] .li[fold="1"]::before,
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li::before,.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li[fold="1"]::before,
+.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li::before,.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li[fold="1"]::before{   
     content: '';   
     position: absolute;  
 	top: 50%;   
-    border-top:2px solid #ffb8b8;    
+    border-top:var(--b3-border-daotu);    
     width: 20px;  
 	height: 50%;     
 }
+
 /*上竖线*/
 .protyle-wysiwyg *[custom-f~=map] .li::before,
 .protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li::before,
 .protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li::before{   
     bottom: 50%;    
-    border-left:2px solid #ffb8b8;   
+    border-left:var(--b3-border-daotu);  
+	left: 0px;
+}
+
+.protyle-wysiwyg *[custom-f~=map] .li:hover::before,
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li:hover::before,
+.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li:hover::before{   
+    border-left:var(--b3-border-daotu);  
 }
 /*下竖线*/
 .protyle-wysiwyg *[custom-f~=map] .li::after,
@@ -136,7 +194,7 @@
     content: '';   
     position: absolute;  
 	bottom: 50%;   
-    border-left:2px solid #ffb8b8;    
+    border-left:var(--b3-border-daotu);  
     width: 20px;  
 	height: 50%; 
 }
@@ -144,8 +202,15 @@
 .protyle-wysiwyg *[custom-f~=map] .list>.li:first-child:nth-last-child(2)::after,
 .protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .list>.li:first-child:nth-last-child(2)::after,
 .protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .list>.li:first-child:nth-last-child(2)::after{   
-	 border-radius:0px; 
-	 margin-bottom:-2px;
+	width: 0px;
+}
+/*单个子项直线对齐修正*/
+.list[custom-f~=map] .list:has(>.li:first-child:nth-last-child(2))::after,
+.hr:first-child+.hr+.hr+.list .list:has(>.li:first-child:nth-last-child(2))::after,
+:not(.hr)+.hr+.hr+.hr+.list .list:has(>.li:first-child:nth-last-child(2))::after{   
+	border-radius:0px; 
+	width: 39px;
+	margin-bottom:-2px;
 }
 /*单子项居中*/
 .protyle-wysiwyg *[custom-f~=map] .list>.li:first-child:nth-last-child(2),
@@ -156,7 +221,7 @@
 }
 /*取消多余线条*/
 .protyle-wysiwyg *[custom-f~=map] .li:first-child::after,.protyle-wysiwyg *[custom-f~=map]  .li:nth-last-child(2)::before,
-.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq)  .li:first-child::after,.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq)  .li:nth-last-child(2)::before,
+.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li:first-child::after,.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq)  .li:nth-last-child(2)::before,
 .protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li:first-child::after,.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq)  .li:nth-last-child(2)::before{   
     border:none!important;    
 }
@@ -164,16 +229,15 @@
 .protyle-wysiwyg *[custom-f~=map] .li:first-child::before,
 .protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li:first-child::before,
 .protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li:first-child::before{   
-    border-radius:5px 0 0 0 ;    
-}  
+    border-radius:5px 0 0 0 ;
+}
 /*下框线*/
 .protyle-wysiwyg *[custom-f~=map] .li:nth-last-child(2)::after,
 .protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li:nth-last-child(2)::after,
 .protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li:nth-last-child(2)::after{   
-    border-bottom:2px solid #ffb8b8!important;    
+    border-bottom:var(--b3-border-daotu)!important;    
     border-radius:0 0 0 5px;    
 }
-
 /*后继承线*/
 .list[custom-f~=map] .list::after,
 .hr:first-child+.hr+.hr+.list .list::after,
@@ -182,36 +246,24 @@
     position: absolute; 
 	left: 0; 
 	top: 50%;   
-    border-top:2px solid #ffb8b8;   
+    border-top:var(--b3-border-daotu);   
     width: 20px; 
 	height: 0;  
 }
-
 /*取消根目录线*/
-div[data-node-index]>[data-type="NodeListItem"]::after,
-div[data-node-index]>[data-type="NodeListItem"]::before{   
+div *[custom-f~=map]>[data-type="NodeListItem"]::before,
+div .hr:first-child+.hr+.hr+*:not(.bq)>[data-type="NodeListItem"]::before,
+div :not(.hr)+.hr+.hr+.hr+*:not(.bq)>[data-type="NodeListItem"]::before,
+div *[custom-f~=map]>[data-type="NodeListItem"]::after,
+div .hr:first-child+.hr+.hr+*:not(.bq)>[data-type="NodeListItem"]::after,
+div :not(.hr)+.hr+.hr+.hr+*:not(.bq)>[data-type="NodeListItem"]::after{   
 	display: none;
-}  
+}
+/*根目录最小宽度，保证块标可点*/
+div *[custom-f~=map]>[data-type="NodeListItem"]>[data-type="NodeParagraph"]>[spellcheck="false"],
+div .hr:first-child+.hr+.hr+*:not(.bq)>[data-type="NodeListItem"]>[data-type="NodeParagraph"]>[spellcheck="false"],
+div :not(.hr)+.hr+.hr+.hr+*:not(.bq)>[data-type="NodeListItem"]>[data-type="NodeParagraph"]>[spellcheck="false"]{
+	min-width:50px;
+}
 
-/*文本高亮*/
-
-.protyle-wysiwyg *[custom-f~=map] .li div>[spellcheck="false"]:hover, 
-.protyle-wysiwyg *[custom-f~=map] .li div:hover+.list .li div>[spellcheck="false"],
-.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li div>[spellcheck="false"]:hover, 
-.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li div:hover+.list .li div>[spellcheck="false"],
-.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li div>[spellcheck="false"]:hover, 
-.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li div:hover+.list .li div>[spellcheck="false"]
-{
-	background-color:var(--b3-theme-primary-lightest)!important; 
-	box-shadow: var(--b3-theme-primary) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px;
-}   
-
-/*继承线高亮*/
-.protyle-wysiwyg *[custom-f~=map] .li :hover+.list::after,    
-.protyle-wysiwyg *[custom-f~=map] .li :hover+.list .list::after,
-.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li :hover+.list .li::after,    
-.protyle-wysiwyg :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li :hover+.list .li::before,    
-.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq) .li :hover+.list .list::after,
-.protyle-wysiwyg .hr:first-child+.hr+.hr+*:not(.bq).li :hover+.list .list::after{   
-    border-color:var(--b3-theme-primary)!important;    
-}  
+/*————————————————————————————————————————————————————————————————————————*/
