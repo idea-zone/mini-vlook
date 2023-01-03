@@ -108,3 +108,109 @@
      vertical-align: top
  }
  
+
+ /* 
+  * 在 readme 文件中的现实
+  */
+
+  div.item__readme  hr+blockquote,
+ div.item__readme  hr+blockquote+blockquote,
+ div.item__readme  hr+blockquote,
+ div.item__readme  hr+blockquote+blockquote {
+     color: var(--d-f-c);
+     display: inline-block !important;
+     max-width: 43% !important;
+     min-width: 43% !important;
+     vertical-align: top
+ }
+ 
+ div.item__readme  hr+blockquote+blockquote,
+ div.item__readme  hr+blockquote+blockquote {
+     margin-left: 1% !important
+ }
+ 
+ div.item__readme  hr+hr+blockquote,
+ div.item__readme  hr+hr+blockquote+blockquote,
+ div.item__readme  hr+hr+blockquote+blockquote+blockquote,
+ div.item__readme  hr+hr+blockquote,
+ div.item__readme  hr+hr+blockquote+blockquote,
+ div.item__readme  hr+hr+blockquote+blockquote+blockquote {
+     color: var(--d-f-c);
+     display: inline-block !important;
+     max-width: 28% !important;
+     min-width: 28% !important;
+     vertical-align: top
+ }
+ 
+ div.item__readme  hr+hr+blockquote+blockquote,
+ div.item__readme  hr+hr+blockquote+blockquote+blockquote,
+ div.item__readme  hr+hr+blockquote+blockquote,
+ div.item__readme  hr+hr+blockquote+blockquote+blockquote {
+     margin-left: 1% !important
+ }
+ 
+ div.item__readme  hr+hr+hr+blockquote,
+ div.item__readme  hr+hr+hr+blockquote+blockquote,
+ div.item__readme  hr+hr+hr+blockquote+blockquote+blockquote,
+ div.item__readme  hr+hr+hr+blockquote+blockquote+blockquote+blockquote,
+ div.item__readme  hr+hr+hr+blockquote,
+ div.item__readme  hr+hr+hr+blockquote+blockquote,
+ div.item__readme  hr+hr+hr+blockquote+blockquote+blockquote,
+ div.item__readme  hr+hr+hr+blockquote+blockquote+blockquote+blockquote {
+     color: var(--d-f-c);
+     display: inline-block !important;
+     max-width: 20% !important;
+     min-width: 20% !important;
+     vertical-align: top
+ }
+ 
+ div.item__readme  hr+hr+hr+blockquote+blockquote,
+ div.item__readme  hr+hr+hr+blockquote+blockquote+blockquote,
+ div.item__readme  hr+hr+hr+blockquote+blockquote+blockquote+blockquote,
+ div.item__readme  hr+hr+hr+blockquote+blockquote,
+ div.item__readme  hr+hr+hr+blockquote+blockquote+blockquote,
+ div.item__readme  hr+hr+hr+blockquote+blockquote+blockquote+blockquote {
+     margin-left: 1% !important
+ }
+
+ /*在第一层中*/
+
+ div.item__readme  blockquote hr+blockquote,
+ div.item__readme  blockquote hr+blockquote+blockquote,
+ div.item__readme  blockquote hr+blockquote,
+ div.item__readme  blockquote hr+blockquote+blockquote {
+     color: var(--d-f-c);
+     display: inline-block !important;
+     max-width: 39% !important;
+     min-width: 39% !important;
+     vertical-align: top
+ }
+
+ div.item__readme  blockquote  hr+hr+blockquote,
+ div.item__readme  blockquote  hr+hr+blockquote+blockquote,
+ div.item__readme  blockquote  hr+hr+blockquote+blockquote+blockquote,
+ div.item__readme  blockquote  hr+hr+blockquote,
+ div.item__readme  blockquote  hr+hr+blockquote+blockquote,
+ div.item__readme  blockquote  hr+hr+blockquote+blockquote+blockquote {
+     color: var(--d-f-c);
+     display: inline-block !important;
+     max-width: 23% !important;
+     min-width: 23% !important;
+     vertical-align: top
+ }
+
+ div.item__readme   blockquote  hr+hr+hr+blockquote,
+ div.item__readme   blockquote  hr+hr+hr+blockquote+blockquote,
+ div.item__readme   blockquote  hr+hr+hr+blockquote+blockquote+blockquote,
+ div.item__readme   blockquote  hr+hr+hr+blockquote+blockquote+blockquote+blockquote,
+ div.item__readme   blockquote  hr+hr+hr+blockquote,
+ div.item__readme   blockquote  hr+hr+hr+blockquote+blockquote,
+ div.item__readme   blockquote  hr+hr+hr+blockquote+blockquote+blockquote,
+ div.item__readme   blockquote  hr+hr+hr+blockquote+blockquote+blockquote+blockquote {
+     color: var(--d-f-c);
+     display: inline-block !important;
+     max-width: 17% !important;
+     min-width: 17% !important;
+     vertical-align: top
+ }
+ 

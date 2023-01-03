@@ -1,7 +1,8 @@
 /* --------------- 引用块 ---------------  */
 
 /*在列表中*/
-.protyle-wysiwyg .li > .bq{
+.protyle-wysiwyg .li > .bq,
+div.item__readme li blockquote{
     border-left: 5px solid rgba(148, 152, 160, .2);
     background: 0 0;
     border-radius: 0;
@@ -9,7 +10,8 @@
 }
 
 /*独立的*/
-.protyle-wysiwyg .bq {
+.protyle-wysiwyg .bq ,
+div.item__readme blockquote{
     color: var(--v-block-bq-color);
     background: var(--v-block-bq-bg-color);
     border-radius: var(--v-block-bq-border-radius);

@@ -9,4 +9,13 @@
     margin: 0 0 20px;
 }
 
+
+div.item__readme code[data-render="true"]
+{
+    /* color: var(--v-block-code-bg-color); */
+    font-family: var( --v-black-code-font-family);
+    border-radius: 8px;;
+    border: 3px solid var(--v-black-code-boder-color);
+    margin: 0 0 20px;
+}
 /* --------------- 代码块 end---------------*/

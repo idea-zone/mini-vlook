@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>
+        <p><img src="https://github.com/idea-zone/mini-vlook/blob/main/assets/image-20220426111207-1su2dh5.png" alt="image.png"></p>
+        <ul>
+        <li>
+        <p>姓名</p>
+        <ul>
+        <li>
+        <p>野原新之助</p>
+        <ul>
+        <li>
+        <p>等级</p>
+        <ul>
+        <li><strong>★★★★★</strong></li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+        <li>
+        <p>年龄</p>
+        <ul>
+        <li>
+        <p>5岁</p>
+        <ul>
+        <li>
+        <p>性别</p>
+        <ul>
+        <li>男</li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+        <li>
+        <p>性格</p>
+        <ul>
+        <li>
+        <p>善良、活泼</p>
+        <ul>
+        <li>
+        <p>技能</p>
+        <ul>
+        <li><code>#幸运值|满级#(theme1!)</code></li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+        </ul>
+
+        <style>
+
+:root{
+    --b3-border-normal: 1px solid #ddd4df !important;
+}
+/* -----------------------------------------------列表转化为表格------------------------------------------- */
+/* 设置整个列表表格的缩进 */
+hr:first-child+ul,
+:not(hr)+hr+ul {
+    padding: 4px;
+}
+
+/* ————————————————————所有子项目的表格（除去第一列其余的列），包含溢出的空白部分，所以才会有边框—————————————————————— */
+
+.protyle-wysiwyg hr:first-child+*:not(blockquote) li ul,
+.protyle-wysiwyg :not(hr)+hr+*:not(blockquote) li ul {
+    padding: 0px;
+    margin: 0px !important;
+    width: 100%;
+    outline: var(--b3-border-normal);
+}
+
+/* ————————————————————对所有子列表项设置格式———————————————————— */
+.protyle-wysiwyg *[custom-f~=bg] li ,
+.protyle-wysiwyg hr:first-child+*:not(blockquote) li ,
+.protyle-wysiwyg :not(hr)+hr+*:not(blockquote) li {
+    display: flex;
+    /* outline: 0.05em solid #8080804d; */
+    outline: var(--b3-border-normal);
+    background-color: var(--b3-theme-background);
+    border-radius: var(--b3-border-radius-none);
+    /* padding-right: 6px; */
+}
+
+/* ————————————————————调整每个子列表项右侧边距———————————————————— */
+.protyle-wysiwyg *[custom-f~=bg]li>div ,
+.protyle-wysiwyg hr:first-child+*:not(blockquote)li>div ,
+.protyle-wysiwyg :not(hr)+hr+*:not(blockquote)li>div {
+    margin-right: 6px;
+}
+
+.protyle-wysiwyg *[custom-f~=bg] li:hover ,
+.protyle-wysiwyg hr:first-child+*:not(blockquote) li:hover ,
+.protyle-wysiwyg :not(hr)+hr+*:not(blockquote) li:hover {
+    background-color: var(--b3-theme-hover2);
+}
+
+/* ————————————————————大神增加代码———————————————————— */
+.protyle-wysiwyg *[custom-f~=bg] [data-node-id]li>[data-node-id] ,
+.protyle-wysiwyg hr:first-child+*:not(blockquote) [data-node-id]li>[data-node-id] ,
+    .protyle-wysiwyg :not(hr)+hr+*:not(blockquote) [data-node-id]li>[data-node-id] {
+    margin-left: 20px !important;
+}
+
+/* ————————————————————对符号后文字设置格式———————————————————— */
+.protyle-wysiwyg *[custom-f~=bg] .p ,
+.protyle-wysiwyg hr:first-child+*:not(blockquote) .p ,
+.protyle-wysiwyg :not(hr)+hr+*:not(blockquote) .p {
+    flex: 1;
+    text-align: left;
+    align-items: center;
+    display: flex;
+    min-width: 120px;
+    height: auto;
+    margin: 0;
+    text-align: justify;
+}
+
+.protyle-wysiwyg *[custom-f~=bg] li>ul>li ,
+.protyle-wysiwyg hr:first-child+*:not(blockquote) li>ul>li ,
+    .protyle-wysiwyg :not(hr)+hr+*:not(blockquote) li>ul>li {
+    outline: none !important;
+    /* border-top: 0.05em solid #8080804d; */
+    border-top: var(--b3-border-normal);
+}
+
+.protyle-wysiwyg *[custom-f~=bg] li>ul>li:first-of-type ,
+.protyle-wysiwyg hr:first-child+*:not(blockquote) li>ul>li:first-of-type ,
+.protyle-wysiwyg :not(hr)+hr+*:not(blockquote) li>ul>li:first-of-type {
+    border-top: none;
+}
+
+/* ————————————————————去除小竖线———————————————————— */
+ul[custom-f~=bg][data-node-id][data-type="NodeList"] li>:before ,
+hr:first-child+ul li>:before ,
+:not(hr)+hr+ul li>:before {
+    display: none;
+}
+
+/* ————————————————————设置前面的符号居中对齐———————————————————— */
+ul[custom-f~=bg][data-node-id][data-type="NodeList"] .protyle-action ,
+hr:first-child+ul .protyle-action ,
+:not(hr)+hr+ul .protyle-action {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 20px;
+}
+
+/* ————————————————————减小前面符号·的大小———————————————————— */
+ul[custom-f~=bg][data-node-id][data-type="NodeList"] .protyle-action ,
+hr:first-child+ul .protyle-action ,
+:not(hr)+hr+ul .protyle-action {
+    color: var(--b3-theme-primary);
+}
+
+ul[custom-f~=bg][data-node-id][data-type="NodeList"] .protyle-action>svg ,
+hr:first-child+ul .protyle-action>svg ,
+:not(hr)+hr+ul .protyle-action>svg {
+    width: 10px;
+}
+
+/* ---------------------------------------------------------列表转化为表格 END-------------------------------------------------- */
+
+        </style>
+
+</body>
+
+</html>

@@ -281,8 +281,7 @@ export var config = {
                 //            // oldHTML （解析前的 innerHTML 内容）
                 //     },
                 // },
-
-
+             
                 {   // 微章
                     typeid: "wz",
                     // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
@@ -1790,11 +1789,11 @@ export var config = {
                 },
 
                 render2: {
-                    // 渲染( Alt + 0)
-                    ctrlKey: false,
+                    // 渲染(Ctrl + 0)
+                    ctrlKey: true,
                     metaKey: true,
                     shiftKey: false,
-                    altKey: true,
+                    altKey: false,
                     key: '0',
                 },
             },
