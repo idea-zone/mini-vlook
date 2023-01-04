@@ -84,3 +84,12 @@ div.item__readme code:not([data-render="true"]):hover
 {
     filter: brightness(1.1)
 }
+
+/*挂件*/
+
+.iframe,
+.iframe-content,
+.iframe-content iframe{
+    height: 50em !important;
+    min-height: 10em !important;
+}
