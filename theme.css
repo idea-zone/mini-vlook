@@ -8,6 +8,9 @@
 /* 修改文档树样式  */
 @import url(/appearance/themes/mini-vlook/style/customs/file-tree.css);
 
+/*底部状态栏*/
+@import url(/appearance/themes/mini-vlook/style/customs/dock-status.css);
+
 /* ——————————————————————————— 基础块设置 ——————————————————————————— */
 /*引用-配色*/
 @import url(/appearance/themes/mini-vlook/style/blocks/v-block-bq.css);

@@ -177,4 +177,17 @@
     --v3-cwtag-color18:#8064A9;  /** 'theme1' */ 
     --v3-cwtag-color19:#2AA899;  /** 'theme2' */ 
 
+    /*底栏状态*/
+	--b3-status-msg-background: #e0dfda;
+    
+     /* dock栏 */
+	--b3-dockright-color: rgb(55, 53, 47, .5);
+	--b3-dockright-background: rgba(237, 236, 233);
+    --b3-dockright-item-active-background: #fff;
+	--b3-dockleft-color: rgb(55, 53, 47, .5);
+	--b3-dock-background: rgba(237, 236, 233);
+	--b3-dockleft-item-active-background: #fff;
+	--b3-dock-item-active-color: #eb8383;
+	--b3-dock-item-hover-background: #fff;
+    --b3-dock-stats-counter-color:#fff;
 }
