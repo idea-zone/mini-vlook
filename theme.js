@@ -252,8 +252,12 @@ window.theme.changeThemeMode(
     `/widgets/custom-dark.css`,
 );
 
-/* 加载 HTML 块中使用的小工具 */
+
+// (src, type = 'module', async = false, defer = false) 
+window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/static/moment.min.js"),"text/javascript", false, true);
+
 window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/codelabel-custom.js"), undefined, true);
+/* 加载 HTML 块中使用的小工具 */
 window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/html.js"), "text/javascript", undefined, true);
 window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/rightmenu.js"), undefined, true);
 // window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/wordcount.js"), undefined, true);

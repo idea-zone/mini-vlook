@@ -1353,7 +1353,7 @@ export var config = {
                 
                 {   // @@命令
                     typeid: "cmd",
-                    reg: '^@@((kanban)|(map)|(bqcolor)|(bqtab))(\\\((.*)\\\))?$',  // 针对 innerHTML
+                    reg: '^([\u200B-\u200D\uFEFF])?@@((kanban)|(map)|(bqcolor)|(range)|(bqtab))(\\\((.*)\\\))?([\u200B-\u200D\uFEFF])?[;；]$',  // 针对 innerHTML
                     tagName: "span",
                     tagDataType:"code",
                     customf: 'cmd',   // 自定义属性 f=wz 即可。
@@ -1367,19 +1367,19 @@ export var config = {
                          * $0~$9 也不要用.  
                          */
                         '$0': 'value', // 占用，code 原始的 innerHTML 内容
-                        '$1': 'func',
-                        '$2': '',
+                        '$1': '',
+                        '$2': 'func',
                         '$3': '',
                         '$4': '',
                         '$5': '',
-                        '$6': 'args',
+                        '$6': '',
                         '$7': '',
-                        '$8': '',
+                        '$8': 'args',
                         '$9': '',
                     },
                     emptys: ['func'],    // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
                     onlyValue: {                 // 不为null时，必须在这个范围内取值，可以不设置，
-                        'func': ['kanban', 'map', 'bqcolor','bqtab'],
+                        'func': ['kanban', 'map', 'bqcolor','bqtab','range'],
                     },
                     emptysValues: {              // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
                         //  'func':'',
@@ -1418,11 +1418,46 @@ export var config = {
 
                         var id = mv.GetSiyuanBlockId(element);
 
+                        if (parse.parseInfo['func'] === 'range'){
+                            console.log("now");
+                            let argsPatt = new RegExp('\\\((\\d{1,2}:\\d{1,2}[,+])?(\\d+)([smhd])\\\)');
+                            let argsTxt=parse.parseInfo['args']
+
+                            if (argsPatt.test(argsTxt)){
+                                let start = RegExp.$1;
+                                let endD = RegExp.$2;
+                                let endType =RegExp.$3;
+                                if (mv.Empty(start)) {
+                                    let dnow = moment(Date.now());
+                                    start=moment(dnow).format("hh:mm");
+                                }
+                                start = moment(start,"hh:mm");
+                                let end =moment(start,"hh:mm");
+                                if (endType==='s'){
+                                    end.add(endD,'seconds')
+                                }else if (endType==='m'){
+                                    end.add(endD,'minutes')
+                                }else if (endType==='h'){
+                                    end.add(endD,'hours')
+                                }else if (endType==='d'){
+                                    end.add(endD,'days')
+                                }
+                                
+                                element.innerHTML="@"+start.format("hh:mm")+"-"+end.format("hh:mm");
+                                let parentNode=mv.GetSiyuanBlock(element);
+                                let id = mv.GetSiyuanBlockId(element);
+                                var tmd = mv.GetLute().BlockDOM2StdMd(parentNode.innerHTML);
+                                let did = await mv.UpdateBlockByMd_API(id, tmd);
+                            }
+                            return;
+                        }
+                        
                         if (parse.parseInfo['func'] === 'kanban') {
 
                             let aid = await mv.InsertBlockByMd_API(id,'---');
                             let bid = await mv.InsertBlockByMd_API(aid,'---');
                             let cid = await mv.InsertBlockByMd_API(bid,'* 未开始 \n  * 任务1 \n* 进行中 \n   * 任务2 \n* 已完成 \n    * 任务3'); 
+                           
                             await mv.DeleteBlockById_API(id);           
                             return;
                         }
@@ -1466,7 +1501,10 @@ export var config = {
                             let did = await mv.UpdateBlockByMd_API(id,' ');
                             
                             // window.location.reload();
+                            return;
                         }
+
+
                     },
                 },
 
