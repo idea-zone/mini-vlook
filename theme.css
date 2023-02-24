@@ -108,3 +108,7 @@
     box-sizing:border-box;
     cursor: pointer;
 } */
+
+.protyle-wysiwyg [data-type="em"][style*="--before-ctx"]::before{
+    content: var(--before-ctx);
+}

@@ -179,6 +179,19 @@ mv.GetAttrs =(dom,attrs)=>{
     return dom.getAttribute(attrs)
 }
 
+/**
+ * 循环判断包括 parentElement 在内是否包含某个属性，并且对应某个值
+ * @param {*} dom 
+ * @param {*} attrs 
+ * @param {*} attvalue 
+ * @returns 
+ */
+mv.DeepHasAttrs =(dom,attrs,attvalue)=>{
+    if (dom === null|| dom === undefined) return false;
+    if (dom.getAttribute(attrs) === attvalue) return true;
+    return mv.DeepHasAttrs(dom.parentElement,attrs,attvalue);
+}
+
 
 /**
  * 删除属性值

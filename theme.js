@@ -262,6 +262,7 @@ window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/
 window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/rightmenu.js"), undefined, true);
 // window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/wordcount.js"), undefined, true);
 window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/window.js"), undefined, true);
+window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/altenter.js"), undefined, true);
 
 /* 加载独立应用 */
 // window.theme.loadScript("/appearance/themes/mini-vlook/app/comment/index.js");

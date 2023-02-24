@@ -225,7 +225,17 @@ class CodeLabelParse {
                 }
                 
                 if (values.length > 0 && values.includes(value) === false){
+
                     isEmpty = true;
+                    for(let v of values){
+                       var vPat= RegExp(`^${v}$`);
+                       console.log(vPat);
+                       if (vPat.test(value)){
+                        isEmpty=false;
+                        console.log(isEmpty);
+                        break;
+                       }
+                    }
                     break;
                 }
             }
@@ -450,7 +460,35 @@ class CodeLabelParse {
         let parseInfo = {};
         let simplePatt = new RegExp(this.reg);
 
-        if (simplePatt.test(oldHTML)) {
+        let g =simplePatt.exec(oldHTML)
+        if (g!==null && g!==undefined && g.groups!==null && g.groups!==null& g.groups!==undefined){
+            for(let k in g.groups){
+                let v = g.groups[k];
+                if (mv.Empty(k) === false) {
+                    parseInfo[k] = v;
+                    console.log("v:");
+                    console.log(v);
+                }
+            }
+
+            parseInfo['value'] = oldHTML;
+            
+            // 如果需要计算配色
+            if (this.styleConfig.rerender === true) {
+                let styleinfo = new StyleColorInfo(this.styleConfig);
+                styleinfo.rerender(
+                    parseInfo[this.styleConfig.color.value],  // 颜色值
+                    parseInfo[this.styleConfig.color.suffix]  // 颜色后缀
+                );
+
+                // 添加计算结果到 parseInfo
+                for (let k in styleinfo) {
+                    parseInfo[k] = styleinfo[k];
+                }
+            }
+            
+        } 
+        else if (simplePatt.test(oldHTML)) {
             // 缓存 Regex.$1~Regex.$9 的值
             let vmap = {
                 '$1': RegExp.$1,
