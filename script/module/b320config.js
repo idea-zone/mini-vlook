@@ -1573,11 +1573,11 @@ export var config = {
             };
           },
         },
-        { // @@命令  (\\d{1,2}:\\d{1,2}[+])?(\\d+)([smhd])
+        { // @@命令  ((?<time>\\d{1,2}:\\d{1,2})(?<ope>[+]))?(?<tlen>\\d+(.\\d+)?)(?<ttype>[smhd])
          
           typeid: "cmd",
           // reg: "^([\u200B-\u200D\uFEFF])?@@(?<func>(kanban)|(map)|(bqcolor)|(range)|(bqtab))(?<args>\\((.*)\\))?([\u200B-\u200D\uFEFF])?[;；]$", // 针对 innerHTML
-          reg: "^([\u200B-\u200D\uFEFF])?@@(?<func>(kanban)|(map)|(bqcolor)|(range)|((\\d{1,2}:\\d{1,2}[+])?(\\d+)([smhd]))|(bqtab))(?<args>\\((.*)\\))?([\u200B-\u200D\uFEFF])?[;；]$", // 针对 innerHTML
+          reg: "^([\u200B-\u200D\uFEFF])?@@(?<func>(kanban)|(map)|(bqcolor)|(range)|(((?<time>\\d{1,2}:\\d{1,2})(?<ope>[+]))?(?<tlen>\\d+(.\\d+)?)(?<ttype>[smhd]))|(bqtab))(?<args>\\((.*)\\))?([\u200B-\u200D\uFEFF])?[;；]$", // 针对 innerHTML
           tagName: "span",
           tagDataType: "code",
           customf: "cmd", // 自定义属性 f=wz 即可。
@@ -1606,7 +1606,7 @@ export var config = {
           emptys: ["func"], // 不能为null，undefined或者空值的字段，用 '$0'-'$9' 对应的别名
           onlyValue: {
             // 不为null时，必须在这个范围内取值，可以不设置，
-            func: ["kanban", "map", "bqcolor", "bqtab", "range","(\\d{1,2}:\\d{1,2}[+])?(\\d+)([smhd])"],
+            func: ["kanban", "map", "bqcolor", "bqtab", "range","((?<time>\\d{1,2}:\\d{1,2})(?<ope>[+]))?(?<tlen>\\d+(.\\d+)?)(?<ttype>[smhd])"],
           },
           emptysValues: {
             // 当值为null，undefined或者空值时，要设置的值，用 'key 用：$0'-'$9' 对应的别名,value 是对应的值。
@@ -1650,16 +1650,16 @@ export var config = {
 
             var id = mv.GetSiyuanBlockId(element);
 
-            var funcPat = new RegExp('(\\d{1,2}:\\d{1,2}[+])?(\\d+)([smhd])');
+            var funcPat = new RegExp('((?<time>\\d{1,2}:\\d{1,2})(?<ope>[+]))?(?<tlen>\\d+(.\\d+)?)(?<ttype>[smhd])');
             // 处理时间范围
             var doTimeRange = async function  (start, endD,endType) {
               if (mv.Empty(start)) {
                 let dnow = moment(Date.now());
-                start = moment(dnow).format("hh:mm");
+                start = moment(dnow).format("HH:mm");
               }
 
-              start = moment(start, "hh:mm");
-              let end = moment(start, "hh:mm");
+              start = moment(start, "HH:mm");
+              let end = moment(start, "HH:mm");
               if (endType === "s") {
                 end.add(endD, "seconds");
               } else if (endType === "m") {
@@ -1671,7 +1671,7 @@ export var config = {
               }
 
               element.innerHTML =
-                "@" + start.format("hh:mm") + "-" + end.format("hh:mm");
+                "@" + start.format("HH:mm") + "-" + end.format("HH:mm");
               let parentNode = mv.GetSiyuanBlock(element);
               let id = mv.GetSiyuanBlockId(element);
               var tmd = mv.GetLute().BlockDOM2StdMd(parentNode.innerHTML);
@@ -1679,10 +1679,13 @@ export var config = {
               let did = await mv.UpdateBlockByMd_API(id, tmd);
             };
 
-            if (funcPat.test(parse.parseInfo["func"])){
-                let start = RegExp.$1;
-                let endD = RegExp.$2;
-                let endType = RegExp.$3;
+            // 直接通过 时分+时长 进行
+            let g =funcPat.exec(parse.parseInfo["func"]);
+            if (g!==null && g!==undefined && g.groups!==null && g.groups!==null& g.groups!==undefined){
+                let start = g.groups["time"];
+                let ope = g.groups["ope"];
+                let endD = g.groups["tlen"];
+                let endType =g.groups["ttype"];  
                 console.log(start,endD,endType);
                 await doTimeRange(start,endD,endType);
             }
@@ -1690,14 +1693,16 @@ export var config = {
             if (parse.parseInfo["func"] === "range") {
               console.log("now");
               let argsPatt = new RegExp(
-                "\\((\\d{1,2}:\\d{1,2}[,+])?(\\d+)([smhd])\\)"
+                "((?<time>\\d{1,2}:\\d{1,2})(?<ope>[+,]))?(?<tlen>\\d+(.\\d+)?)(?<ttype>[smhd])"
+                // "\\((\\d{1,2}:\\d{1,2}[,+])?(\\d+(.\\d+)?)([smhd])\\)"
               );
               let argsTxt = parse.parseInfo["args"];
-              if (argsPatt.test(argsTxt)) {
-                let start = RegExp.$1;
-                let endD = RegExp.$2;
-                let endType = RegExp.$3;
-
+              let g =argsPatt.exec(argsTxt)
+              if (g!==null && g!==undefined && g.groups!==null && g.groups!==null& g.groups!==undefined){
+                let start = g.groups["time"];
+                let ope = g.groups["ope"];
+                let endD = g.groups["tlen"];
+                let endType =g.groups["ttype"];
                 await doTimeRange(start,endD,endType);
               }
               return;
