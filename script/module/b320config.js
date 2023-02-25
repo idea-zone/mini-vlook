@@ -229,7 +229,7 @@ export var config = {
       },
       ptype: [
         // 解析类型
-
+        //#region 
         // ptypeItem 对应的值
         // {   // 解析配置项
         //     typeid: "唯一ID",
@@ -301,9 +301,8 @@ export var config = {
         //            // oldHTML （解析前的 innerHTML 内容）
         //     },
         // },
-
-        {
-          // 微章
+//#endregion
+        { // 微章
           typeid: "wz",
           // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
           reg: "(#(.*?)([|](.*?))?#){1,1}?([(](#?[\\d\\w]+)(!)?[)])?", // 正则表达式
@@ -375,8 +374,7 @@ export var config = {
             // 渲染完单个元素的回调.
           },
         },
-        {
-          // 刮刮乐
+        { // 刮刮乐
           typeid: "rb",
           reg: '^\\*\\{(.*)\\}\\((.*?)(\\s*\\"(#?[\\d\\w]+)\\")?\\)$', // 正则表达式
           tagName: "span",
@@ -455,8 +453,7 @@ export var config = {
             element.onclick = bingOnClick.bind(element, element);
           },
         },
-        {
-          // 注音
+        { // 注音
           typeid: "pg",
           reg: "^\\{(.*)\\}\\s*\\((.*)\\)$", // 正则表达式
           tagName: "span",
@@ -518,8 +515,7 @@ export var config = {
             // 渲染完单个元素的回调.
           },
         },
-        {
-          // 彩虹引用
+        { // 彩虹引用
           typeid: "bq",
           reg: "&gt;[(]((#?[\\d\\w]+)(!)?)[)]", // 针对 innerHTML
           tagName: "span",
@@ -691,8 +687,8 @@ export var config = {
             );
           },
         },
-        {
-          // 多级标签
+        { // 多级标签
+        
           typeid: "mtag",
           reg: "^(.*)/(.*)$", // 针对 innerHTML
           tagName: 'span[data-type="tag"]',
@@ -790,8 +786,8 @@ export var config = {
             element.innerHTML = innerHTML;
           },
         },
-        {
-          // 下拉框
+        { // 下拉框
+       
           typeid: "cx",
           reg: "\\^\\[(\\d+)\\](&gt;\\(.+\\))", // 针对 innerHTML
           tagName: "span",
@@ -918,8 +914,8 @@ export var config = {
             setHtml(tIndex, tItms);
           },
         },
-        {
-          // 复选框
+        { // 复选框
+       
           typeid: "chk",
           // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
           // reg: '(\\\+(\\\[()\\\])([|](.*?))?){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
@@ -1064,8 +1060,8 @@ export var config = {
             };
           },
         },
-        {
-          // 微章+复选框
+        { // 微章+复选框
+        
           typeid: "chk-wz",
           // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
           // reg: '(\\\+(\\\[()\\\])([|](.*?))?){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
@@ -1210,9 +1206,8 @@ export var config = {
             };
           },
         },
-
-        {
-          // 计数任务
+        { // 计数任务
+        
           typeid: "todo",
           reg: '^\\+\\[(\\d+)\\]\\s*\\((.*?)(\\s*\\"([\\d\\w]+)\\")?\\)$', // 正则表达式
           tagName: "span",
@@ -1320,8 +1315,8 @@ export var config = {
             );
           },
         },
-        {
-          // Tab引用
+        { // Tab引用
+         
           typeid: "bqtab",
           reg: "::(tab)(\\d*)", // 针对 innerHTML
           tagName: "span",
@@ -1578,11 +1573,8 @@ export var config = {
             };
           },
         },
-
-        {
-          // @@命令  (\\d{1,2}:\\d{1,2}[+])?(\\d+)([smhd])
-          // ^([\u200B-\u200D\uFEFF])?@@((kanban)|(map)|(bqcolor)|(range)|(bqtab))(\\((.*)\\))?([\u200B-\u200D\uFEFF])?[;；]$
-          // '^([\u200B-\u200D\uFEFF])?@@(?<func>(kanban)|(map)|(bqcolor)|(range)|(bqtab))(?<args>\\((.*)\\))?([\u200B-\u200D\uFEFF])?[;；]$'
+        { // @@命令  (\\d{1,2}:\\d{1,2}[+])?(\\d+)([smhd])
+         
           typeid: "cmd",
           // reg: "^([\u200B-\u200D\uFEFF])?@@(?<func>(kanban)|(map)|(bqcolor)|(range)|(bqtab))(?<args>\\((.*)\\))?([\u200B-\u200D\uFEFF])?[;；]$", // 针对 innerHTML
           reg: "^([\u200B-\u200D\uFEFF])?@@(?<func>(kanban)|(map)|(bqcolor)|(range)|((\\d{1,2}:\\d{1,2}[+])?(\\d+)([smhd]))|(bqtab))(?<args>\\((.*)\\))?([\u200B-\u200D\uFEFF])?[;；]$", // 针对 innerHTML
