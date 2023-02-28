@@ -67,6 +67,11 @@ span.custom-codelabel-chk[custom-codelabel-chk-chk=" "]{
     border: 1px solid #ccc !important;
 }
 
+/* 当有颜色后缀的时候，也修改边框的颜色 */
+span.custom-codelabel-chk[custom-codelabel-chk-endsuffix="!"]{
+    border: 1px solid var(--theme-wz-bgcolor) !important;
+}
+
 span.custom-codelabel-chk[custom-codelabel-chk-chk="x"]{
     border: 1px solid var(--theme-wz-bgcolor) !important;
 }
