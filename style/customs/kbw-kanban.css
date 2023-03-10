@@ -38,8 +38,8 @@
 
 /* 添加滚动条 */
 .list[custom-f~=kbw] > .li  {
-    /* width:100%-50 !important; */
-    width:100% !important;
+    width:100%-50 !important;
+    /* width:100% !important; */
     /*溢出滚动*/
 	overflow-x:auto;
 }
