@@ -186,9 +186,15 @@ mv.GetAttrs =(dom,attrs)=>{
  * @param {*} attvalue 
  * @returns 
  */
-mv.DeepHasAttrs =(dom,attrs,attvalue)=>{
+mv.DeepHasAttrs =(dom,attrs,attvalue,endclass=null)=>{
     if (dom === null|| dom === undefined) return false;
     if (dom.getAttribute(attrs) === attvalue) return true;
+    if (!mv.Empty(endclass)){
+        if (dom.hasAttribute(endclass)){
+            console.log("检测到重点")
+            return false;
+        }
+    }
     return mv.DeepHasAttrs(dom.parentElement,attrs,attvalue);
 }
 

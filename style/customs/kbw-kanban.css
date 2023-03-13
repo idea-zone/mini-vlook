@@ -194,7 +194,55 @@
 .list[custom-f~=kbw] > .li > .list > .li > .list .li .list .li
 ,.list[custom-f~=kbw] > .li > .list > .li > .list .li .list .p
 ,.list[custom-f~=kbw] > .li > .list > .li > .list .li .list .li .p{
-    padding: 0 0 0 0 !important;
+    padding: 0 5px 0 0 !important;
 }
 
 /* ************ kbw ****************** */ 
+
+
+/* ************ kbw-innerstyle ************ */
+
+.protyle-wysiwyg [custom-f~="kbw"] span[data-type='code']{
+    background-color: rgba(var(--v-theme1-rgb-value), 0.5) !important;
+    color: #fff !important;
+}
+
+.protyle-wysiwyg [custom-f~="kbw"] span[data-type='strong'],
+.protyle-wysiwyg [custom-f~="kbw"] span[data-type='em']{
+    color: #fff !important;
+}
+
+.protyle-wysiwyg [custom-f~="kbw"] span[data-type='mark']{
+    background-color: rgba(255, 192, 32, 0.9);
+    color: var(--b3-protyle-inline-mark-color);
+}
+
+
+.protyle-wysiwyg [custom-f~="kbw"] [class~='protyle-task--done'] .p{
+    color:rgba(102, 112, 169, 0.65);
+}
+
+.protyle-wysiwyg span[data-type='kbd']
+,div.item__readme  kbd{
+    color: var(--d-bc-dk);
+    border: 2px solid var(--key-shadow-dk);
+    border-left-color: var(--key-reflect-dk);
+    border-top-color: var(--key-reflect-dk);
+    background: var(--key-bg-dk);
+    box-shadow: 0 0 0 1px var(--key-shadow-dk)
+}
+
+/* ************ kbw-innerstyle ************ */
+
+
+/* ************ 设置标题行信息 ************ */
+.list[custom-f~=kbw] > .li > .protyle-action+.p{
+    color: var(--v-block-heading-color);
+    background-color:transparent;
+    font-size: 1.55em
+}
+
+.list[custom-f~=kbw] > .li > .protyle-action{
+    top: 10px;
+}
+/* ************ 设置标题行信息 ************ */

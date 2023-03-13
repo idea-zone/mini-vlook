@@ -48,6 +48,9 @@
 /*kbw 看板功能（仿 workflowy）-功能*/
 @import url(/appearance/themes/mini-vlook/style/customs/kbw-kanban.css);
 
+/* card 样式 */
+@import url(/appearance/themes/mini-vlook/style/customs/card-style.css);
+
 /* @import url(/appearance/themes/mini-vlook/style/customs/list-to-kanban-by-line2.css);  */
 
 /*列表转导图-功能*/
@@ -99,6 +102,8 @@
 /* nodeattr 挂件 */
 @import url(/appearance/themes/mini-vlook/style/customs/nodeattr.css);
 
+/* card 样式 */
+@import url(/appearance/themes/mini-vlook/style/customs/card-style.css);
 
 
 /* .protyle-wysiwyg .hr+.render-node::before
@@ -137,114 +142,13 @@
     border-radius: 5px;
 }
 
-/* ************ 卡片 ************ */
-
-/* 卡片 */
-.protyle-wysiwyg [custom-f~="card"]{
-    width: 18rem;
-
-    padding: 0px !important;
-    margin: 0px !important;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, .125);
-    border-radius: 0.25rem;
-
-}
-
-/* 取消引用内多余的间隔 */
-.protyle-wysiwyg [custom-f~="card"] > div{
-    padding: 0px;
-    margin: 0px;
-}
-
-/* 取消显示属性的内属性显示 */
-.protyle-wysiwyg [custom-f~="card"]::before{
-    width: 35px;
-    display: none;
-}
-
-/* 处理标题的问题 */
-.protyle-wysiwyg [custom-f~="card"]  .h1::before,
-.protyle-wysiwyg [custom-f~="card"]  .h2::before,
-.protyle-wysiwyg [custom-f~="card"]  .h3::before,
-.protyle-wysiwyg [custom-f~="card"]  .h4::before,
-.protyle-wysiwyg [custom-f~="card"]  .h5::before,
-.protyle-wysiwyg [custom-f~="card"]  .h6::before{
-    content: '';
-}
-
-.protyle-wysiwyg [custom-f~="card"]  .h1,
-.protyle-wysiwyg [custom-f~="card"]  .h2,
-.protyle-wysiwyg [custom-f~="card"]  .h3,
-.protyle-wysiwyg [custom-f~="card"]  .h4,
-.protyle-wysiwyg [custom-f~="card"]  .h5,
-.protyle-wysiwyg [custom-f~="card"]  .h6{
-    content: '';
-    background: transparent !important;
-    border-top: 5px;
-    margin: 10px 0px 10px 0px;
-}
-
-
-/* 处理body题的问题 */
-.protyle-wysiwyg [custom-f~="card"]  .h1~.p,
-.protyle-wysiwyg [custom-f~="card"]  .h2~.p,
-.protyle-wysiwyg [custom-f~="card"]  .h3~.p,
-.protyle-wysiwyg [custom-f~="card"]  .h4~.p,
-.protyle-wysiwyg [custom-f~="card"]  .h5~.p,
-.protyle-wysiwyg [custom-f~="card"]  .h6~.p{
-    padding-left:10px ;
-    max-width: 16rem;
-}
-
-
-/* 解决 list 的问题 */
-.protyle-wysiwyg [custom-f~="card"] > .list{
-    width: 18rem;
-    margin-top: 5px !important;
-    border-radius: 0.25rem ;
-}
-.protyle-wysiwyg [custom-f~="card"] > .list > .li{
-    width: 18rem;
-    border-top: 0.5px solid rgba(0, 0, 0, .125);
-}
-.protyle-wysiwyg [custom-f~="card"] > .list >  .li:not(:has(+ .li)){
-    border-bottom: 0.5px solid rgba(0, 0, 0, .125);
-}
-.protyle-wysiwyg [custom-f~="card"] > .list > .li .p{
-    left: -30px;
-    max-width: 16rem;
-}
-
-/* 隐藏 list 的点 */
-.protyle-wysiwyg [custom-f~="card"] > .list > .li .protyle-action{
-    color: #fff;
-    left: -13px;
-}
-
-/* 处理在 card 中的 btn 问题 */
-.protyle-wysiwyg  [custom-f~="card"]  [custom-f~="btn"]::before{
+/* 添加 custom-f~="btn" 属性 */
+.protyle-wysiwyg [custom-f~="btn"]::before{
     content: '' !important;
 }
-.protyle-wysiwyg [custom-f~="card"]  [custom-f~="btn"] {
-    margin-top: 5px;
-    max-width: 16rem;
-    left: 10px;
-
-    white-space: nowrap !important;
-    display: inline !important;
-    zoom:1 !important;
-}
-
 
 .protyle-wysiwyg [custom-f~="btn"] {
-    display: inline-block ;
+    display: inline-block;
     font-weight: 400 ;
     line-height: 1.5 ;
     color: #212529 ;
@@ -252,8 +156,8 @@
     text-decoration: none ;
     vertical-align: middle ;
     cursor: pointer ;
-    -webkit-user-select: none ;
-    -moz-user-select: none ;
+    -webkit-user-select: none ; 
+    -moz-user-select: none ; 
     user-select: none ;
     background-color: transparent ;
     border: 1px solid var(--b3-theme-primary-lightest) !important;
@@ -264,11 +168,38 @@
 
     color: #fff !important;
     background-color: #0d6efd;
-    border-color: #0d6efd;
+    border-color: #0d6efd; 
 }
 
 .protyle-wysiwyg [custom-f~="btn"] [data-type="a"]{
-    color: #fff !important;
+    color: red !important;
+} 
+
+/* 悬浮按钮 */
+.protyle-wysiwyg  .protyle-gutters{
+    /* background-color: red;
+    float: right !important; */
 }
 
-/* ************ 卡片 ************ */
+/* 几个宽度设置 */
+.protyle-wysiwyg [custom-width~="50px"]{
+    width: 50px;
+}
+.protyle-wysiwyg [custom-width~="100px"]{
+    width: 100px;
+}
+.protyle-wysiwyg [custom-width~="150px"]{
+    width: 150px;
+}
+.protyle-wysiwyg [custom-width~="200px"]{
+    width: 200px;
+}
+.protyle-wysiwyg [custom-width~="300px"]{
+    width: 300px;
+}
+.protyle-wysiwyg [custom-width~="400px"]{
+    width: 400px;
+}
+.protyle-wysiwyg [custom-width~="500px"]{
+    width: 500px;
+}

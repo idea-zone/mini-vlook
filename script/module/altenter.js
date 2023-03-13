@@ -24,19 +24,19 @@ var lastEditRange;
                     
                     let nel=mv.GetDomBySelectors('div[contenteditable="true"]','',el)[0];
                     let id = mv.GetSiyuanBlockId(el);
-                    console.log("el.parentElement?.parentElement:");
-                    console.log(el.parentElement?.parentElement);
-                    console.log("el:");
-                    console.log(el);
-                    console.log("nel:");
-                    console.log(nel);
+                    // console.log("el.parentElement?.parentElement:");
+                    // console.log(el.parentElement?.parentElement);
+                    // console.log("el:");
+                    // console.log(el);
+                    // console.log("nel:");
+                    // console.log(nel);
 
-                    if (mv.DeepHasAttrs(el,'custom-f',config.theme.altenter.customf)!==true){
-                        console.log("NoNAltEnter");
+                    if (mv.DeepHasAttrs(el,'custom-f',config.theme.altenter.customf,'protyle-wysiwyg')!==true){
+                        // console.log("NoNAltEnter");
                         return;
                     }
 
-                    console.log("AltEnter");
+                    // console.log("AltEnter");
                   
                     if (nel.innerHTML.match('\n\n')){
                         
