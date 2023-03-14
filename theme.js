@@ -260,7 +260,6 @@ window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/
 /* 加载 HTML 块中使用的小工具 */
 window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/html.js"), "text/javascript", undefined, true);
 window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/rightmenu.js"), undefined, true);
-// window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/wordcount.js"), undefined, true);
 window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/window.js"), undefined, true);
 window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/altenter.js"), undefined, true);
 

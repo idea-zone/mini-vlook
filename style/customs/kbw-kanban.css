@@ -222,14 +222,18 @@
     color:rgba(102, 112, 169, 0.65);
 }
 
-.protyle-wysiwyg span[data-type='kbd']
-,div.item__readme  kbd{
+.protyle-wysiwyg [custom-f~="kbw"] span[data-type='kbd']
+,div.item__readme [custom-f~="kbw"]  kbd{
     color: var(--d-bc-dk);
     border: 2px solid var(--key-shadow-dk);
     border-left-color: var(--key-reflect-dk);
     border-top-color: var(--key-reflect-dk);
     background: var(--key-bg-dk);
     box-shadow: 0 0 0 1px var(--key-shadow-dk)
+}
+
+.protyle-wysiwyg [custom-f~="kbw"]  [data-type="block-ref"] {
+    color: #f472b6 !important;
 }
 
 /* ************ kbw-innerstyle ************ */

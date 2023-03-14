@@ -16,11 +16,12 @@ var lastEditRange;
             let selection = getSelection();
             lastEditRange = selection.getRangeAt(0);
 
-            var el=mv.GetSiyuanBlock(document.getSelection().focusNode.parentElement);
 
             // 如果启用了
             if(config.theme.altenter.enable){
                 if (isKey(e,config.theme.hotkeys.altenter)){
+                    
+                    var el=mv.GetSiyuanBlock(document.getSelection().focusNode.parentElement);
                     
                     let nel=mv.GetDomBySelectors('div[contenteditable="true"]','',el)[0];
                     let id = mv.GetSiyuanBlockId(el);
