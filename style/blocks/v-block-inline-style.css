@@ -87,9 +87,9 @@ div.item__readme code:not([data-render="true"]):hover
 
 /*挂件*/
 
-.iframe,
-.iframe-content,
-.iframe-content iframe{
+.iframe[custom-f="ifm"] ,
+[custom-f="ifm"] .iframe-content,
+[custom-f="ifm"] .iframe-content iframe{
     height: 50em !important;
     min-height: 10em !important;
 }
