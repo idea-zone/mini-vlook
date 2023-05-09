@@ -23,5 +23,6 @@ jobs:
         artifactErrorsFailBuild: true
         removeArtifacts: false
         replacesArtifacts: false
+        generateReleaseNotes: false
         artifacts: "package.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
