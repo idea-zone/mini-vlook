@@ -19,15 +19,12 @@ jobs:
         uses: thedoctor0/zip-release@0.7.1
         with:
           type: 'zip'
-          filename: 'release.zip'
+          filename: 'package.zip'
           exclusions: '*.git* /*node_modules/* .editorconfig'
 
-      - name: Rename zip file
-        run: |
-          mv archive.zip package.zip
-
       - name: Upload package.zip
-        uses: actions/upload-artifact@v2
+        uses: ncipollo/release-action@v1.12.0
         with:
-          name: package-zip
+          artifacts: "package.zip"
           path: package.zip
+          token: ${{ secrets.GITHUB_TOKEN }}
