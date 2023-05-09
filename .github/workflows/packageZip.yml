@@ -1,0 +1,32 @@
+name: Package Source Code on Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  package-zip:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Package source code as zip
+        uses: actions/zip@v2
+        with:
+          files: |
+            **/*
+
+      - name: Rename zip file
+        run: |
+          mv archive.zip package.zip
+
+      - name: Upload package.zip
+        uses: actions/upload-artifact@v2
+        with:
+          name: package-zip
+          path: package.zip
