@@ -1,4 +1,4 @@
-name: Package Source Code on Release
+name: Package Source Code As package.zip on Release
 
 on:
   release:
