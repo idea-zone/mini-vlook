@@ -16,10 +16,11 @@ jobs:
         run: npm ci
 
       - name: Package source code as zip
-        uses: actions/zip@v2
+        uses: thedoctor0/zip-release@0.7.1
         with:
-          files: |
-            **/*
+          type: 'zip'
+          filename: 'release.zip'
+          exclusions: '*.git* /*node_modules/* .editorconfig'
 
       - name: Rename zip file
         run: |
