@@ -270,3 +270,24 @@ padding-bottom:30px;}
 	right:100%;
 }
 
+/* 顶栏 */
+#toolbar{
+	background-color: var(--ac-theme2);
+	/* color: rgba(255, 236, 240, 100); */
+	color: var(--ac-theme2-title-dk);
+}
+
+#toolbar  #drag{
+	/* color: rgba(255, 236, 240, 100); */
+	color: var(--ac-theme2-title-dk);
+
+}
+#toolbar .toolbar__item{
+	/* color: rgba(255, 236, 240, 100); */
+	color: var(--ac-theme2-title-dk);
+
+}
+
+.custom-added-dock-btn{
+	background:#c6c5c2;
+}
