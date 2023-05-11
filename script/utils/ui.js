@@ -74,7 +74,7 @@ function toolbarItemInsert(toolbarConfig) {
     label += toolbarConfig.hotkey ? ` [${printHotKey(toolbarConfig.hotkey())}]` : '';
 
     node.id = toolbarConfig.id;
-    node.className = "toolbar__item b3-tooltips b3-tooltips__sw";
+    node.className = "toolbar__item b3-tooltips b3-tooltips__sw custom-added-dock-btn";
     node.setAttribute('aria-label', label);
     node.innerHTML = `
         <svg>
