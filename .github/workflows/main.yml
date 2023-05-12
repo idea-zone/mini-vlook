@@ -33,50 +33,50 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         uses: actions/checkout@v3
 
-      # Install Node.js
-      - name: Install Node.js
-        if: ${{ steps.release.outputs.release_created }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          registry-url: 'https://registry.npmjs.org'
+      # # Install Node.js
+      # - name: Install Node.js
+      #   if: ${{ steps.release.outputs.release_created }}
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18
+      #     registry-url: 'https://registry.npmjs.org'
 
-      # Install pnpm
-      - name: Install pnpm
-        if: ${{ steps.release.outputs.release_created }}
-        uses: pnpm/action-setup@v2
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: false
+      # # Install pnpm
+      # - name: Install pnpm
+      #   if: ${{ steps.release.outputs.release_created }}
+      #   uses: pnpm/action-setup@v2
+      #   id: pnpm-install
+      #   with:
+      #     version: 8
+      #     run_install: false
 
-      # Get pnpm store directory
-      - name: Get pnpm store directory
-        if: ${{ steps.release.outputs.release_created }}
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      # # Get pnpm store directory
+      # - name: Get pnpm store directory
+      #   if: ${{ steps.release.outputs.release_created }}
+      #   id: pnpm-cache
+      #   shell: bash
+      #   run: |
+      #     echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-      # Setup pnpm cache
-      - name: Setup pnpm cache
-        if: ${{ steps.release.outputs.release_created }}
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+      # # Setup pnpm cache
+      # - name: Setup pnpm cache
+      #   if: ${{ steps.release.outputs.release_created }}
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pnpm-store-
 
-      # Install dependencies
-      - name: Install dependencies
-        if: ${{ steps.release.outputs.release_created }}
-        run: pnpm install
+      # # Install dependencies
+      # - name: Install dependencies
+      #   if: ${{ steps.release.outputs.release_created }}
+      #   run: pnpm install
 
-      # Build for production
-      - name: Build for production
-        if: ${{ steps.release.outputs.release_created }}
-        run: pnpm build
+      # # Build for production
+      # - name: Build for production
+      #   if: ${{ steps.release.outputs.release_created }}
+      #   run: pnpm build
 
       # Archive package
       - name: Archive package
