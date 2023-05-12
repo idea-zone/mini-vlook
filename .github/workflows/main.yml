@@ -3,7 +3,7 @@ on:
     branches:
       - main
 
-name: release-please
+name: release-please-2
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -30,7 +30,7 @@ jobs:
 
       # Checkout
       - name: Checkout
-        if: ${{ steps.release.outputs.release_created }}
+        #if: ${{ steps.release.outputs.release_created }}
         uses: actions/checkout@v3
 
       # # Install Node.js
@@ -80,7 +80,7 @@ jobs:
 
       # Archive package
       - name: Archive package
-        if: ${{ steps.release.outputs.release_created }}
+        #if: ${{ steps.release.outputs.release_created }}
         uses: vimtor/action-zip@v1
         with:
           files: dist/
@@ -89,7 +89,7 @@ jobs:
 
       # Upload package to release
       - name: Upload package.zip to the release
-        if: ${{ steps.release.outputs.releases_created }}
+        #if: ${{ steps.release.outputs.releases_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
