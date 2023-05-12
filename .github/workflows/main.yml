@@ -1,37 +1,48 @@
-on:
-  push:
-    branches:
-      - main
-
-name: Create package.zip 3 
+name: Create package.zip 3
+on: 
+  push: 
+    tags:
+      - "*"
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    # Create release
-    - uses: google-github-actions/release-please-action@v3
-      with:
-        release-type: node
-        package-name: release-please-action
-        default-branch: main
-        pull-request-header: ':robot: A new release will be created'
-        changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
-    # Checkout
-    - uses: actions/checkout@master
-    - name: Archive Release
-      uses: thedoctor0/zip-release@0.7.1
-      with:
-        type: 'zip'
-        filename: 'package.zip'
-        exclusions: '*.git* /*node_modules/* .editorconfig'
+      # Create release
+      - name: Create release
+        uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          release-type: node
+          package-name: release-please-action
+          ## branch to open pull release PR against (detected by default)
+          default-branch: main
+          ## Should breaking changes before 1.0.0 produce minor bumps? Default false
+          bump-minor-pre-major: true
+          ## Should feat changes before 1.0.0 produce patch bumps instead of minor bumps? Default false
+          bump-patch-for-minor-pre-major: true
+          ## If set, create releases that are pre-major or pre-release version marked as pre-release on GitHub. Defaults false
+          prerelease: true
+          ## header used within the release PR body, defaults to using :robot: I have created a release *beep* *boop*
+          pull-request-header: ':robot: A new release will be created'
+          ## A JSON formatted String containing to override the outputted changelog sections
+          changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"refactor","section":"Code Refactoring","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false},{"type":"perf","section":"Performance Improvements","hidden":false}]'
 
-    - name: Upload Release
-      uses: ncipollo/release-action@v1
-      with:
-        allowUpdates: true
-        prerelease: false
-        artifactErrorsFailBuild: true
-        removeArtifacts: false
-        replacesArtifacts: false
-        artifacts: "package.zip"
-        token: ${{ secrets.GITHUB_TOKEN }}
+      # Checkout
+      - uses: actions/checkout@master
+      - name: Archive Release
+        uses: thedoctor0/zip-release@0.7.1
+        with:
+          type: 'zip'
+          filename: 'package.zip'
+          exclusions: '*.git* /*node_modules/* .editorconfig'
+
+      - name: Upload Release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          prerelease: false
+          artifactErrorsFailBuild: true
+          removeArtifacts: false
+          replacesArtifacts: false
+          artifacts: "package.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
