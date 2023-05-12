@@ -3,7 +3,7 @@ on:
     branches:
       - main
 
-name: release-please-2
+name: release-please-2.1
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -83,7 +83,7 @@ jobs:
         #if: ${{ steps.release.outputs.release_created }}
         uses: vimtor/action-zip@v1
         with:
-          files: dist/
+          files: /
           recursive: false
           dest: package.zip
 
