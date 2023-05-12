@@ -1,0 +1,37 @@
+on:
+  push:
+    branches:
+      - main
+
+name: Create package.zip 3 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # Create release
+    - uses: google-github-actions/release-please-action@v3
+      with:
+        release-type: node
+        package-name: release-please-action
+        default-branch: main
+        pull-request-header: ':robot: A new release will be created'
+        changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
+    # Checkout
+    - uses: actions/checkout@master
+    - name: Archive Release
+      uses: thedoctor0/zip-release@0.7.1
+      with:
+        type: 'zip'
+        filename: 'package.zip'
+        exclusions: '*.git* /*node_modules/* .editorconfig'
+
+    - name: Upload Release
+      uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: true
+        prerelease: false
+        artifactErrorsFailBuild: true
+        removeArtifacts: false
+        replacesArtifacts: false
+        artifacts: "package.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}

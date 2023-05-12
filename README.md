@@ -447,6 +447,10 @@ Dark+ 主题的评论功能。感谢大佬！
   * [OneNote](https://github.com/UserZYF/OneNote)
 
     * 左侧树状列表
+  
+  * [StarDustSheep](https://github.com/StarDustSheep)
+  
+    * 感谢大佬提供的集市图标
 
     <br />
 
