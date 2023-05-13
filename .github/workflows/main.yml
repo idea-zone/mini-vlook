@@ -1,11 +1,10 @@
-on:
-  push:
-    branches:
-      - main
-
-name: release-please
+name: Create package.zip 3
+on: 
+  push: 
+    tags:
+      - "*"
 jobs:
-  release-please:
+  build:
     runs-on: ubuntu-latest
     steps:
       # Create release
@@ -29,68 +28,21 @@ jobs:
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"refactor","section":"Code Refactoring","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false},{"type":"perf","section":"Performance Improvements","hidden":false}]'
 
       # Checkout
-      - name: Checkout
-        if: ${{ steps.release.outputs.release_created }}
-        uses: actions/checkout@v3
-
-      # # Install Node.js
-      # - name: Install Node.js
-      #   if: ${{ steps.release.outputs.release_created }}
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 18
-      #     registry-url: 'https://registry.npmjs.org'
-
-      # # Install pnpm
-      # - name: Install pnpm
-      #   if: ${{ steps.release.outputs.release_created }}
-      #   uses: pnpm/action-setup@v2
-      #   id: pnpm-install
-      #   with:
-      #     version: 8
-      #     run_install: false
-
-      # # Get pnpm store directory
-      # - name: Get pnpm store directory
-      #   if: ${{ steps.release.outputs.release_created }}
-      #   id: pnpm-cache
-      #   shell: bash
-      #   run: |
-      #     echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      # # Setup pnpm cache
-      # - name: Setup pnpm cache
-      #   if: ${{ steps.release.outputs.release_created }}
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pnpm-store-
-
-      # # Install dependencies
-      # - name: Install dependencies
-      #   if: ${{ steps.release.outputs.release_created }}
-      #   run: pnpm install
-
-      # # Build for production
-      # - name: Build for production
-      #   if: ${{ steps.release.outputs.release_created }}
-      #   run: pnpm build
-
-      # Archive package
-      - name: Archive package
-        if: ${{ steps.release.outputs.release_created }}
-        uses: vimtor/action-zip@v1
+      - uses: actions/checkout@master
+      - name: Archive Release
+        uses: thedoctor0/zip-release@0.7.1
         with:
-          files: dist/
-          recursive: false
-          dest: package.zip
+          type: 'zip'
+          filename: 'package.zip'
+          exclusions: '*.git* /*node_modules/* .editorconfig'
 
-      # Upload package to release
-      - name: Upload package.zip to the release
-        if: ${{ steps.release.outputs.releases_created }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release upload ${{ steps.release.outputs.tag_name }} package.zip
+      - name: Upload Release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          prerelease: false
+          artifactErrorsFailBuild: true
+          removeArtifacts: false
+          replacesArtifacts: false
+          artifacts: "package.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
