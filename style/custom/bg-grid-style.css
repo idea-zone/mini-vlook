@@ -1,0 +1,35 @@
+
+
+/**
+ * 代码参考自: 集市主题[Zhang-light]。 
+ * 设置背景网格
+ * 版本: V0.0.1-dev
+ * 时间: 2022-04-19
+ * 更新日志：
+ */
+
+/* ---------------------------设置页面格子背景-------------------------------------------------------- */
+/* 格子背景（适合light主题，其他主题需要重新设置颜色 */
+.protyle-content {
+    background-image:
+        linear-gradient(90deg, var(--v-bg-grid-color1) 2%, transparent 0px),
+        linear-gradient(1turn, var(--v-bg-grid-color2) 2%, transparent 0px);
+    background-size: 30px 30px;
+    background-position: 50% center;
+    /* 可以决定格子背景是否跟着正文一起滚动 */
+    /* background-attachment: local; */
+    /* 页面平滑滚动，不再傻快傻快 */
+    /* scroll-behavior: smooth; */
+    text-align: justify;
+}
+
+/* 对README文件也设置格子背景 */
+.config-bazaar__readme .item__main {
+    background-image:
+        linear-gradient(90deg, var(--v-bg-grid-color1) 2%, transparent 0px),
+        linear-gradient(1turn, var(--v-bg-grid-color2) 2%, transparent 0px);
+    background-size: 30px 30px;
+    background-position: 50% center;
+    text-align: justify;
+    border: 0.05em solid rgba(207, 206, 206, 0.3);
+}

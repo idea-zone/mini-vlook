@@ -1,0 +1,149 @@
+/* ----- 文档标题 ----- */
+.protyle-title__input {
+    background-color: transparent;
+}
+
+div.item__readme h1,
+div.item__readme h2,
+div.item__readme h3,
+div.item__readme h4,
+div.item__readme h5,
+div.item__readme h6 {
+    background-color: transparent;
+}
+
+/* --------------- 标题 ---------------  */
+.protyle-wysiwyg .h1,
+.protyle-wysiwyg .h2,
+.protyle-wysiwyg .h3,
+.protyle-wysiwyg .h4,
+.protyle-wysiwyg .h5,
+.protyle-wysiwyg .h6,
+div.item__readme h1,
+div.item__readme h2,
+div.item__readme h3,
+div.item__readme h4,
+div.item__readme h5,
+div.item__readme h6 {
+    box-shadow: none;
+    border-left: 0;
+    border-right: 0;
+}
+
+.protyle-wysiwyg .h1,
+.protyle-wysiwyg .h2,
+div.item__readme h1,
+div.item__readme h2 {
+    /* margin: 3em 0 0.5em; */
+    margin: 1.3em 0 0.5em;
+    /* font-size: 2em; */
+    border-top: 9px solid var(--v-block-heading-top-shadow);
+    counter-reset: h2;
+}
+
+.protyle-wysiwyg .h1,
+.protyle-wysiwyg .h2,
+.protyle-wysiwyg .h3,
+.protyle-wysiwyg .h4,
+.protyle-wysiwyg .h5,
+.protyle-wysiwyg .h6,
+div.item__readme h1,
+div.item__readme h2,
+div.item__readme h3,
+div.item__readme h4,
+div.item__readme h5,
+div.item__readme h6 {
+    color: var(--v-block-heading-color);
+    text-align: left;
+    position: relative;
+    padding: 10px;
+    line-height: 1.5;
+    /* font: var(--v-f-w-title) 0.5em var(--v-f-fm-h); */
+    border-radius: var(--v-block-heading-border-radius);
+    background: linear-gradient(0deg, var(--v-block-heading-start-bg-color), var(--v-block-heading-end-bg-color));
+    letter-spacing: .15em;
+}
+
+.protyle-wysiwyg .h1,
+.protyle-wysiwyg .h2,
+.protyle-wysiwyg .h3,
+.protyle-wysiwyg .h4,
+.protyle-wysiwyg .h5,
+.protyle-wysiwyg .h6,
+div.item__readme h1,
+div.item__readme h2,
+div.item__readme h3,
+div.item__readme h4,
+div.item__readme h5,
+div.item__readme h6 {
+    position: relative;
+}
+
+.protyle-wysiwyg .h1,
+.protyle-wysiwyg .h2,
+.protyle-wysiwyg .h3,
+.protyle-wysiwyg .h4,
+.protyle-wysiwyg .h5,
+.protyle-wysiwyg .h6,
+.protyle-wysiwyg .p,
+div.item__readme h1,
+div.item__readme h2,
+div.item__readme h3,
+div.item__readme h4,
+div.item__readme h5,
+div.item__readme h6 div.item__readme p {
+    position: relative;
+}
+
+.protyle-wysiwyg .h1,
+.protyle-wysiwyg .h2,
+.protyle-wysiwyg .h3,
+.protyle-wysiwyg .h4,
+.protyle-wysiwyg .h5,
+.protyle-wysiwyg .h6,
+.protyle-wysiwyg .p,
+.protyle-wysiwyg pre div.item__readme h1,
+div.item__readme h2,
+div.item__readme h3,
+div.item__readme h4,
+div.item__readme h5,
+div.item__readme h6,
+div.item__readme p,
+div.item__readme pre {
+    width: inherit;
+}
+
+.protyle-wysiwyg .h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+div.item__readme h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    page-break-after: avoid;
+    break-after: avoid-page;
+    page-break-inside: avoid;
+    orphans: 4;
+}
+
+.protyle-wysiwyg .h1+.h2,
+.protyle-wysiwyg .h2+.h3,
+.protyle-wysiwyg .h3+.h4,
+.protyle-wysiwyg .h4+.h5,
+.protyle-wysiwyg .h6,
+div.item__readme h1+h2,
+div.item__readme h2+h3,
+div.item__readme h3+h4,
+div.item__readme h4+h5,
+div.item__readme h6 {
+    background: linear-gradient(-10, var(--v-block-heading-end-bg-color), var(--v-block-heading-start-bg-color), var(--v-block-heading-end-bg-color));
+    box-shadow: none;
+    border-top: 0
+}
+
+/* --------------- 标题 end ---------------  */

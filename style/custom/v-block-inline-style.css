@@ -1,0 +1,312 @@
+/* --------------- 删除线 ---------------  */
+
+.protyle-wysiwyg span[data-type='s'],
+div.item__readme del {
+    color: var(--v-block-del-color) !important;
+    text-decoration: line-through solid !important;
+}
+
+/* --------------- 删除线 end ---------------  */
+
+/* --------------- 键盘按键块 --------------- */
+.protyle-wysiwyg span[data-type='kbd'],
+div.item__readme kbd {
+    font: var(--v-block-kbd-font);
+    border-radius: var(--v-block-kbd-border-radius);
+    margin: 0;
+    padding: 0 4px;
+    color: var(--v-block-kbd-color);
+    border: 2px solid var(--v-block-kbd-border-shadow);
+    border-left-color: var(--v-block-kbd-border-color);
+    border-top-color: var(--v-block-kbd-border-color);
+    background: var(--key-bg);
+    box-shadow: 0 0 0 1px var(--v-block-kbd-border-shadow);
+}
+
+/* --------------- 键盘按键 end--------------- */
+
+/* --------------- 标签 --------------- */
+
+/*背景*/
+.protyle-wysiwyg [data-node-id] span[data-type='tag']:not(:empty) {
+    position: relative;
+    color: var(--v-tag-color);
+    background-color: var(--v-tag-bgcolor);
+    /* border-radius: var(--v-border-radius-half-round); */
+    /* margin: 5px 3px 5px 8px; */
+    margin: 0px 0px;
+    padding: 1px 5px;
+    border-radius: 5px;
+}
+
+/* ————————————————————标签#号———————————————————— */
+.protyle-wysiwyg [data-node-id] span[data-type='tag']:not(:empty)::before {
+    content: "# ";
+    /*★*/
+    color: var(--v-tag-icon);
+}
+
+.protyle-wysiwyg [data-node-id] span[data-type='tag']:not(:empty)::after {
+    content: " #";
+    /*★*/
+    color: var(--v-tag-icon);
+}
+
+
+.protyle-wysiwyg [data-node-id] span[data-type='tag']:hover {
+    filter: brightness(1.1);
+    /* color: gray;
+    background-color: var(--v-theme-background-gray); */
+}
+
+/* ————————————————————给头图上方的标签设置不一样的样式———————————————————— */
+.protyle-background__tags .item {
+    border-radius: var(--v-border-radius-half-round);
+    margin: 5px 3px 5px 8px;
+    cursor: pointer;
+    font-size: 90%;
+    padding: 3px 18px !important;
+    line-height: 1.625;
+    border: var(--v-border-dashed-gray);
+}
+
+.protyle-background__tags .item:before {
+    content: "# ";
+}
+
+.protyle-background__tags .item:after {
+    content: " #";
+    /*★*/
+}
+
+/* --------------- 标签 end --------------- */
+
+/* ----------------------------------------------------调整超级块的块间距------------------------------------------ */
+/* ————————————————————————————————————大超级块，不用设置边框—————————————————————————————— */
+.protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"] {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* —————————————————————————————————————次超级块大小—————————————————————————————————————— */
+.protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"] .sb {
+    border: var(--b3-border-dashed-gray-wider);
+    border-radius: var(--b3-border-radius-none);
+    box-sizing: border-box;
+    margin: 0.1em 0 0.1em 0.1em;
+}
+
+.protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"] .sb:nth-last-child(2) {
+    margin-right: 0.1em;
+}
+
+/* ——————————————————————————————————————每个子超级块—————————————————————————————————————— */
+.protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"]>div {
+    border: 0.1em dashed rgba(128, 128, 128, 0.5);
+    border-radius: var(--b3-border-radius-none);
+    box-sizing: border-box;
+    margin: 0.1em 0 0.1em 0.1em;
+    /* background-color: var(--b3-theme-background); */
+    /* background-color: var(--b3-theme-background); */
+}
+
+/* 最后一个子超级块不设置右边距 */
+.protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"]>div:nth-last-child(2) {
+    margin-right: 0.1em;
+}
+
+/* 鼠标悬浮时变色 */
+/* .protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"] .sb:hover,
+.protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"]>div:hover {
+    border-color: var(--b3-theme-primary);
+    border-style: solid;
+} */
+
+/* 取消显示超级块中的标题衬底 */
+/* div.sb div.h1::after,
+div.sb div.h2::after,
+div.sb div.h3::after,
+div.sb div.h4::after,
+div.sb div.h5::after,
+div.sb div.h6::after {
+    display: none !important;
+} */
+
+/* 取消显示超级块中的自动编号 */
+/* div.sb .h1>::before,
+div.sb .h2>::before,
+div.sb .h3>::before,
+div.sb .h4>::before,
+div.sb .h5>::before,
+div.sb .h6>::before {
+    display: none !important;
+} */
+
+/* ----------------------------------------------------调整超级块的块间距 END------------------------------------------ */
+
+/* --------------- 引用块 ---------------  */
+
+/*在列表中*/
+.protyle-wysiwyg .li>.bq,
+div.item__readme li blockquote {
+    border-left: 5px solid rgba(148, 152, 160, .2);
+    background: 0 0;
+    border-radius: 0;
+    padding: 0 0.5em;
+}
+
+/*独立的*/
+.protyle-wysiwyg .bq,
+div.item__readme blockquote {
+    color: var(--v-block-bq-color);
+    background: var(--v-block-bq-bg-color);
+    border-radius: var(--v-block-bq-border-radius);
+    padding: 0.75em 1em;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* --------------- 引用块 end ---------------  */
+
+/* --------------- 代码块 ---------------*/
+.protyle-wysiwyg .code-block {
+    color: var(--v-block-code-bg-color);
+    font-family: var(--v-black-code-font-family);
+    border-radius: 8px;
+    ;
+    border: 3px solid var(--v-black-code-boder-color);
+    margin: 0 0 20px;
+}
+
+
+div.item__readme code[data-render="true"] {
+    /* color: var(--v-block-code-bg-color); */
+    font-family: var(--v-black-code-font-family);
+    border-radius: 8px;
+    ;
+    border: 3px solid var(--v-black-code-boder-color);
+    margin: 0 0 20px;
+}
+
+/* --------------- 代码块 end---------------*/
+
+/* --------------- 多标签tag end---------------*/
+
+.protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) {
+    position: relative;
+    color: var(--v-tag-color);
+    background-color: var(--v-tag-bgcolor);
+    margin: 0px 0px;
+    /*上 右 下 左*/
+    padding: 1px 5px 1px 5px;
+    border-radius: 5px;
+}
+
+.protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty)::before {
+    content: "";
+}
+
+.protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) span.mult-tag-lv1 {
+    /* margin: 1px 2px  1px 2px; */
+    /* 上 右 下 左 */
+    margin: 1px 0px 1px 2px;
+    /*上 右 下 左*/
+    padding: 1px 0px 1px 3px;
+}
+
+.protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) span.mult-tag-lv1::before {
+    content: "# ";
+    color: var(--v-tag-icon);
+}
+
+.protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) span.mult-tag-lv2 {
+    color: var(--v-tag-bgcolor);
+    background-color: #ffffff;
+    /*左上 右上 右下 左下*/
+    border-radius: 0px 5px 5px 0px;
+    /*上 右 下 左*/
+    margin: 0px 0px 0px 5px;
+    /*上 右 下 左*/
+    padding: 1px 5px 1px 5px;
+}
+
+
+.protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) span.mult-tag-none {
+    display: none;
+}
+
+/* --------------- 多标签tag end---------------*/
+
+
+/* --------------- 超链接 end---------------*/
+
+/* 超链接 */
+/* 默认样式 */
+/* 超链接 */
+.protyle-wysiwyg [data-node-id] span[data-type='a']:not(:empty),
+.b3-typography a {
+    margin: 0;
+    padding: 0;
+    color: var(--b3-protyle-inline-link-color);
+}
+
+/* 超链接前标志 */
+.protyle-wysiwyg [data-node-id] span[data-type='file-annotation-ref']:not(:empty)::before,
+.protyle-wysiwyg [data-node-id] span[data-type='a']:not(:empty)::before,
+.b3-typography a::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+
+    background-image: url(/appearance/themes/mini-vlook/icon/unknown.svg);
+    background-size: 0.875em auto;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: 0.875em;
+    height: 1em;
+    margin: 0.125em 0.125em -0.125em 0;
+    padding: 0;
+}
+
+/* 思源跳转内部的超链接特化 */
+.protyle-wysiwyg [data-node-id] span[data-type='a'][data-href ^="siyuan:"]:not(:empty),
+.b3-typography a[href ^="siyuan:"] {
+    color: var(--custom-span-siyuan-link-color);
+}
+
+.protyle-wysiwyg [data-node-id] span[data-type='a'][data-href ^="siyuan:"]:not(:empty):hover,
+.b3-typography a[href ^="siyuan:"]:hover {
+    border-color: var(--custom-span-siyuan-link-color);
+}
+
+/* 聚焦特化 */
+.protyle-wysiwyg [data-node-id] span[data-type='a'][data-href ^="siyuan:"][data-href *="focus=1"]:not(:empty)::before,
+.b3-typography a[href ^="siyuan:"][href *="focus=1"]::before {
+    outline: 1px solid var(--custom-span-siyuan-link-color);
+    -moz-outline-radius: var(--custom-border-radius);
+}
+
+/* --------------- 超链接 end---------------*/
+
+
+
+
+/* 
+ * 悬浮提示
+ */
+
+span[data-type='kbd']:hover,
+span[data-type='code']:hover,
+div.item__readme code:not([data-render="true"]):hover {
+    filter: brightness(1.1)
+}
+
+/*挂件*/
+
+.iframe[custom-f="ifm"],
+[custom-f="ifm"] .iframe-content,
+[custom-f="ifm"] .iframe-content iframe {
+    height: 50em !important;
+    min-height: 10em !important;
+}

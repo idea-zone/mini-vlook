@@ -1,3 +1,16 @@
-@import url(/appearance/themes/mini-vlook/theme-conifg.css);
-@import url(/appearance/themes/mini-vlook/config/theme-siyuan-lt.css);
-@import url(/appearance/themes/mini-vlook/config/theme-siyuan-dk.css);
+/* 基础内容 */
+@import url(./style/vlook-bug320-config.css);
+/* 菜单块 */
+@import url(./style/docks/four-menu-splite.css);
+/* 状态栏 */
+@import url(./style/docks/dock-status.css);
+/* 文档树样式 */
+@import url(./style/docks/file-tree.css);
+
+/* 基础块设置 */
+@import url(./style/custom/v-block-heading.css);
+@import url(./style/custom/v-block-inline-style.css);
+
+
+/* 背景网格 */
+@import url(./style/custom/bg-grid-style.css);
