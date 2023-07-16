@@ -1,4 +1,3 @@
-
 :root {
     /* 主色 */
     /* 主题色1-基础色*/
@@ -18,26 +17,26 @@
     --b3-theme-background: var(--v-theme-background);
     /*编辑区-周围的状态栏/左侧选中颜色-背景色*/
     --b3-theme-background-light: var(--v-theme-background-light);
-    
+
     /*编辑区-左侧面板颜色-背景色*/
     --b3-theme-surface: var(--v-theme-surface);
-     /*编辑区-左侧面板颜色-亮一些*/
+    /*编辑区-左侧面板颜色-亮一些*/
     --b3-theme-surface-light: rgba(var(--v-theme2-rgb-value), .86);
 
     /* 警告类-背景颜色*/
     --b3-theme-error: var(--v-theme-error);
 
     /* 文字颜色 */
-    
+
     /* 主题色1-基础色-字体色 */
     --b3-theme-on-primary: var(--v-theme1-color);
     /* 主题色2-次要色-字体色 */
     --b3-theme-on-secondary: var(--v-theme2-color);
     /* 编辑区-字体色 */
     --b3-theme-on-background: var(--v-theme-on-background);
-     /* 编辑区-左侧面板颜色-字体色 */
+    /* 编辑区-左侧面板颜色-字体色 */
     --b3-theme-on-surface: var(--v-theme-on-surface);
-    
+
     /* 警告类-字体颜色*/
     --b3-theme-on-error: #fff;
 
@@ -53,6 +52,13 @@
     /* 数学公式字体 */
     --b3-font-family-math: KaTeX_Math;
 
+    /* 顶部工具栏 */
+    --b3-toolbar-background: var(--b3-theme-surface);
+    --b3-toolbar-blur-background: #fcfcfc;
+    --b3-toolbar-color: var(--b3-theme-on-surface);
+    --b3-toolbar-hover: var(--b3-theme-background-light);
+    --b3-toolbar-left-mac: 69px;
+
     /* 线条 */
     --b3-border-color: var(--v-border-color);
 
@@ -61,15 +67,18 @@
 
     /* 列表 */
     --b3-list-hover: var(--v-list-hove);
+    --b3-list-icon-hover: rgba(33, 34, 36, .1);
 
     /* 菜单 */
-    --b3-menu-background:  var(--v-menu-background);
+    --b3-menu-background: var(--v-menu-background);
 
     /* 提示 */
     --b3-tooltips-color: var(--v-tooltips-color);
+    --b3-tooltips-background: var(--v-tooltips-background);
+    --b3-tooltips-shadow: var(--v-tooltips-shadow);
 
     /* 遮罩 */
-    --b3-mask-background:var(--v-mask-background);
+    --b3-mask-background: var(--v-mask-background);
 
     /* 卡片背景： 错误、警告、信息、成功 */
     --b3-card-error-color: rgb(97, 26, 21);
@@ -90,7 +99,7 @@
     --b3-font-color6: var(--b3-theme-primary);
     --b3-font-color7: var(--b3-theme-secondary);
     --b3-font-color8: var(--b3-theme-error); */
-    --b3-font-color1:#2ec7c9;
+    --b3-font-color1: #2ec7c9;
     --b3-font-color2: #b6a2de;
     --b3-font-color3: #5ab1ef;
     --b3-font-color4: #ffb980;
@@ -112,7 +121,7 @@
     --b3-font-background6: var(--b3-theme-primary-light);
     --b3-font-background7: rgba(217, 211, 215, 0.5);
     --b3-font-background8: rgba(255, 193, 153, 0.5); */
-    --b3-font-background1:#2ec7c950;
+    --b3-font-background1: #2ec7c950;
     --b3-font-background2: #b6a2de50;
     --b3-font-background3: #5ab1ef50;
     --b3-font-background4: #ffb98050;
@@ -129,6 +138,8 @@
     /* 动画效果 */
     --b3-transition: all .15s cubic-bezier(0, 0, .2, 1) 0ms;
     --b3-width-transition: width .15s cubic-bezier(0, 0, .2, 1) 0ms;
+    /* 下拉菜单 */
+    --b3-select-background: url("data:image/svg+xml;utf8,<svg fill='rgba(95, 99, 104, .68)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right 2px center var(--b3-theme-background);
 
     /* 阴影 */
     --b3-point-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
@@ -170,7 +181,7 @@
 
     /* 代码片段背景 */
     --b3-protyle-code-background: var(--v-block-code-bg-color);
-
+    --b3-protyle-code-linenumber-hl: #b9d1f4;
     /* 所见即所得行内元素颜色 */
     /* 加粗-字体颜色 */
     --b3-protyle-inline-strong-color: var(--v-block-strong-color);
@@ -188,6 +199,7 @@
     --b3-protyle-inline-tag-color: var(--v-block-tag-color);
     /* 内容引用块-字体颜色 */
     --b3-protyle-inline-blockref-color: var(--v-block-blockref-color);
+    --b3-protyle-inline-fileref-color: #21862e;
 
     /* PDF */
     --b3-pdf-selection: #d0e9c8;
@@ -200,14 +212,15 @@
     --b3-pdf-background5: #f5539e;
     --b3-pdf-background6: var(--b3-theme-primary);
     --b3-pdf-background7: #944194;
-
+    --b3-pdf-dark: #212224;
 
     /*状态栏*/
     --b3-dock-item-width: 36px;
     --b3-dock-item-padding: 5px;
-	--b3-dock-item-margin: 7px 5px 7px 5px;
-	--b3-dock-item-radius: 5px;
+    --b3-dock-item-margin: 7px 5px 7px 5px;
+    --b3-dock-item-radius: 5px;
 }
+
 
 /* PDF */
 .textLayer,
@@ -215,16 +228,40 @@
     mix-blend-mode: darken;
 }
 
+/* https://github.com/siyuan-note/siyuan/issues/6440 */
+.protyle-action--order:after {
+    mix-blend-mode: multiply;
+}
+
+.b3-typography div.hljs,
+.protyle-wysiwyg div.hljs {
+    background-color: #f8f9fa;
+}
+
 /* 修复添加收缩内容的”高亮点“消失的问题 */
 /* 收缩时候的状态 */
-.protyle-wysiwyg div[fold="1"] .protyle-action::after
-{
+.protyle-wysiwyg div[fold="1"] .protyle-action::after {
     border-radius: 50%;
     background-color: var(--b3-theme-primary-light) !important;
 }
-.protyle-wysiwyg div[fold="1"]::before
-{
+
+.protyle-wysiwyg div[fold="1"]::before {
     width: 34px;
     border-radius: 50%;
     background-color: var(--b3-theme-primary-light) !important;
+}
+
+/* 滚动条 */
+.protyle-scroll__bar .b3-slider {
+    /* background: rgba(var(--v-theme2-rgb-value), .2); */
+}
+
+/* 重点标注 VIP 图标 */
+#toolbarVIP {
+    background-color: rgba(255, 217, 0, 0.603);
+}
+
+/* 给所有插件的菜单添加变色的底色 */
+div[id^="plugin"] {
+    background-color: rgba(255, 255, 255, 0.603);
 }
