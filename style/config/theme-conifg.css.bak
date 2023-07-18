@@ -257,7 +257,6 @@
     background-color: #f8f9fa;
 }
 
-
 /* 修复添加收缩内容的”高亮点“消失的问题 */
 /* 收缩时候的状态 */
 .protyle-wysiwyg div[fold="1"] .protyle-action::after {

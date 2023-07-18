@@ -93,3 +93,8 @@ div.item__readme code:not([data-render="true"]):hover
     height: 50em !important;
     min-height: 10em !important;
 }
+
+/* 查询语句 */
+[data-type="NodeBlockQueryEmbed"]{
+    border: 2px dotted  var(--b3-protyle-inline-blockref-color) !important;
+}

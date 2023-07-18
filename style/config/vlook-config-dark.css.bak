@@ -248,6 +248,6 @@
     --b3-dockleft-item-active-background: #fff;
     --b3-dock-item-active-color: #eb8383;
     --b3-dock-item-hover-background: rgb(42, 168, 153, 0.5);
-    --b3-dock-stats-counter-color: var(--v-theme1-color);
+    --b3-dock-stats-counter-color: #292c33;
 
 }
