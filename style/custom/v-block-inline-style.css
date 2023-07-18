@@ -290,6 +290,30 @@ div.item__readme code[data-render="true"] {
 /* --------------- 超链接 end---------------*/
 
 
+/* ——————————————————————————————————————————分割线—————————————————————————————————————————————— */
+.protyle-wysiwyg [data-node-id].hr>div {
+    /* border-bottom: 0.1em solid rgba(128, 128, 128, 0.5); */
+    /* background-image:  linear-gradient(125deg, #F44336, #E91E63, #9C27B0, #3F51B5, #2196F3)!important; */
+    background-image: linear-gradient(125deg, #eae6f0, #c7d9de, #9C27B0, #cadde2, #b1d5d4)!important;
+    height: 1px !important;
+    background-size: 400%;
+    animation: bganimation 10s infinite !important;
+}
+
+@keyframes bganimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+/* ——————————————————————————————————————————分割线 END—————————————————————————————————————————————— */
 
 
 /* 
@@ -309,4 +333,9 @@ div.item__readme code:not([data-render="true"]):hover {
 [custom-f="ifm"] .iframe-content iframe {
     height: 50em !important;
     min-height: 10em !important;
+}
+
+/* 查询语句 */
+[data-type="NodeBlockQueryEmbed"]{
+    border: 2px dotted  var(--b3-protyle-inline-blockref-color) !important;
 }
