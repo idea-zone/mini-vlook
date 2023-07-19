@@ -74,6 +74,11 @@ div.item__readme  del{
 
 /* --------------- 标签 end --------------- */
 
+/* 任务列表完成时颜色 */
+.protyle-task--done .p{
+    color: var(--v-task--done-color) !important;
+}
+
 /* 
  * 悬浮提示
  */
