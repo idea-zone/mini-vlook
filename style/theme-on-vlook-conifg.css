@@ -80,6 +80,9 @@
     --v-block-em-color: var(--d-f-c);
     /*加粗颜色*/
     --v-block-strong-color: var(--d-f-c);
+    /* 任务完成颜色 */
+    --v-task--done-color:var(--ac-gray-title);
+
 
     /*键盘按键色*/
     --v-block-kbd-font: var(var(--v-f-w-bd) 0.75em var(--v-f-fm-key));
