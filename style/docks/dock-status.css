@@ -317,6 +317,12 @@
 
 }
 
+/* 自定义添加的处理 */
 .custom-added-dock-btn {
 	background: #c6c5c2;
+}
+
+/* 关闭按钮 */
+.b3-dialog__close{
+	color: #dc362e;
 }

@@ -24,7 +24,10 @@
 
 /* 背景网格 */
 @import url(./style/custom/bg-grid-style.css);
+
+/* 分栏设置 */
 @import url(./style/custom/bq-splite-by-line.css);
+@import url(./style/custom/li-splite-by-line.css);
 
 /* 解决 分栏引用下 display: inline-block 不起作用的问题 */
 .protyle-wysiwyg {
