@@ -16,8 +16,9 @@
     padding-left: 0 !important
 }
 
+/* 这是想处理第一个 list 列表，但是没处理好 */
 :is(.hr, .hr)+[data-subtype="o"]>.li,
-:is(.hr, .hr)+[data-subtype="u"]>.li {
+:is(.hr, .hr)+[data-subtype="u"]>.li{
     border: 2px solid var(--pn-c);
     border-radius: var(--v-r-b);
     margin-top: 0 !important;
@@ -26,16 +27,27 @@
     padding-right: 10px
 }
 
-:is(.hr, .hr)+[data-subtype="o"]>.li>p:first-of-type,
-:is(.hr, .hr)+[data-subtype="u"]>.li>p:first-of-type {
+:is(.hr, .hr)+[data-subtype="o"] > .li > div:nth-child(2),
+:is(.hr, .hr)+[data-subtype="u"] > .li > div:nth-child(2){
     font: var(--v-f-w-bd) 1em var(--v-f-fm-bd);
     color: #eae6f0;
-    background: #8064a9;
+    background: #8064a9 !important;
     padding: 5px;
     border-radius: var(--v-r-t) var(--v-r-t)0 0;
     text-align: center;
     margin-left: -10px;
     margin-right: -10px
+}
+
+
+/*只处理每个列表第一行的点*/
+:is(.hr, .hr)+[data-subtype="o"] > div > div:nth-child(1),
+:is(.hr, .hr)+[data-subtype="u"] > div > div:nth-child(1)
+{
+    /* padding: 0.08em;
+    z-index: 1;
+    color: var(--kbline-board-title-svg-color);
+    transform: translate(-10px,10%); */
 }
 
 /* -----------------  ------------------ */
