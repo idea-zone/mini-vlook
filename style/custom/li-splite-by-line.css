@@ -1,4 +1,14 @@
-
+/**
+ * 代码参考自: [VLook](https://madmaxchow.github.io/VLOOK/index.html)。 
+ * 通过列表分栏: 在列表块前，添加分割线，会让下方的连续的引用块分栏显示。
+ * #1分割线|分2栏# ; #2分割线分|3栏# ;  #3分割线|分4栏# ; 
+ * 
+ * 版本: V17
+ * 时间: 2023-07-21
+ * 更新日志：
+ *  1. 添加对分栏的设置
+ *  2. 增加对 任务列表的支持
+ */
 :root {
     /*两栏的宽度*/
     --two-line-width: 46.5%;
@@ -27,18 +37,18 @@
     padding-right: 10px
 }
 
+/*只处理每个列表第一行（标题行）*/
 :is(.hr, .hr)+:is([data-subtype="o"],[data-subtype="t"]) > .li > div:nth-child(2),
 :is(.hr, .hr)+[data-subtype="u"] > .li > div:nth-child(2){
     font: var(--v-f-w-bd) 1em var(--v-f-fm-bd);
     color: #eae6f0;
     background: #8064a9 !important;
-    padding: 5px;
+    padding: 5px 50px 5px 5px;
     border-radius: 0 var(--v-r-t) 0 0;
     text-align: center;
     margin-left: -10px;
     margin-right: -10px
 }
-
 
 /*只处理每个列表第一行的点*/
 :is(.hr, .hr)+:is([data-subtype="o"],[data-subtype="t"]) > div > div:nth-child(1),
@@ -56,9 +66,6 @@
 }
 
 /* -----------------  ------------------ */
-
-
-
 .hr+:is([data-subtype="o"],[data-subtype="t"])::before,
 .hr+[data-subtype="u"]::before {
    background-color: var(--pn-c-alt);
