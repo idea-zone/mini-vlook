@@ -23,11 +23,11 @@
 @import url(./style/custom/v-block-inline-style.css);
 
 /* 背景网格 */
-@import url(./style/custom/bg-grid-style.css);
+@import url(./style/custom/v-bg-grid-style.css);
 
 /* 分栏设置 */
-@import url(./style/custom/splite-by-line-bq.css);
-@import url(./style/custom/splite-by-line-li.css);
+@import url(./style/custom/v-splite-by-line-bq.css);
+@import url(./style/custom/v-splite-by-line-li.css);
 
 /* 其他一些额外属性 */
 @import url(./style/custom/cusotm-f-sp.css);

@@ -1,0 +1,246 @@
+/**
+ * 代码参考自: [VLook](https://madmaxchow.github.io/VLOOK/index.html)。 
+ * 通过列表分栏: 在列表块前，添加分割线，会让下方的连续的引用块分栏显示。
+ * #1分割线|分2栏# ; #2分割线分|3栏# ;  #3分割线|分4栏# ; 
+ * 
+ * 版本: V17
+ * 时间: 2023-07-21
+ * 更新日志：
+ *  1. 添加对分栏的设置
+ *  2. 增加对 任务列表的支持
+ */
+:root {
+   /*两栏的宽度*/
+   --two-line-width: 47.25%;
+   /*三栏的宽度*/
+   --three-line-width: 30.83%;
+   /*四栏的宽度*/
+   --four-line-width: 22.6%;
+   /* 栏与栏之间的留白 */
+   --splt-space-widht: 0.5%;
+}
+
+/* ----------------- 添加边框 ------------------ */
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+:is([data-subtype="o"], [data-subtype="t"]),
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+[data-subtype="u"] {
+   padding-left: 0 !important
+}
+
+/* 这是想处理第一个 list 列表，但是没处理好 */
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+:is([data-subtype="o"], [data-subtype="t"])>.li,
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+[data-subtype="u"]>.li {
+   border: 2px solid var(--pn-c);
+   border-radius: var(--v-r-b);
+   margin-top: 0 !important;
+   margin-bottom: 1em;
+   padding-left: 10px;
+   padding-right: 10px
+}
+
+/*只处理每个列表第一行（标题行）*/
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+:is([data-subtype="o"], [data-subtype="t"])>.li>div:nth-child(2),
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+[data-subtype="u"]>.li>div:nth-child(2) {
+   font: var(--v-f-w-bd) 1em var(--v-f-fm-bd);
+   color: #eae6f0;
+   background: #8064a9 !important;
+   padding: 5px 50px 5px 5px;
+   border-radius: 0 var(--v-r-t) 0 0;
+   text-align: center;
+   margin-left: -10px;
+   margin-right: -10px
+}
+
+/*只处理每个列表第一行的点*/
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+:is([data-subtype="o"], [data-subtype="t"])>div>div:nth-child(1),
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+[data-subtype="u"]>div>div:nth-child(1) {
+   transform: translate(18.2225px, -0.125px);
+   /* 0.6% */
+   font: var(--v-f-w-bd) 0.75em var(--v-f-fm-bd);
+   padding: 0.5px 5px 1.45px 5px;
+   color: #eae6f0 !important;
+   border-radius: var(--v-r-t) 0 0 0;
+   background: #8064a9 !important;
+   text-align: center;
+   margin-left: -18px;
+   margin-right: -10px
+}
+
+/* -----------------  ------------------ */
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+:is([data-subtype="o"], [data-subtype="t"])::before,
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+[data-subtype="u"]::before {
+   background-color: var(--pn-c-alt);
+   color: var(--d-f-c);
+   font-weight: 700;
+   font-style: italic;
+   font-size: .75em;
+   text-align: center;
+   white-space: pre;
+   padding: 0 10px;
+   margin-left: 0;
+   position: absolute;
+   width: auto;
+   left: 0;
+   right: 0;
+   opacity: .5;
+   pointer-events: none;
+   content: "⬛︎ ⬛︎  2 Columns of List  ⬛︎ ⬛︎";
+   margin-top: -20px;
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+.hr+:is([data-subtype="o"], [data-subtype="t"])::before,
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+.hr+[data-subtype="u"]::before {
+   content: "⬛︎ ⬛︎ ⬛︎  3 Columns of List  ⬛︎ ⬛︎ ⬛︎";
+   margin-top: -40px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+.hr+.hr+[data-subtype="u"]::before {
+   content: "⬛︎ ⬛︎ ⬛︎ ⬛︎  4 Columns of List  ⬛︎ ⬛︎ ⬛︎ ⬛︎ ";
+   margin-top: -45px;
+   padding-top: 12px;
+   padding-bottom: 12px;
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+.hr+.hr+.hr+[data-subtype="u"]::before,
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+.hr+.hr+:is([data-subtype="o"], [data-subtype="t"])::before {
+   content: "⬛︎ ⬛︎ ⬛︎ ⬛︎ ⬛︎  5 Columns of List  ⬛︎ ⬛︎ ⬛︎ ⬛︎ ⬛︎";
+   margin-top: -5.9em;
+   padding-top: 1.4em;
+   padding-bottom: 1.4em
+}
+
+/*  */
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+:is([data-subtype="o"], [data-subtype="t"])>.li,
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+:is([data-subtype="o"], [data-subtype="t"])>.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+[data-subtype="u"]>.li,
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+[data-subtype="u"]>.li+.li {
+   display: inline-block !important;
+   list-style-type: none !important;
+   vertical-align: top !important;
+   margin-left: 0 !important;
+   margin-right: 0 !important;
+   max-width: var(--two-line-width) !important;
+   min-width: var(--two-line-width) !important;
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+:is([data-subtype="o"], [data-subtype="t"])>.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+[data-subtype="u"]>.li+.li {
+   margin-left: var(--splt-space-widht) !important
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li+.li+.li:nth-of-type(5n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li+.li:nth-of-type(5n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li:nth-of-type(5n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li:nth-of-type(5n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+[data-subtype="u"]>.li+.li+.li+.li+.li:nth-of-type(5n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+[data-subtype="u"]>.li+.li+.li+.li:nth-of-type(5n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+[data-subtype="u"]>.li+.li+.li:nth-of-type(5n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+[data-subtype="u"]>.li+.li:nth-of-type(5n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li+.li:nth-of-type(4n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li:nth-of-type(4n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li:nth-of-type(4n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+[data-subtype="u"]>.li+.li+.li+.li:nth-of-type(4n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+[data-subtype="u"]>.li+.li+.li:nth-of-type(4n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+[data-subtype="u"]>.li+.li:nth-of-type(4n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr, .hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li:nth-of-type(3n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr, .hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li:nth-of-type(3n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr, .hr+.hr)+[data-subtype="u"]>.li+.li+.li:nth-of-type(3n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr, .hr+.hr)+[data-subtype="u"]>.li+.li:nth-of-type(3n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+:is([data-subtype="o"], [data-subtype="t"])>.li:nth-of-type(2n+1),
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+[data-subtype="u"]>.li:nth-of-type(2n+1) {
+   margin-left: 0 !important;
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+:is([data-subtype="o"], [data-subtype="t"]) :is([data-subtype="o"], [data-subtype="t"])>.li,
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+[data-subtype="u"] :is([data-subtype="o"], [data-subtype="t"])>.li {
+   margin-left: .5em !important;
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+[data-subtype="u"]>.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr, .hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr, .hr+.hr)+[data-subtype="u"]>.li {
+   display: inline-block;
+   list-style-type: none;
+   vertical-align: top;
+   margin-left: 0 !important;
+   margin-right: 0 !important;
+   max-width: var(--three-line-width) !important;
+   min-width: var(--three-line-width) !important
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr, .hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr, .hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr, .hr+.hr)+[data-subtype="u"]>.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr, .hr+.hr)+[data-subtype="u"]>.li+.li+.li {
+   display: inline-block;
+   list-style-type: none;
+   vertical-align: top;
+   margin-right: 0 !important;
+   max-width: var(--three-line-width) !important;
+   min-width: var(--three-line-width) !important;
+   margin-left: var(--splt-space-widht) !important
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr, .hr+.hr)+:is([data-subtype="o"], [data-subtype="t"]) :is([data-subtype="o"], [data-subtype="t"])>.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr, .hr+.hr)+[data-subtype="u"] :is([data-subtype="o"], [data-subtype="t"])>.li {
+   margin-left: .5em !important
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+[data-subtype="u"]>.li {
+   max-width: var(--four-line-width) !important;
+   min-width: var(--four-line-width) !important
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+[data-subtype="u"]>.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+[data-subtype="u"]>.li+.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+[data-subtype="u"]>.li+.li+.li+.li {
+   display: inline-block;
+   list-style-type: none;
+   vertical-align: top;
+   margin-right: 0 !important;
+   max-width: var(--four-line-width) !important;
+   min-width: var(--four-line-width) !important;
+   margin-left: var(--splt-space-widht) !important
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"]) :is([data-subtype="o"], [data-subtype="t"])>.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr, .hr+.hr+.hr)+[data-subtype="u"] :is([data-subtype="o"], [data-subtype="t"])>.li {
+   margin-left: .5em !important
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li+.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+[data-subtype="u"]>.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+[data-subtype="u"]>.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+[data-subtype="u"]>.li+.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+[data-subtype="u"]>.li+.li+.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+[data-subtype="u"]>.li+.li+.li+.li+.li {
+   display: inline-block;
+   list-style-type: none;
+   vertical-align: top;
+   max-width: 19.2% !important;
+   min-width: 19.2% !important
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li+.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+[data-subtype="u"]>.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+[data-subtype="u"]>.li+.li+.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+[data-subtype="u"]>.li+.li+.li+.li {
+   margin-left: 1% !important
+}
+
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"]) :is([data-subtype="o"], [data-subtype="t"])>.li,
+.protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+[data-subtype="u"] :is([data-subtype="o"], [data-subtype="t"])>.li {
+   margin-left: .5em !important
+}
