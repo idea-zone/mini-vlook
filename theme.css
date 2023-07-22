@@ -37,6 +37,8 @@
 @import url(./style/custom/custom-f-kbw.css);
 @import url(./style/custom/custom-f-map.css);
 
+@import url(./style/custom/v-icon-link.css);
+
 /* 解决 分栏引用下 display: inline-block 不起作用的问题 */
 .protyle-wysiwyg {
     display: block;
