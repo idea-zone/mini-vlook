@@ -11,11 +11,11 @@
  */
 :root {
     /*两栏的宽度*/
-    --two-line-width: 46.5%;
+    --two-line-width: 47.25%;
     /*三栏的宽度*/
-    --three-line-width: 30.25%;
+    --three-line-width: 30.83%;
     /*四栏的宽度*/
-    --four-line-width: 22.25%;
+    --four-line-width: 22.6%;
     /* 栏与栏之间的留白 */
     --splt-space-widht: 0.5%;
 }

@@ -11,13 +11,13 @@
 
 :root {
     /*两栏的宽度*/
-    --two-line-width: 44%;
+    --bq-two-line-width: 46%;
     /*三栏的宽度*/
-    --three-line-width: 28%;
+    --bq-three-line-width: 29.79%;
     /*四栏的宽度*/
-    --four-line-width: 20%;
+    --bq-four-line-width: 21.75%;
     /* 栏与栏之间的留白 */
-    --splt-space-widht: 0.5%;
+    --bq-splt-space-width: 0.5%;
 }
 
 /* 如果是 在引用内的 引用，设置分栏和颜色 */
@@ -28,10 +28,10 @@
     padding: .75em 1em;
     margin-top: 0;
     margin-bottom: .5em;
-    --two-line-width: 35%;
-    --three-line-width: 22%;
-    --four-line-width: 16%;
-    --splt-space-widht: 0.5%;
+    --bq-two-line-width: 40%;
+    --bq-three-line-width: 26%;
+    --bq-four-line-width: 19%;
+    --bq-splt-space-width: 0.5%;
 }
 
 
@@ -39,7 +39,7 @@
 .bq .hr+.bq::before,
 .bq .hr+.bq+.bq::before{
         /* ⬛︎ ⬛︎  2 Columns of Quote  ⬛︎ ⬛︎ */
-    width: 180%;
+    width: 150%;
 
 }
 
@@ -81,7 +81,7 @@ body:not([class]) .bq {
 
 .hr+.bq::before {
     content: "⬛︎ ⬛︎  2 Columns of Quote  ⬛︎ ⬛︎";
-    width: 193%;
+    width: 197%;
 
     background-color: var(--pn-c-alt);
     font-size: .75em;
@@ -101,7 +101,7 @@ body:not([class]) .bq {
 
 .hr+.hr+.bq::before {
     content: "⬛︎ ⬛︎ ⬛︎  3 Columns of Quote  ⬛︎ ⬛︎ ⬛︎";
-    width: 290%;
+    width: 297%;
     padding-top: 7px;
     padding-bottom: 7px;
     margin-top: -43px;
@@ -109,7 +109,7 @@ body:not([class]) .bq {
 
 .hr+.hr+.hr+.bq::before {
     content: "⬛︎ ⬛︎ ⬛︎ ⬛︎  4 Columns of Quote  ⬛︎ ⬛︎ ⬛︎ ⬛︎";
-    width: 390%;
+    width: 396%;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-top: -47px;
@@ -119,13 +119,13 @@ body:not([class]) .bq {
 :is(.hr, .hr)+.bq+.bq {
     color: var(--d-f-c);
     display: inline-block !important;
-    max-width: var(--two-line-width) !important;
-    min-width: var(--two-line-width) !important;
+    max-width: var(--bq-two-line-width) !important;
+    min-width: var(--bq-two-line-width) !important;
     vertical-align: top
 }
 
 :is(.hr, .hr)+.bq+.bq {
-    margin-left: var(--splt-space-widht) !important
+    margin-left: var(--bq-splt-space-width) !important
 }
 
 :is(.hr+.hr, .hr+.hr)+.bq,
@@ -133,8 +133,8 @@ body:not([class]) .bq {
 :is(.hr+.hr, .hr+.hr)+.bq+.bq+.bq {
     color: var(--d-f-c);
     display: inline-block !important;
-    max-width: var(--three-line-width)!important;
-    min-width: var(--three-line-width)!important;
+    max-width: var(--bq-three-line-width)!important;
+    min-width: var(--bq-three-line-width)!important;
     vertical-align: top
 }
 
@@ -144,8 +144,8 @@ body:not([class]) .bq {
 :is(.hr+.hr+.hr, .hr+.hr+.hr)+.bq+.bq+.bq+.bq {
     color: var(--d-f-c);
     display: inline-block !important;
-    max-width: var(--four-line-width) !important;
-    min-width: var(--four-line-width) !important;
+    max-width: var(--bq-four-line-width) !important;
+    min-width: var(--bq-four-line-width) !important;
     vertical-align: top
 }
 
@@ -154,7 +154,7 @@ body:not([class]) .bq {
 :is(.hr+.hr+.hr, .hr+.hr+.hr)+.bq+.bq+.bq+.bq,
 :is(.hr+.hr, .hr+.hr)+.bq+.bq,
 :is(.hr+.hr, .hr+.hr)+.bq+.bq+.bq {
-    margin-left: var(--splt-space-widht) !important
+    margin-left: var(--bq-splt-space-width) !important
 }
 
 .bq>.p {

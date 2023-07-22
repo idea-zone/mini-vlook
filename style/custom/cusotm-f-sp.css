@@ -1,0 +1,14 @@
+
+/* ————————————文本竖排(适合古诗文）———————————— */
+.protyle-wysiwyg [data-node-id][custom-f~=sp] {
+    writing-mode: vertical-lr;
+    /*从左向右 从右向左是 writing-mode: vertical-rl;*/
+    font-size: 120%;
+    line-height: 2em;
+    background-color: #f0efe2;
+    padding: 20px;
+    border: 20px solid #e1e0c7;
+    word-wrap: break-word;
+    letter-spacing: 4px;
+    color: #181A1D;
+}

@@ -1,0 +1,252 @@
+
+
+/* ************ kbw ****************** */ 
+
+:root{
+    /* 看板的背景色 */
+    --kbw-bg: rgb(42, 49, 53);
+    /* 看板每一个子list 的背景色 */
+    --kbw-list-bg: rgb(53, 60, 63);
+    /* 看板每一个子list 左侧 border 的项 */
+    --kbw-list-left-border:rgb(92, 96, 98);
+    /* 最外层的对齐线 */
+    --kbw-li-line: rgba(128,128,128,0.5);
+    /* 第一行 li 的字体色 */
+    --kbw-first-li-color: whitesmoke;
+    /* 除第一行之外的 li 的字体色 */
+    --kbw-notfirst-li-color: whitesmoke;
+    --kbw-board-border-radius: 5px;
+    --kbline-boarditem-minwidth: 14rem;
+    --kbline-boarditem-minwidth2: 16rem;
+    --kbw-board-title-svg-color:whitesmoke;
+
+    /* 看板每个列表的点的颜色 */
+    /* --kbw-list-action-color: rgb(var(--v-theme2-rgb-value)); */
+    --kbw-list-action-color: cyan;
+    /* 看板中每个项的点的颜色 */
+    --kbw-item-action-color: whitesmoke;
+    /* 看板中每个项中子项对应的点的颜色 */
+    --kbw-item-sub-action-color: greenyellow;
+}
+
+/* 前面的 · */
+.list[custom-f~=kbw] > .li > .list  .protyle-action{
+    color: var(--kbw-board-title-svg-color);
+    width: 20px;
+    height: 20px;
+}
+
+/* 添加滚动条 */
+.list[custom-f~=kbw] > .li  {
+    width:100%-50 !important;
+    /* width:100% !important; */
+    /*溢出滚动*/
+	overflow-x:auto;
+}
+
+
+/* 设置除了当前 li 下面的 list 水平分布 */
+.list[custom-f~=kbw] > .li > .list {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    max-width: var(--kbline-boarditem-maxwidth); 
+    border-color: rgb(170, 170, 170);
+    background: var(--kbw-bg);
+
+
+}
+
+/* 最外层 */
+.list[custom-f~=kbw] > .li > .list >.li {
+
+    margin: 0;
+    padding-top: 10px;
+    padding-right: 10px;
+    min-width: var(--kbline-boarditem-minwidth2);
+    min-height: var(--kbline-boarditem-minHight);
+
+    background: var(--kbw-bg);
+    padding-bottom: 10px !important;
+}
+
+
+/* ———————————————————— 只有第一行 ————————————————————*/
+.protyle-wysiwyg *[custom-f~=kbw] > .li > .list:not([data-type="NodeBlockquote"]) > div > div:nth-child(2)
+{
+    
+    color: var(--kbw-first-li-color);
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
+/* 第一行，最后一个 list 的右间距变大点 */
+.protyle-wysiwyg *[custom-f~=kbw] > .li > .list:not([data-type="NodeBlockquote"]) > .li:not(:has(+ .li)) 
+{    
+    padding-right: 55px !important;
+}
+
+/* 第一行，最后一个 list 的右间距变大点 */
+.protyle-wysiwyg *[custom-f~=kbw] > .li > .list:not([data-type="NodeBlockquote"]) > .li:not(:has(+ .li))::after 
+{
+    content: "";
+    position: absolute; 
+    height: calc(100% - 35px);
+    border-left: 0.5px solid var(--kbw-li-line);
+    top: 35px;
+    right: 30px;
+}
+
+/* ———————————————————— 只有第一个子 list ————————————————————*/
+.list[custom-f~=kbw] > .li > .list > .li > .list {
+    margin: 0;
+    padding-top: 10px;
+    padding-right: 10px;
+    min-width: var(--kbline-boarditem-minwidth);
+    max-width: var(--kbline-boarditem-minwidth2);
+    min-height: var(--kbline-boarditem-minHight);
+    border-radius: var(--kbw-board-border-radius);
+
+}
+
+/* ———————————————————— 只有第一层的 list ————————————————————*/
+.list[custom-f~=kbw] > .li > .list > .li > .list .li{
+
+    margin: 0;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    margin-bottom: 5px;
+    background: var(--kbw-list-bg);
+    border-radius: var(--kbw-board-border-radius);
+    color: var(--kbw-notfirst-li-color);
+}
+
+/* 设置所有的对齐线的颜色 */
+.list[custom-f~=kbw] > .li > .list > .li::before{
+    content: "";
+    position: absolute;
+    height: calc(100% - 35px);
+    border-left: 0.5px solid var(--kbw-li-line);
+    top: 35px;
+    left: 17px;
+}
+
+/* 先取消除了第一行之外的所有对齐线 */
+.list[custom-f~=kbw] > .li > .list > .li > .list .li::before{
+    content: "";
+    position: absolute;
+    height: calc(100% - 35px);
+    border-left: 0.5px solid var(--kbw-list-bg);
+    top: 35px;
+    left: 17px;
+}
+
+
+/* 对所有的进行调整 */
+.protyle-wysiwyg *[custom-f~=kbw] > .li > .list .li .protyle-action {
+    
+    color: var(--kbw-list-action-color);
+    z-index: 1;
+    /* position: absolute; */
+    top: 13px;
+    left: 7px;
+    width: 20px;
+    height: 20px;
+}
+
+/* 第一个 list  ·  */
+.list[custom-f~=kbw] > .li > .list > .li > .list  .protyle-action{
+  
+    color: var(--kbw-item-action-color);
+    z-index: 1;
+    /* position: absolute; */
+    top: 12px;
+    width: 20px;
+    height: 20px;
+}
+
+/* 除了第一个 list 之外的 ·  */
+.list[custom-f~=kbw] > .li > .list > .li > .list > .li > .list .protyle-action{
+    color: var(--kbw-item-sub-action-color);
+    z-index: 1;
+    /* position: absolute; */
+    top: 3px;
+    width: 20px;
+    height: 20px;
+}
+
+/* 在每个 Item 中的其他 list，减少对应的间距 */
+.list[custom-f~=kbw] > .li > .list > .li > .list > .li > .list .li{
+    padding: 0 0 0 0 !important;
+    margin-top: -10px !important;
+}
+
+/* 给边框增加左侧的边框 */
+.list[custom-f~=kbw] > .li > .list > .li > .list > .li:has(.list) {
+    border-width: 1px 0px 0px 3px;
+    border-style: solid;
+    border-color: var(--kbw-list-bg) var(--kbw-list-bg) var(--kbw-list-bg) var(--kbw-list-left-border);
+}
+
+/* 减少单个 li 中孩子的间距 */
+.list[custom-f~=kbw] > .li > .list > .li > .list .li .list .li
+,.list[custom-f~=kbw] > .li > .list > .li > .list .li .list .p
+,.list[custom-f~=kbw] > .li > .list > .li > .list .li .list .li .p{
+    padding: 0 5px 0 0 !important;
+}
+
+/* ************ kbw ****************** */ 
+
+
+/* ************ kbw-innerstyle ************ */
+
+.protyle-wysiwyg [custom-f~="kbw"] span[data-type='code']{
+    background-color: rgba(var(--v-theme1-rgb-value), 0.5) !important;
+    color: #fff !important;
+}
+
+.protyle-wysiwyg [custom-f~="kbw"] span[data-type='strong'],
+.protyle-wysiwyg [custom-f~="kbw"] span[data-type='em']{
+    color: #fff !important;
+}
+
+.protyle-wysiwyg [custom-f~="kbw"] span[data-type='mark']{
+    background-color: rgba(255, 192, 32, 0.9);
+    color: var(--b3-protyle-inline-mark-color);
+}
+
+
+.protyle-wysiwyg [custom-f~="kbw"] [class~='protyle-task--done'] .p{
+    color:rgba(102, 112, 169, 0.65);
+}
+
+.protyle-wysiwyg [custom-f~="kbw"] span[data-type='kbd']
+,div.item__readme [custom-f~="kbw"]  kbd{
+    color: var(--d-bc-dk);
+    border: 2px solid var(--key-shadow-dk);
+    border-left-color: var(--key-reflect-dk);
+    border-top-color: var(--key-reflect-dk);
+    background: var(--key-bg-dk);
+    box-shadow: 0 0 0 1px var(--key-shadow-dk)
+}
+
+.protyle-wysiwyg [custom-f~="kbw"]  [data-type="block-ref"] {
+    color: #f472b6 !important;
+}
+
+/* ************ kbw-innerstyle ************ */
+
+
+/* ************ 设置标题行信息 ************ */
+.list[custom-f~=kbw] > .li > .protyle-action+.p{
+    color: var(--v-block-heading-color);
+    background-color:transparent;
+    font-size: 1.55em
+}
+
+.list[custom-f~=kbw] > .li > .protyle-action{
+    top: 10px;
+}
+/* ************ 设置标题行信息 ************ */

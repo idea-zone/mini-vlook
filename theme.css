@@ -26,8 +26,16 @@
 @import url(./style/custom/bg-grid-style.css);
 
 /* 分栏设置 */
-@import url(./style/custom/bq-splite-by-line.css);
-@import url(./style/custom/li-splite-by-line.css);
+@import url(./style/custom/splite-by-line-bq.css);
+@import url(./style/custom/splite-by-line-li.css);
+
+/* 其他一些额外属性 */
+@import url(./style/custom/cusotm-f-sp.css);
+@import url(./style/custom/custom-f-bg.css);
+
+@import url(./style/custom/custom-f-kb.css);
+@import url(./style/custom/custom-f-kbw.css);
+@import url(./style/custom/custom-f-map.css);
 
 /* 解决 分栏引用下 display: inline-block 不起作用的问题 */
 .protyle-wysiwyg {
