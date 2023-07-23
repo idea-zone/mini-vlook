@@ -29,15 +29,21 @@
 @import url(./style/custom/v-splite-by-line-bq.css);
 @import url(./style/custom/v-splite-by-line-li.css);
 
+/* 链接小图标 */
+@import url(./style/custom/v-icon-link.css);
+
+/* vlook 方式的封面和封底 */
+@import url(./style/custom/v-conver-img.css);
+@import url(./style/custom/custom-theme-conver-style.css);
+
 /* 其他一些额外属性 */
 @import url(./style/custom/cusotm-f-sp.css);
-@import url(./style/custom/custom-f-bg.css);
 
+/* 列表转表格、看板和面板 */
+@import url(./style/custom/custom-f-bg.css);
 @import url(./style/custom/custom-f-kb.css);
 @import url(./style/custom/custom-f-kbw.css);
 @import url(./style/custom/custom-f-map.css);
-
-@import url(./style/custom/v-icon-link.css);
 
 /* 解决 分栏引用下 display: inline-block 不起作用的问题 */
 .protyle-wysiwyg {
