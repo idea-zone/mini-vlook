@@ -176,10 +176,10 @@
     content: "" !important;
     display: inline-block;
     margin-top: 25px !important;
-    margin-left: 20px !important;
-    margin-right: 15px !important;
+    margin-left: 25px !important;
+    margin-right: 20px !important;
     width: 15rem;
-    height: 15rem;
+    height: 11rem;
     border-radius: 0.25rem;
     background: linear-gradient(rgba(var(--v-theme1-rgb-value), 0.5), rgba(var(--v-theme2-rgb-value), 0.6));
 }
