@@ -100,6 +100,10 @@ div.item__readme kbd {
     margin-right: 0.1em;
 }
 
+.sb .protyle-attr:last-child {
+    border: none !important;
+}
+
 /* ——————————————————————————————————————每个子超级块—————————————————————————————————————— */
 .protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"]>div {
     border: 0.1em dashed rgba(128, 128, 128, 0.5);
@@ -294,7 +298,7 @@ div.item__readme code[data-render="true"] {
 .protyle-wysiwyg [data-node-id].hr>div {
     /* border-bottom: 0.1em solid rgba(128, 128, 128, 0.5); */
     /* background-image:  linear-gradient(125deg, #F44336, #E91E63, #9C27B0, #3F51B5, #2196F3)!important; */
-    background-image: linear-gradient(125deg, #eae6f0, #c7d9de, #9C27B0, #cadde2, #b1d5d4)!important;
+    background-image: linear-gradient(125deg, #eae6f0, #c7d9de, #9C27B0, #cadde2, #b1d5d4) !important;
     height: 1px !important;
     background-size: 400%;
     animation: bganimation 10s infinite !important;
@@ -313,10 +317,11 @@ div.item__readme code[data-render="true"] {
         background-position: 0% 50%;
     }
 }
+
 /* ——————————————————————————————————————————分割线 END—————————————————————————————————————————————— */
 
 /* 任务列表完成时颜色 */
-.protyle-task--done .p{
+.protyle-task--done .p {
     color: var(--v-task--done-color) !important;
 }
 
@@ -340,6 +345,6 @@ div.item__readme code:not([data-render="true"]):hover {
 }
 
 /* 查询语句 */
-[data-type="NodeBlockQueryEmbed"]{
-    border: 2px dotted  var(--b3-protyle-inline-blockref-color) !important;
+[data-type="NodeBlockQueryEmbed"] {
+    border: 2px dotted var(--b3-protyle-inline-blockref-color) !important;
 }
