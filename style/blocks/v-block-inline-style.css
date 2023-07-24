@@ -74,6 +74,26 @@ div.item__readme  del{
 
 /* --------------- 标签 end --------------- */
 
+/* —————————————————————————————————————————— 普通表格 —————————————————————————————————————————— */
+.table table{
+    border: 2px solid var(--v-theme2) !important;;
+}
+
+.table table th{
+    border: 1px solid var(--v-theme2) !important;;
+}
+
+.table table :is(tr,td){
+    border: 1px solid var(--v-theme2) !important;;
+}
+
+/* 任务列表完成时颜色 */
+.protyle-task--done .p {
+    color: var(--v-task--done-color) !important;
+}
+/* —————————————————————————————————————————— 普通表格end —————————————————————————————————————————— */
+
+
 /* 任务列表完成时颜色 */
 .protyle-task--done .p{
     color: var(--v-task--done-color) !important;
@@ -103,3 +123,5 @@ div.item__readme code:not([data-render="true"]):hover
 [data-type="NodeBlockQueryEmbed"]{
     border: 2px dotted  var(--b3-protyle-inline-blockref-color) !important;
 }
+
+

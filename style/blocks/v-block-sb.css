@@ -32,6 +32,12 @@
     margin-right: 0.1em;
 }
 
+/* 解决超级块分栏后的小尾巴问题 */
+.sb .protyle-attr:last-child {
+    border: none !important;
+}
+
+
 /* 鼠标悬浮时变色 */
 /* .protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"] .sb:hover,
 .protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"]>div:hover {
