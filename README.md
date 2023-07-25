@@ -16,7 +16,7 @@
   * 文字竖排块属性**f=sp**
   * 在文档块后方显示 custom-f 后面的内容。
   * 增加在列表块增加  **f=kbw**  实现仿 workflowy 看板渲染效果
-  * 增加在 **f=card** 实现卡片效果，**f=kbw img-top**(没有图片默认添加变色块)，**f=kbw  list**（多个 card 同行显示）
+  * 增加在 **f=card** 实现卡片效果，**f=card card.img-top**(没有图片默认添加变色块)，**f=card  card.list**（多个 card 同行显示）
   * 自动编号
 
     * 块属性**f=bt**可关闭
