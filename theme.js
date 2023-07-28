@@ -240,18 +240,17 @@ window.theme.changeThemeMode = function (
 }
 
 /* 根据当前主题模式加载样式配置文件 */
-window.theme.changeThemeMode(
-
-    `/appearance/themes/mini-vlook/style/vlook/vlook-v0.css`,
-    `/appearance/themes/mini-vlook/style/vlook/vlook-v1.css`,
-
-    `/appearance/themes/mini-vlook/style/config/vlook-config.css`,
-    `/appearance/themes/mini-vlook/style/config/vlook-config-dark.css`,
-
-    `/widgets/custom-light.css`,
-    `/widgets/custom-dark.css`,
-);
-
+if (
+    window.siyuan.config.appearance[
+      window.siyuan.config.appearance.mode ? "themeDark" : "themeLight"
+    ] === "mini-vlook"
+  ) {
+    window.theme.changeThemeMode(
+      `/widgets/custom-light.css`,
+      `/widgets/custom-dark.css`
+    );
+  }
+  
 
 // (src, type = 'module', async = false, defer = false) 
 window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/static/moment.min.js"),"text/javascript", false, true);
