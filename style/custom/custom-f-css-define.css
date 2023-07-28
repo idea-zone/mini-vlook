@@ -1,0 +1,30 @@
+
+
+/* 几个宽度设置 */
+.protyle-wysiwyg [custom-width~="50px"] {
+    width: 50px;
+}
+
+.protyle-wysiwyg [custom-width~="100px"] {
+    width: 100px;
+}
+
+.protyle-wysiwyg [custom-width~="150px"] {
+    width: 150px;
+}
+
+.protyle-wysiwyg [custom-width~="200px"] {
+    width: 200px;
+}
+
+.protyle-wysiwyg [custom-width~="300px"] {
+    width: 300px;
+}
+
+.protyle-wysiwyg [custom-width~="400px"] {
+    width: 400px;
+}
+
+.protyle-wysiwyg [custom-width~="500px"] {
+    width: 500px;
+}

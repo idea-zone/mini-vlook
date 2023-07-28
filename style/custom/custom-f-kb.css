@@ -1,0 +1,238 @@
+/*
+ * 参考资料：
+ * 1. 是在 Zhang-Light 的主题下测试的
+*  2. 思路借鉴 Zhang-Light 主题的 列表转表格 功能
+ * 3. 列表竖排：https://karthikdevarticles.com/creating-a-kanban-board-with-html-css-and-javascript
+ * 4. 安装：在 css 文件中添加 list-to-kanban-by-line.css 的路径 
+      @import url(path/to/list-to-kanban-by-line.css);
+ * 5. 在列表前有连续两行分割符即可，支持无序列表和有序列表。
+ *
+ * 制作人: 路人二
+ * 版本: V0.0.1-dev
+ * 时间: 2022-04-15
+ * 更新日志：
+ *  1. 完成基本的渲染功能
+ */
+
+/* -----------------------------------------------列表转化为表格------------------------------------------- */
+/* 设置整个列表表格的缩进 */
+
+/* 01-竖向排列的列表-横向排列:在导出的时候，取消竖排，避免导出内容缺失 */
+
+:not(#preview).protyle-wysiwyg .list[custom-f~=kb][data-node-id][data-type="NodeList"],
+:not(#preview).protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+.list[data-node-id][data-type="NodeList"],
+:not(#preview).protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+.list[data-node-id][data-type="NodeList"] {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: var(--kbline-boarditem-maxwidth);
+    /*固定宽度*/
+}
+
+/* ————————————————————所有子项目的表格（除去第一列其余的列），包含溢出的空白部分，所以才会有边框—————————————————————— */
+.protyle-wysiwyg *[custom-f~=kb] .li .list,
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq) .li .list,
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq) .li .list {
+    /* outline: var(--kbline-border-normal); */
+    color: var(--kbline-board-item-color);
+    /* background: var(--kbline-board-bg-color); */
+
+    padding: 0px;
+    padding-right: 15px;
+    min-width: var(--kbline-boarditem-minwidth);
+    min-height: var(--kbline-boarditem-minHight);
+
+    border-radius: var(--kbline-board-border-radius);
+
+    /* padding: 0.75em 0.05em; */
+    padding: 0.75em 0.05em 0.1em 1em;
+    margin-top: 0;
+    transform: translate(-15px, 0);
+}
+
+/* ————————————————————对所有子列表项设置格式———————————————————— */
+.protyle-wysiwyg *[custom-f~=kb] .li,
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq) .li,
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq) .li {
+
+    min-height: var(--kbline-boarditem-minHight);
+    outline: var(--kbline-border-normal);
+    /* outline: 1px solid #e7e7e7;  */
+    border-radius: var(--kbline-board-border-radius);
+    background: var(--kbline-board-bg-color1);
+
+    padding: 0.75em 0.05em 0.25em 0.05em;
+    margin-top: 0;
+    margin-bottom: var(--kbline-boarditem-margin-bottom);
+}
+
+.protyle-wysiwyg *[custom-f~=kb] .li .p span[data-type='code'],
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq) .li .p span[data-type='code'],
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq) .li .p span[data-type='code'] {
+    color: var(--kbline-board-item-code-color);
+}
+
+
+/*处理最最外层的边框颜色（整个看板）*/
+.protyle-wysiwyg *[custom-f~=kb][data-node-index]:not([data-type="NodeBlockquote"])>div,
+.protyle-wysiwyg *[custom-f~=kb]:not([data-type="NodeBlockquote"])>div,
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq)[data-node-index]:not([data-type="NodeBlockquote"])>div,
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq):not([data-type="NodeBlockquote"])>div,
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq)[data-node-index]:not([data-type="NodeBlockquote"])>div,
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq):not([data-type="NodeBlockquote"])>div {
+    outline-color: var(--kbline-outline-color);
+    margin-left: var(--kbline-bord-margin);
+    background: var(--kbline-board-bg-color);
+}
+
+/*只处理每个列表的第一行*/
+.protyle-wysiwyg *[custom-f~=kb][data-node-index]:not([data-type="NodeBlockquote"])>div>div:nth-child(2),
+.protyle-wysiwyg *[custom-f~=kb]:not([data-type="NodeBlockquote"])>div>div:nth-child(2),
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq)[data-node-index]:not([data-type="NodeBlockquote"])>div>div:nth-child(2),
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq):not([data-type="NodeBlockquote"])>div>div:nth-child(2),
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq)[data-node-index]:not([data-type="NodeBlockquote"])>div>div:nth-child(2),
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq):not([data-type="NodeBlockquote"])>div>div:nth-child(2) {
+
+    min-width: var(--kbline-boarditem-minwidth);
+    color: var(--kbline-board-title-color);
+    font-weight: bold;
+
+    /*居中*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* outline: var(--kbline-border-normal); */
+    /* border-radius: 0 var(--kbline-board-border-radius) var(--kbline-board-border-radius) 0; */
+    border-radius: var(--kbline-board-border-radius);
+
+
+    padding: 0.75em 0.05em;
+    margin-top: 0;
+    /* margin-bottom: 5px; */
+    transform: translate(-0.75em, 0);
+}
+
+/*只处理每个列表第一行的点*/
+.protyle-wysiwyg *[custom-f~=kb][data-node-index]:not([data-type="NodeBlockquote"])>div>div:nth-child(1),
+.protyle-wysiwyg *[custom-f~=kb]:not([data-type="NodeBlockquote"])>div>div:nth-child(1),
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq)[data-node-index]:not([data-type="NodeBlockquote"])>div>div:nth-child(1),
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq):not([data-type="NodeBlockquote"])>div>div:nth-child(1),
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq)[data-node-index]:not([data-type="NodeBlockquote"])>div>div:nth-child(1),
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq):not([data-type="NodeBlockquote"])>div>div:nth-child(1) {
+    padding: 0.08em;
+    z-index: 1;
+    color: var(--kbline-board-title-svg-color);
+    transform: translate(0.75em, 50%);
+
+    /* background-color: var(--kbline-board-title-svg-bg); */
+    /* border-radius: var(--kbline-board-border-radius) 0 0 var(--kbline-board-border-radius); */
+
+}
+
+/* ————————————————————大神增加代码———————————————————— */
+.protyle-wysiwyg *[custom-f~=kb] [data-node-id].li>[data-node-id],
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq) [data-node-id].li>[data-node-id],
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq) [data-node-id].li>[data-node-id] {
+    /*右侧出现线条，把第一行的左移动，文本和子列表对齐*/
+    margin-left: 30px;
+}
+
+/*（效果不好）悬浮在块上的时候有颜色, 会同时高亮选中的所有的 item 而不是单个*/
+/* .protyle-wysiwyg *[custom-f~="kb"] .li:hover{
+    background-color: var(--kbline-theme-hover2);
+} */
+/*（勉强还行）悬浮在块上的时候有颜色, 但只高亮文字，而不是全部块*/
+.protyle-wysiwyg *[custom-f~=kb] .p:hover,
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq) .p:hover,
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq) .p:hover {
+    background-color: var(--kbline-theme-hover2);
+    color: var(--kbline-theme-hover1);
+}
+
+/* ————————————————————去除小竖线———————————————————— */
+.list[custom-f~=kb][data-node-id][data-type="NodeList"] .li>:before,
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+.list[data-node-id][data-type="NodeList"] .li>:before,
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+.list[data-node-id][data-type="NodeList"] .li>:before {
+    display: none;
+}
+
+/* ————————————————————减小前面符号·的大小———————————————————— */
+.list[custom-f~=kb][data-node-id][data-type="NodeList"] .protyle-action,
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+.list[data-node-id][data-type="NodeList"] .protyle-action,
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+.list[data-node-id][data-type="NodeList"] .protyle-action {
+    color: var(--kbline-board-title-svg-colo);
+}
+
+.list[custom-f~=kb][data-node-id][data-type="NodeList"] .protyle-action>svg,
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+.list[data-node-id][data-type="NodeList"] .protyle-action>svg,
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+.list[data-node-id][data-type="NodeList"] .protyle-action>svg {
+    width: 10px;
+}
+
+/* 对除了第一层之外的子列表 .protyle-action 移动 */
+.protyle-wysiwyg *[custom-f~=kb] .li .list .protyle-action,
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq) .li .list .protyle-action,
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq) .li .list .protyle-action {
+
+    z-index: 1;
+    position: absolute;
+    top: 20px;
+    transform: translate(0.75em, -50%);
+    width: 20px;
+    height: 20px;
+
+    background: var(--kbline-board-pa-color);
+    border-radius: var(--kbline-board-border-radius);
+}
+
+/* 对除了第一层之外的子列表 文本 也移动 */
+.protyle-wysiwyg *[custom-f~=kb] .li .list .p,
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq) .li .list .p,
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq) .li .list .p {
+    word-break: break-all;
+}
+
+
+/* 去掉多余的边框*/
+.protyle-wysiwyg *[custom-f~=kb] .list,
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq) .list,
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq) .list {
+    outline: none;
+}
+
+
+/*------------------解决文字跨行时，上面一行间距很宽的问题------------------------*/
+.protyle-wysiwyg *[custom-f~=kb] .p>div,
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq) .p>div,
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq) .p>div {
+    word-break: break-all;
+}
+
+
+/*标题行循环颜色*/
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq)[data-node-index]>div:nth-child(4n-3)>div:nth-child(2),
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq)[data-node-index]>div:nth-child(4n-3)>div:nth-child(2),
+.protyle-wysiwyg *[custom-f~=kb][data-node-index]>div:nth-child(4n-3)>div:nth-child(2) {
+    background-color: var(--kbline-board-title-bg1);
+}
+
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq)[data-node-index]>div:nth-child(4n-2)>div:nth-child(2),
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq)[data-node-index]>div:nth-child(4n-2)>div:nth-child(2),
+.protyle-wysiwyg *[custom-f~=kb][data-node-index]>div:nth-child(4n-2)>div:nth-child(2) {
+    background-color: var(--kbline-board-title-bg2);
+}
+
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq)[data-node-index]>div:nth-child(4n-1)>div:nth-child(2),
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq)[data-node-index]>div:nth-child(4n-1)>div:nth-child(2),
+.protyle-wysiwyg *[custom-f~=kb][data-node-index]>div:nth-child(4n-1)>div:nth-child(2) {
+    background-color: var(--kbline-board-title-bg3);
+}
+
+.protyle-wysiwyg[custom-f~=bc] .hr:first-child+.hr+*:not(.bq)[data-node-index]>div:nth-child(4n)>div:nth-child(2),
+.protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+*:not(.bq)[data-node-index]>div:nth-child(4n)>div:nth-child(2),
+.protyle-wysiwyg *[custom-f~=kb][data-node-index]>div:nth-child(4n)>div:nth-child(2) {
+    background-color: var(--kbline-board-title-bg4);
+}
+
+
+/* ---------------------------------------------------------列表转化为表格 END-------------------------------------------------- */

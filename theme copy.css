@@ -1,0 +1,217 @@
+@import url(/appearance/themes/mini-vlook/style/config/theme-conifg.css);
+
+/* ——————————————————————————— 菜单块设置 ——————————————————————————— */
+@import url(/appearance/themes/mini-vlook/style/menus/menu.css);
+
+@import url(/appearance/themes/mini-vlook/style/menus/four-menu-splite.css);
+
+/* 修改文档树样式  */
+@import url(/appearance/themes/mini-vlook/style/customs/file-tree.css);
+
+/*底部状态栏*/
+@import url(/appearance/themes/mini-vlook/style/customs/dock-status.css);
+
+/* ——————————————————————————— 基础块设置 ——————————————————————————— */
+/*引用-配色*/
+@import url(/appearance/themes/mini-vlook/style/blocks/v-block-bq.css);
+
+/*标题-配色*/
+@import url(/appearance/themes/mini-vlook/style/blocks/v-block-heading.css);
+
+/*分隔线-配色 */
+@import url(/appearance/themes/mini-vlook/style/blocks/v-block-hr.css);
+
+/*行内样式配色-配色*/
+@import url(/appearance/themes/mini-vlook/style/blocks/v-block-inline-style.css);
+
+/*代码块-配色*/
+@import url(/appearance/themes/mini-vlook/style/blocks/v-block-code-block.css);
+
+/*超级块-配色*/
+@import url(/appearance/themes/mini-vlook/style/blocks/v-block-sb.css);
+
+
+/* ——————————————————————————— 功能块设置 ——————————————————————————— */
+
+/*自动编号-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/block-heading.css);
+
+/*网格背景-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/bg-grid-style.css);
+
+/*列表转表格-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/list-to-bg-by-line.css);
+
+/*列表转看板-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/list-to-kanban-by-line.css);
+
+/*kbw 看板功能（仿 workflowy）-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/kbw-kanban.css);
+
+/* card 样式 */
+@import url(/appearance/themes/mini-vlook/style/customs/card-style.css);
+
+/* @import url(/appearance/themes/mini-vlook/style/customs/list-to-kanban-by-line2.css);  */
+
+/*列表转导图-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/list-to-mind-by-line.css);
+
+/*引用分栏-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/bq-splite-by-line.css);
+
+/*封底&封面-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/conver-style.css);
+
+/*微章-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/codelabel-wz.css);
+
+/*微章-整行-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/codelabel-wz-line.css);
+
+/*刮刮乐-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/code-rb-coad.css);
+
+/*注音-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/codelabel-pg.css);
+
+/*计数任务-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/codelabel-todo.css);
+
+/*下拉框-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/codelabel-cx.css);
+
+/*block-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/codelabel-block-bq.css);
+
+/*链接图标-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/icon-link.css);
+@import url(/appearance/themes/mini-vlook/style/customs/span-link.css);
+
+/*显示模式-功能*/
+@import url(/appearance/themes/mini-vlook/style/customs/custom-display-mode.css);
+
+/*多级标签*/
+@import url(/appearance/themes/mini-vlook/style/customs/mult-tag-lv.css);
+
+/*分页引用*/
+@import url(/appearance/themes/mini-vlook/style/customs/tab-bqe.css);
+
+/*tick*/
+@import url(/appearance/themes/mini-vlook/style/customs/codelabel-tick.css);
+
+/* nodeattr 挂件 */
+@import url(/appearance/themes/mini-vlook/style/customs/nodeattr.css);
+
+/* card 样式 */
+@import url(/appearance/themes/mini-vlook/style/customs/card-style.css);
+
+
+/* .protyle-wysiwyg .hr+.render-node::before
+,.protyle-wysiwyg .hr+.render-node+.render-node::before
+{
+    content: attr(data-node-id);
+    height:100%;
+    float:left;
+    padding-right:100px ;
+    box-sizing:border-box;
+    cursor: pointer;
+}  */
+
+/* ALT+Enter */
+.protyle-wysiwyg [data-type="em"][style*="--before-ctx"]::before {
+    content: var(--before-ctx);
+}
+
+/* 显示 custom-f 的内容：当不是标题行的时候 */
+.protyle-wysiwyg [data-node-id]:not([data-subtype^="h"])[custom-f]:before {
+    content: attr(custom-f);
+    float: right;
+    color: rgba(var(--v-theme2-rgb-value), 0.5);
+    background-color: var(--b3-theme-primary-lightest);
+    padding: 0px 3px 0px 3px !important;
+    border-radius: 5px;
+}
+
+/* 显示 custom-f 的内容：当是标题行的时候 */
+.protyle-wysiwyg [data-node-id][data-subtype^="h"][custom-f]::after {
+    content: attr(custom-f);
+    float: right;
+    color: rgba(var(--v-theme2-rgb-value), 0.5);
+    background-color: var(--b3-theme-primary-lightest);
+    padding: 0px 3px 0px 3px !important;
+    border-radius: 5px;
+}
+
+/* 添加 custom-f~="btn" 属性 */
+.protyle-wysiwyg [custom-f~="btn"]::before {
+    content: '' !important;
+}
+
+.protyle-wysiwyg [custom-f~="btn"] {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid var(--b3-theme-primary-lightest) !important;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+    color: #fff !important;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.protyle-wysiwyg [custom-f~="btn"] [data-type="a"] {
+    color: #fff !important;
+}
+
+/* 悬浮按钮 */
+.protyle-wysiwyg .protyle-gutters {
+    /* background-color: red;
+    float: right !important; */
+}
+
+/* 几个宽度设置 */
+.protyle-wysiwyg [custom-width~="50px"] {
+    width: 50px;
+}
+
+.protyle-wysiwyg [custom-width~="100px"] {
+    width: 100px;
+}
+
+.protyle-wysiwyg [custom-width~="150px"] {
+    width: 150px;
+}
+
+.protyle-wysiwyg [custom-width~="200px"] {
+    width: 200px;
+}
+
+.protyle-wysiwyg [custom-width~="300px"] {
+    width: 300px;
+}
+
+.protyle-wysiwyg [custom-width~="400px"] {
+    width: 400px;
+}
+
+.protyle-wysiwyg [custom-width~="500px"] {
+    width: 500px;
+}
+
+
+/* 解决 分栏引用下 display: inline-block 不起作用的问题 */
+.protyle-wysiwyg {
+    display: block;
+}

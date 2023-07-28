@@ -1075,9 +1075,15 @@
     background-image: url(/appearance/themes/mini-vlook/icon/jianshu.svg);
 }
 
+
 .protyle-wysiwyg [data-node-id] span[data-type='a'][data-href *="gitee.com"]:not(:empty)::before,
 .b3-typography a[href *="gitee.com"]::before {
     background-image: url(/appearance/themes/mini-vlook/icon/gitee.svg);
+}
+
+.protyle-wysiwyg [data-node-id] span[data-type='a'][data-href *="git"]:not(:empty)::before,
+.b3-typography a[href *="git"]::before {
+    background-image: url(/appearance/themes/mini-vlook/icon/git.svg);
 }
 
 .protyle-wysiwyg [data-node-id] span[data-type='a'][data-href *="wikipedia.org"]:not(:empty)::before,
@@ -1159,11 +1165,6 @@
 .protyle-wysiwyg [data-node-id] span[data-type='a'][data-href *="github.io"]:not(:empty)::before,
 .b3-typography a[href *="github.io"]::before {
     background-image: url(/appearance/themes/mini-vlook/icon/blog.svg);
-}
-
-.protyle-wysiwyg [data-node-id] span[data-type='a'][data-href *="git"]:not(:empty)::before,
-.b3-typography a[href *="git"]::before {
-    background-image: url(/appearance/themes/mini-vlook/icon/git.svg);
 }
 
 .protyle-wysiwyg [data-node-id] span[data-type='a'][data-href *="github.com"]:not(:empty)::before,

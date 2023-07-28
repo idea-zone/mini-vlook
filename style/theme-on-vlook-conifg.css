@@ -1,0 +1,252 @@
+:root {
+    /* ---------------------------------  兼容性的配置 */
+    /*主题色1*/
+    --v-theme1: var(--ac-theme1);
+    --v-theme1-rgb-value: 128, 100, 169;
+    --v-theme1-color: #fff;
+
+    /*主题色2*/
+    --v-theme2: var(--ac-theme2);
+    --v-theme2-rgb-value: 42, 168, 153;
+    --v-theme2-color: #fff;
+
+    /* 警告类-背景颜色*/
+    --v-theme-error: #d23f31;
+    --v-theme-on-error: #fff;
+
+    /*编辑区*/
+    --v-theme-background: var(--bg-color);
+    --v-theme-background-light: rgba(238, 238, 238, .25)
+
+    /*编辑区/列表区*/
+    --v-theme-on-background: var(--d-f-c);
+
+    /*面板区*/
+    --v-theme-surface: var(--bg-color);
+    /*前缀/序号/tab文字*/
+    --v-theme-on-surface: var(--d-f-c);
+
+    /*文档树*/
+    --b3-theme-background2: #8f91a0;
+    --b3-filetree-background: var(--bg-color);
+
+    /*线条*/
+    --v-border-color: rgba(0, 0, 0, .1);
+
+
+    /* 滚动条 */
+    --v-scroll-color: rgba(0, 0, 0, .2);
+
+    /* 列表 */
+    --v-list-hover: rgba(var(--v-theme2-rgb-value), 0.65);
+
+    /* 右键/cms菜单 */
+    --v-menu-background: var(--bg-color);
+
+    /* 提示 */
+    --v-tooltips-color: #f8f9fa;
+    --v-tooltips-background: rgba(var(--v-theme1-rgb-value), 0.6);
+    --v-tooltips-shadow: 0 2px 8px rgba(var(--v-theme1-rgb-value), .1);
+
+    /* 遮罩 */
+    --v-mask-background: rgba(var(--v-theme1-rgb-value), 0.78);
+
+    /*背景*/
+    --v-fig-grid: var(--v-fig-grid-l-lg);
+    --v-bg-grid-color1: rgba(60, 10, 30, 0.05);
+    --v-bg-grid-color2: rgba(148, 35, 80, 0.05);
+
+
+    /*链接颜色*/
+    --v-block-link-color: var(--a-color);
+    /*高亮/标记颜色*/
+    --v-block-mark-color: var(--d-f-c);
+    --v-block-mark-bg-color: var(--mark-bg);
+    /*内容引用块颜色*/
+    --v-block-blockref-color: var(--ac-theme1);
+
+    /*标签颜色*/
+    --v-block-tag-color: var(--v-btn-f);
+    --v-block-tag-bg-color: var(--v-btn-bg);
+
+    /*代码块颜色*/
+    --v-block-code-bg-color: var(--code-bg);
+    --v-black-code-font-family: var(--v-f-fm-code);
+    --v-black-code-boder-color: var(--tbl-bder);
+
+    /*删除块颜色  #6670a9 */
+    --v-block-del-color: var(--d-f-c-alt);
+    /*斜体颜色*/
+    --v-block-em-color: var(--d-f-c);
+    /*加粗颜色*/
+    --v-block-strong-color: var(--d-f-c);
+    /* 任务完成颜色 */
+    --v-task--done-color:var(--ac-gray-title);
+
+
+    /*键盘按键色*/
+    --v-block-kbd-font: var(var(--v-f-w-bd) 0.75em var(--v-f-fm-key));
+    --v-block-kbd-border-radius: var(--v-r-s-small);
+    --v-block-kbd-color: var(--d-bc);
+    --v-block-kbd-border-shadow: var(--key-shadow);
+    --v-block-kbd-border-color: var(--key-reflect);
+
+    /*标签设置*/
+    --v-tag-bgcolor: var(--v-theme1);
+    --v-tag-color: #ffffff;
+    --v-tag-icon: #c8b7e3;
+    --v-theme-background-gray: #e7ecef;
+    --v-border-dashed-gray: 1px dashed #c8b7e3;
+
+    /* 圆角左右两端都为半圆形 */
+    --v-border-radius-half-round: 50px;
+
+
+    /*引用块设置*/
+    --v-block-bq-color: var(--d-f-c);
+    --v-block-bq-bg-color: var(--ac-theme1-fade);
+    --v-block-bq-border-radius: var(--v-r-b);
+
+    /*h1~h6*/
+    --v-block-heading-top-shadow: var(--h-box-shadow);
+    --v-block-heading-color: var(--h-f);
+    --v-block-heading-border-radius: var(--v-r-b);
+    --v-block-heading-start-bg-color: var(--h-bg-start);
+    --v-block-heading-end-bg-color: var(--h-bg-end);
+
+    /*hr*/
+    --v-block-hr-border-radius: 0px;
+
+    /* ———————————————————— 列表2看板 ———————————————————— */
+
+    --kbline-board-bg-color: #e7e7e7;
+    /* 主背景色 */
+	/* 各个子项背景色 */
+    --kbline-board-pa-color: #a1a2a5;
+    /* 列表项的点 */
+    --kbline-board-bg-color1: #fdfdfd;
+    /* 各个子项背景色 */
+
+    --kbline-theme-hover2: #f8ecec;
+    /*鼠标悬浮的背景色*/
+    --kbline-theme-hover1: var(--d-f-c);
+    /*鼠标悬浮的前景色*/
+
+    --kbline-border-normal: 1px solid var(--kbline-board-bg-color);
+    /* 边框的颜色 */
+    --kbline-outline-color: #fcf9f2;
+    /* 最外层边框 */
+
+    --kbline-board-border-radius: var(--v-r-b);
+    /*圆角弧度*/
+    --kbline-board-border-color: var(--ac-theme2);
+    /*边框颜色*/
+
+
+    --kbline-board-title-svg-color: var(--d-f-c);
+    /*符号·的前景色*/
+    --kbline-board-title-svg-bg: #c0e9fc;
+    /*符号·的背景色*/
+
+
+    /*循环标题颜色设置*/
+    --kbline-board-title-bg1: rgba(253, 236, 234, 1);
+    /*标题的背景色*/
+    --kbline-board-title-bg2: rgba(255, 244, 229, 1);
+    /*标题的背景色*/
+    --kbline-board-title-bg3: rgba(232, 244, 253, 1);
+    /*标题的背景色*/
+    --kbline-board-title-bg4: rgba(237, 247, 237, 1);
+
+    --kbline-board-title-color: var(--d-f-c);
+    /*标题的前景色*/
+
+    --kbline-board-item-color: var(--d-f-c);
+    /*看板卡片前景色*/
+    --kbline-board-item-code-color: var(--d-f-c);
+
+    /*调整下面参数，可能会产生一些渲染bug*/
+    --kbline-bord-margin: 10px;
+    /*看板列表-之间的间距*/
+    --kbline-boarditem-margin-bottom: 5px;
+    /*看板卡片-之间的间距*/
+    --kbline-boarditem-maxwidth: 25rem;
+    /*看板卡片的最大宽度*/
+    --kbline-boarditem-minwidth: 14rem;
+    /*看板卡片的最小宽度*/
+    --kbline-boarditem-minHight: 4.5rem;
+    /*看板卡片的最小高度*/
+
+    /* ———————————————————— 列表2看板(end) ———————————————————— */
+
+    /*———————————————————— 列表2表格————————————————————*/
+
+    --b3-border-normal: 1px solid #ddd4df;
+
+    /*———————————————————— 列表2表格(end)————————————————————*/
+
+    /*———————————————————— 列表2导图————————————————————*/
+    /*旧版文本框*/
+    /* --mapline-p-bg-color:#fff; */
+
+    /*导图*/
+    --b3-border-daotu: 2px solid #ffb8b8 !important;
+    --b3-block-daotu: #fff !important;
+
+    /*———————————————————— 列表2导图(end)————————————————————*/
+
+    /*一些其他配色 dd */
+
+    --v3-cwtag-color1: #CC3140;
+    /** 'red' */
+    --v3-cwtag-color2: #F87000;
+    /** 'orange' */
+    --v3-cwtag-color3: #FDC000;
+    /** 'yellow' */
+    --v3-cwtag-color4: #B2D115;
+    /** 'lime' */
+    --v3-cwtag-color5: #30A830;
+    /** 'green' */
+    --v3-cwtag-color6: #2DE0C8;
+    /** 'aqua' */
+    --v3-cwtag-color7: #17B1C2;
+    /** 'cyan' */
+    --v3-cwtag-color8: #2290F0;
+    /** 'blue' */
+    --v3-cwtag-color9: #2D51E0;
+    /** 'sea' */
+    --v3-cwtag-color10: #7073D6;
+    /** 'steel' */
+    --v3-cwtag-color11: #954ECC;
+    /** 'purple' */
+    --v3-cwtag-color12: #E64ED6;
+    /** 'magenta' */
+    --v3-cwtag-color13: #FAB9D1;
+    /** 'pink' */
+    --v3-cwtag-color14: #E0BF9D;
+    /** 'gold' */
+    --v3-cwtag-color15: #855F3A;
+    /** 'brown' */
+    --v3-cwtag-color16: #9498A0;
+    /** 'gray' */
+    --v3-cwtag-color17: #16192a;
+    /** 'black' */
+    --v3-cwtag-color18: #8064A9;
+    /** 'theme1' */
+    --v3-cwtag-color19: #2AA899;
+    /** 'theme2' */
+
+    /*底栏状态*/
+    --b3-status-msg-background: var(--bg-color);
+
+    /* dock栏 */
+    --b3-dockright-color: rgb(55, 53, 47, .5);
+    --b3-dockright-background: rgba(237, 236, 233);
+    --b3-dockright-item-active-background:  #fff;
+    --b3-dockleft-color: rgb(55, 53, 47, .5);
+    --b3-dock-background: rgba(237, 236, 233);
+    --b3-dockleft-item-active-background: #fff;
+    --b3-dock-item-active-color: #eb8383;
+    --b3-dock-item-hover-background: #fff;
+    --b3-dock-stats-counter-color: #fff;
+}

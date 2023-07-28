@@ -1,0 +1,191 @@
+/**
+ * 代码参考自: [VLook](https://madmaxchow.github.io/VLOOK/index.html)。 
+ * 通过引用分栏: 在引用块前，添加分割线，会让下方的连续的引用块分栏显示。
+ * #1分割线|分2栏# ; #2分割线分|3栏# ;  #3分割线|分4栏# ; 
+ * 
+ * 版本: V17
+ * 时间: 2023-06-27
+ * 更新日志：
+ *  1. 添加对分栏的设置
+ */
+
+:root {
+    /*两栏的宽度*/
+    --bq-two-line-width: 46%;
+    /*三栏的宽度*/
+    --bq-three-line-width: 29.79%;
+    /*四栏的宽度*/
+    --bq-four-line-width: 21.75%;
+    /* 栏与栏之间的留白 */
+    --bq-splt-space-width: 0.5%;
+}
+
+/* 如果是 在引用内的 引用，设置分栏和颜色 */
+.bq .bq {
+    color: var(--d-f-c);
+    background: var(--ac-theme1-fade);
+    border-radius: var(--v-r-b);
+    padding: .75em 1em;
+    margin-top: 0;
+    margin-bottom: .5em;
+    --bq-two-line-width: 40%;
+    --bq-three-line-width: 26%;
+    --bq-four-line-width: 19%;
+    --bq-splt-space-width: 0.5%;
+}
+
+
+/* 如果是 在引用内的 引用，调整长度 */
+.bq .hr+.bq::before,
+.bq .hr+.bq+.bq::before{
+        /* ⬛︎ ⬛︎  2 Columns of Quote  ⬛︎ ⬛︎ */
+    width: 150%;
+
+}
+
+/* 如果是 在引用内的 引用，调整长度 */
+.bq .hr+.hr+.bq::before,
+.bq .hr+.hr+.bq+.bq::before,
+.bq .hr+.hr+.bq+.bq+.bq::before{
+        /* ⬛︎ ⬛︎ ⬛︎  3 Columns of Quote  ⬛︎ ⬛︎ ⬛︎ */
+        width: 260%;
+}
+
+/* 如果是 在引用内的 引用，调整长度 */
+.bq .hr+.hr+.hr+.bq::before,
+.bq .hr+.hr+.hr+.bq+.bq::before,
+.bq .hr+.hr+.hr+.bq+.bq+.bq::before,
+.bq .hr+.hr+.hr+.bq+.bq+.bq+.bq::before {
+    /* ⬛︎ ⬛︎ ⬛︎ ⬛︎  4 Columns of Quote  ⬛︎ ⬛︎ ⬛︎ ⬛︎ */
+    width: 350%;
+}
+
+.bq,
+body:not([class]) .bq {
+    color: var(--d-f-c);
+    background: var(--ac-theme1-fade);
+    border-radius: var(--v-r-b);
+    padding: .75em 1em;
+    margin-top: 0;
+    margin-bottom: .5em
+}
+
+/* :is(.md-table-fig, .md-fences)+.bq,
+:is(.v-cap-cntr, .v-cap-cntr+.v-content-expander)+.bq {
+    width: fit-content;
+    max-width: 100%;
+    background: var(--pn-c) !important;
+    border-top-left-radius: 0;
+    margin-top: -.25em
+} */
+
+.hr+.bq::before {
+    content: "⬛︎ ⬛︎  2 Columns of Quote  ⬛︎ ⬛︎";
+    width: 197%;
+
+    background-color: var(--pn-c-alt);
+    font-size: .75em;
+    font-weight: 700;
+    color: var(--d-f-c);
+    font-style: italic;
+    text-align: center;
+    white-space: pre;
+    opacity: .5;
+    padding: 0px 50px 0px 50px;
+    position: absolute;
+    left: 0px;
+    right: -2%;
+    pointer-events: none;
+    margin-top: -30px;
+}
+
+.hr+.hr+.bq::before {
+    content: "⬛︎ ⬛︎ ⬛︎  3 Columns of Quote  ⬛︎ ⬛︎ ⬛︎";
+    width: 297%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-top: -43px;
+}
+
+.hr+.hr+.hr+.bq::before {
+    content: "⬛︎ ⬛︎ ⬛︎ ⬛︎  4 Columns of Quote  ⬛︎ ⬛︎ ⬛︎ ⬛︎";
+    width: 396%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: -47px;
+}
+
+:is(.hr, .hr)+.bq,
+:is(.hr, .hr)+.bq+.bq {
+    color: var(--d-f-c);
+    display: inline-block !important;
+    max-width: var(--bq-two-line-width) !important;
+    min-width: var(--bq-two-line-width) !important;
+    vertical-align: top
+}
+
+:is(.hr, .hr)+.bq+.bq {
+    margin-left: var(--bq-splt-space-width) !important
+}
+
+:is(.hr+.hr, .hr+.hr)+.bq,
+:is(.hr+.hr, .hr+.hr)+.bq+.bq,
+:is(.hr+.hr, .hr+.hr)+.bq+.bq+.bq {
+    color: var(--d-f-c);
+    display: inline-block !important;
+    max-width: var(--bq-three-line-width)!important;
+    min-width: var(--bq-three-line-width)!important;
+    vertical-align: top
+}
+
+:is(.hr+.hr+.hr, .hr+.hr+.hr)+.bq,
+:is(.hr+.hr+.hr, .hr+.hr+.hr)+.bq+.bq,
+:is(.hr+.hr+.hr, .hr+.hr+.hr)+.bq+.bq+.bq,
+:is(.hr+.hr+.hr, .hr+.hr+.hr)+.bq+.bq+.bq+.bq {
+    color: var(--d-f-c);
+    display: inline-block !important;
+    max-width: var(--bq-four-line-width) !important;
+    min-width: var(--bq-four-line-width) !important;
+    vertical-align: top
+}
+
+:is(.hr+.hr+.hr, .hr+.hr+.hr)+.bq+.bq,
+:is(.hr+.hr+.hr, .hr+.hr+.hr)+.bq+.bq+.bq,
+:is(.hr+.hr+.hr, .hr+.hr+.hr)+.bq+.bq+.bq+.bq,
+:is(.hr+.hr, .hr+.hr)+.bq+.bq,
+:is(.hr+.hr, .hr+.hr)+.bq+.bq+.bq {
+    margin-left: var(--bq-splt-space-width) !important
+}
+
+.bq>.p {
+    margin-bottom: 0
+}
+
+.bq .hr {
+    border-color: var(--d-f-c);
+    opacity: .2
+}
+
+.bq .h6 {
+    padding: 5px 0;
+    margin-top: 0;
+    color: var(--d-f-c);
+    font-size: 1.375em
+}
+
+.bq .bq .h6 {
+    font-size: 1.25em
+}
+
+.bq .h6 [data-type="a"] {
+    margin-left: -.1em
+}
+
+.bq .h6::before {
+    content: "" !important;
+    margin-left: 0 !important
+}
+
+.bq .protyle-linenumber__rows {
+    color: var(--h-f)
+}
