@@ -100,6 +100,7 @@ div.item__readme kbd {
     margin-right: 0.1em;
 }
 
+/* 解决超级块分栏后的小尾巴问题 */
 .sb .protyle-attr:last-child {
     border: none !important;
 }
@@ -320,10 +321,24 @@ div.item__readme code[data-render="true"] {
 
 /* ——————————————————————————————————————————分割线 END—————————————————————————————————————————————— */
 
+/* —————————————————————————————————————————— 普通表格 —————————————————————————————————————————— */
+.table table{
+    border: 2px solid var(--v-theme2) !important;;
+}
+
+.table table th{
+    border: 1px solid var(--v-theme2) !important;;
+}
+
+.table table :is(tr,td){
+    border: 1px solid var(--v-theme2) !important;;
+}
+
 /* 任务列表完成时颜色 */
 .protyle-task--done .p {
     color: var(--v-task--done-color) !important;
 }
+/* —————————————————————————————————————————— 普通表格end —————————————————————————————————————————— */
 
 /* 
  * 悬浮提示

@@ -1,0 +1,186 @@
+/* 各级标题 */
+
+/* 标题自动编号 */
+/* body {
+    counter-reset: h1-counter 0;
+} */
+
+.protyle-wysiwyg:not([custom-f~="bt"]),
+.b3-typography {
+    counter-reset: h1-counter 0 h2-counter 0 h3-counter 0 h4-counter 0 h5-counter 0 h6-counter 0;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h1,
+.b3-typography>h1 {
+    counter-increment: h1-counter;
+    counter-reset: h2-counter 0;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h2,
+.b3-typography>h2 {
+    counter-increment: h2-counter;
+    counter-reset: h3-counter 0;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h3,
+.b3-typography>h3 {
+    counter-increment: h3-counter;
+    counter-reset: h4-counter 0;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h4,
+.b3-typography>h4 {
+    counter-increment: h4-counter;
+    counter-reset: h5-counter 0;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h5,
+.b3-typography>h5 {
+    counter-increment: h5-counter;
+    counter-reset: h6-counter 0;
+}
+
+/* .protyle-wysiwyg:not([custom-f~="bt"])>.h6,
+.b3-typography>h6 {
+    counter-increment: h6-counter;
+} */
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h1::before,
+.b3-typography>h1::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: counter(h1-counter) "\00A0";
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h2::before,
+.b3-typography>h2::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: counter(h1-counter) "." counter(h2-counter) "\00A0";
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h3::before,
+.b3-typography>h3::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "\00A0";
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h4::before,
+.b3-typography>h4::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "\00A0";
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h5::before,
+.b3-typography>h5::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "." counter(h5-counter) "\00A0";
+}
+
+/* .protyle-wysiwyg:not([custom-f~="bt"])>.h6::before,
+.b3-typography>h6::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "." counter(h5-counter) "." counter(h6-counter) "\00A0";
+} */
+
+.protyle-wysiwyg>.h6::before,
+.b3-typography>h6::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: '※';
+}
+
+.protyle-wysiwyg .bq > .h6::before,
+.b3-typography .bq > h6::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: '※';
+}
+
+.protyle-wysiwyg .sb > .h6::before,
+.b3-typography .sb > h6::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: '※';
+}
+
+/* 调整标题空行光标位置 */
+.protyle-wysiwyg:not([custom-f~="bt"])>.h1>[contenteditable][spellcheck]:empty {
+    padding-left: var(--custom-h1-indentation);
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h2>[contenteditable][spellcheck]:empty {
+    padding-left: var(--custom-h2-indentation);
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h3>[contenteditable][spellcheck]:empty {
+    padding-left: var(--custom-h3-indentation);
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h4>[contenteditable][spellcheck]:empty {
+    padding-left: var(--custom-h4-indentation);
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h5>[contenteditable][spellcheck]:empty {
+    padding-left: var(--custom-h5-indentation);
+}
+
+/* .protyle-wysiwyg:not([custom-f~="bt"])>.h6>[contenteditable][spellcheck]:empty {
+    padding-left: var(--custom-h6-indentation);
+} */
+
+/* 标题颜色标识 */
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h1,
+.b3-typography h1 {
+    /* font-size: 1.6em !important; */
+    /* color: var(--custom-h1-color); */
+    border-left: 3px solid var(--custom-h1-color);
+    padding-left: 9px;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h2,
+.b3-typography h2 {
+    /* font-size: 1.5em !important; */
+    /* color: var(--custom-h2-color); */
+    border-left: 3px solid var(--custom-h2-color);
+    padding-left: 9px;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h3,
+.b3-typography h3 {
+    /* font-size: 1.4em !important; */
+    /* color: var(--custom-h3-color); */
+    border-left: 3px solid var(--custom-h3-color);
+    padding-left: 9px;
+
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h4,
+.b3-typography h4 {
+    /* font-size: 1.3em !important; */
+    /* color: var(--custom-h4-color); */
+    border-left: 3px solid var(--custom-h4-color);
+    padding-left: 9px;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h5,
+.b3-typography h5 {
+    /* font-size: 1.2em !important; */
+    /* color: var(--custom-h5-color); */
+    border-left: 3px solid var(--custom-h5-color);
+    padding-left: 9px;
+}

@@ -31,6 +31,7 @@
 
 /* 链接小图标 */
 @import url(./style/custom/v-icon-link.css);
+@import url(./style/custom/span-link.css);
 
 /* vlook 方式的封面和封底 */
 @import url(./style/custom/v-conver-img.css);
@@ -38,6 +39,10 @@
 
 /* 其他一些额外属性 */
 @import url(./style/custom/cusotm-f-sp.css);
+
+/* 自动编号 */
+@import url(./style/custom/custom-f-bt-autoheading.css);
+
 
 /* 列表转表格、看板和面板 */
 @import url(./style/custom/custom-f-bg.css);
