@@ -1,0 +1,4 @@
+/* ALT+Enter */
+.protyle-wysiwyg [data-type="em"][style*="--before-ctx"]::before {
+    content: var(--before-ctx);
+}

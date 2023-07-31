@@ -1,0 +1,34 @@
+/* ****************** custom-codelabel-wzline *******************/
+.protyle-wysiwyg *[data-node-id] :not([custom-f~=wzline]) span[data-type='code'].custom-codelabel-wzline {
+    /* background-color: #2aa899;   */
+    background-color: var(--theme-wzline-bgcolor);  
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.custom-codelabel-wzline:hover {
+    filter: brightness(1.1)
+}
+
+.protyle-wysiwyg *[data-node-id] .custom-codelabel-wzline span{
+    display: none;  
+}
+
+.protyle-wysiwyg .custom-codelabel-wzline:parent {
+    background:red;
+}
+
+.protyle-wysiwyg *[data-node-id] .custom-codelabel-wzline::before{
+    color: var(--theme-wzline-title-color);
+    content: attr(custom-codelabel-wzline-title);
+}
+
+.protyle-wysiwyg *[data-node-id] .custom-codelabel-wzline:not([custom-codelabel-wzline-msg='']):after{
+    /* color: #1f2e3b;  */
+    color: var(--theme-wzline-msg-color); 
+    background-color: var(--theme-wzline-msg-bgcolor);
+    content: attr(custom-codelabel-wzline-msg);
+    padding: 3px; 
+     margin-left: 3px;
+    border-radius: 3px;
+}

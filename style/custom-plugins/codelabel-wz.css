@@ -1,0 +1,60 @@
+/*
+ * 1. 单独安装指南：
+      a. 在 css 文件中添加 codelabel-wz.css 的路径 
+        @import url(path/to/codelabel-wz.css);
+      b. 把 script 文件夹复制到主题的根目录中
+      c.如果没有 themes.js ，就把压缩包的 themes.js 直接复制过去;如果有，就添加：
+         
+        loadScript("/appearance/themes/minilook/script/module/codelabel.js");
+      
+      注意把其中的 minilook 改成对应的主题文件夹名称。
+      
+ * 2. 新建属性 f=wz 可以屏蔽该效果的渲染。
+ *
+ * 制作人: 路人二
+ * 版本: V0.0.1-dev
+ * 时间: 2022-04-02
+ * 更新日志：
+ * 1. 渲染 `#微章标题|微章内容#(颜色)`
+ */
+
+/* ****************** custom-codelabel-wz *******************/
+.protyle-wysiwyg *[data-node-id] :not([custom-f~=wz]) span[data-type~="code"].custom-codelabel-wz,
+.protyle-wysiwyg *[data-node-id] :not([custom-f~=wz]) span[data-type=" code"].custom-codelabel-wz {
+    /* background-color: #2aa899;   */
+    background-color: var(--theme-wz-bgcolor);  
+    padding: 5px;
+    border-radius: 3px;
+}
+
+/*对引用块的适配*/
+.protyle-wysiwyg *[data-node-id] :not([custom-f~=wz]) span[data-type~="block-ref"].custom-codelabel-wz,
+.protyle-wysiwyg *[data-node-id] :not([custom-f~=wz]) span[data-type=" block-ref"].custom-codelabel-wz {
+    /* background-color: #2aa899;   */
+    background-color: var(--theme-wz-bgcolor);  
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.custom-codelabel-wz:hover {
+    filter: brightness(1.1)
+}
+
+.protyle-wysiwyg *[data-node-id] .custom-codelabel-wz span{
+    display: none;  
+}
+
+.protyle-wysiwyg *[data-node-id] .custom-codelabel-wz::before{
+    color: var(--theme-wz-title-color);
+    content: attr(custom-codelabel-wz-title);
+}
+
+.protyle-wysiwyg *[data-node-id] .custom-codelabel-wz:not([custom-codelabel-wz-msg='']):after{
+    /* color: #1f2e3b;  */
+    color: var(--theme-wz-msg-color); 
+    background-color: var(--theme-wz-msg-bgcolor);
+    content: attr(custom-codelabel-wz-msg);
+    padding: 3px;
+    margin-left: 3px;
+    border-radius: 3px;
+}

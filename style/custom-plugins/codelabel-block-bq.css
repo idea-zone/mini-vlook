@@ -1,0 +1,131 @@
+/* --------------- 引用块 ---------------  */
+
+/*在列表中*/
+/* .protyle-wysiwyg .li > .bq[bqtype^="color"]{
+    border-left: 5px solid rgba(148, 152, 160, .2);
+    background: 0 0;
+    border-radius: 0;
+    padding: 0 0.5em;
+} */
+
+/*独立的*/
+.protyle-wysiwyg .bq[bqtype="color"] {
+    
+    /* color: var(--v-block-bq-color);
+    background: var(--v-block-bq-bg-color);
+     */
+    color: var(--theme-bq-color1);
+    background: var(--theme-bq-bgcolor);
+    border-radius: var(--v-block-bq-border-radius);
+    padding: 0.75em 1em;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.protyle-wysiwyg .bq[bqtype="color"] span[data-type='code'].bqcolor{
+    background: var(--theme-bq-bgcolor);
+}
+
+
+.protyle-wysiwyg .bq[bqtype="color1"] {
+    
+    /* color: var(--v-block-bq-color);
+    background: var(--v-block-bq-bg-color);
+     */
+    color: var(--b3-theme-on-background);
+    background: var(--b3-theme-background);
+    border-width: 5px ;
+    border-style: solid ;
+    border-color:  var(--theme-bq-bgcolor);
+    border-radius: var(--v-block-bq-border-radius);
+    padding: 0.75em 1em;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+
+.protyle-wysiwyg .bq[bqtype="color1"] span[data-type="code"].bqcolor{
+    background: var(--b3-theme-background);
+}
+
+/* --------------- 引用块 end ---------------  */
+
+
+.protyle-wysiwyg .bq[bqtype^="color"] span[data-type="code"].bqcolor span{
+    display: none;
+}
+
+/* custom-select-endsuffix */
+
+.protyle-wysiwyg .bq[bqtype^="color"] span[data-type="code"].bqcolor::before{
+
+    content: attr(custom-select-data);
+    
+    font: var(--v-block-kbd-font);
+    border-radius: var(--v-block-kbd-border-radius);
+    margin: 1px;
+    padding: 0 4px;
+    color: var(--v-block-kbd-color);
+    border: 2px solid var(--v-block-kbd-border-shadow);
+    border-left-color: var(--v-block-kbd-border-color);
+    border-top-color: var(--v-block-kbd-border-color);
+    background: var(--v-theme2);
+    box-shadow: 0 0 0 1px var(--v-block-kbd-border-shadow);
+    transform: translate(-3px,-2px) 
+}
+
+
+/* .protyle-wysiwyg .bq[bqtype^="color"] code::after{
+
+    content: attr(custom-select-endsuffix);
+    
+    font: var(--v-block-kbd-font);
+    border-radius: var(--v-block-kbd-border-radius);
+    margin: 1px;
+    padding: 0 4px;
+    color: var(--v-block-kbd-color);
+    border: 2px solid var(--v-block-kbd-border-shadow);
+    border-left-color: var(--v-block-kbd-border-color);
+    border-top-color: var(--v-block-kbd-border-color);
+    background: var(--v-theme1);
+    box-shadow: 0 0 0 1px var(--v-block-kbd-border-shadow);
+    transform: translate(-3px,-2px) 
+} */
+
+.protyle-wysiwyg .bq[bqtype^="color"] span[data-type="code"].bqcolor li::after{
+    
+    content: attr(custom-li-data);
+
+    font: var(--v-block-kbd-font);
+    border-radius: var(--v-block-kbd-border-radius);
+    margin: 1px;
+    padding: 0 4px;
+    color: var(--v-block-kbd-color);
+    border: 2px solid var(--v-block-kbd-border-shadow);
+    border-left-color: var(--v-block-kbd-border-color);
+    border-top-color: var(--v-block-kbd-border-color);
+    background: var(--key-bg);
+    box-shadow: 0 0 0 1px var(--v-block-kbd-border-shadow);
+    transform: translate(-3px,-2px)
+}
+
+.protyle-wysiwyg .bq[bqtype^="color"] span[data-type="code"].bqcolor ul{
+    display: none;
+    list-style: none;
+}
+
+.protyle-wysiwyg .bq[bqtype^="color"] span[data-type="code"].bqcolor:hover ul{
+    display: block;
+    list-style: none;
+    /* margin-left: attr(custom-left); */
+}
+
+.protyle-wysiwyg .bq[bqtype="color1"] .h6{
+    color: var(--theme-bq-bgcolor);
+}
+
+.protyle-wysiwyg .bq[bqtype="color"] .h6{
+    /* color: var(--theme-bq-title-color); */
+    color: var(--theme-bq-msg-bgcolor);
+    
+}

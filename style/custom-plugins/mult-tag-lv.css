@@ -1,0 +1,42 @@
+.protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty){
+    position: relative;
+    color: var(--v-tag-color);
+    background-color: var(--v-tag-bgcolor);
+    margin: 0px 0px;
+    /*上 右 下 左*/
+    padding: 1px 5px 1px 5px;
+    border-radius:5px;
+}
+
+.protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty)::before{
+    content: "";
+}
+
+.protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) span.mult-tag-lv1{
+    /* margin: 1px 2px  1px 2px; */
+    /* 上 右 下 左 */
+    margin: 1px 0px  1px 2px;
+     /*上 右 下 左*/
+    padding: 1px 0px 1px 3px;
+}
+
+.protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) span.mult-tag-lv1::before{
+    content: "# ";
+    color: var(--v-tag-icon);
+}
+
+.protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) span.mult-tag-lv2 {
+    color: var(--v-tag-bgcolor);
+    background-color: #ffffff;
+    /*左上 右上 右下 左下*/
+    border-radius: 0px 5px 5px 0px  ;
+    /*上 右 下 左*/
+    margin: 0px 0px 0px 5px;
+    /*上 右 下 左*/
+    padding: 1px 5px 1px 5px;
+}
+
+
+.protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) span.mult-tag-none{
+    display: none;
+}
