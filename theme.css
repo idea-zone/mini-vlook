@@ -17,6 +17,8 @@
 @import url(./style/docks/dock-status.css);
 /* 文档树样式 */
 @import url(./style/docks/file-tree.css);
+/* 其他窗口处理 */
+@import url(./style/docks/windows-menu.css);
 
 /* 基础块设置 */
 @import url(./style/custom/v-block-heading.css);
@@ -100,34 +102,4 @@
 /* 解决 分栏引用下 display: inline-block 不起作用的问题 */
 .protyle-wysiwyg {
     display: block;
-}
-
-/* 解决标记和回滚页面，不出现标记和回滚按钮问题 */
-/* 标记 */
-[data-type="repoitem"] [data-type="genTag"]{
-    color: var(--v-theme2) !important;
-}
-
-/* 回滚 */
-[data-type="repoitem"] [data-type="rollback"]{
-    color: yellow !important;
-    background: var(--v-theme2);
-}
-/* 上传 */
-[data-type="repoitem"] [data-type="uploadSnapshot"]{
-    color: var(--v-theme2) !important;
-}
-/* 删除-本地 */
-[data-type="repoitem"] [data-type="removeRepoTagSnapshot"]{
-    color: red !important;
-    
-}
-/* 删除-云端 */
-[data-type="repoitem"] [data-type="removeCloudRepoTagSnapshot"]{
-    color: red !important;
-}
-/* 删除 */
-[data-type="repoitem"] [data-type="downloadSnapshot"]{
-    color: yellow !important;
-    background: var(--v-theme2);
 }
