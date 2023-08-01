@@ -29,7 +29,7 @@ div.item__readme kbd {
 
 /*背景*/
 .protyle-wysiwyg [data-node-id] span[data-type='tag']:not(:empty) {
-    position: relative;
+    /* position: relative; */
     color: var(--v-tag-color);
     background-color: var(--v-tag-bgcolor);
     /* border-radius: var(--v-border-radius-half-round); */
