@@ -16,6 +16,8 @@
    --three-line-width: 30.83%;
    /*四栏的宽度*/
    --four-line-width: 22.6%;
+   /* 五栏的宽度 */
+   --five-line-width: 17%;
    /* 栏与栏之间的留白 */
    --splt-space-widht: 0.5%;
 }
@@ -103,9 +105,9 @@
 }
 
 .protyle-wysiwyg:not([custom-f~=bc]) .hr+.hr+.hr+.hr+[data-subtype="u"]::before,
-.protyle-wysiwyg:not([custom-f~=bc]) .hr+.hr+.hr+:is([data-subtype="o"], [data-subtype="t"])::before {
+.protyle-wysiwyg:not([custom-f~=bc]) .hr+.hr+.hr+.hr+:is([data-subtype="o"], [data-subtype="t"])::before {
    content: "⬛︎ ⬛︎ ⬛︎ ⬛︎ ⬛︎  5 Columns of List  ⬛︎ ⬛︎ ⬛︎ ⬛︎ ⬛︎";
-   margin-top: -5.9em;
+   margin-top: -4.9em;
    padding-top: 1.4em;
    padding-bottom: 1.4em
 }
@@ -227,8 +229,8 @@
    display: inline-block;
    list-style-type: none;
    vertical-align: top;
-   max-width: 19.2% !important;
-   min-width: 19.2% !important
+   max-width: var(--five-line-width) !important;
+   min-width: var(--five-line-width)!important
 }
 
 .protyle-wysiwyg:not([custom-f~=bc]) :is(.hr+.hr+.hr+.hr, .hr+.hr+.hr+.hr)+:is([data-subtype="o"], [data-subtype="t"])>.li+.li,
