@@ -23,7 +23,7 @@
 /* 如果是 在引用内的 引用，设置分栏和颜色 */
 .bq .bq {
     color: var(--d-f-c);
-    background: var(--ac-theme1-fade);
+    background: var(--ac-t1-fade);
     border-radius: var(--v-r-b);
     padding: .75em 1em;
     margin-top: 0;
@@ -37,8 +37,8 @@
 
 /* 如果是 在引用内的 引用，调整长度 */
 .bq .hr+.bq::before,
-.bq .hr+.bq+.bq::before{
-        /* ⬛︎ ⬛︎  2 Columns of Quote  ⬛︎ ⬛︎ */
+.bq .hr+.bq+.bq::before {
+    /* ⬛︎ ⬛︎  2 Columns of Quote  ⬛︎ ⬛︎ */
     width: 150%;
 
 }
@@ -46,9 +46,9 @@
 /* 如果是 在引用内的 引用，调整长度 */
 .bq .hr+.hr+.bq::before,
 .bq .hr+.hr+.bq+.bq::before,
-.bq .hr+.hr+.bq+.bq+.bq::before{
-        /* ⬛︎ ⬛︎ ⬛︎  3 Columns of Quote  ⬛︎ ⬛︎ ⬛︎ */
-        width: 260%;
+.bq .hr+.hr+.bq+.bq+.bq::before {
+    /* ⬛︎ ⬛︎ ⬛︎  3 Columns of Quote  ⬛︎ ⬛︎ ⬛︎ */
+    width: 260%;
 }
 
 /* 如果是 在引用内的 引用，调整长度 */
@@ -63,7 +63,7 @@
 .bq,
 body:not([class]) .bq {
     color: var(--d-f-c);
-    background: var(--ac-theme1-fade);
+    background: var(--ac-t1-fade);
     border-radius: var(--v-r-b);
     padding: .75em 1em;
     margin-top: 0;
@@ -133,8 +133,8 @@ body:not([class]) .bq {
 :is(.hr+.hr, .hr+.hr)+.bq+.bq+.bq {
     color: var(--d-f-c);
     display: inline-block !important;
-    max-width: var(--bq-three-line-width)!important;
-    min-width: var(--bq-three-line-width)!important;
+    max-width: var(--bq-three-line-width) !important;
+    min-width: var(--bq-three-line-width) !important;
     vertical-align: top
 }
 

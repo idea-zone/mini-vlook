@@ -1,12 +1,12 @@
 :root {
     /* ---------------------------------  兼容性的配置 */
     /*主题色1*/
-    --v-theme1: var(--ac-theme1);
+    --v-theme1: var(--ac-t1);
     --v-theme1-rgb-value: 128, 100, 169;
     --v-theme1-color: #fff;
 
     /*主题色2*/
-    --v-theme2: var(--ac-theme2);
+    --v-theme2: var(--ac-t2);
     --v-theme2-rgb-value: 42, 168, 153;
     --v-theme2-color: #fff;
 
@@ -17,9 +17,8 @@
     /*编辑区*/
     --v-theme-background: var(--bg-color);
     --v-theme-background-light: rgba(238, 238, 238, .25)
-
-    /*编辑区/列表区*/
-    --v-theme-on-background: var(--d-f-c);
+        /*编辑区/列表区*/
+        --v-theme-on-background: var(--d-f-c);
 
     /*面板区*/
     --v-theme-surface: var(--bg-color);
@@ -63,7 +62,7 @@
     --v-block-mark-color: var(--d-f-c);
     --v-block-mark-bg-color: var(--mark-bg);
     /*内容引用块颜色*/
-    --v-block-blockref-color: var(--ac-theme1);
+    --v-block-blockref-color: var(--ac-t1);
 
     /*标签颜色*/
     --v-block-tag-color: var(--v-btn-f);
@@ -72,7 +71,7 @@
     /*代码块颜色*/
     --v-block-code-bg-color: var(--code-bg);
     --v-black-code-font-family: var(--v-f-fm-code);
-    --v-black-code-boder-color: var(--tbl-bder);
+    --v-black-code-boder-color: var(--tbl-bd);
 
     /*删除块颜色  #6670a9 */
     --v-block-del-color: var(--d-f-c-alt);
@@ -81,7 +80,7 @@
     /*加粗颜色*/
     --v-block-strong-color: var(--d-f-c);
     /* 任务完成颜色 */
-    --v-task--done-color:var(--ac-gray-title);
+    --v-task--done-color: var(--ac-gy-title);
 
 
     /*键盘按键色*/
@@ -104,7 +103,7 @@
 
     /*引用块设置*/
     --v-block-bq-color: var(--d-f-c);
-    --v-block-bq-bg-color: var(--ac-theme1-fade);
+    --v-block-bq-bg-color: var(--ac-t1-fade);
     --v-block-bq-border-radius: var(--v-r-b);
 
     /*h1~h6*/
@@ -121,7 +120,7 @@
 
     --kbline-board-bg-color: #e7e7e7;
     /* 主背景色 */
-	/* 各个子项背景色 */
+    /* 各个子项背景色 */
     --kbline-board-pa-color: #a1a2a5;
     /* 列表项的点 */
     --kbline-board-bg-color1: #fdfdfd;
@@ -139,7 +138,7 @@
 
     --kbline-board-border-radius: var(--v-r-b);
     /*圆角弧度*/
-    --kbline-board-border-color: var(--ac-theme2);
+    --kbline-board-border-color: var(--ac-t2);
     /*边框颜色*/
 
 
@@ -242,7 +241,7 @@
     /* dock栏 */
     --b3-dockright-color: rgb(55, 53, 47, .5);
     --b3-dockright-background: rgba(237, 236, 233);
-    --b3-dockright-item-active-background:  #fff;
+    --b3-dockright-item-active-background: #fff;
     --b3-dockleft-color: rgb(55, 53, 47, .5);
     --b3-dock-background: rgba(237, 236, 233);
     --b3-dockleft-item-active-background: #fff;

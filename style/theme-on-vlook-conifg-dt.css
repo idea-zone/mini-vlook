@@ -1,20 +1,20 @@
 [data-theme-mode="dark"] {
     /* ---------------------------------  兼容性的配置 */
-    --ac-theme1: rgb(23, 227, 203);
-    --ac-theme1-alt-dk: #17e3cb;
-    --ac-theme1-fade-dk: rgba(23, 227, 203);
-    --ac-theme2: rgb(214, 188, 253);
-    --ac-theme2-alt-dk: #d6bcfd;
-    --ac-theme2-fade-dk: rgba(214, 188, 253, 0.35);
-    --ac-theme2-title-dk: var(--d-f-c-dk);
+    --ac-t1: rgb(23, 227, 203);
+    --ac-t1-alt-dk: #17e3cb;
+    --ac-t1-fade-dk: rgba(23, 227, 203);
+    --ac-t2: rgb(214, 188, 253);
+    --ac-t2-alt-dk: #d6bcfd;
+    --ac-t2-fade-dk: rgba(214, 188, 253, 0.35);
+    --ac-t2-title-dk: var(--d-f-c-dk);
 
     /*主题色1*/
-    --v-theme1: var(--ac-theme1);
+    --v-theme1: var(--ac-t1);
     --v-theme1-rgb-value: 23, 227, 203;
     --v-theme1-color: rgb(220, 215, 215);
 
     /*主题色2*/
-    --v-theme2: var(--ac-theme2);
+    --v-theme2: var(--ac-t2);
     --v-theme2-rgb-value: 214, 188, 253;
     --v-theme2-color: rgb(220, 215, 215);
 
@@ -70,7 +70,7 @@
     --v-block-mark-color: var(--d-f-c);
     --v-block-mark-bg-color: var(--mark-bg);
     /*内容引用块颜色*/
-    --v-block-blockref-color: var(--ac-theme1);
+    --v-block-blockref-color: var(--ac-t1);
 
     /*标签颜色*/
     --v-block-tag-color: var(--v-btn-f);
@@ -79,7 +79,7 @@
     /*代码块颜色*/
     --v-block-code-bg-color: var(--code-bg);
     --v-black-code-font-family: var(--v-f-fm-code);
-    --v-black-code-boder-color: var(--tbl-bder);
+    --v-black-code-boder-color: var(--tbl-bd);
 
     /*删除块颜色  #6670a9 */
     --v-block-del-color: var(--d-f-c-alt);
@@ -88,8 +88,8 @@
     /*加粗颜色*/
     --v-block-strong-color: var(--d-f-c);
     /* 任务完成颜色 */
-    --v-task--done-color:var(--ac-gray-title);
-    
+    --v-task--done-color: var(--ac-gy-title);
+
     /*键盘按键色*/
     --v-block-kbd-font: var(var(--v-f-w-bd) 0.75em var(--v-f-fm-key));
     --v-block-kbd-border-radius: var(--v-r-s-small);
@@ -110,7 +110,7 @@
 
     /*引用块设置*/
     --v-block-bq-color: var(--d-f-c);
-    --v-block-bq-bg-color: var(--ac-theme2-fade);
+    --v-block-bq-bg-color: var(--ac-t2-fade);
     --v-block-bq-border-radius: var(--v-r-b);
 
     /*h1~h6*/
@@ -144,7 +144,7 @@
 
     --kbline-board-border-radius: var(--v-r-b);
     /*圆角弧度*/
-    --kbline-board-border-color: var(--ac-theme2);
+    --kbline-board-border-color: var(--ac-t2);
     /*边框颜色*/
 
 
