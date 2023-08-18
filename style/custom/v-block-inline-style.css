@@ -198,7 +198,7 @@ div.item__readme code[data-render="true"] {
 /* --------------- 多标签tag end---------------*/
 
 .protyle-wysiwyg [data-node-id] span.mult-tag[data-type='tag']:not(:empty) {
-    position: relative;
+    /* position: relative; */
     color: var(--v-tag-color);
     background-color: var(--v-tag-bgcolor);
     margin: 0px 0px;
