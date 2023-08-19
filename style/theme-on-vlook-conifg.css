@@ -70,6 +70,7 @@
 
     /*代码块颜色*/
     --v-block-code-bg-color: var(--code-bg);
+    --v-block-code-color: var(--code-t);
     --v-black-code-font-family: var(--v-f-fm-code);
     --v-black-code-boder-color: var(--tbl-bd);
 
