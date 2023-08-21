@@ -184,8 +184,8 @@ div.item__readme blockquote {
 
 /* 行内代码 */
 .protyle-wysiwyg  [data-type="code"] {
-    color: var(--v-block-code-color) !important;
-    background: var(---v-block-code-bg-color)  !important;
+    color: var(--v-block-code-color);
+    background: var(---v-block-code-bg-color);
     font: var(--v-f-w-text) .875em/1.5 var(--b3-font-family-code);
     border-radius: var(--v-r-s);
     padding: 4px 5px;
