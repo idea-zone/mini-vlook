@@ -304,6 +304,7 @@ export var config = {
 //#endregion
         { // 微章
           typeid: "wz",
+          // #微章|补充#
           // reg: '(#(.*?)[|](.*?)#){1,1}?([\(](#?[\\d\\w]+)(!)?[\)])?',  // 正则表达式
           reg: "(#(.*?)([|](.*?))?#){1,1}?([(](#?[\\d\\w]+)(!)?[)])?", // 正则表达式
           tagName: "span",
@@ -375,8 +376,10 @@ export var config = {
           },
         },
         { // 刮刮乐
+          
+          // #{显示内容}("隐藏内容")|补充#
           typeid: "rb",
-          reg: '^\\*\\{(.*)\\}\\((.*?)(\\s*\\"(#?[\\d\\w]+)\\")?\\)$', // 正则表达式
+          reg: '^.?\\*\\{(.*)\\}\\((.*?)(\\s*\\\'(#?[\\d\\w]+)\\\')?\\)$', // 正则表达式
           tagName: "span",
           tagDataType: "code",
           customf: "rb", // 忽略解析的属性值
@@ -439,6 +442,7 @@ export var config = {
           },
           innerHTML: "<span>${value}</span>",
           renderEnd: (parse, element, oldHTML) => {
+            console.log("tc: ")
             // 渲染完单个元素的回调.
             function bingOnClick(button) {
               let value =
@@ -455,7 +459,7 @@ export var config = {
         },
         { // 注音
           typeid: "pg",
-          reg: "^\\{(.*)\\}\\s*\\((.*)\\)$", // 正则表达式
+          reg: "^.?\\{(.*)\\}\\s*\\((.*)\\)$", // 正则表达式
           tagName: "span",
           tagDataType: "code",
           customf: "pg", // 忽略解析的属性值
@@ -504,7 +508,6 @@ export var config = {
           },
           customAttr: {
             // 自定义属性
-            // 'custom-codelabel-value':'${value}',
             "custom-codelabel-pg-text": "${text}",
             "custom-codelabel-pg-data": "${pgdata}",
           },
@@ -690,7 +693,7 @@ export var config = {
         { // 多级标签
         
           typeid: "mtag",
-          reg: "^(.*)/(.*)$", // 针对 innerHTML
+          reg: ".?(.*)/(.*).?", // 针对 innerHTML
           tagName: 'span[data-type="tag"]',
           customf: "mtag", // 自定义属性 f=mtag 即可。
           className: "mult-tag",
@@ -1209,7 +1212,7 @@ export var config = {
         { // 计数任务
         
           typeid: "todo",
-          reg: '^\\+\\[(\\d+)\\]\\s*\\((.*?)(\\s*\\"([\\d\\w]+)\\")?\\)$', // 正则表达式
+          reg: '^.?\\+\\[(\\d+)\\]\\s*\\((.*?)(\\s*\\"([\\d\\w]+)\\")?\\)$', // 正则表达式
           tagName: "span",
           tagDataType: "code",
           customf: "todo", // 忽略解析的属性值

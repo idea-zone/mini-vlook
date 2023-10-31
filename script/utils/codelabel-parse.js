@@ -350,7 +350,7 @@ class CodeLabelParse {
                 customAttr[ca] = customAttr[ca].replace(`\$\{${k}\}`, tv);
             }
 
-            customAttr["custom-codelabel-value"] = parseInfo.value;
+            // customAttr["custom-codelabel-value"] = parseInfo.value;
         }
 
 
