@@ -101,5 +101,18 @@
 
 /* 解决 分栏引用下 display: inline-block 不起作用的问题 */
 .protyle-wysiwyg {
-    display: block;
+    display: block; 
 }
+
+/* 数据表格的处理 */
+
+[data-av-type="table"] .av__container{
+    padding: 10px;
+    border: var(--v-theme2) dotted 2px !important;
+}
+
+[data-av-type="table"]  .av__row{
+    padding: 0px;
+    border: var(--v-theme2) dotted 1px !important; 
+}
+

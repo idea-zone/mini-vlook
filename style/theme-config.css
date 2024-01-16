@@ -65,6 +65,8 @@
 
     /* 线条 */
     --b3-border-color: var(--v-border-color);
+    --b3-border-radius: 6px; /*NEW: */
+    --b3-border-radius-b: 12px; /*NEW: */
 
     /* 滚动条 */
     --b3-scroll-color: var(--v-scroll-color);
@@ -78,9 +80,16 @@
 
     /* 提示 */
     --b3-tooltips-color: var(--v-tooltips-color);
-    --b3-tooltips-background: var(--v-tooltips-background); /*NEW: */
-    --b3-tooltips-shadow: var(--v-tooltips-shadow); /*NEW: */
- 
+    --b3-tooltips-background: var(--v-tooltips-background); 
+    --b3-tooltips-shadow: var(--v-tooltips-shadow); 
+    
+    /* av */  /*NEW: */
+    --b3-av-hover: #e8e8e9;  /*NEW: */
+    --b3-av-background-hl: #e8eefc;  /*NEW: */
+
+    /* 为空提示 */  /*NEW: */
+    --b3-empty-color: var(--b3-theme-on-surface-light);  /*NEW: */
+
     /* 遮罩 */
     --b3-mask-background: var(--v-mask-background);
 

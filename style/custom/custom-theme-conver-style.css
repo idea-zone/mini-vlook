@@ -1,5 +1,4 @@
-@import url(/appearance/themes/mini-vlook/style/vlook/vlook-conver-img.css);
-
+@import url(/appearance/themes/mini-vlook/style/custom/v-conver-img.css);
 
 .protyle-wysiwyg[custom-theme] .h1:last-child::after,
 .protyle-wysiwyg[custom-theme]>.h6:first-child::after {

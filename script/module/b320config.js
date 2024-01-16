@@ -373,6 +373,9 @@ export var config = {
           innerHTML: "<span>${value}</span>",
           renderEnd: (parse, element, oldHTML) => {
             // 渲染完单个元素的回调.
+            console.log('text')
+            console.log(element)
+            console.log(oldHTML)
           },
         },
         { // 刮刮乐
@@ -1134,6 +1137,8 @@ export var config = {
           renderEnd: (parse, element, oldHTML) => {
             // 渲染完单个元素的回调.
 
+            console.log(oldHTML)
+            console.log('renderEnd')
             // let parentNode = mv.GetSiyuanBlock(element);
             let id = mv.GetSiyuanBlockId(element);
 
@@ -1174,7 +1179,7 @@ export var config = {
                 mv.SetAttrs(
                   element,
                   "custom-codelabel-value",
-                  `#[ ]${msg}#${colorG}`
+                  `##[ ]${msg}##${colorG}`
                 );
               } else {
                 div.classList.add("cw-chk-tick");
@@ -1183,7 +1188,7 @@ export var config = {
                 mv.SetAttrs(
                   element,
                   "custom-codelabel-value",
-                  `#[ ]${msg}#${colorG}`
+                  `##[ ]${msg}##${colorG}`
                 );
               }
 
@@ -1202,6 +1207,11 @@ export var config = {
                 .BlockDOM2StdMd(element.parentNode.parentNode.innerHTML);
               console.log(md);
               let kid = await mv.UpdateBlockByMd_API(id, md);
+              console.log('...');
+              
+              let elm = await mv.GetMdByBlock_API(id);
+              console.log(elm);
+
               let dom = document.querySelectorAll(
                 `div[data-node-id="${kid}"]`
               )[0];

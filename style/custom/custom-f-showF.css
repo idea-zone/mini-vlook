@@ -1,6 +1,6 @@
 
 /* 显示 custom-f 的内容：当不是标题行的时候 */
-.protyle-wysiwyg [data-node-id]:not([data-subtype^="h"])[custom-f]:before {
+.protyle-wysiwyg [data-node-id]:not([data-subtype^="h"])[custom-f]:not([custom-f~="bg"]):before{
     content: attr(custom-f);
     float: right;
     color: rgba(var(--v-theme2-rgb-value), 0.5);
@@ -10,7 +10,7 @@
 }
 
 /* 显示 custom-f 的内容：当是标题行的时候 */
-.protyle-wysiwyg [data-node-id][data-subtype^="h"][custom-f]::after {
+.protyle-wysiwyg [data-node-id][data-subtype^="h"][custom-f]:not([custom-f~="bg"])::after {
     content: attr(custom-f);
     float: right;
     color: rgba(var(--v-theme2-rgb-value), 0.5);
@@ -18,3 +18,4 @@
     padding: 0px 3px 0px 3px !important;
     border-radius: 5px;
 }
+
