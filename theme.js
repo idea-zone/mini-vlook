@@ -21,17 +21,51 @@ let { src, type, async, defer } = option;
         document.body.appendChild(script);
 };
 
-window.theme = {};
+window.theme = {
+    element: {
+        editorFontSize: document.getElementById('editorFontSize'),
+        pdfjsScript: document.getElementById('pdfjsScript'),
+        protyleWcHtmlScript: document.getElementById('protyleWcHtmlScript'),
+        baseURL: document.getElementById('baseURL'),
+        emojiScript: document.getElementById('emojiScript'),
+        themeDefaultStyle: document.getElementById('themeDefaultStyle'),
+        themeStyle: document.getElementById('themeStyle'),
+        protyleHljsStyle: document.getElementById('protyleHljsStyle'),
+        themeScript: document.getElementById('themeScript') ?? document.currentScript,
+        iconDefaultScript: document.getElementById('iconDefaultScript'),
+        iconScript: document.getElementById('iconScript'),
+    },
+    elements: new Set(), // 需要移除的 HTML 元素集合
+    eventTarget: new EventTarget(), // 事件总线目标
+    addEventListener: function (target, ...args) {
+        target.addEventListener(...args);
+        this.eventTarget.addEventListener("destroy", () => {
+            target.removeEventListener(...args);
+        });
+    }, // 添加在主题销毁时自动移除的监听器
+};
+
+// REF: https://github.com/siyuan-note/siyuan/issues/8178
+window.destroyTheme = function () {
+    window.theme?.elements.forEach(element => {
+        element.remove();
+    });
+    window.theme?.eventTarget.dispatchEvent(new Event("destroy"));
+    window[Symbol.for("Dark+destroy")] = true;
+    delete window.theme;
+    delete window.destroyTheme;
+}
 
 /**
  * 静态资源请求 URL 添加参数
  * @params {string} url 资源请求 URL
  * @return {string} 返回添加参数后的 URL
  */
- window.theme.addURLParam = function (
+window.theme.addURLParam = function (
     url,
     param = {
         // t: Date.now().toString(),
+        t: Date.now().toString(),
         v: window.siyuan.config.appearance.themeVer,
     },
 ) {
@@ -70,41 +104,90 @@ window.theme = {};
 /**
  * 加载 meta 标签
  * @params {object} attributes 属性键值对
+ * @params {string} position 节点插入位置
+ * @params {HTMLElementNode} element 节点插入锚点
  */
- window.theme.loadMeta = function (attributes) {
-    let meta = document.createElement('meta');
+window.theme.loadMeta = function (attributes, position = "afterbegin", element = document.head) {
+    const meta = document.createElement('meta');
     for (let [key, value] of Object.entries(attributes)) {
         meta.setAttribute(key, value);
     }
-    document.head.insertBefore(meta, document.head.firstChild);
+    // document.head.insertBefore(meta, document.head.firstChild);
+    // [Element.insertAdjacentElement() - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/insertAdjacentElement)
+    element.insertAdjacentElement(position, meta);
+    window.theme.elements.add(meta);
 }
 
-/**
- * 加载脚本文件
- * @param {string} url 脚本地址
- * @param {string} type 脚本类型
- */
-window.theme.loadScript = function (src, type = 'module', async = false, defer = false) {
-    const script = document.createElement('script');
-    if (type) script.type = type;
-    if (async) script.async = true;
-    if (defer) script.defer = true;
-    script.src = src;
-    document.head.appendChild(script);
-}
 
 /**
  * 加载脚本文件
  * @params {string} url 脚本地址
  * @params {string} type 脚本类型
+ * @params {boolean} async 是否异步加载 & 非阻塞运行
+ * @params {boolean} defer 是否异步加载 & 阻塞运行
+ * @params {string} position 节点插入位置
+ * @params {HTMLElementNode} element 节点插入锚点
  */
- window.theme.loadScript = function (src, type = 'module', async = false, defer = false) {
+window.theme.loadScript = function (
+    src,
+    type = 'module',
+    async = false,
+    defer = false,
+    position = "beforebegin",
+    element = window.theme.element.themeScript,
+) {
     const script = document.createElement('script');
     if (type) script.type = type;
     if (async) script.async = true;
     if (defer) script.defer = true;
     script.src = src;
-    document.head.appendChild(script);
+    // document.head.appendChild(script);
+    element.insertAdjacentElement(position, script);
+    window.theme.elements.add(script);
+}
+
+/**
+ * 加载样式文件
+ * @params {string} innerHTML 样式内容
+ * @params {string} id 样式 ID
+ * @params {string} position 节点插入位置
+ * @params {HTMLElementNode} element 节点插入锚点
+ */
+window.theme.loadStyle = function (
+    innerHTML,
+    id = null,
+    position = "afterend",
+    element = window.theme.element.themeStyle,
+) {
+    const style = document.createElement('style');
+    if (id) style.id = id;
+    style.innerHTML = innerHTML;
+    // document.head.appendChild(style);
+    element.insertAdjacentElement(position, style);
+    window.theme.elements.add(style);
+}
+
+/**
+ * 加载样式文件引用
+ * @params {string} href 样式地址
+ * @params {string} id 样式 ID
+ * @params {string} position 节点插入位置
+ * @params {HTMLElementNode} element 节点插入锚点
+ */
+window.theme.loadLink = function (
+    href,
+    id = null,
+    position = "afterend",
+    element = window.theme.element.themeStyle,
+) {
+    const link = document.createElement('link');
+    if (id) link.id = id;
+    link.type = 'text/css';
+    link.rel = 'stylesheet';
+    link.href = href;
+    // document.head.appendChild(link);
+    element.insertAdjacentElement(position, link);
+    window.theme.elements.add(link);
 }
 
 /**
@@ -113,29 +196,30 @@ window.theme.loadScript = function (src, type = 'module', async = false, defer =
  * @param {string} id 样式 ID
  */
 window.theme.loadStyle = function (url, id = null) {
-    let style = document.createElement('link');
+    let style = document.getElementById(id);
     if (id) style.setAttribute('id', id);
     style.setAttribute('type', 'text/css');
     style.setAttribute('rel', 'stylesheet');
     style.setAttribute('href', url);
     document.head.appendChild(style);
+    window.theme.elements.add(style);
 }
 
 /**
  * 更新样式文件
- * @param {string} id 样式文件 ID
- * @param {string} href 样式文件地址
+ * @params {string} id 样式文件 ID
+ * @params {string} href 样式文件地址
  */
 window.theme.updateStyle = function (id, href) {
-    let style = document.getElementById(id);
+    const style = document.getElementById(id);
     if (style) {
         style.setAttribute('href', href);
     }
     else {
-        window.theme.loadStyle(href, id);
-
+        window.theme.loadLink(href, id);
     }
 }
+
 
 window.theme.ID_COLOR_STYLE = 'colorStyle';
 window.theme.ID_CONFIG_STYLE = 'configStyle';
@@ -158,12 +242,32 @@ window.theme.themeMode = (() => {
 })();
 
 /**
+ * 获取窗口宽高模式
+ * @return {string} landscape 或 portrait
+ */
+window.theme.orientation = () => {
+    /* 根据浏览器主题判断颜色模式 */
+    switch (true) {
+        case window.matchMedia('(orientation: landscape)').matches:
+            /* 宽 > 高 */
+            return 'landscape';
+        case window.matchMedia('(orientation: portrait)').matches:
+            /* 高 > 宽 */
+            return 'portrait';
+        default:
+            return null;
+    }
+};
+
+/**
  * 获取客户端模式
- * @returns {string} 'app' 或 'desktop' 或 'mobile'
+ * @return {string} 'app' 或 'desktop' 或 'mobile'
  */
 window.theme.clientMode = (() => {
-    let url = new URL(window.location.href);
+    const url = new URL(window.location.href);
     switch (true) {
+        case url.pathname.startsWith('/stage/build/app/window.html'):
+            return 'window';
         case url.pathname.startsWith('/stage/build/app'):
             return 'app';
         case url.pathname.startsWith('/stage/build/desktop'):
@@ -194,10 +298,46 @@ window.theme.languageMode = window.siyuan.config.lang;
 window.theme.OS = window.siyuan.config.system.os;
 
 /**
+ * 获得主题根目录
+ */
+window.theme.root = (() => {
+    const src = document.currentScript.getAttribute('src');
+    return src.substring(0, src.lastIndexOf('/'));
+})();
+
+/**
  * 获取一个 Lute 对象
  * @return {Lute} Lute 对象
  */
- window.theme.lute = Lute.New();
+//  window.theme.lute = Lute.New();
+ window.theme.lute = window.Lute.New();
+ 
+/**
+ * 设置原生主题模式
+ * @params {number} mode: 主题模式
+ * @params {boolean} modeOS: 是否启用系统主题
+ */
+window.theme.setNativeTheme = function (
+    mode = window.siyuan.config.appearance.mode,
+    modeOS = window.siyuan.config.appearance.modeOS,
+) {
+    try {
+        const { nativeTheme } = require('@electron/remote');
+        if (modeOS) {
+            if (nativeTheme.themeSource !== 'system') {
+                nativeTheme.themeSource = 'system';
+            }
+        } else {
+            if ((mode === 0 && nativeTheme.themeSource !== 'light') ||
+                (mode === 1 && nativeTheme.themeSource !== 'dark')
+            ) {
+                nativeTheme.themeSource = (mode === 0 ? 'light' : 'dark');
+            }
+        }
+    } catch (error) {
+        console.warn(error);
+    }
+}
 
 /**
  * 更换主题模式
@@ -240,27 +380,32 @@ window.theme.changeThemeMode = function (
 }
 
 /* 根据当前主题模式加载样式配置文件 */
-if (
-    window.siyuan.config.appearance[
-      window.siyuan.config.appearance.mode ? "themeDark" : "themeLight"
-    ] === "mini-vlook"
-  ) {
+/* 根据当前主题模式加载样式配置文件 */
+if (window.siyuan.config.appearance[window.siyuan.config.appearance.mode ? "themeDark" : "themeLight"] === "mini-vlook") {
     window.theme.changeThemeMode(
-      `/widgets/custom-light.css`,
-      `/widgets/custom-dark.css`
+        `/widgets/custom-light.css`,
+        `/widgets/custom-dark.css`,
     );
-  }
-  
+}
 
 // (src, type = 'module', async = false, defer = false) 
-window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/static/moment.min.js"),"text/javascript", false, true);
+// window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/static/moment.min.js"),"text/javascript", false, true);
+// window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/codelabel-custom.js"), undefined, true);
+// /* 加载 HTML 块中使用的小工具 */
+// window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/html.js"), "text/javascript", undefined, true);
+// window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/rightmenu.js"), undefined, true);
+// window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/window.js"), undefined, true);
+// window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/altenter.js"), undefined, true);
 
-window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/codelabel-custom.js"), undefined, true);
+
+import(window.theme.addURLParam(`${window.theme.root}/script/static/moment.min.js`));
+import(window.theme.addURLParam(`${window.theme.root}/script/module/codelabel-custom.js`));
+
 /* 加载 HTML 块中使用的小工具 */
-window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/html.js"), "text/javascript", undefined, true);
-window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/rightmenu.js"), undefined, true);
-window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/window.js"), undefined, true);
-window.theme.loadScript(window.theme.addURLParam("/appearance/themes/mini-vlook/script/module/altenter.js"), undefined, true);
+import(window.theme.addURLParam(`${window.theme.root}/script/module/html.js`));
+import(window.theme.addURLParam(`${window.theme.root}/script/module/rightmenu.js`));
+import(window.theme.addURLParam(`${window.theme.root}/script/module/window.js`));
+import(window.theme.addURLParam(`${window.theme.root}/script/module/altenter.js`));
 
 /* 加载独立应用 */
 // window.theme.loadScript("/appearance/themes/mini-vlook/app/comment/index.js");
