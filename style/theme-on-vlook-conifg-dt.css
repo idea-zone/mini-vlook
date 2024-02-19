@@ -46,7 +46,8 @@
     --v-scroll-color: rgba(var(--v-theme2-rgb-value), .2);
 
     /* 列表 */
-    --v-list-hover: rgba(var(--v-theme2-rgb-value), 0.65);
+    /* --v-list-hover: rgba(var(--v-theme2-rgb-value), 0.65); */
+    --v-list-hover: rgba(var(--v-theme2-rgb-value), 0.25);
 
     /* 右键/cms菜单 */
     --v-menu-background: var(--bg-color);
