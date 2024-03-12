@@ -32,3 +32,75 @@
      margin-left: 3px;
     border-radius: 3px;
 }
+
+
+/* ************************* 新版 ******************************** */
+
+:root{
+    --theme-wzline-title-color: #fff;
+    --theme-wzline-title-bgcolor: #888B8F;
+    --theme-wzline-msg-color: #2aa899;
+    --theme-wzline-msg-bgcolor: #2aa899;
+    --custom-codelabel-wzline-msg:"世界";
+}
+
+
+
+.protyle-wysiwyg span[data-type~="em"][data-type~="code"]{
+    font: var(--v-f-w-text) .875em/1.5 var(--b3-font-family-code);
+    color: var(--theme-wzline-msg-color) !important;
+    background: color-mix(in srgb, var(--theme-wzline-msg-bgcolor) 20%, white) !important;
+    border-radius: 0px 0px 0px 0px;
+    padding: 4px 5px;
+    line-height: 1;
+    margin: 0;
+    display: inline-block;
+    text-align: inherit;
+}
+
+
+.protyle-wysiwyg span[data-type~="em"]:not([data-type~="code"]):has( + span[data-type~="em"][data-type~="code"])
+{
+    font: var(--v-f-w-text) .875em/1.5 var(--b3-font-family-code);
+    color: var(--theme-wzline-title-color) !important;
+    background: color-mix(in srgb, var(--theme-wzline-title-bgcolor) 60%, white) ;
+    padding: 4px 5px;
+    line-height: 1;
+    margin: 0;
+    display: inline-block;
+    text-align: inherit;
+}
+
+ 
+
+.protyle-wysiwyg span[data-type~="em"] + span[data-type~="em"][data-type~="code"]{
+    font: var(--v-f-w-text) .875em/1.5 var(--b3-font-family-code);
+    color: var(--theme-wzline-msg-color);
+    background: color-mix(in srgb, var(--theme-wzline-msg-bgcolor) 20%, white) !important;
+    padding: 4px 5px;
+    line-height: 1;
+    margin: 0;
+    display: inline-block;
+    text-align: inherit;
+ }
+
+.protyle-wysiwyg span[data-type~="em"][data-type~="code"] + span[data-type~="sub"] 
+{
+    color: var(--v-block-code-color);
+    background: color-mix(in srgb, var(--theme-wzline-title-bgcolor) 25%, white) ;
+    padding: 0px 0px 0px 0px !important;
+    line-height: 1;
+}
+
+ /* 尝试使用前置长度设置 */
+ /* .protyle-wysiwyg span[data-type~="em"] + span[data-type~="em"][data-type~="code"]::before{
+    content: "";
+    background: red;
+    border-radius: 0px 0px 0px 0px;
+    top: 9px; 
+    padding: 8px 13px;
+    opacity: 30%;
+    position: absolute;
+    line-height: 1;
+    display:flex; 
+ } 
