@@ -90,6 +90,7 @@ function toolbarItemInsert(toolbarConfig) {
         id: toolbarConfig.id,
         node: node,
     });
+    window.theme.elements.add(node);
     return node;
 }
 

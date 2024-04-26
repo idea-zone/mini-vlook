@@ -51,7 +51,7 @@ window.destroyTheme = function () {
         element.remove();
     });
     window.theme?.eventTarget.dispatchEvent(new Event("destroy"));
-    window[Symbol.for("Dark+destroy")] = true;
+    window[Symbol.for("mini-vlook+destroy")] = true;
     delete window.theme;
     delete window.destroyTheme;
 }

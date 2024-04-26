@@ -180,18 +180,30 @@ div.item__readme blockquote {
     border-radius: 8px;
     border: 3px solid var(--v-black-code-boder-color);
     margin: 0 0 20px;
+    background-color: var(--code-bg);
+}
+
+.protyle-wysiwyg .code-block .protyle-linenumber__rows
+{
+    background-color: var(--v-block-code-row-bg-color) !important;
+    width: 36px;
+}
+
+.b3-typography div.hljs, .protyle-wysiwyg div.hljs{
+    background: var(---v-block-code-bg-color);
 }
 
 /* 行内代码 */
 .protyle-wysiwyg  [data-type="code"] {
     color: var(--v-block-code-color);
-    background: var(---v-block-code-bg-color);
+    background: var(--code-bg);
     font: var(--v-f-w-text) .875em/1.5 var(--b3-font-family-code);
     border-radius: var(--v-r-s);
     padding: 4px 5px;
     line-height: 1;
     box-shadow: 0 0 0 1px var(--v-black-code-boder-color) inset;
 }
+
 
 /* --------------- 代码块 end---------------*/
 
