@@ -187,10 +187,50 @@ div.item__readme blockquote {
 {
     background-color: var(--v-block-code-row-bg-color) !important;
     width: 36px;
+    border-width: 0;
+    border-right: 1px solid var(--pn-c);
+}
+.protyle-wysiwyg .code-block .protyle-linenumber__rows span::before{
+    text-align: center !important;
 }
 
 .b3-typography div.hljs, .protyle-wysiwyg div.hljs{
     background: var(---v-block-code-bg-color);
+    display: block;
+}
+
+[data-type="NodeCodeBlock"] .protyle-action{
+    left: 0px !important;
+    top: 0px !important;
+    display: flex;
+    z-index: 1;
+    position: absolute;
+    right: 0px !important;
+    background-color: #cfd4d8;
+}
+
+[data-type="NodeCodeBlock"] .protyle-action::before{
+    content: attr(lang) " ";
+    text-transform: uppercase;
+    white-space: pre-wrap;
+    background-image: var(--v-i-sys-menu);
+    background-repeat: no-repeat;
+    background-position: 7px center;
+    padding: 4px 4px 0px 4px;
+    color: var(--d-fc);
+    opacity: 0.6;
+    font-family: var(--v-f-fm-bd);
+    font-weight: 700;
+    font-size: 0.875em;
+    width: 60px;
+    display: block;
+    border-radius: var(--v-r-t) var(--v-r-t) 0 0;
+    top: 0;
+}
+/* protyle-action--first protyle-action__language::before{ */
+
+.protyle-action__language{
+    margin-left: 3px !important;
 }
 
 /* 行内代码 */
