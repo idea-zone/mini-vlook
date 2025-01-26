@@ -175,7 +175,7 @@ div.item__readme blockquote {
 
 /* --------------- 代码块 ---------------*/
 .protyle-wysiwyg .code-block {
-    color: var(---v-block-code-bg-color);
+    color: var(--v-block-code-color);
     font-family: var(--v-black-code-font-family);
     border-radius: 8px;
     border: 3px solid var(--v-black-code-boder-color);
@@ -195,8 +195,20 @@ div.item__readme blockquote {
 }
 
 .b3-typography div.hljs, .protyle-wysiwyg div.hljs{
-    background: var(---v-block-code-bg-color);
+    color: var(--v-block-code-color) !important;
+    background: var(--v-block-code-bg-color);
     display: block;
+}
+
+.b3-typography .hljs, .protyle-wysiwyg .hljs {
+    color: var(--v-block-code-color) !important;
+    font-size: 85%;
+    overflow: auto;
+    font-family: var(--b3-font-family-code);
+    min-height: 22px !important;
+    overflow-x: overlay;
+    tab-size: 4;
+    background-color: rgba(0,0,0,0);
 }
 
 [data-type="NodeCodeBlock"] .protyle-action{
@@ -414,4 +426,15 @@ div.item__readme code:not([data-render="true"]):hover {
 /* 查询语句 */
 [data-type="NodeBlockQueryEmbed"] {
     border: 2px dotted var(--b3-protyle-inline-blockref-color) !important;
+}
+
+
+/* 高亮 */
+.b3-typography mark, .b3-typography span[data-type~=mark], .protyle-wysiwyg mark, .protyle-wysiwyg span[data-type~=mark] {
+   
+    color: var(--b3-protyle-inline-mark-color);
+    box-shadow: 0-.70em 0 0 var(--b3-protyle-inline-mark-background) inset !important;
+    background: 0 0;
+    font: var(--v-f-w-bd) 1em var(--v-f-fm-bd);
+    line-height: 1;
 }

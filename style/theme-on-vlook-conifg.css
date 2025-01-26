@@ -73,7 +73,7 @@
     --v-block-code-bg-color: var(--code-bg);
     /* --v-block-code-row-bg-color: #e8eaed; */
     --v-block-code-row-bg-color: #fcf9f2;
-    --v-block-code-color: var(--code-t);
+    --v-block-code-color: #000;
     --v-black-code-font-family: var(--v-f-fm-code);
     --v-black-code-boder-color: var(--tbl-bd);
 

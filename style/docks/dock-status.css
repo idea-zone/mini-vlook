@@ -259,7 +259,7 @@
 }
 
 .layout#layouts .fn__flex-column:not(.fn__flex-shrink)>.fn__flex-1>.fn__flex>.layout-tab-container>.fn__flex-column {
-	padding-bottom: 30px;
+	padding-bottom: 30px !important;
 }
 
 

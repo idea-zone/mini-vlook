@@ -27,12 +27,12 @@
     --v-theme-background-light: rgba(41, 44, 51, .25);
 
     /*编辑区/列表区*/
-    --v-theme-on-background: var(--d-f-c);
+    --v-theme-on-background: var(--d-f-c-dk);
 
     /*面板区*/
     --v-theme-surface: rgba(41, 44, 51, 0.75);
     /*前缀/序号/tab文字*/
-    --v-theme-on-surface: var(--d-f-c);
+    --v-theme-on-surface: var(--d-f-c-dk);
 
     /*文档树*/
     --b3-theme-background2: #8f91a0;
@@ -68,7 +68,7 @@
     /*链接颜色*/
     --v-block-link-color: var(--a-color);
     /*高亮/标记颜色*/
-    --v-block-mark-color: var(--d-f-c);
+    --v-block-mark-color: var(--d-f-c-dk);
     --v-block-mark-bg-color: var(--mark-bg);
     /*内容引用块颜色*/
     --v-block-blockref-color: var(--ac-t1);
@@ -87,16 +87,16 @@
     /*删除块颜色  #6670a9 */
     --v-block-del-color: var(--d-f-c-alt);
     /*斜体颜色*/
-    --v-block-em-color: var(--d-f-c);
+    --v-block-em-color: var(--d-f-c-dk);
     /*加粗颜色*/
-    --v-block-strong-color: var(--d-f-c);
+    --v-block-strong-color: var(--d-f-c-dk);
     /* 任务完成颜色 */
     --v-task--done-color: var(--ac-gy-title);
 
     /*键盘按键色*/
     --v-block-kbd-font: var(var(--v-f-w-bd) 0.75em var(--v-f-fm-key));
     --v-block-kbd-border-radius: var(--v-r-s-small);
-    --v-block-kbd-color: var(--d-bc);
+    --v-block-kbd-color: var(--d-bc-dk);
     --v-block-kbd-border-shadow: var(--key-shadow);
     --v-block-kbd-border-color: var(--key-reflect);
 
@@ -112,7 +112,7 @@
 
 
     /*引用块设置*/
-    --v-block-bq-color: var(--d-f-c);
+    --v-block-bq-color: var(--d-f-c-dk);
     --v-block-bq-bg-color: var(--ac-t2-fade);
     --v-block-bq-border-radius: var(--v-r-b);
 
@@ -137,7 +137,7 @@
 
     --kbline-theme-hover2: #cfc0c0fc;
     /*鼠标悬浮的背景色*/
-    --kbline-theme-hover1: var(--d-f-c);
+    --kbline-theme-hover1: var(--d-f-c-dk);
     /*鼠标悬浮的前景色*/
 
     --kbline-border-normal: 1px solid var(--kbline-board-bg-color);
@@ -169,9 +169,9 @@
     --kbline-board-title-color: #292c33;
     /*标题的前景色*/
 
-    --kbline-board-item-color: var(--d-f-c);
+    --kbline-board-item-color: var(--d-f-c-dk);
     /*看板卡片前景色*/
-    --kbline-board-item-code-color: var(--d-f-c);
+    --kbline-board-item-code-color: var(--d-f-c-dk);
 
     /*调整下面参数，可能会产生一些渲染bug*/
     --kbline-bord-margin: 10px;

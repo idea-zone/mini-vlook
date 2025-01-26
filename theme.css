@@ -116,3 +116,12 @@
     border: var(--v-theme2) dotted 1px !important; 
 }
 
+ 
+:lang(ja_JP):root {
+    --b3-font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", "Segoe UI", sans-serif, "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+}
+
+/* https://github.com/siyuan-note/siyuan/issues/6440 */
+.protyle-action--order:after {
+    mix-blend-mode: multiply;
+}

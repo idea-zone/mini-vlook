@@ -1,3 +1,6 @@
+:root{
+    --theme-rb-bgcolor: #1f2e3b;
+}
 .protyle-wysiwyg *[data-node-id] :not([custom-f~=rb])  .v-rb-coat[custom-codelabel-rb-coat-showe="false"] {
     background: linear-gradient(45deg, var(--theme-rb-bgcolor) 0%, var(--theme-rb-bgcolor) 25%,var(--d-f-c) 25%, var(--d-f-c) 50%,var(--theme-rb-bgcolor) 50%, var(--theme-rb-bgcolor) 75%,var(--d-f-c) 75%, var(--d-f-c) 100%) ;
     border-color: var(--theme-rb-bgcolor) ; 

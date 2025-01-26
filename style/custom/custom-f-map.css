@@ -88,8 +88,10 @@
 	margin-top: 2px;
 	background-color: var(--b3-block-daotu);
 	border-radius: 3px;
-	box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px;
-	max-width: 15vw;
+	box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px ;
+	max-width: 220px !important;
+	text-align: left !important;
+	word-break:break-all !important;
 }
 
 .protyle-wysiwyg *[custom-f~=map] .li[data-subtype="t"]>[data-node-id]>div[spellcheck="false"],
@@ -191,10 +193,10 @@
 .protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+.hr+*:not(.bq) .li[fold="1"]::before {
 	content: '';
 	position: absolute;
-	top: 50%;
+	top: 50% !important;
 	border-top: var(--b3-border-daotu);
 	width: 20px;
-	height: 50%;
+	height: 50% !important;
 }
 
 /*上竖线*/
@@ -237,7 +239,7 @@
 .protyle-wysiwyg[custom-f~=bc] :not(.hr)+.hr+.hr+.hr+.list .list:has(>.li:first-child:nth-last-child(2))::after {
 	border-radius: 0px;
 	width: 39px;
-	margin-bottom: -2px;
+	margin-bottom: -2px !important;
 }
 
 /*单子项居中*/
