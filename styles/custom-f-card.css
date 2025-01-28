@@ -1,0 +1,211 @@
+/* ************ 卡片 ************ */
+
+:root {
+  --card-width: 18rem;
+  --card-item-max-width: 16rem;
+}
+
+html[data-theme-mode="light"] {
+  --card-bg-color: #fff;
+  --card-bg-border-color: #212529;
+
+}
+
+html[data-theme-mode="dark"] {
+  --card-bg-color: #212529;
+  --card-bg-border-color: #b9aeae;
+}
+
+/* 卡片 */
+.protyle-wysiwyg [custom-f~="card"] {
+  width: var(--card-width);
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: var(--card-bg-color);
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: 0.25rem;
+  border: 1px rebeccapurple solid !important;
+}
+
+.protyle-wysiwyg [custom-f~="card"][custom-f~="card.img-top"]:not(:has( img))
+{
+  padding-top: 13rem; /* 与 ::before 的高度相同 */
+}
+
+/* 图片圆角显示 */
+.protyle-wysiwyg [custom-f~="card"] img {
+  border-radius: 0.25rem;
+}
+
+/* 取消引用内多余的间隔 */
+.protyle-wysiwyg [custom-f~="card"]>div {
+  padding: 0px 0px 0px 0px;
+  margin: 0px;
+}
+
+/* 当顶部数图片的时候的 padding */
+.protyle-wysiwyg [custom-f~="card"] .p:has(img) {
+  padding: 25px 0px 0px 0px;
+  margin: auto;
+}
+
+
+/* 取消显示属性的内属性显示 */
+.protyle-wysiwyg [custom-f~="card"]::before {
+  width: 35px;
+  display: none;
+}
+
+/* 处理标题的问题 */
+.protyle-wysiwyg [custom-f~="card"] .h1::before,
+.protyle-wysiwyg [custom-f~="card"] .h2::before,
+.protyle-wysiwyg [custom-f~="card"] .h3::before,
+.protyle-wysiwyg [custom-f~="card"] .h4::before,
+.protyle-wysiwyg [custom-f~="card"] .h5::before,
+.protyle-wysiwyg [custom-f~="card"] .h6::before {
+  content: '';
+}
+
+.protyle-wysiwyg [custom-f~="card"] .h1~*:has(.img),
+.protyle-wysiwyg [custom-f~="card"] .h2~*:has(.img) ,
+.protyle-wysiwyg [custom-f~="card"] .h3~*:has(.img),
+.protyle-wysiwyg [custom-f~="card"] .h4~*:has(.img),
+.protyle-wysiwyg [custom-f~="card"] .h5~*:has(.img){
+  padding: 0px 0px 0px 0px !important;
+  margin: 0px 0px 0px 15px !important;
+}
+
+
+.protyle-wysiwyg [custom-f~="card"] .h1,
+.protyle-wysiwyg [custom-f~="card"] .h2,
+.protyle-wysiwyg [custom-f~="card"] .h3,
+.protyle-wysiwyg [custom-f~="card"] .h4,
+.protyle-wysiwyg [custom-f~="card"] .h5{
+  background: transparent !important;
+  border-top: 5px;
+  margin-left: 10px !important;
+  margin-top: 13px !important;
+  margin-bottom: 13px !important;
+}
+
+.protyle-wysiwyg [custom-f~="card"] .h6~*:has(.img){
+  padding: 0px 0px 0px 0px !important;
+  margin: 0px 0px 0px 17px !important;
+}
+
+.protyle-wysiwyg [custom-f~="card"] .h6 {
+  margin-left: 20px !important;
+  margin-top: 13px !important;
+  margin-bottom: 13px !important;
+}
+
+/* 处理body题的问题 */
+.protyle-wysiwyg [custom-f~="card"] .h1~.p,
+.protyle-wysiwyg [custom-f~="card"] .h2~.p,
+.protyle-wysiwyg [custom-f~="card"] .h3~.p,
+.protyle-wysiwyg [custom-f~="card"] .h4~.p,
+.protyle-wysiwyg [custom-f~="card"] .h5~.p,
+.protyle-wysiwyg [custom-f~="card"] .h6~.p {
+
+  padding-left: 17px;
+  max-width: var(--card-item-max-width);
+}
+
+.protyle-wysiwyg [custom-f~="card"]>.p {
+  padding-left: 10px;
+  max-width: var(--card-item-max-width);
+}
+
+/* 解决 list 的问题 */
+.protyle-wysiwyg [custom-f~="card"]>.list {
+  width: var(--card-width);
+  margin-top: 5px !important;
+}
+
+.protyle-wysiwyg [custom-f~="card"]>.list>.li {
+  width: var(--card-width);
+  border-top: 0.5px solid var(--card-bg-border-color);
+  border-radius: 0px;
+}
+
+.protyle-wysiwyg [custom-f~="card"]>.list>.li:not(:has(+ .li)) {
+  border-bottom: 0.5px solid var(--card-bg-border-color);
+}
+
+.protyle-wysiwyg [custom-f~="card"]>.list>.li .p {
+  left: -30px;
+  max-width: var(--card-item-max-width);
+}
+
+/* 调整无序列表、有序列表、任务列表的显示效果 */
+
+/* 隐藏无序列表的点 */
+.protyle-wysiwyg [custom-f~="card"]>.list[data-subtype="u"]>.li .protyle-action {
+  color: #fff;
+  left: -13px;
+}
+
+.protyle-wysiwyg [custom-f~="card"]>.list.list[data-subtype="u"]>.li .list .li .p {
+  left: -20px !important;
+}
+
+.protyle-wysiwyg [custom-f~="card"]>.list[data-subtype="o"]>.li .protyle-action,
+.protyle-wysiwyg [custom-f~="card"]>.list[data-subtype="o"]>.li .protyle-action {
+  left: -3px;
+}
+
+/* .protyle-wysiwyg [custom-f~="card"] > .list[data-subtype="u"] > .li .p, */
+.protyle-wysiwyg [custom-f~="card"]>.list[data-subtype="o"]>.li .p,
+.protyle-wysiwyg [custom-f~="card"]>.list[data-subtype="t"]>.li .p {
+  left: -13px !important;
+}
+
+/* 取消对孩子节点的隐藏 */
+.protyle-wysiwyg [custom-f~="card"]>.list>.li .list .protyle-action {
+  color: #212529;
+}
+
+
+/* 处理在 card 中的 btn 问题 */
+.protyle-wysiwyg [custom-f~="card"] [custom-f~="btn"] {
+  margin-top: 5px !important;
+  max-width: var(--card-item-max-width);
+  left: 10px;
+}
+
+.protyle-wysiwyg [custom-f~="card"] [custom-f~="btn"] {
+  display: inline;
+}
+
+
+/* 没有图片的时候，填充一个渐变图片 */
+.protyle-wysiwyg [custom-f~="card"][custom-f~="card.img-top"]:not(:has(img))::before {
+  content: "" !important;
+  display: inline-block;
+  margin-top: 12px !important;
+  margin-left: 16px !important;
+  margin-right: 16px !important;
+  width: 15.7rem;
+  height: 11rem;
+  border-radius: 0.25rem;
+  background: linear-gradient(rgba(var(--m-theme1-alt), 0.5), rgba(var(--m-theme2-alt), 0.6));
+}
+
+.protyle-wysiwyg [custom-f~="card"][custom-f~="card.list"],
+.protyle-wysiwyg [custom-f~="card"][custom-f~="card.list"]~[custom-f~="card"] {
+  display: inline-flex !important;
+  vertical-align: top;
+  margin-left: 13px !important;
+}
+
+.protyle-wysiwyg [custom-f~="card"][custom-f~="card.list"]~[custom-f~="card"][custom-f~="card.img-top"]:not(:has(img))::before {
+  transform: translateX(0px) !important;
+}
+
+/* ************ 卡片 ************ */

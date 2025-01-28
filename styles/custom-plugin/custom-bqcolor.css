@@ -1,0 +1,432 @@
+/*
+ * 彩虹引用
+ */
+/* ———————————————————— 设置引用块的样式 —————————————————————— */
+
+.bq .p:nth-last-child(2) span[data-type~="em"][data-type~="sub"]:only-child
+,.bq .p:first-child span[data-type~="em"][data-type~="sub"]:only-child
+{
+   color: var(--theme-wzline-valueColor);
+   background: color-mix(in srgb, var(--theme-wzline-valueBgColor) 35%, white) ;
+   /* 上右下左 */
+   padding-left: 3px !important;
+   padding-right: 3px !important;
+   padding-top: 1px !important;
+   padding-bottom: 1px !important;
+   line-height: 0.8;
+   border-radius: 4px 4px 0 4px
+}
+
+
+.bq[custom-bqcolor]:not([custom-bqcolor=""]) .p:nth-last-child(2):has( span[data-type~="em"][data-type~="sub"]:only-child)
+,.bq[custom-bqcolor]:not([custom-bqcolor=""]) .p:first-child:has( span[data-type~="em"][data-type~="sub"]:only-child){
+  color: #fff;
+  border-radius: 0px ;
+  padding-top: 0px ;
+  padding-bottom: 0px ;
+  margin-top: 0px ;
+  margin-bottom: 0px;
+  line-height: 1;
+}
+
+
+.bq[custom-bqcolor~="hide"]:not([custom-bqcolor=""]) .p:nth-last-child(2):has( span[data-type~="em"][data-type~="sub"]:only-child)
+,.bq[custom-bqcolor~="hide"]:not([custom-bqcolor=""]) .p:first-child:has( span[data-type~="em"][data-type~="sub"]:only-child){
+   max-height: 0px;
+   line-height: 0px;
+   font-size: 0px;
+   padding: 0px;
+   margin: 0px;
+   color: transparent;
+   background-color: transparent;
+}
+
+.bq[custom-bqcolor]:not([custom-bqcolor=""]) .p:first-child:has( span[data-type~="em"][data-type~="sub"]:only-child){
+   border-bottom: 2px dashed var(--ac-t2-fade);
+}
+.bq[custom-bqcolor]:not([custom-bqcolor=""])  .p:nth-last-child(2):has( span[data-type~="em"][data-type~="sub"]:only-child){
+   border-top: 2px dashed var(--ac-t2-fade);
+}
+
+.bq[custom-bqcolor~="t1!" i]
+{
+    background: var(--ac-t1-fade);
+    border-color: var(--ac-t1-fade);
+}
+
+.bq[custom-bqcolor~="t2!" i]
+{
+    background: var(--ac-t2-fade);
+    border-color: var(--ac-t2-fade);
+}
+
+ .bq[custom-bqcolor~="t1!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-t1-fade);
+    border-color: var(--ac-t1-fade);
+ }
+
+
+ .bq[custom-bqcolor~="t2!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-t2-fade);
+    border-color: var(--ac-t2-fade);
+ }
+
+
+ .bq[custom-bqcolor~="gd!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-gd-fade);
+    border-color: var(--ac-gd-fade);
+ }
+
+
+ .bq[custom-bqcolor~="pk!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-pk-fade);
+    border-color: var(--ac-pk-fade);
+ }
+
+
+ .bq[custom-bqcolor~="ye!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-ye-fade);
+    border-color: var(--ac-ye-fade);
+ }
+
+
+ .bq[custom-bqcolor~="lm!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-lm-fade);
+    border-color: var(--ac-lm-fade);
+ }
+
+
+ .bq[custom-bqcolor~="aq!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-aq-fade);
+    border-color: var(--ac-aq-fade);
+ }
+
+
+ .bq[custom-bqcolor~="la!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-la-fade);
+    border-color: var(--ac-la-fade);
+ }
+
+
+ .bq[custom-bqcolor~="bn!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-bn-fade);
+    border-color: var(--ac-bn-fade);
+ }
+
+
+ .bq[custom-bqcolor~="ro!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-ro-fade);
+    border-color: var(--ac-ro-fade);
+ }
+
+
+ .bq[custom-bqcolor~="rd!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-rd-fade);
+    border-color: var(--ac-rd-fade);
+ }
+
+
+ .bq[custom-bqcolor~="og!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-og-fade);
+    border-color: var(--ac-og-fade);
+ }
+
+
+ .bq[custom-bqcolor~="gn!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-gn-fade);
+    border-color: var(--ac-gn-fade);
+ }
+
+
+ .bq[custom-bqcolor~="cy!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-cy-fade);
+    border-color: var(--ac-cy-fade);
+ }
+
+
+ .bq[custom-bqcolor~="bu!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-bu-fade);
+    border-color: var(--ac-bu-fade);
+ }
+
+
+ .bq[custom-bqcolor~="vn!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-vn-fade);
+    border-color: var(--ac-vn-fade);
+ }
+
+
+ .bq[custom-bqcolor~="gy!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-gy-fade);
+    border-color: var(--ac-gy-fade);
+ }
+
+
+ .bq[custom-bqcolor~="pu!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-pu-fade);
+    border-color: var(--ac-pu-fade);
+ }
+
+
+ .bq[custom-bqcolor~="wn!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-wn-fade);
+    border-color: var(--ac-wn-fade);
+ }
+
+
+ .bq[custom-bqcolor~="ol!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-ol-fade);
+    border-color: var(--ac-ol-fade);
+ }
+
+
+ .bq[custom-bqcolor~="mn!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-mn-fade);
+    border-color: var(--ac-mn-fade);
+ }
+
+
+ .bq[custom-bqcolor~="se!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-se-fade);
+    border-color: var(--ac-se-fade);
+ }
+
+
+ .bq[custom-bqcolor~="bk!" i]
+ {
+    box-shadow: none;
+    background: var(--ac-bk-fade);
+    border-color: var(--ac-bk-fade);
+ }
+
+ /* ———————————————————— 设置引用块的样式 —————————————————————— */
+
+ 
+
+ .protyle-wysiwyg .bq[custom-bqcolor~="t1" i] {
+    box-shadow: 0 0 0 4px var(--ac-t1-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-t1-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="t2" i] {
+    box-shadow: 0 0 0 4px var(--ac-t2-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-t2-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="gd" i] {
+    box-shadow: 0 0 0 4px var(--ac-gd-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-gd-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="pk" i] {
+    box-shadow: 0 0 0 4px var(--ac-pk-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-pk-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="ye" i] {
+    box-shadow: 0 0 0 4px var(--ac-ye-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-ye-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="lm" i] {
+    box-shadow: 0 0 0 4px var(--ac-lm-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-lm-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="aq" i] {
+    box-shadow: 0 0 0 4px var(--ac-aq-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-aq-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="la" i] {
+    box-shadow: 0 0 0 4px var(--ac-la-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-la-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="bn" i] {
+    box-shadow: 0 0 0 4px var(--ac-bn-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-bn-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="ro" i] {
+    box-shadow: 0 0 0 4px var(--ac-ro-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-ro-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="rd" i] {
+    box-shadow: 0 0 0 4px var(--ac-rd-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-rd-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="og" i] {
+    box-shadow: 0 0 0 4px var(--ac-og-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-og-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="gn" i] {
+    box-shadow: 0 0 0 4px var(--ac-gn-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-gn-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="cy" i] {
+    box-shadow: 0 0 0 4px var(--ac-cy-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-cy-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="bu" i] {
+    box-shadow: 0 0 0 4px var(--ac-bu-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-bu-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="vn" i] {
+    box-shadow: 0 0 0 4px var(--ac-vn-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-vn-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="gy" i] {
+    box-shadow: 0 0 0 4px var(--ac-gy-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-gy-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="pu" i] {
+    box-shadow: 0 0 0 4px var(--ac-pu-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-pu-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="wn" i] {
+    box-shadow: 0 0 0 4px var(--ac-wn-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-wn-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="ol" i] {
+    box-shadow: 0 0 0 4px var(--ac-ol-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-ol-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="mn" i] {
+    box-shadow: 0 0 0 4px var(--ac-mn-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-mn-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="se" i] {
+    box-shadow: 0 0 0 4px var(--ac-se-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-se-fade);
+  }
+  
+  
+  
+  .protyle-wysiwyg .bq[custom-bqcolor~="bk" i] {
+    box-shadow: 0 0 0 4px var(--ac-bk-fade) inset ;
+    background: 0 0 ;
+    border-color: var(--ac-bk-fade);
+  }
+  
+  

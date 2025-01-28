@@ -1,0 +1,198 @@
+.protyle-wysiwyg .h1:last-child::after,
+.protyle-wysiwyg>.h6:first-child::after {
+    margin-left: 0;
+    padding-bottom: 0;
+    border: 0
+}
+
+.protyle-wysiwyg .h1:last-child:before,
+.protyle-wysiwyg .h1:last-child::after,
+.protyle-wysiwyg>.h6:first-child:before {
+    content: "" !important;
+}
+
+.protyle-wysiwyg .h1:last-child,
+.protyle-wysiwyg>.h6:first-child {
+
+    display: block;
+    color: var(--conver-font-color1) !important;
+    font: var(--v-f-w-title) 2.5em/1.3 var(--v-f-fm-title);
+    text-align: var(--conver-text-align1);
+    filter: var(--v-brightness-dk);
+    height: var(--conver-height-1) !important;
+    /* padding: 240px 80px 60px; */
+    padding: var(--conver-padding-1) !important;
+    margin: 0 0 3em;
+    border: 0;
+    border-radius: var(--v-r-b);
+    box-shadow: 0 0 0 2px rgba(128, 100, 169, .2) inset;
+    background-color: var(--conver-font-bg-color1);
+    background-image: var(--conver-bg-image-1);
+    background-size: var(--conver-background-size1);
+    background-repeat: var(--conver-background-repeat1);
+    background-position: var(--conver-background-position1);
+    letter-spacing: 0
+}
+
+/*------------------------------ 封面 ------------------------------*/
+
+
+.protyle-wysiwyg>.h6:first-child span[data-type='sub'] {
+    display: block;
+    color: var(--conver-sub-color);
+    font: var(--v-f-w-bd) 75% var(--v-f-fm-subtitle)
+}
+
+.protyle-wysiwyg>.h6:first-child span[data-type='sup'] {
+    display: block;
+    color: var(--conver-sup-color);
+    font: var(--v-f-w-bd) 75% var(--v-f-fm-subtitle)
+}
+
+
+.protyle-wysiwyg>.h6:first-child span[data-type='code'] {
+    display: inline-block;
+    font-size: .5em !important;
+    color: var(--conver-code-color);
+    background: var(--conver-code-bg-color);
+}
+
+
+
+.protyle-wysiwyg>.h6:first-child span[data-type='em']:has(+span[data-type='em code']) {
+    line-height: 1;
+    color: #fff !important;
+    background: var(--a-hover-color) !important;
+    border-color: var(--d-bc) !important;
+    border-width: 0 !important;
+    text-shadow: none;
+    caret-color: #fff;
+    -webkit-text-stroke: initial;
+    vertical-align: initial;
+    font: var(--v-f-w-bd) 14px var(--v-f-fm-tag);
+}
+
+
+.protyle-wysiwyg>.h6:first-child span[data-type='em']+span[data-type='em code'] {
+    display: inline-block;
+    font: var(--v-f-w-bd) 14px var(--v-f-fm-tag);
+}
+
+
+
+
+
+
+.protyle-wysiwyg>.h6:first-child span[data-type='strong']{
+    display: block;
+}
+.protyle-wysiwyg>.h6:first-child span[data-type='strong'],
+.protyle-wysiwyg>.h6:first-child span[data-type='strong']::before {
+    color: var(--conver-strong-color) !important;
+    font: .625em var(--v-f-fm-subtitle);
+    margin-top: 0.5em;
+}
+
+.protyle-wysiwyg>.h6:first-child span[data-type='strong']::before {
+    content: "By ";
+    opacity: .6;
+    display: inline-block;
+    margin-bottom: -1em;
+    margin-top: 15px !important;
+}
+
+
+.protyle-wysiwyg>.h6:first-child span[data-type='em']:not(:has(+span[data-type='em code'])) {
+    display: block;
+    color: var(--conver-em-color);
+    font: var(--v-f-w-bd) .4em var(--v-f-fm-subtitle);
+    background: var(--conver-em-bg-color);
+}
+
+.protyle-wysiwyg>.h6:first-child span[data-type='u']{
+    display: block;
+    /* 颜色透明度转化为 80% */
+    color: var(--conver-sup-color) ;
+    text-decoration: none;
+    text-shadow: none;
+    border: 0;
+    font: var(--v-f-w-bd) .75em var(--v-f-fm-subtitle);
+    margin-top: -5px !important;
+}
+
+/*------------------------------ 封面（end） ------------------------------*/
+
+
+
+/*------------------------------ 封底 ------------------------------*/
+.protyle-wysiwyg .h1:last-child {
+    height: var(--conver-height-2) !important;
+    margin-top: 3em;
+    margin-bottom: 0;
+    padding: var(--conver-padding-2);
+    color: var(--conver-font-color2) !important;
+    text-align: var(--conver-text-align2);
+    background-color: var(--conver-font-bg-color2);
+    background-image: var(--conver-bg-image-2);
+    background-size: var(--conver-background-size2);
+    background-repeat: var(--conver-background-repeat2);
+    background-position: var(--conver-background-position2);
+    letter-spacing: 0
+}
+
+
+/*------------------------------ 封底（end） ------------------------------*/
+
+
+/* ------------------- 对大纲进行解析 -------------------*/
+
+.b3-list-item[data-treetype="outline"][data-subtype="h6"]:first-child~.b3-list-item[data-treetype="outline"][data-subtype="h1"]:last-child .b3-list-item__text,
+.b3-list-item[data-treetype="outline"][data-subtype="h6"]:first-child .b3-list-item__text {
+    color: var(--d-f-c-alt);
+    font-style: italic;
+    /* display: inline-block!important; */
+}
+
+.b3-list-item[data-treetype="outline"][data-subtype="h6"]:first-child~.b3-list-item[data-treetype="outline"][data-subtype="h1"]:last-child code,
+.b3-list-item[data-treetype="outline"][data-subtype="h6"]:first-child .b3-list-item__text span[data-type='code'] {
+    color: inherit;
+    background: 0 0;
+    font-family: var(--v-f-fm-tag);
+    font-size: 1em;
+    font-weight: inherit;
+    padding: 0;
+    box-shadow: none;
+    /* display: inline-block!important; */
+    white-space: inherit
+}
+
+.b3-list-item[data-treetype="outline"][data-subtype="h6"]:first-child~.b3-list-item[data-treetype="outline"][data-subtype="h1"]:last-child svg,
+.b3-list-item[data-treetype="outline"][data-subtype="h6"]:first-child svg {
+    /* display:inline-block; */
+}
+
+.sy__outline .b3-list--background>.b3-list-item[data-treetype="outline"][data-subtype="h6"]:first-child .b3-list-item__text::before {
+    content: "COVER ▸";
+    padding-left: 4px;
+    color: #2aa899;
+    font-weight: var(--v-f-w-title);
+    font-style: normal !important;
+    /* display: inline-block !important; */
+}
+
+.b3-list-item[data-treetype="outline"][data-subtype="h6"]:first-child~.b3-list-item[data-treetype="outline"][data-subtype="h1"]:last-child .b3-list-item__text::after {
+    content: "◂ BACK COVER";
+    color: #2aa899;
+    text-align: right;
+    padding-right: 10px;
+    line-height: 1.8;
+    font-size: .875em;
+    font-style: normal;
+    /* display: inline !important; */
+}
+
+.b3-list-item[data-treetype="outline"][data-subtype="h6"]:first-child~.b3-list-item[data-treetype="outline"][data-subtype="h1"]:last-child .b3-list-item__text::before{
+    content: "" !important;
+}
+
+/* ------------------- 对大纲进行解析（end） -------------------*/

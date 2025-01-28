@@ -1,0 +1,463 @@
+
+/* html[data-theme-mode="dark"]{
+
+    --m-theme1-background: #8064a9;
+    --m-theme2-background: #2aa899;
+
+    --m-theme1-on-background: #FFFFFF;
+    --m-theme2-on-background: #FFFFFF;
+
+    --m-inline-code-color:#2aa899;
+    --m-inline-code-bg-color: #222426;
+    --m-inline-code-border:#a9adaf solid 1px;
+
+} */
+
+/* 段落 */
+.b3-typography li>p, .b3-typography>p, .b3-typography blockquote>p, .b3-typography [data-node-id], .protyle-wysiwyg li>p, .protyle-wysiwyg>p, .protyle-wysiwyg blockquote>p, .protyle-wysiwyg [data-node-id] {
+    line-height: var(--m-para-line-height);
+    padding: var(--m-para-padding);
+    margin: var(--m-para-margin);
+    border-radius: var(--m-inline-code-radius);
+    color:  var( --m-para-text-color);
+}
+
+/* 行内公式/数学公式*/
+.protyle-wysiwyg[data-readonly=false] span[data-type~=inline-math]{
+    cursor: pointer;  /* 只读摸下下鼠标样式 */ 
+}
+.b3-typography span[data-type~=inline-math], .protyle-wysiwyg span[data-type~=inline-math] {
+    user-select: text;
+    display: inline;
+    padding: 1px 5px;
+    font-weight: bold;
+    transition: var(--b3-transition);
+    border: 1px dotted var(--m-theme2-background);
+}
+.b3-typography span[data-type~=inline-math]::before, .protyle-wysiwyg span[data-type~=inline-math]::before{
+    content: "$";
+    color: var(--m-theme2-alt-0-8);
+    padding-right: 3px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* 标签 */
+.protyle-wysiwyg [data-node-id] span[data-type~=tag] {
+    /* border-bottom: 1px solid; */
+    color: var(--m-inline-tag-color);
+    background-color: var(--m-v-tag-bgcolor);
+    margin: 0px 0px;
+    padding: 1px 5px;
+    border-radius: 5px;
+
+    transition: var(--b3-transition);
+    cursor: pointer;
+    border-bottom: none;
+
+    font-weight: bold;
+    border-left: 1px solid var(--m-theme1-background);
+    border-right: 1px solid var(--m-theme1-background);
+}
+.protyle-wysiwyg [data-node-id] span[data-type~=tag]::before{
+    content: "#";
+    color: var(--m-v-tag-icon);
+    /* border-right: 1px dotted var(--m-v-tag-icon); */
+    padding-right: 3px;
+    font-weight: bold;
+}
+
+/* 键盘 */
+.b3-typography kbd, .b3-typography span[data-type~=kbd], .protyle-wysiwyg kbd, .protyle-wysiwyg span[data-type~=kbd] {
+    font: var(--m-inline-kbd-font);
+    border-radius: var(--m-v-r-s);
+    margin: 0;
+    padding: 0 4px;
+    color: var( --m-inline-kbd-color);
+    border: solid 2px var(--m-key-shadow);
+    border-left-color: var(--m-key-reflect);
+    border-top-color: var(--m-key-reflect);
+    background: var(--m-inline-kbd-bg-color);
+    box-shadow: 0 0 0 1px var(--m-key-shadow);
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/* 高亮 */
+.b3-typography mark, .b3-typography span[data-type~=mark], .protyle-wysiwyg mark, .protyle-wysiwyg span[data-type~=mark] {
+   
+    /* background-color: var(--m-inline-mark-bg-color); */
+    color: var(--m-inline-mark-color);
+    box-shadow: 0-.70em 0 0 var(--m-mark-bg) inset !important;
+    background: 0 0;
+    font: var(--m-v-f-w-bd) 1em var(--m-v-f-fm-bd);
+    line-height: 1;
+}
+
+/* 上标*/
+.b3-typography span[data-type~=sup],.protyle-wysiwyg span[data-type~=sup]{
+    top: -0.5em;
+    position: relative;
+    vertical-align: super;
+    font-size: smaller;
+    opacity:  .8;
+}
+
+/* 下标 */
+ .b3-typography span[data-type~=sub], .protyle-wysiwyg span[data-type~=sub] {
+    position: relative;
+    /* line-height: 0; */
+    vertical-align: sub;
+    font-size: smaller;
+    opacity: .8;
+}
+
+/* 删除线 */
+.b3-typography s, .b3-typography span[data-type~=s],
+ .protyle-wysiwyg s, .protyle-wysiwyg span[data-type~=s] {
+    color: var(--m-inline-s-color);
+    text-decoration: line-through;
+    text-decoration-color: var(--m-theme2-background) !important;
+}
+.b3-typography s, .b3-typography .bq span[data-type~=s],
+.protyle-wysiwyg s, .protyle-wysiwyg .bq span[data-type~=s]
+{
+    color: var(--m-inline-bq-s-color);
+}
+
+/* 斜体 */
+.b3-typography em, .b3-typography span[data-type~=em], .protyle-wysiwyg em, .protyle-wysiwyg span[data-type~=em] {
+    font-style: italic;
+    color: var(--m-inline-em-color);
+}
+
+/* 粗体 */
+.b3-typography strong, .b3-typography span[data-type~=strong], .protyle-wysiwyg strong, .protyle-wysiwyg span[data-type~=strong] {
+    font: var(--m-inline-strong-font);
+    color: var(--m-inline-strong-color);
+}
+
+/* 下划线 */
+.b3-typography u, .b3-typography span[data-type~=u], .protyle-wysiwyg u, .protyle-wysiwyg span[data-type~=u] {
+    border-bottom: var(--m-inline-u-border-bottom);
+    /* 下面的目的是想让下划线左右多出一点 */
+    padding-right: 6px;  
+    padding-left: 4px;
+
+}
+
+
+/* --------------- 代码块 ---------------*/
+.protyle-wysiwyg .code-block {
+    color: var(--m-block-code-color);
+    font-family: var(--m-block-code-font);
+    border-radius: var(--m-block-code-radius);
+    border: 3px solid var(--m-block-code-border);
+    margin: 0 0 20px;
+    background-color: var(--m-block-code-bg-color);
+}
+
+.protyle-wysiwyg .code-block .protyle-linenumber__rows
+{
+    background-color: var(--v-block-code-row-bg-color) !important;
+    width: 36px;
+    border-width: 0;
+    border-right: 1px solid var(--pn-c);
+}
+.protyle-wysiwyg .code-block .protyle-linenumber__rows span::before{
+    text-align: center !important;
+}
+
+.b3-typography div.hljs, .protyle-wysiwyg div.hljs{
+    background: var(--m-block-code-bg-color);
+    display: block;
+}
+
+[data-type="NodeCodeBlock"] .protyle-action{
+    left: 0px !important;
+    top: 0px !important;
+    display: flex;
+    z-index: 1;
+    position: absolute;
+    right: 0px !important;
+    background-color: var(--m-block-code-action);
+}
+
+[data-type="NodeCodeBlock"] .protyle-action::before{
+    content: attr(lang) " ";
+    text-transform: uppercase;
+    white-space: pre-wrap;
+    background-image: var(--v-i-sys-menu);
+    background-repeat: no-repeat;
+    background-position: 7px center;
+    padding: 4px 4px 0px 4px;
+    color: var(--d-fc);
+    opacity: 0.6;
+    font-family: var(--v-f-fm-bd);
+    font-weight: 700;
+    font-size: 0.875em;
+    width: 60px;
+    display: block;
+    border-radius: var(--v-r-t) var(--v-r-t) 0 0;
+    top: 0;
+}
+/* protyle-action--first protyle-action__language::before{ */
+
+.protyle-action__language{
+    margin-left: 3px !important;
+}
+
+/* 行内代码 */
+/* .protyle-wysiwyg  [data-type="code"] {
+    color: var(--v-block-code-color);
+    background: var(--m-block-code-bg-color);
+    font: var(--v-f-w-text) .875em/1.5 var(--b3-font-family-code);
+    border-radius: var(--v-r-s);
+    padding: 4px 5px;
+    line-height: 1;
+    box-shadow: 0 0 0 1px var(--m-block-code-border) inset;
+} */
+/* 行内代码(行级代码) 样式 */
+.fn__code, .b3-typography code:not(.hljs), .b3-typography span[data-type~=code], .protyle-wysiwyg code:not(.hljs), .protyle-wysiwyg span[data-type~=code]{
+    color : var(--m-inline-code-color);
+    background: var(--m-inline-code-bg-color);
+    border: var(--m-inline-code-border);
+    border-radius: var(--m-inline-code-radius);
+    font-family: var(--m-block-code-font);
+}
+
+/* 代码块语言设置 */
+.b3-typography .code-block:not(pre) .protyle-action .protyle-action__language, .protyle-wysiwyg .code-block:not(pre) .protyle-action .protyle-action__language {
+    font-size: 85%;
+    color: var(--m-theme1-background);
+    margin-top: -4px;
+    align-self: center;
+}
+
+/* --------------- 代码块 end---------------*/
+、
+/* #region ********************** 引述块/引用块 ********************** */
+
+/*独立的*/
+.b3-typography blockquote, 
+.b3-typography .bq, 
+.protyle-wysiwyg blockquote,
+.protyle-wysiwyg .bq,
+div.item__readme blockquote {
+    color: var(--m-block-bq-color);
+    background: var(--m-block-bq-bg-color);
+    border-radius: var(--m-block-bq-border-radius);
+    padding: 0.75em 1em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border: 0px !important;
+}
+
+.b3-typography blockquote::before,
+.b3-typography .bq::before, 
+.protyle-wysiwyg blockquote::before, 
+.protyle-wysiwyg .bq::before {
+    content: "";
+    /* background-color: var(--b3-theme-surface-lighter); */
+    background-color: var(--b3-theme-surface-lighter);
+    width: .25em;
+    border-radius: var(--b3-border-radius);
+    position: absolute;
+    left: 2px;
+    top: 6px;
+    bottom: 6px;
+}
+
+
+.b3-typography blockquote::before,
+.b3-typography .bq::before, 
+.protyle-wysiwyg blockquote::before, 
+.protyle-wysiwyg .bq::before {
+    content: "";
+    background-color: transparent;
+}
+
+/*在列表中*/
+.protyle-wysiwyg .li>.bq,
+div.item__readme li blockquote {
+    border-left: 5px solid rgba(148, 152, 160, .2);
+    background: 0 0;
+    border-radius: 0;
+    padding: 0 0.5em;
+    margin-bottom: 0px;
+}
+
+.b3-typography li blockquote::before,
+.b3-typography .li .bq::before, 
+.protyle-wysiwyg li blockquote::before, 
+.protyle-wysiwyg .li .bq::before {
+    content: "";
+    /* background-color: var(--b3-theme-surface-lighter); */
+    background-color:var(--m-theme1-alt-0-4);
+    width: .25em;
+    border-radius: var(--b3-border-radius);
+    position: absolute;
+    left: 2px;
+    top: 6px;
+    bottom: 6px;
+}
+
+/* 在引述块 */
+.b3-typography blockquote blockquote, 
+.b3-typography .bq .bq, 
+.protyle-wysiwyg blockquote blockquote, 
+.protyle-wysiwyg .bq .bq{
+    padding-left: calc(.25em + 6px);
+    color: var(--b3-theme-on-surface);
+    background-color: var(--b3-bq-background);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0px;
+}
+
+.b3-typography blockquote blockquote::before,
+.b3-typography .bq .bq::before, 
+.protyle-wysiwyg blockquote blockquote::before, 
+.protyle-wysiwyg .bq .bq::before {
+    content: "";
+    /* background-color: var(--b3-theme-surface-lighter); */
+    background-color:var(--m-theme2-alt-0-4);
+    width: .25em;
+    border-radius: var(--b3-border-radius);
+    position: absolute;
+    left: 2px;
+    top: 6px;
+    bottom: 6px;
+}
+
+/* #endregion ********************** 引述块 ********************** */
+
+
+/* 备注 */
+.b3-typography span[data-type~=inline-memo], .protyle-wysiwyg span[data-type~=inline-memo] {
+    background-color: var(--m-theme2-background);      /* var(--b3-card-info-background); */
+    color: var(--m-theme2-on-background);
+    padding-left: 4px;
+    padding-right: 4px;
+    border-top: 4px solid var(--m-theme1-background);  /* var(--b3-card-info-color); */
+}
+
+/* 引用块 */
+.protyle-wysiwyg [data-node-id] span[data-type~=block-ref]:not(.av__celltext),
+.protyle-wysiwyg [data-node-id] span[data-type~=file-annotation-ref] {
+    padding-bottom: 4px;
+    border: 2px solid var(--m-theme1-alt-0-8);
+}
+.protyle-wysiwyg [data-node-id] span[data-type~=block-ref]:not(.av__celltext)::before,
+ .protyle-wysiwyg [data-node-id] span[data-type~=file-annotation-ref]::before {
+    content: "[[";
+    color: var(--m-theme1-on-background);
+    background-color: var(--m-theme1-alt-0-8);
+    margin-right: 4px;
+    padding: 0px 4px 4px  4px;
+}
+.protyle-wysiwyg [data-node-id] span[data-type~=block-ref]:not(.av__celltext)::after,
+ .protyle-wysiwyg [data-node-id] span[data-type~=file-annotation-ref]::after {
+    content: "]]";
+    color: var(--m-theme1-on-background);
+    background-color: var(--m-theme1-alt-0-8);
+    margin-left: 4px;
+    padding: 0px 4px 4px  4px;
+}
+
+/*虚拟引用 virtual-block-ref */
+.protyle-wysiwyg [data-node-id] span[data-type=virtual-block-ref] {
+    border-bottom: 2px dashed var(--m-theme1-background);
+    transition: var(--b3-transition);
+}
+
+/* 左侧的引用 */
+.protyle-attr:has( .protyle-attr--av) {
+    border: 2px dashed var(--m-theme1-background);
+}
+.protyle-attr .protyle-attr--av{
+    color: var(--m-theme2-alt-0-8) !important;
+}
+
+
+/* #region ******************** HTML块处理 ******************** */
+[data-type="NodeHTMLBlock"]{
+    border-top: 1px solid var(--m-theme1-background);
+    border-bottom: 1px solid var(--m-theme1-background);
+}
+/* #endregion ******************** 普通表格的处理  */
+
+
+/* #region ******************** 数据公式块 ******************** */
+[data-type="NodeMathBlock"]{
+    border-left: 1px solid var(--m-theme1-background);
+    border-right: 1px solid var(--m-theme1-background);
+}
+/* #endregion ******************** 数据公式块  */
+
+/* #region ******************** 调整超级块的块间距 ******************** */
+
+/* ————————————————————————————————————大超级块，不用设置边框—————————————————————————————— */
+.protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"] {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* —————————————————————————————————————次超级块大小—————————————————————————————————————— */
+.protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"] .sb {
+    /* border: var(--b3-border-dashed-gray-wider); */
+    border: 0.1em dashed var(--m-theme1-alt-0-6);
+    border-radius: var(--b3-border-radius-none);
+    box-sizing: border-box;
+    margin: 0.1em 0 0.1em 0.1em;
+}
+
+.protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"] .sb:nth-last-child(2) {
+    margin-right: 0.1em;
+}
+
+/* 解决超级块分栏后的小尾巴问题 */
+.sb .protyle-attr:last-child {
+    border: none !important;
+}
+
+/* ——————————————————————————————————————每个子超级块—————————————————————————————————————— */
+.protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"]>div {
+    border:  0.1em dashed var(--m-theme1-alt-0-6);
+    border-radius: var(--b3-border-radius-none);
+    box-sizing: border-box;
+    margin: 0.1em 0 0.1em 0.1em;
+    /* background-color: var(--b3-theme-background); */
+    /* background-color: var(--b3-theme-background); */
+}
+
+/* 最后一个子超级块不设置右边距 */
+.protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"]>div:nth-last-child(2) {
+    margin-right: 0.1em;
+}
+ 
+/* #endregion ******************** 调整超级块的块间距 ******************** */
+
+
+/* #region ******************** 分隔线 ******************** */
+
+.protyle-wysiwyg [data-node-id].hr > div::after
+{    
+    position: absolute;
+    content: " ";
+    height: 2px;
+    /* background-color: var(--b3-theme-background-light); */
+    width: calc(100% - 1px);
+    left: 0;
+    top: 13px;
+    cursor: crosshair;
+    /* border: 0; */
+    background-color: var(--ac-bk-fade);
+}
+
+/* {
+    padding-left: 100%;
+    position: relative;
+    height: 26px;
+} */
+/* #endregion ******************** 分隔线  */

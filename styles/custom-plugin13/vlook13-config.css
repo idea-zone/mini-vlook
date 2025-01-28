@@ -1,0 +1,25 @@
+:root{
+    /*删除块颜色  #6670a9 */
+    --v-block-del-color: var(--d-f-c-alt);
+    /*斜体颜色*/
+    --v-block-em-color: var(--d-f-c-dk);
+    /*加粗颜色*/
+    --v-block-strong-color: var(--d-f-c-dk);
+    /* 任务完成颜色 */
+    --v-task--done-color: var(--ac-gy-title);
+
+
+    
+    /*标签设置*/
+    --v-tag-bgcolor: var(--v-theme1);
+    --v-tag-color: #ffffff;
+    --v-tag-icon: #39eed9;
+    --v-theme-background-gray: #e7ecef;
+    --v-border-dashed-gray: 1px dashed #39eed9;
+    
+    /*引用块设置*/
+    --v-block-bq-color: var(--d-f-c-dk);
+    --v-block-bq-bg-color: var(--ac-t2-fade);
+    --v-block-bq-border-radius: var(--v-r-b);
+
+}

@@ -1,0 +1,236 @@
+:root{
+    /* 55, 53, 47 */
+    --S-settings-lg: url("data:image/svg+xml;utf8,<svg fill='rgb(242, 242, 242)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M16 21.2h-6c-0.4 0-0.667-0.267-0.667-0.667 0-0.267 0.267-0.533 0.667-0.533h6c0.267-1.067 1.2-1.867 2.4-1.867 1.067 0 2.133 0.8 2.4 1.867h1.067c0.4 0 0.667 0.267 0.667 0.667s-0.267 0.667-0.667 0.667h-1.067c-0.267 1.067-1.2 1.867-2.4 1.867s-2.133-0.8-2.4-2v0zM17.2 20.667c0 0.667 0.533 1.2 1.2 1.2s1.2-0.533 1.2-1.2c0-0.667-0.533-1.2-1.2-1.2s-1.2 0.533-1.2 1.2zM11.867 14.667h-1.867c-0.4 0-0.667-0.267-0.667-0.667s0.267-0.667 0.667-0.667h1.867c0.267-1.067 1.2-1.867 2.4-1.867 1.067 0 2.133 0.8 2.4 1.867h5.333c0.4 0 0.667 0.267 0.667 0.667s-0.267 0.667-0.667 0.667h-5.333c-0.267 1.067-1.2 1.867-2.4 1.867-1.067-0.133-2-0.8-2.4-1.867zM13.067 14c0 0.667 0.533 1.2 1.2 1.2s1.2-0.533 1.2-1.2-0.533-1.2-1.2-1.2c-0.667 0-1.2 0.533-1.2 1.2z'/></svg>") no-repeat left -4px top -4px;
+    --S-settings-dk: url("data:image/svg+xml;utf8,<svg fill='rgb(242, 242, 242)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M16 21.2h-6c-0.4 0-0.667-0.267-0.667-0.667 0-0.267 0.267-0.533 0.667-0.533h6c0.267-1.067 1.2-1.867 2.4-1.867 1.067 0 2.133 0.8 2.4 1.867h1.067c0.4 0 0.667 0.267 0.667 0.667s-0.267 0.667-0.667 0.667h-1.067c-0.267 1.067-1.2 1.867-2.4 1.867s-2.133-0.8-2.4-2v0zM17.2 20.667c0 0.667 0.533 1.2 1.2 1.2s1.2-0.533 1.2-1.2c0-0.667-0.533-1.2-1.2-1.2s-1.2 0.533-1.2 1.2zM11.867 14.667h-1.867c-0.4 0-0.667-0.267-0.667-0.667s0.267-0.667 0.667-0.667h1.867c0.267-1.067 1.2-1.867 2.4-1.867 1.067 0 2.133 0.8 2.4 1.867h5.333c0.4 0 0.667 0.267 0.667 0.667s-0.267 0.667-0.667 0.667h-5.333c-0.267 1.067-1.2 1.867-2.4 1.867-1.067-0.133-2-0.8-2.4-1.867zM13.067 14c0 0.667 0.533 1.2 1.2 1.2s1.2-0.533 1.2-1.2-0.533-1.2-1.2-1.2c-0.667 0-1.2 0.533-1.2 1.2z'/></svg>") no-repeat left -4px top -4px;
+	--S-toolbar-item-hover: rgba(0, 0, 0, .05);
+	--S-list-background: rgba(55, 53, 47, 0.06);
+
+	/* 23292C33 */
+	--m-geek-icon-on: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='20' height='20' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M25.639 0H134.36c8.915 0 12.148.928 15.407 2.671a18.173 18.173 0 0 1 7.56 7.56c1.744 3.26 2.672 6.493 2.672 15.408V134.36c0 8.915-.928 12.148-2.671 15.407a18.173 18.173 0 0 1-7.56 7.56c-3.26 1.744-6.493 2.672-15.408 2.672H25.64c-8.915 0-12.148-.928-15.407-2.671a18.173 18.173 0 0 1-7.56-7.56C.927 146.508 0 143.275 0 134.36V25.64c0-8.915.928-12.148 2.671-15.407a18.173 18.173 0 0 1 7.56-7.56C13.492.927 16.725 0 25.64 0z' fill='%23D98982'/%3E%3Cpath d='M86.553 61.695a6.57 6.57 0 0 1 6.562 6.557 6.57 6.57 0 0 1-6.561 6.558 6.57 6.57 0 0 1-6.563-6.558 6.57 6.57 0 0 1 6.563-6.557zM84.41 44.23c-16.337 0-29.595 13.316-29.526 29.71v.87c.066 1.07.133 2.208-.938 3.413-1.072 1.137-2.209 1.338-2.744 1.338h-3.615c-10.781 0-19.486 8.7-19.486 19.47 0 10.774 8.771 19.474 19.486 19.474h6.627c1.138 0 2.209.468 2.946 1.27.603.67.87 1.473.804 2.276 0 2.208-1.808 3.948-4.017 3.948H47.45c-7.365 0-14.262-2.877-19.418-8.03C22.813 112.75 20 105.857 20 98.564c0-7.227 2.813-14.052 7.9-19.204 5.023-5.085 11.717-8.03 18.883-8.163C48.053 51.457 64.591 36 84.41 36c9.71 0 18.882 3.68 25.845 10.305l.267.2c.402.335.402.335.87.803 1.074 1.071 1.608 2.208 1.608 3.413a4.027 4.027 0 0 1-4.017 4.015c-1.473 0-2.612-.603-3.482-1.74-.469-.334-.603-.468-.736-.669-.135-.067-.201-.2-.402-.402-5.424-4.951-12.453-7.695-19.953-7.695zm15.321 77.61l-1.536-1.276-10.684-10.531a2.067 2.067 0 0 0-1.47-.605h-4.073c-1.136 1.878-3.206 2.885-5.343 2.885-2.004 0-3.873-.806-5.076-2.28-1.267-1.545-1.803-3.555-1.469-5.636.469-3.02 3.272-5.434 6.478-5.434h.067c2.004 0 3.94 1.074 5.142 2.683h7.612a2.33 2.33 0 0 1 1.604.67l12.822 12.883c.468.403 1.002.672 1.536.672h12.822c1.136-1.88 3.206-2.952 5.341-2.952 2.004 0 3.875.738 5.076 2.214 1.27 1.476 1.803 3.42 1.47 5.5-.468 3.086-3.273 5.367-6.48 5.367-2.135 0-4.004-1.074-5.207-2.683h-15.026c-1.335 0-2.67-.537-3.606-1.476v-.002zM68.545 92.32c-3.606 0-6.545-2.884-6.545-6.507 0-3.757 2.805-6.507 6.544-6.507 1.803 0 3.406.738 4.609 2.012l.266.067h18.365c.667 0 1.269-.336 1.737-.805l8.614-8.922a5.148 5.148 0 0 1 3.606-1.476h10.752c1.27-1.878 3.206-2.684 5.276-2.684.801 0 1.536.135 2.337.402 1.604.605 2.871 1.946 3.606 3.555.668 1.611.735 3.423.135 4.965-1.003 2.483-3.474 4.16-6.212 4.16-.8 0-1.535-.201-2.27-.47-1.202-.47-2.337-1.14-3.072-2.482h-8.416c-.6 0-1.133.27-1.534.672l-8.949 8.922a5.202 5.202 0 0 1-3.606 1.41H74.42c-1.07 2.415-3.339 3.69-5.877 3.69l.001-.002zm44.542 7.58c-1.202 1.61-3.138 2.752-5.208 2.686-3.807 0-6.612-2.82-6.612-6.576 0-3.757 2.805-6.574 6.544-6.574h.068a6.315 6.315 0 0 1 5.341 2.952h14.827c1.201-1.878 3.205-2.885 5.341-2.885 3.807 0 6.612 2.817 6.612 6.574 0 3.756-2.805 6.575-6.544 6.575-2.138 0-4.075-.873-5.276-2.751h-15.093z' fill='%23292C33'/%3E%3C/g%3E%3C/svg%3E") no-repeat left 2px top 5px;
+	--m-geek-icon-off: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='20' height='20' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M25.639 0H134.36c8.915 0 12.148.928 15.407 2.671a18.173 18.173 0 0 1 7.56 7.56c1.744 3.26 2.672 6.493 2.672 15.408V134.36c0 8.915-.928 12.148-2.671 15.407a18.173 18.173 0 0 1-7.56 7.56c-3.26 1.744-6.493 2.672-15.408 2.672H25.64c-8.915 0-12.148-.928-15.407-2.671a18.173 18.173 0 0 1-7.56-7.56C.927 146.508 0 143.275 0 134.36V25.64c0-8.915.928-12.148 2.671-15.407a18.173 18.173 0 0 1 7.56-7.56C13.492.927 16.725 0 25.64 0z' fill='%23494646'/%3E%3Cpath d='M86.553 61.695a6.57 6.57 0 0 1 6.562 6.557 6.57 6.57 0 0 1-6.561 6.558 6.57 6.57 0 0 1-6.563-6.558 6.57 6.57 0 0 1 6.563-6.557zM84.41 44.23c-16.337 0-29.595 13.316-29.526 29.71v.87c.066 1.07.133 2.208-.938 3.413-1.072 1.137-2.209 1.338-2.744 1.338h-3.615c-10.781 0-19.486 8.7-19.486 19.47 0 10.774 8.771 19.474 19.486 19.474h6.627c1.138 0 2.209.468 2.946 1.27.603.67.87 1.473.804 2.276 0 2.208-1.808 3.948-4.017 3.948H47.45c-7.365 0-14.262-2.877-19.418-8.03C22.813 112.75 20 105.857 20 98.564c0-7.227 2.813-14.052 7.9-19.204 5.023-5.085 11.717-8.03 18.883-8.163C48.053 51.457 64.591 36 84.41 36c9.71 0 18.882 3.68 25.845 10.305l.267.2c.402.335.402.335.87.803 1.074 1.071 1.608 2.208 1.608 3.413a4.027 4.027 0 0 1-4.017 4.015c-1.473 0-2.612-.603-3.482-1.74-.469-.334-.603-.468-.736-.669-.135-.067-.201-.2-.402-.402-5.424-4.951-12.453-7.695-19.953-7.695zm15.321 77.61l-1.536-1.276-10.684-10.531a2.067 2.067 0 0 0-1.47-.605h-4.073c-1.136 1.878-3.206 2.885-5.343 2.885-2.004 0-3.873-.806-5.076-2.28-1.267-1.545-1.803-3.555-1.469-5.636.469-3.02 3.272-5.434 6.478-5.434h.067c2.004 0 3.94 1.074 5.142 2.683h7.612a2.33 2.33 0 0 1 1.604.67l12.822 12.883c.468.403 1.002.672 1.536.672h12.822c1.136-1.88 3.206-2.952 5.341-2.952 2.004 0 3.875.738 5.076 2.214 1.27 1.476 1.803 3.42 1.47 5.5-.468 3.086-3.273 5.367-6.48 5.367-2.135 0-4.004-1.074-5.207-2.683h-15.026c-1.335 0-2.67-.537-3.606-1.476v-.002zM68.545 92.32c-3.606 0-6.545-2.884-6.545-6.507 0-3.757 2.805-6.507 6.544-6.507 1.803 0 3.406.738 4.609 2.012l.266.067h18.365c.667 0 1.269-.336 1.737-.805l8.614-8.922a5.148 5.148 0 0 1 3.606-1.476h10.752c1.27-1.878 3.206-2.684 5.276-2.684.801 0 1.536.135 2.337.402 1.604.605 2.871 1.946 3.606 3.555.668 1.611.735 3.423.135 4.965-1.003 2.483-3.474 4.16-6.212 4.16-.8 0-1.535-.201-2.27-.47-1.202-.47-2.337-1.14-3.072-2.482h-8.416c-.6 0-1.133.27-1.534.672l-8.949 8.922a5.202 5.202 0 0 1-3.606 1.41H74.42c-1.07 2.415-3.339 3.69-5.877 3.69l.001-.002zm44.542 7.58c-1.202 1.61-3.138 2.752-5.208 2.686-3.807 0-6.612-2.82-6.612-6.576 0-3.757 2.805-6.574 6.544-6.574h.068a6.315 6.315 0 0 1 5.341 2.952h14.827c1.201-1.878 3.205-2.885 5.341-2.885 3.807 0 6.612 2.817 6.612 6.574 0 3.756-2.805 6.575-6.544 6.575-2.138 0-4.075-.873-5.276-2.751h-15.093z' fill='%23f2f2f2'/%3E%3C/g%3E%3C/svg%3E") no-repeat left 2px top 5px;
+}
+#toolbar{
+    position: relative !important;
+    overflow: visible !important;
+	z-index: 3 !important;
+}
+#minivlookToolbar{
+	width:24px;
+	height:24px;
+	margin:4px 0px 4px 2px;
+	border-radius:4px;
+	background: var(--S-settings-lg) !important;
+	background-color: var(--m-theme2-background) !important;
+    /* background: var(--m-menu-item-color-1); */
+    position: relative !important;
+    overflow: visible !important; /* 确保子元素不会被裁剪 */
+}
+
+
+#toolbar-theme-style-codelabel,
+#toolbar-theme-style-codelabelrender{
+	background-color: var(--m-theme2-background) !important;
+}
+
+
+html[data-theme-mode="dark"] {
+	#minivlookToolbar{
+		background: var(--S-settings-dk) !important;
+		background-color:var(--m-theme2-background) !important;
+	}
+	
+	#toolbar-theme-style-codelabel,
+	#toolbar-theme-style-codelabelrender{
+		background-color: var(--m-theme2-background) !important;
+	}
+}
+
+.toolbar--browser #toolbar-theme-style-codelabel,
+.toolbar--browser #toolbar-theme-style-codelabelrender,
+.toolbar--browser #minivlookToolbar{
+	right: 4px;
+}
+#minivlookToolbar>div{
+	display: none  !important;
+}
+#minivlookToolbar:hover{
+	background-color:var(--S-toolbar-item-hover);
+}
+#minivlookToolbar:hover>div{
+	display:block  !important;
+}
+
+#minivlookToolbar:after{
+	content: "";
+	/* background-color:var(--b3-theme-background); */
+    position: absolute !important;
+	background-color: var(--b3-theme-surface);
+	position:absolute;
+	width: 136px  !important;
+    /* height: 218px !important; */
+    /* height: 228px !important; */
+    height: 258px !important;
+    top: 23px;
+	left: -112px;
+	z-index: 5 !important;
+	border-radius:6px;
+	box-shadow:rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;
+	display:none  !important;
+}
+#minivlookToolbar:hover:after{
+    position: absolute !important;
+	display: block !important;
+}
+
+#mvButtonBug320
+,#mvButtonGeek
+,#mvButtonHope
+,#mvButtonJoint
+,#mvButtonOwl
+,#mvButtonSolaris
+,#mvButtonThinking
+,#mvButtonFancy
+ {
+    margin: 0px;
+    height: 30px;
+    top: 30px;
+    left: -110px;;
+    /* left: -108px; */
+    border-bottom: none;
+    width: 128px;
+    z-index: 18;
+    border-radius: 4px;
+    background-size: 18%;
+    /* 上边 | 右边 | 下边 | 左边 */
+    padding: 4px 4px 4px 4px !important;
+}
+
+#mvButtonBug320::after,
+#mvButtonGeek::after,
+#mvButtonHope::after,
+#mvButtonJoint::after,
+#mvButtonOwl::after,
+#mvButtonSolaris::after,
+#mvButtonThinking::after,
+#mvButtonFancy::after
+{
+	font-size:14px;
+	line-height:20px;
+	transform:none;
+	opacity:1;
+	color:var(--b3-theme-on-background);
+	background-color:transparent;
+	position:static;
+	margin:0;
+    /* 上边 | 右边 | 下边 | 左边 */
+	padding:0 0 0 20px;
+	box-shadow:none;
+	filter: none;
+}
+
+#mvButtonBug320::before,
+#mvButtonGeek::before,
+#mvButtonHope::before,
+#mvButtonJoint::before,
+#mvButtonOwl::before,
+#mvButtonSolaris::before,
+#mvButtonThinking::before,
+#mvButtonFancy::before
+{
+	display:none;
+}
+#mvButtonBug320:hover,
+#mvButtonGeek:hover,
+#mvButtonHope:hover,
+#mvButtonJoint:hover,
+#mvButtonOwl:hover,
+#mvButtonSolaris:hover,
+#mvButtonThinking:hover,
+#mvButtonFancy:hover
+{
+	background-color:var(--S-list-background)!important;
+}
+
+#mvButtonBug320.button_off{
+	background: var(--m-geek-icon-off) !important; 
+	background-size: 24px 24px;
+}
+#mvButtonBug320.button_on{
+	background: var(--m-geek-icon-on) !important; 
+	border: 1px dotted var(--m-theme2-background) !important;
+}
+
+
+#mvButtonGeek.button_off{
+	background: var(--m-geek-icon-off) !important; 
+	background-size: 24px 24px;
+}
+#mvButtonGeek.button_on{
+	background: var(--m-geek-icon-on) !important; 
+	border: 1px dotted var(--m-theme2-background) !important;
+}
+
+
+#mvButtonFancy.button_off{
+	background: var(--m-geek-icon-off) !important; 
+	background-size: 24px 24px;
+}
+#mvButtonFancy.button_on{
+	background: var(--m-geek-icon-on) !important; 
+	border: 1px dotted var(--m-theme2-background) !important;
+}
+
+
+#mvButtonHope.button_off{
+	background: var(--m-geek-icon-off) !important; 
+	background-size: 24px 24px;
+}
+#mvButtonHope.button_on{
+	background: var(--m-geek-icon-on) !important; 
+	border: 1px dotted var(--m-theme2-background) !important;
+}
+
+
+#mvButtonJoint.button_off{
+	background: var(--m-geek-icon-off) !important; 
+	background-size: 24px 24px;
+}
+#mvButtonJoint.button_on{
+	background: var(--m-geek-icon-on) !important; 
+	border: 1px dotted var(--m-theme2-background) !important;
+}
+
+
+#mvButtonOwl.button_off{
+	background: var(--m-geek-icon-off) !important; 
+	background-size: 24px 24px;
+}
+#mvButtonOwl.button_on{
+	background: var(--m-geek-icon-on) !important; 
+	border: 1px dotted var(--m-theme2-background) !important;
+}
+
+
+
+#mvButtonSolaris.button_off{
+	background: var(--m-geek-icon-off) !important; 
+	background-size: 24px 24px;
+}
+#mvButtonSolaris.button_on{
+	background: var(--m-geek-icon-on) !important; 
+	border: 1px dotted var(--m-theme2-background) !important;
+}
+
+
+
+#mvButtonThinking.button_off{
+	background: var(--m-geek-icon-off) !important; 
+	background-size: 24px 24px;
+}
+#mvButtonThinking.button_on{
+	background: var(--m-geek-icon-on) !important; 
+	border: 1px dotted var(--m-theme2-background) !important;
+}
+
+
+

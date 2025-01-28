@@ -1,0 +1,383 @@
+/* 各级标题 */
+:root{
+
+    --custom-h1-color: transform;
+    --custom-h2-color: transform;
+    --custom-h3-color: transform;
+    --custom-h4-color: transform;
+    --custom-h5-color: transform;
+    --custom-h6-color: transform;
+
+    --custom-h-num-font-size: 100%;
+}
+
+
+@counter-style my-circle-number-2{
+    system: cyclic;
+    symbols: ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ ㉑ ㉒ ㉓ ㉔ ㉕ ㉖ ㉗ ㉘ ㉙ ㉚ ㉛ ㉜ ㉝ ㉞ ㉟ ㊱ ㊲ ㊳ ㊴ ㊵ ㊶ ㊷ ㊸ ㊹ ㊺ ㊻ ㊼ ㊽ ㊾ ㊿;
+    suffix: " ";
+}
+
+/* 标题自动编号 */
+/* body {
+    counter-reset: h1-counter 0;
+} */
+
+.protyle-wysiwyg:not([custom-f~="bt"]),
+.b3-typography {
+    counter-reset: h1-counter ;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h1,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h1,
+.b3-typography>h1 {
+    counter-increment: h1-counter;
+    counter-reset: h2-counter 0;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h2,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h2,
+.b3-typography>h2 {
+    counter-increment: h2-counter;
+    counter-reset: h3-counter 0;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h3,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h3,
+.b3-typography>h3 {
+    counter-increment: h3-counter;
+    counter-reset: h4-counter 0;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h4,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h4,
+.b3-typography>h4 {
+    counter-increment: h4-counter;
+    counter-reset: h5-counter 0;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h5,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h5,
+.b3-typography>h5 {
+    counter-increment: h5-counter;
+    counter-reset: h6-counter 0;
+}
+
+/* .protyle-wysiwyg:not([custom-f~="bt"])>.h6,
+.b3-typography>h6 {
+    counter-increment: h6-counter;
+} */
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h1::before,
+.b3-typography>h1::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: counter(h1-counter) "\00A0" !important;
+
+}
+
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h2::before,
+.b3-typography>h2::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size)!important;
+    
+    content: counter(h1-counter) "." counter(h2-counter) "\00A0";
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h3::before,
+.b3-typography>h3::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "\00A0";
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h4::before,
+.b3-typography>h4::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    /* content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "\00A0"; */
+    content: "(" counter(h4-counter) ")" "\00A0";   
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h5::before,
+.b3-typography>h5::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    /* content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "." counter(h5-counter) "\00A0"; */
+    content: counter(h5-counter,my-circle-number-2) "\00A0";
+}
+
+/* .protyle-wysiwyg:not([custom-f~="bt"])>.h6::before,
+.b3-typography>h6::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "." counter(h5-counter) "." counter(h6-counter) "\00A0";
+} */
+
+.protyle-wysiwyg>.h6::before,
+/* .protyle-wysiwyg [data-node-id][fold="1"].h6::before, */
+.b3-typography>h6::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: '※';
+}
+
+.protyle-wysiwyg .bq > .h6::before,
+.b3-typography .bq > h6::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: '※';
+}
+
+.protyle-wysiwyg .sb > .h6::before,
+.b3-typography .sb > h6::before {
+    display: block !important;
+    float: left;
+    font-size: var(--custom-h-num-font-size);
+    content: '※';
+}
+
+/* 调整标题空行光标位置 */
+.protyle-wysiwyg:not([custom-f~="bt"])>.h1>[contenteditable][spellcheck]:empty {
+    padding-left: var(--custom-h1-indentation);
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h2>[contenteditable][spellcheck]:empty {
+    padding-left: var(--custom-h2-indentation);
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h3>[contenteditable][spellcheck]:empty {
+    padding-left: var(--custom-h3-indentation);
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h4>[contenteditable][spellcheck]:empty {
+    padding-left: var(--custom-h4-indentation);
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"])>.h5>[contenteditable][spellcheck]:empty {
+    padding-left: var(--custom-h5-indentation);
+}
+
+/* .protyle-wysiwyg:not([custom-f~="bt"])>.h6>[contenteditable][spellcheck]:empty {
+    padding-left: var(--custom-h6-indentation);
+} */
+
+/* 标题颜色标识 */
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h1,
+.b3-typography h1 {
+    /* font-size: 1.6em !important; */
+    /* color: var(--custom-h1-color); */
+    border-left: 3px solid var(--custom-h1-color);
+    padding-left: 9px;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h2,
+.b3-typography h2 {
+    /* font-size: 1.5em !important; */
+    /* color: var(--custom-h2-color); */
+    border-left: 3px solid var(--custom-h2-color);
+    padding-left: 9px;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h3,
+.b3-typography h3 {
+    /* font-size: 1.4em !important; */
+    /* color: var(--custom-h3-color); */
+    border-left: 3px solid var(--custom-h3-color);
+    padding-left: 9px;
+
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h4,
+.b3-typography h4 {
+    /* font-size: 1.3em !important; */
+    /* color: var(--custom-h4-color); */
+    border-left: 3px solid var(--custom-h4-color);
+    padding-left: 9px;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id].h5,
+.b3-typography h5 {
+    /* font-size: 1.2em !important; */
+    /* color: var(--custom-h5-color); */
+    border-left: 3px solid var(--custom-h5-color);
+    padding-left: 9px;
+}
+
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h1::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h2::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h3::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h4::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h5::before
+{
+    position: absolute !important;
+    color: var(--v-block-heading-color) !important;
+   
+    /* color: brown !important; */
+
+    top:  9px !important;
+    left: 0px !important;
+    font-size: 60% !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    padding-bottom: 10px !important;
+
+    height: 3px !important;
+    border-radius: var(--v-block-heading-border-radius);
+    background: linear-gradient(0deg, var(--v-block-heading-start-bg-color), var(--v-block-heading-end-bg-color));
+    letter-spacing: .15em;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h3::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h4::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h5::before{
+    
+    top:  -3px !important;
+    height: 10px !important;
+    padding-bottom: 16px !important;
+
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h6::before{
+    
+    position: absolute !important;
+    color: var(--v-block-heading-color) !important;
+   
+    /* color: brown !important; */
+
+    top:  9px !important;
+    left: 0px !important;
+    font-size: 60% !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    padding-bottom: 10px !important;
+
+    height: 3px !important;
+    border-radius: var(--v-block-heading-border-radius);
+    background: linear-gradient(0deg, var(--v-block-heading-start-bg-color), var(--v-block-heading-end-bg-color));
+    letter-spacing: .15em;
+
+    
+    top:  -15px !important;
+    height: 5px !important;
+    left: 10px !important;
+    padding-bottom: 5px !important;
+
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) .h1 + [data-node-id][fold="1"].h2::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) .h2 + [data-node-id][fold="1"].h3::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) .h3 + [data-node-id][fold="1"].h4::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) .h4 + [data-node-id][fold="1"].h5::before,
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h6::before
+{
+    top:  -4px !important;
+}
+
+/* .protyle-wysiwyg .h1:has(+ .h2) ,
+.protyle-wysiwyg .h2:has( + .h3) ,
+.protyle-wysiwyg .h3:has( + .h4) ,
+.protyle-wysiwyg .h4:has( + .h5)  {
+   
+}
+
+.protyle-wysiwyg .h6 {
+   
+} */
+
+.protyle-wysiwyg :is(.h1 + .h6, .h2 + .h6, .h3 + .h6, .h4 + .h6, .h5 + .h6, .h6 + .h6) {
+    margin-top: 0px !important;
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h1::before
+{
+    content: counter(h1-counter) "\00A0" !important;
+}
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h2::before
+{
+    content: counter(h1-counter) "." counter(h2-counter) "\00A0";
+}
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h3::before
+{
+    content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "\00A0";
+
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h4::before
+{
+
+    content: "(" counter(h4-counter) ")" "\00A0"; 
+    /* content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "\00A0"; */
+
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h5::before
+{
+    /* content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "." counter(h5-counter) "\00A0"; */
+    content: counter(h5-counter,my-circle-number-2) "\00A0";
+}
+
+.protyle-wysiwyg:not([custom-f~="bt"]) [data-node-id][fold="1"].h6::before
+{
+    /* content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "." counter(h5-counter) "\00A0"; */
+    content: '※';
+}
+
+/* REN 后缀来自 Odyssey */
+:root{
+    
+	--h1-r-graphic: url("data:image/svg+xml;utf8,<svg fill='rgba(42, 168, 153, 0.8)' height='24' viewBox='0 0 32 32' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M4.8 29.714v0c-1.371 0-2.514-1.143-2.514-2.514v0c0-1.371 1.143-2.514 2.514-2.514v0c1.371 0 2.514 1.143 2.514 2.514v0c0.114 1.371-1.029 2.514-2.514 2.514z'/></svg>") no-repeat  center;
+	--h2-r-graphic: url("data:image/svg+xml;utf8,<svg fill='rgba(42, 168, 153, 0.8)' height='24' viewBox='0 0 32 32' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M11.429 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM4.571 18.286c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286z'/></svg>") no-repeat  center;
+	--h3-r-graphic: url("data:image/svg+xml;utf8,<svg fill='rgba(42, 168, 153, 0.8)' height='24' viewBox='0 0 32 32' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M4.571 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM4.571 18.286c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286z'/></svg>") no-repeat  center;
+	--h4-r-graphic: url("data:image/svg+xml;utf8,<svg fill='rgba(42, 168, 153, 0.8)' height='24' viewBox='0 0 32 32' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M4.571 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM4.571 18.286c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 22.857c1.257 0 2.286-1.029 2.286-2.286s-1.029-2.286-2.286-2.286-2.286 1.029-2.286 2.286 1.029 2.286 2.286 2.286z'/></svg>") no-repeat  center;
+	--h5-r-graphic: url("data:image/svg+xml;utf8,<svg fill='rgba(42, 168, 153, 0.8)' height='24' viewBox='0 0 32 32' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M4.571 18.286c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 22.857c1.257 0 2.286-1.029 2.286-2.286s-1.029-2.286-2.286-2.286-2.286 1.029-2.286 2.286 1.029 2.286 2.286 2.286zM4.571 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM4.571 11.429c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286z'/></svg>") no-repeat  center;
+	--h6-r-graphic: url("data:image/svg+xml;utf8,<svg fill='rgba(42, 168, 153, 0.8)' height='24' viewBox='0 0 32 32' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M4.571 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM4.571 18.286c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM4.571 11.429c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 18.286c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 16c1.257 0 2.286-1.029 2.286-2.286s-1.029-2.286-2.286-2.286-2.286 1.029-2.286 2.286 1.029 2.286 2.286 2.286z'/></svg>") no-repeat  center;
+    
+}
+
+.protyle-wysiwyg:not([custom-f~="after"]) .h1>[spellcheck]:not(:empty)::after{
+	background: var(--h1-r-graphic);
+}
+.protyle-wysiwyg:not([custom-f~="after"]) .h2>[spellcheck]:not(:empty)::after{
+	background: var(--h2-r-graphic);
+}
+.protyle-wysiwyg:not([custom-f~="after"]) .h3>[spellcheck]:not(:empty)::after{
+	background: var(--h3-r-graphic);
+}
+.protyle-wysiwyg:not([custom-f~="after"]) .h4>[spellcheck]:not(:empty)::after{
+	background: var(--h4-r-graphic);
+}
+.protyle-wysiwyg:not([custom-f~="after"]) .h5>[spellcheck]:not(:empty)::after{
+	background: var(--h5-r-graphic);
+}
+
+/* 6级标题后缀，默认不显示 */
+.protyle-wysiwyg:not([custom-f~="after"]) .h6>[spellcheck]:not(:empty)::after{
+	/* background: var(--h6-r-graphic); */
+}
+
+.protyle-wysiwyg .h1>[spellcheck]:not(:empty)::after,
+.protyle-wysiwyg .h2>[spellcheck]:not(:empty)::after,
+.protyle-wysiwyg .h3>[spellcheck]:not(:empty)::after,
+.protyle-wysiwyg .h4>[spellcheck]:not(:empty)::after,
+.protyle-wysiwyg .h5>[spellcheck]:not(:empty)::after,
+.protyle-wysiwyg .h6>[spellcheck]:not(:empty)::after{
+	content:"";
+	position:absolute;
+	float:right;
+	margin-left:0.2em;
+	height: 1.2em;
+	width: 1.2em;
+	background-size: 100% 100%;
+}

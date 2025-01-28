@@ -1,127 +1,70 @@
-/* 基础内容 */
+/* Siyuan 默认变量和配置 */
+/* @import url(./styles/vlook/vlook-25-x-bug320.css); */
+@import url(./styles/vlook/vlook-27-x-bug320.css);
+/* @import url(./styles/vlook/vlook-27-geek.css); */
 
-@import url(./style/vlooks/vlook-bug320-lt.css);
-@import url(./style/vlooks/vlook-bug320-dk.css);
+@import url(./styles/my-theme-config.css);
+@import url(./styles/my-theme-config-dk.css);
 
-/* 
-@import url(./style/vlooks/vlook-thinking-lt.css);
-@import url(./style/vlooks/vlook-thinking-dt.css); */
+@import url(./styles/theme-conifg.css);
+@import url(./styles/theme-conifg-dk.css);
 
-@import url(./style/theme-on-vlook-conifg.css);
-@import url(./style/theme-on-vlook-conifg-dt.css);
-@import url(./style/theme-config.css);
+/* 编辑器页面布局 */
+@import url(./styles/v-dock-main.css);
+@import url(./styles/v-dock-settings.css);
+@import url(./styles/v-dock-file-tree.css.css);
+@import url(./styles/v-dock-outline-heading-autonumber.css);
 
-/* 菜单块 */
-@import url(./style/docks/four-menu-splite.css);
-/* 状态栏 */
-@import url(./style/docks/dock-status.css);
-/* 文档树样式 */
-@import url(./style/docks/file-tree.css);
-/* 其他窗口处理 */
-@import url(./style/docks/windows-menu.css);
+/* 基础内容块配置 */
+/* 行级样式 */
+@import url(./styles/v-block-inline-style.css);
+/* 块级样式 */
+@import url(./styles/v-block-para-style.css);
 
-/* 基础块设置 */
-@import url(./style/custom/v-block-heading.css);
-@import url(./style/custom/v-block-inline-style.css);
-
-/* 背景网格 */
-@import url(./style/custom/v-bg-grid-style.css);
-
-/* 分栏设置 */
-@import url(./style/custom/v-splite-by-line-bq.css);
-@import url(./style/custom/v-splite-by-line-li.css);
-
-/* 链接小图标 */
-@import url(./style/custom/v-icon-link.css);
-@import url(./style/custom/span-link.css);
-
-/* vlook 方式的封面和封底 */
-@import url(./style/custom/v-conver-img.css);
-@import url(./style/custom/custom-theme-conver-style.css);
-
-/* 其他一些额外属性 */
-@import url(./style/custom/custom-f-sp.css);
-
-/* 自动编号 */
-@import url(./style/custom/custom-f-bt-autoheading.css);
+/* 标题样式 */
+@import url(./styles/v-block-para-heading.css);
+@import url(./styles/v-block-para-heading-autonumber.css);
+@import url(./styles/custom-theme-conver-style.css);
 
 
-/* 列表转表格、看板和面板 */
-@import url(./style/custom/custom-f-bg.css);
-@import url(./style/custom/custom-f-kb.css);
-@import url(./style/custom/custom-f-kbw.css);
-@import url(./style/custom/custom-f-map.css);
-@import url(./style/custom/custom-f-card.css);
+/* 自定义 */
+@import url(./styles/custom-f-bg.css);
+@import url(./styles/custom-f-kb.css);
+@import url(./styles/custom-f-kbw.css);
+@import url(./styles/custom-f-map.css);
+@import url(./styles/custom-f-sp.css);
 
-/*微章-功能*/
-@import url(./style/custom-plugins/codelabel-wz.css);
 
-/*微章-整行-功能*/
-@import url(./style/custom-plugins/codelabel-wz-line.css);
+@import url(./styles/v-splite-by-line-li.css);
+@import url(./styles/v-splite-by-line-bq.css);
+@import url(./styles/v-icon-link.css);
+@import url(./styles/v-span-link.css);
 
-/*刮刮乐-功能*/
-@import url(./style/custom-plugins/code-rb-coad.css);
+/* 微章样式 */
+@import url(./styles/custom-plugin/codelabel-wz.css);
+/* 引述块 */
+@import url(./styles/v-block-bq-style.css);
+@import url(./styles/custom-plugin/custom-bqcolor.css);
 
-/*注音-功能*/
-@import url(./style/custom-plugins/codelabel-pg.css);
+@import url(./styles/custom-f-card.css);
 
-/*计数任务-功能*/
-@import url(./style/custom-plugins/codelabel-todo.css);
-
-/*下拉框-功能*/
-@import url(./style/custom-plugins/codelabel-cx.css);
-
-/*block-功能*/
-@import url(./style/custom-plugins/codelabel-block-bq.css);
-
-/*多级标签*/
-@import url(./style/custom-plugins/mult-tag-lv.css);
-
-/*分页引用*/
-@import url(./style/custom-plugins/tab-bqe.css);
-
-/*tick*/
-@import url(./style/custom-plugins/codelabel-tick.css);
-
-/* nodeattr 挂件 */
-@import url(./style/custom-plugins/nodeattr.css);
-
-/* ALT+Enter */
-@import url(./style/custom-plugins/alt-anter.css);
-
-/* 最后额外增补的一些内容： 显示 custom-f 属性 */
-@import url(./style/custom/custom-f-showF.css);
-
-/* 增加 btn 属性 */
-@import url(./style/custom/custom-f-btn.css);
-
-/* 增加 CSS 预设一些颜色和宽度的值 属性 */
-@import url(./style/custom/custom-f-css-define.css);
-
+@import url(./styles/custom-plugin13/vlook13-config.css);
+@import url(./styles/custom-plugin13/codelabel-wz.css);
+@import url(./styles/custom-plugin13/codelabel-wz-line.css);
+@import url(./styles/custom-plugin13/codelabel-tick.css);
+@import url(./styles/custom-plugin13/codelabel-todo.css);
+@import url(./styles/custom-plugin13/code-rb-coad.css);
+@import url(./styles/custom-plugin13/codelabel-block-bq.css);
+@import url(./styles/custom-plugin13/codelabel-cx.css);
+/*@import url(./styles/custom-plugin13/tab-bqe.css);*/
+@import url(./styles/custom-plugin13/codelabel-pg.css);
+@import url(./styles/custom-plugin13/mult-tag-lv.css);
 
 /* 解决 分栏引用下 display: inline-block 不起作用的问题 */
 .protyle-wysiwyg {
     display: block; 
 }
 
-/* 数据表格的处理 */
 
-[data-av-type="table"] .av__container{
-    padding: 10px;
-    border: var(--v-theme2) dotted 2px !important;
-}
 
-[data-av-type="table"]  .av__row{
-    padding: 0px;
-    border: var(--v-theme2) dotted 1px !important; 
-}
 
- 
-:lang(ja_JP):root {
-    --b3-font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", "Segoe UI", sans-serif, "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
-}
-
-/* https://github.com/siyuan-note/siyuan/issues/6440 */
-.protyle-action--order:after {
-    mix-blend-mode: multiply;
-}

@@ -1,0 +1,120 @@
+/* #region ******************** 数据表格的处理 ******************** */
+
+[data-av-type="table"] .av__container{
+    border: var(--m-theme2-background) dotted 2px !important;
+    background: var(--m-table-background-color) !important;
+}
+
+[data-av-type="table"]  .av__row{
+    border: var(--m-theme2-background) dotted 1px !important; 
+}
+
+.av__row--header, .av__row--footer,
+.av__firstcol,
+.av__colsticky.av__firstcol, .av__colsticky>div:not(.av__cell--select):not(.av__cell--active):not(.av__calc--ashow) {
+    background: var(--m-table-background-color) !important;
+}
+
+
+.av__header .block__icon,
+.av__row .block__icons,
+.av__row .block__icon,
+.av__header .block__icon svg,
+.av__row .block__icon svg{
+    color: var(--m-d-fc) !important;
+    background:  var(--m-table-background-color) !important;
+}
+
+.av__row .block__icons{
+    margin: 0px 5px 0px 5px;
+}
+
+.av__header .block__icon:hover  svg,
+.av__row .block__icon:hover  svg{
+    color: var(--m-theme2-on-background) !important;
+    background:  var(--m-theme2-alt-0-8) !important;
+}
+
+
+
+.av__container .block__icon:hover{
+    color:  var(--m-theme2-on-background) !important;
+    background: var(--m-theme2-background) !important;
+}
+
+.av__firstcol.av__colsticky,.av__cell{
+    border-right: var(--m-theme1-background) dotted 1px !important; 
+}
+
+.av__header .layout-tab-bar .item--focus:after{
+    background-color: var(--m-theme2-alt-0-8) !important;
+}
+.av__header .av__title{
+    padding-left: 8px;
+}
+
+.av__colsticky:hover [data-type="av-add-bottom"],
+.av__cell--header:hover
+{
+    background-color: var(--m-theme2-alt-0-8);
+    color: var(--m-theme2-on-background);
+}
+
+.av__cell--header:hover svg
+{
+    color: var(--m-theme2-on-background);
+}
+.av__calc:hover,
+.av__calc:hover span{
+    background: var(--m-table-background-color) !important;
+    color: var(--m-theme2-background) !important;
+}
+
+/* #endregion ******************** 数据表格的处理  */
+
+
+/* #region ******************** 普通表格的处理 ******************** */
+.b3-typography table, 
+.protyle-wysiwyg table {
+    /* margin: 0;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    line-height: 1.5;
+    word-break: break-all;
+    white-space: pre-wrap;
+    border: 0 solid var(--m-d-fc-a);
+    border-width: 0 0 2px;
+    border-radius: var(--m-v-r-b) var(--m-v-r-b-xc);
+    background: var(--m-d-bc);
+    vertical-align: text-top;
+    width: auto;
+    opacity: 0.6; */
+
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-spacing: 0;  line-height: 1.5;
+    word-break: break-all;
+    white-space: pre-wrap;
+    border: 0 solid var(--m-d-fc-a);
+    border-width: 0 0 2px;
+    border-radius: var(--m-v-r-b) var(--m-v-r-b-xc);
+    background: var(--m-d-bc);
+    vertical-align: text-top;
+    width: auto;
+    opacity: 100%;
+}
+
+thead tr th{
+    color: var(--m-d-bc) !important; 
+    background: var(--m-d-fc-a) !important; /*  #9ea9a9 ; */
+    font: var(--m-v-f-w-bd) 1em var(--m-v-f-fm-bd);
+    border-right: 1px solid var(--m-d-bc);
+    margin: 0;
+    padding: var(--m-tbl-cell-padding);
+    box-shadow: 0 1px 0 var(--tbl-h-bd) inset;
+    opacity: 1.0;
+}
+
+/* #endregion ******************** 普通表格的处理  */
+
