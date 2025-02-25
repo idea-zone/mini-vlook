@@ -270,34 +270,49 @@ div.sy__file ul:nth-of-type(8n) li.b3-list-item.b3-list-item--hide-action:hover 
 div.sy__file ul:nth-of-type(8n+1) li.b3-list-item--focus
 {
     border: 1px solid var(--b3-filetree-border-color1) !important;
+    background-color: var(--b3-filetree-background1) !important;
 }
 
 div.sy__file ul:nth-of-type(8n+2) li.b3-list-item--focus {
     border: 1px solid var(--b3-filetree-border-color2) !important;
+    background-color: var(--b3-filetree-background2) !important;
+
 }
 
 div.sy__file ul:nth-of-type(8n+3) li.b3-list-item--focus {
     border: 1px solid var(--b3-filetree-border-color3) !important;
+    background-color: var(--b3-filetree-background3) !important;
+
 }
 
 div.sy__file ul:nth-of-type(8n+4) li.b3-list-item--focus {
     border: 1px solid var(--b3-filetree-border-color4) !important;
+    background-color: var(--b3-filetree-background4) !important;
+
 }
 
 div.sy__file ul:nth-of-type(8n+5) li.b3-list-item--focus {
     border: 1px solid var(--b3-filetree-border-color5) !important;
+    background-color: var(--b3-filetree-background5) !important;
+
 }
 
 div.sy__file ul:nth-of-type(8n+6) li.b3-list-item--focus {
     border: 1px solid var(--b3-filetree-border-color6) !important;
+    background-color: var(--b3-filetree-background6) !important;
+
 }
 
 div.sy__file ul:nth-of-type(8n+7) li.b3-list-item--focus {
     border: 1px solid var(--b3-filetree-border-color7) !important;
+    background-color: var(--b3-filetree-background7) !important;
+
 }
 
 div.sy__file ul:nth-of-type(8n) li.b3-list-item--focus {
     border: 1px solid var(--b3-filetree-border-color8) !important;
+    background-color: var(--b3-filetree-background8) !important;
+
 }
 
 
