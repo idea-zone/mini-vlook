@@ -65,6 +65,8 @@
     display: block; 
 }
 
-
-
+/* 修复编辑器内容不随 Siyuan 扩大和缩小的问题 */
+body .protyle-wysiwyg *{
+    font-size:var(--b3-font-size-editor) ;
+}
 
