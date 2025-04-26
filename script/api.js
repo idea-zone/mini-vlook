@@ -66,54 +66,52 @@ const apiconfig = {
 
 //#region  *********************** 思源API Savor ***********************
 //思源官方API文档  https://github.com/siyuan-note/siyuan/blob/master/API_zh_CN.md
-async function 向思源请求数据Savor(url, data) {
-  const response = await fetch(url, {
-    body: JSON.stringify(data),
-    method: "POST",
-    headers: {
-      Authorization: `Token ''`,
-    },
-  });
-  if (response.status === 200) return await response.json();
-  else return null;
+async function 向思源请求数据Savor(url, data)  {
+  try {
+      const response = await fetch(url, {
+          body: JSON.stringify(data),
+          method: 'POST',
+          headers: { Authorization: 'Token ' } 
+      });
+      return response.ok ? await response.json() : null;
+  } catch (error) {
+      console.error('[Mini-VLOOK] API 请求失败:', error); 
+      return null;
+  }
 }
 
 async function 获取文件Savor(path, then = null, obj = null) {
-  let url = "/api/file/getFile";
-  await 向思源请求数据Savor(url, {
-    path: path,
-  }).then((v) => {
+  const url = '/api/file/getFile';
+  await 向思源请求数据Savor(url, { path }).then((v) => {
     if (then) then(v, obj);
-  });
+});
 }
 
-async function 写入文件Savor(
-  path,
-  filedata,
-  then = null,
-  obj = null,
-  isDir = false,
-  modTime = Date.now()
-) {
-  let blob = new Blob([filedata]);
-  let file = new File([blob], path.split("/").pop());
-  let formdata = new FormData();
+async function 写入文件Savor(path, filedata, then = null, obj = null, isDir = false, modTime = Date.now())  {
+  const blob = new Blob([filedata]);
+  const file = new File([blob], path.split('/').pop());
+  const formdata = new FormData();
   formdata.append("path", path);
   formdata.append("file", file);
   formdata.append("isDir", isDir);
   formdata.append("modTime", modTime);
-  await fetch("/api/file/putFile", {
-    body: formdata,
-    method: "POST",
-    headers: {
-      Authorization: `Token ""`,
-    },
-  }).then((v) => {
-    setTimeout(() => {
-      if (then) then(obj);
-    }, 200);
-  });
+  
+  try {
+      await fetch("/api/file/putFile", {
+          body: formdata,
+          method: "POST",
+          // headers: {
+          //     Authorization: `Token ""`,
+          // },
+      }).then(() => {
+          if (then) setTimeout(() => then(obj), 200);
+      });
+  } catch (error) {
+      console.error('写入文件出错:', error);
+  }
 }
+
+
 //#endregion *********************** 思源API
 
 async function 向思源请求数据(url, data) {
@@ -556,6 +554,20 @@ async function 获取系统字体列表() {
   let url = "/api/system/getSysFonts";
   return 解析响应体(向思源请求数据(url));
 }
+
+// async function 获取文件(path) {
+//   const response = await fetch("/api/file/getFile", {
+//     method: "POST",
+//     headers: {
+//       Authorization: `Token ${apiconfig.token}`,
+//     },
+//     body: JSON.stringify({
+//       path: path,
+//     }),
+//   });
+//   if (response.status === 200) return response;
+//   else return null;
+// }
 
 async function 获取文件(path) {
   const response = await fetch("/api/file/getFile", {

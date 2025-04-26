@@ -91,13 +91,7 @@ export var config = {
   };
   if (v == null) {
     window.theme.config = { Savor: 1 };
-    写入文件Savor(
-      "/data/snippets/MiniVlook.config.json",
-      JSON.stringify(window.theme.config, undefined, 4),
-      (a) => {
-        funs();
-      }
-    );
+    写入文件Savor("/data/snippets/MiniVlook.config.json", JSON.stringify(window.theme.config, undefined, 4), funs);
   } else {
     window.theme.config = v;
     funs();
