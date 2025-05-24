@@ -135,6 +135,7 @@
 .b3-typography strong, .b3-typography span[data-type~=strong], .protyle-wysiwyg strong, .protyle-wysiwyg span[data-type~=strong] {
     font: var(--m-inline-strong-font);
     color: var(--m-inline-strong-color);
+    font-weight: bold;
 }
 
 /* 下划线 */
