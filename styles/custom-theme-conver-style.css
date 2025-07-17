@@ -16,16 +16,15 @@
 
     display: block;
     color: var(--conver-font-color1) !important;
-    font: var(--v-f-w-title) 2.5em/1.3 var(--v-f-fm-title);
+    font: var(--v-f-w-title) 2.5em/1.3 var(--v-f-fm-title) !important;
     text-align: var(--conver-text-align1);
     filter: var(--v-brightness-dk);
     height: var(--conver-height-1) !important;
-    /* padding: 240px 80px 60px; */
     padding: var(--conver-padding-1) !important;
     margin: 0 0 3em;
     border: 0;
     border-radius: var(--v-r-b);
-    box-shadow: 0 0 0 2px rgba(128, 100, 169, .2) inset;
+    box-shadow: var(--conver-box-shadow) !important;
     background-color: var(--conver-font-bg-color1);
     background-image: var(--conver-bg-image-1);
     background-size: var(--conver-background-size1);
@@ -34,54 +33,27 @@
     letter-spacing: 0; 
 }
 
+
+.protyle-wysiwyg .h1:last-child  div,
+.protyle-wysiwyg>.h6:first-child div{
+    font-size: 40px !important;
+}
+
 /*------------------------------ 封面 ------------------------------*/
 
 
-.protyle-wysiwyg>.h6:first-child span[data-type='sub'] {
+.protyle-wysiwyg>.h6:first-child span[data-type~='sub'] {
     display: block;
     color: var(--conver-sub-color);
-    font: var(--v-f-w-bd) 75% var(--v-f-fm-subtitle)
+    font: var(--v-f-w-bd) 75% var(--v-f-fm-subtitle) !important;
+    font-size: 75% !important;
 }
 
-.protyle-wysiwyg>.h6:first-child span[data-type='sup'] {
+.protyle-wysiwyg>.h6:first-child span[data-type~='sup'] {
     display: block;
     color: var(--conver-sup-color);
-    font: var(--v-f-w-bd) 75% var(--v-f-fm-subtitle)
+    font: var(--v-f-w-bd) 75% var(--v-f-fm-subtitle) !important;
 }
-
-
-.protyle-wysiwyg>.h6:first-child span[data-type='code'] {
-    display: inline-block;
-    font-size: .5em !important;
-    color: var(--conver-code-color);
-    background: var(--conver-code-bg-color);
-}
-
-
-
-.protyle-wysiwyg>.h6:first-child span[data-type='em']:has(+span[data-type='em code']) {
-    line-height: 1;
-    color: #fff !important;
-    background: var(--a-hover-color) !important;
-    border-color: var(--d-bc) !important;
-    border-width: 0 !important;
-    text-shadow: none;
-    caret-color: #fff;
-    -webkit-text-stroke: initial;
-    vertical-align: initial;
-    font: var(--v-f-w-bd) 14px var(--v-f-fm-tag);
-}
-
-
-.protyle-wysiwyg>.h6:first-child span[data-type='em']+span[data-type='em code'] {
-    display: inline-block;
-    font: var(--v-f-w-bd) 14px var(--v-f-fm-tag);
-}
-
-
-
-
-
 
 .protyle-wysiwyg>.h6:first-child span[data-type='strong']{
     display: block;
@@ -89,8 +61,9 @@
 .protyle-wysiwyg>.h6:first-child span[data-type='strong'],
 .protyle-wysiwyg>.h6:first-child span[data-type='strong']::before {
     color: var(--conver-strong-color) !important;
-    font: .625em var(--v-f-fm-subtitle);
+    font: .625em var(--v-f-fm-subtitle) !important;
     margin-top: 0.5em;
+    /* font-size: 75% !important; */
 }
 
 .protyle-wysiwyg>.h6:first-child span[data-type='strong']::before {
@@ -99,14 +72,7 @@
     display: inline-block;
     margin-bottom: -1em;
     margin-top: 15px !important;
-}
-
-
-.protyle-wysiwyg>.h6:first-child span[data-type='em']:not(:has(+span[data-type='em code'])) {
-    display: block;
-    color: var(--conver-em-color);
-    font: var(--v-f-w-bd) .4em var(--v-f-fm-subtitle);
-    background: var(--conver-em-bg-color);
+    /* font-size: 75% !important; */
 }
 
 .protyle-wysiwyg>.h6:first-child span[data-type='u']{
@@ -116,9 +82,75 @@
     text-decoration: none;
     text-shadow: none;
     border: 0;
-    font: var(--v-f-w-bd) .75em var(--v-f-fm-subtitle);
+    font: var(--v-f-w-bd) .75em var(--v-f-fm-subtitle) !important;
     margin-top: -5px !important;
+    /* font-size: 75% !important; */
 }
+
+
+.protyle-wysiwyg>.h6:first-child span[data-type~='em']{
+    line-height: 1 !important;
+    display: inline-block !important;
+    color: var(--conver-em-color) !important;
+    background: var(--conver-em-bg-color) !important;
+    font-size: 45% !important;
+}
+.protyle-wysiwyg>.h6:first-child span[data-type~='code']:not([data-type~='em']){
+    display: inline-block;
+    color: var(--conver-code-color) !important;
+    background: var(--conver-code-bg-color) !important;
+}
+.protyle-wysiwyg>.h6:first-child span[data-type~='em'][data-type~='code']{
+    line-height: 1;
+    display: inline-block;
+    color: #fff !important;
+    background: #232323 !important;
+    font-size: 75% !important;
+    border-radius: var(--v-r-b);
+}
+
+.protyle-wysiwyg>.h6:first-child span[data-type~='em'][data-type~='code'] + span[data-type~='em'],
+.protyle-wysiwyg>.h6:first-child span[data-type~='em']:has(+ span[data-type~='em'][data-type~='code'])
+{
+    display: inline-block;
+    line-height: 1;
+    color: #fff !important;
+    background: var(--a-o-c) !important;
+    font-size: 75% !important;
+} 
+.protyle-wysiwyg>.h6:first-child span[data-type~='em']+span[data-type~='em'][data-type~='code']
+{
+    border-radius: 0 var(--v-r-b)   var(--v-r-b) 0;
+}
+.protyle-wysiwyg>.h6:first-child  span[data-type~='em'][data-type~='code']:has(+span[data-type~='em'])
+{
+    
+    border-radius: 0 0   0 0;
+}
+
+/* 
+.protyle-wysiwyg>.h6:first-child span[data-type~='em']:has( + span[data-type~='em'][data-type~='code']) ,
+.protyle-wysiwyg>.h6:first-child span[data-type~='em'][data-type~='code'] + span[data-type~='em'] 
+{
+    line-height: 1;
+    color: #fff !important;
+    background: var(--a-o-c) !important;
+    border-color: var(--d-bc) !important;
+    font-size: 75% !important;
+} 
+
+.protyle-wysiwyg>.h6:first-child span[data-type~='em'][data-type~='code']:has(+ span[data-type~='em'])  
+{
+    color: #fff !important;
+    background: #232323 !important;
+}
+
+.protyle-wysiwyg>.h6:first-child span[data-type~='em']+span[data-type~='em']span[data-type~='code'] {
+    display: inline-block;
+    font-size: 75% !important;
+} */
+
+
 
 /*------------------------------ 封面（end） ------------------------------*/
 
@@ -138,6 +170,11 @@
     background-repeat: var(--conver-background-repeat2);
     background-position: var(--conver-background-position2);
     letter-spacing: 0
+}
+
+
+.protyle-wysiwyg .h1:last-child  div{
+    padding: var(--conver-padding-text-2);
 }
 
 

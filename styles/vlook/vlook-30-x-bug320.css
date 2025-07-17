@@ -1161,7 +1161,8 @@ html[data-theme-mode="dark"] {
   --conver-background-size1: 80px 80px, auto, auto;
   --conver-background-repeat1: no-repeat, repeat-y, no-repeat;
   --conver-background-position1: 80px 80px, top right, top right;
-
+  --conver-box-shadow:0 0 0 2px rgba(128, 100, 169, .2) inset;
+  
   --conver-sub-color: #8064a9;
   --conver-sup-color: #606070;
   --conver-code-color: #fff;

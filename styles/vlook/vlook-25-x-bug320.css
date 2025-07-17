@@ -1263,6 +1263,7 @@
   --v-theme1-alt: var(--v-theme1-alt-lg);
   --v-theme2-alt:  var(--v-theme2-alt-lg);
   
+  --conver-box-shadow:0 0 0 2px rgba(128, 100, 169, .2) inset;
 }
 html[data-theme-mode="dark"] {
   --v-theme1-alt: var(--v-theme1-alt-dk);

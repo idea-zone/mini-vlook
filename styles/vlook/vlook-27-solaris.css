@@ -1408,7 +1408,8 @@ html[data-theme-mode="dark"] {
   --conver-background-size2: auto;
   --conver-background-repeat2: no-repeat, no-repeat;
   --conver-background-position2: top left, top right;
-
+  --conver-box-shadow:0 0 0 2px rgba(128, 100, 169, .2) inset;
+  
   --conver-bg-image-1: var(--thm-c-spliter), var(--thm-c-band), var(--thm-c-b-solaris), var(--thm-c-s-solaris);
   --conver-bg-image-2: var(--thm-c-b-solaris), var(--thm-c-s-solaris);
   --thm-c-s-solaris: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYwIiBoZWlnaHQ9IjI0MCIgdmlld0JveD0iMCAwIDI2MCAyNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTAwIiBjeT0iMTQwIiByPSIxMDAiIGZpbGw9IiM2ODY4QjMiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==");
