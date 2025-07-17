@@ -1,7 +1,7 @@
 :root{
 
     /* 从 vlook 获取的变量 */
-    --m-v-f-fm-text: var(--v-f-fm-text);
+    --m-v-f-fm-text: var(--v-f-fm-text),"Emojis Additional", emojis;
     
     --m-v-f-fm-bd: var(--v-f-fm-bd);
 

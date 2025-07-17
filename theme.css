@@ -1,6 +1,8 @@
 /* Siyuan 默认变量和配置 */
 /* @import url(./styles/vlook/vlook-25-x-bug320.css); */
-@import url(./styles/vlook/vlook-27-x-bug320.css);
+/* @import url(./styles/vlook/vlook-27-x-bug320.css); */
+@import url(./styles/vlook/vlook-30-x-bug320.css);
+/* @import url(./styles/vlook/vlook-29-x-aurora.css); */
 /* @import url(./styles/vlook/vlook-27-geek.css); */
 
 @import url(./styles/my-theme-config.css);
@@ -68,5 +70,27 @@
 /* 修复编辑器内容不随 Siyuan 扩大和缩小的问题 */
 body .protyle-wysiwyg *{
     font-size:var(--b3-font-size-editor) ;
+}
+
+/*图标问题*/
+.emojis__item--current, .emojis__item:hover {
+    background: var(--b3-list-hover);
+}
+
+.emojis__item {
+    font-size: 19px;
+    font-family: var(--b3-font-family-emoji);
+    text-align: center;
+    height: 32px;
+    padding: 4px;
+    cursor: pointer;
+    display: inline-block;
+    transition: var(--b3-transition);
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    margin: 1px;
+    overflow: hidden;
+    border-radius: var(--b3-border-radius);
+    width: 32px;
 }
 

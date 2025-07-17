@@ -31,7 +31,7 @@
     background-size: var(--conver-background-size1);
     background-repeat: var(--conver-background-repeat1);
     background-position: var(--conver-background-position1);
-    letter-spacing: 0
+    letter-spacing: 0; 
 }
 
 /*------------------------------ 封面 ------------------------------*/

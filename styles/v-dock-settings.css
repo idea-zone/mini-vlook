@@ -69,7 +69,9 @@ html[data-theme-mode="dark"] {
 	width: 136px  !important;
     /* height: 218px !important; */
     /* height: 228px !important; */
-    height: 258px !important;
+    /* height: 258px !important; */
+    /* height: 288px !important; */
+    height: 318px !important;
     top: 23px;
 	left: -112px;
 	z-index: 5 !important;
@@ -90,6 +92,8 @@ html[data-theme-mode="dark"] {
 ,#mvButtonSolaris
 ,#mvButtonThinking
 ,#mvButtonFancy
+,#mvButtonAurora
+,#mvButtonFrost
  {
     margin: 0px;
     height: 30px;
@@ -112,6 +116,8 @@ html[data-theme-mode="dark"] {
 #mvButtonOwl::after,
 #mvButtonSolaris::after,
 #mvButtonThinking::after,
+#mvButtonAurora::after,
+#mvButtonFrost::after,
 #mvButtonFancy::after
 {
 	font-size:14px;
@@ -135,6 +141,8 @@ html[data-theme-mode="dark"] {
 #mvButtonOwl::before,
 #mvButtonSolaris::before,
 #mvButtonThinking::before,
+#mvButtonAurora::before,
+#mvButtonFrost::before,
 #mvButtonFancy::before
 {
 	display:none;
@@ -146,6 +154,7 @@ html[data-theme-mode="dark"] {
 #mvButtonOwl:hover,
 #mvButtonSolaris:hover,
 #mvButtonThinking:hover,
+#mvButtonFrost:hover,
 #mvButtonFancy:hover
 {
 	background-color:var(--S-list-background)!important;
@@ -233,4 +242,23 @@ html[data-theme-mode="dark"] {
 }
 
 
+
+#mvButtonAurora.button_off{
+	background: var(--m-geek-icon-off) !important; 
+	background-size: 24px 24px;
+}
+#mvButtonAurora.button_on{
+	background: var(--m-geek-icon-on) !important; 
+	border: 1px dotted var(--m-theme2-background) !important;
+}
+
+
+#mvButtonFrost.button_off{
+	background: var(--m-geek-icon-off) !important; 
+	background-size: 24px 24px;
+}
+#mvButtonFrost.button_on{
+	background: var(--m-geek-icon-on) !important; 
+	border: 1px dotted var(--m-theme2-background) !important;
+}
 

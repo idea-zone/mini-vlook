@@ -147,7 +147,7 @@ function themeButton() {
     "light",
     (btn) => {
     loadStyle(
-        "/appearance/themes/mini-vlook/styles/vlook/vlook-27-x-bug320.css",
+        "/appearance/themes/mini-vlook/styles/vlook/vlook-30-x-bug320.css",
         "theme-color-style-MiniVook-bug320"
     ).setAttribute("topicfilter", "mvButtonBug320");
     document.body.setAttribute("mini-vlook-mode", "bug320");
@@ -281,6 +281,46 @@ minivlookThemeToolbarAddButton(
 );
 
 minivlookThemeToolbarAddButton(
+    "mvButtonAurora",
+    "toolbar__item b3-tooltips b3-tooltips__sw",
+    "Aurora 配色",
+    "light",
+    () => {
+    loadStyle(
+        "/appearance/themes/mini-vlook/styles/vlook/vlook-30-x-aurora.css",
+        "theme-color-style-MiniVook-Aurora"
+    ).setAttribute("topicfilter", "mvButtonAurora");
+    qucuFiiter();
+    document.body.setAttribute("mini-vlook-mode", "Aurora");
+    },
+    (btn) => {
+    document.getElementById("theme-color-style-MiniVook-Aurora")?.remove();
+    document.body.removeAttribute("mini-vlook-mode");
+    },
+    true
+);
+
+minivlookThemeToolbarAddButton(
+    "mvButtonFrost",
+    "toolbar__item b3-tooltips b3-tooltips__sw",
+    "Frost 配色",
+    "light",
+    () => {
+    loadStyle(
+        "/appearance/themes/mini-vlook/styles/vlook/vlook-30-x-frost.css",
+        "theme-color-style-MiniVook-Frost"
+    ).setAttribute("topicfilter", "mvButtonFrost");
+    qucuFiiter();
+    document.body.setAttribute("mini-vlook-mode", "Frost");
+    },
+    (btn) => {
+    document.getElementById("theme-color-style-MiniVook-Frost")?.remove();
+    document.body.removeAttribute("mini-vlook-mode");
+    },
+    true
+);
+
+minivlookThemeToolbarAddButton(
     "mvButtonThinking",
     "toolbar__item b3-tooltips b3-tooltips__sw",
     "Thinking 配色",
@@ -299,6 +339,8 @@ minivlookThemeToolbarAddButton(
     },
     true
 );
+
+
 }
   //#endregion ***********************  在顶部导航栏添加主题按钮
   
