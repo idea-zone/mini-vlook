@@ -1,9 +1,5 @@
 /* Siyuan 默认变量和配置 */
-/* @import url(./styles/vlook/vlook-25-x-bug320.css); */
-/* @import url(./styles/vlook/vlook-27-x-bug320.css); */
 @import url(./styles/vlook/vlook-30-x-bug320.css);
-/* @import url(./styles/vlook/vlook-29-x-aurora.css); */
-/* @import url(./styles/vlook/vlook-27-geek.css); */
 
 @import url(./styles/my-theme-config.css);
 @import url(./styles/my-theme-config-dk.css);
@@ -68,7 +64,7 @@
 }
 
 /* 修复编辑器内容不随 Siyuan 扩大和缩小的问题 */
-body .protyle-wysiwyg *{
+.b3-typography, .protyle-wysiwyg{
     font-size:var(--b3-font-size-editor) ;
 }
 

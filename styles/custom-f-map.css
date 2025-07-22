@@ -14,7 +14,7 @@
 /*子项设偏移调整*/
 .protyle-wysiwyg *[custom-f="map"] [data-node-id].li>[data-node-id]{
     margin-left: 20px !important;
-	margin-right: -24px !important;
+	margin-right: -27px !important;
 }
 .protyle-wysiwyg *[custom-f="map"] [data-node-id].li>.list{
 	padding-left: 20px;
@@ -109,7 +109,7 @@
 	top: 50%!important;   
     border-top:var(--b3-border-daotu);    
     width: 20px;  
-	height: 50%!important;      
+	height: 60%!important;       /*默认应该是50%*/
 }
 
 /*上竖线*/

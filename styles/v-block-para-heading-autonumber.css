@@ -8,7 +8,7 @@
     --custom-h5-color: transform;
     --custom-h6-color: transform;
 
-    --custom-h-num-font-size: 100%;
+    --custom-h-num-font-size: calc(var(--b3-font-size-editor) *0.95);
 }
 
 
@@ -70,9 +70,11 @@
 
 .protyle-wysiwyg:not([custom-f~="bt"])>.h1::before,
 .b3-typography>h1::before {
+    top:-5px;
     display: block !important;
     float: left;
     font-size: var(--custom-h-num-font-size);
+    /* font-size: var(--custom-h-num-font-size); */
     content: counter(h1-counter) "\00A0" !important;
 
 }
@@ -82,7 +84,7 @@
 .b3-typography>h2::before {
     display: block !important;
     float: left;
-    font-size: var(--custom-h-num-font-size)!important;
+    font-size: var(--custom-h-num-font-size);
     
     content: counter(h1-counter) "." counter(h2-counter) "\00A0";
 }

@@ -1,28 +1,132 @@
-:root{
+:root {
+
+    /* 兼容旧版内容
+     */
+    --ac-gd-fade: var(--ac-gd-fd-bd);
+    --ac-pk-fade: var(--ac-pk-fd-bd);
+    --ac-ye-fade: var(--ac-ye-fd-bd);
+    --ac-lm-fade: var(--ac-lm-fd-bd);
+    --ac-aq-fade: var(--ac-aq-fd-bd);
+    --ac-la-fade: var(--ac-la-fd-bd);
+    --ac-bn-fade: var(--ac-bn-fd-bd);
+    --ac-ro-fade: var(--ac-ro-fd-bd);
+    --ac-rd-fade: var(--ac-rd-fd-bd);
+    --ac-og-fade: var(--ac-og-fd-bd);
+    --ac-gn-fade: var(--ac-gn-fd-bd);
+    --ac-cy-fade: var(--ac-cy-fd-bd);
+    --ac-bu-fade: var(--ac-bu-fd-bd);
+    --ac-vn-fade: var(--ac-vn-fd-bd);
+    --ac-gy-fade: var(--ac-gy-fd-bd);
+    --ac-pu-fade: var(--ac-pu-fd-bd);
+    --ac-wn-fade: var(--ac-wn-fd-bd);
+    --ac-ol-fade: var(--ac-ol-fd-bd);
+    --ac-mn-fade: var(--ac-mn-fd-bd);
+    --ac-se-fade: var(--ac-se-fd-bd);
+    --ac-wt-fade: var(--ac-wt-fd-bd);
+    --ac-bk-fade: var(--ac-bk-fd-bd);
+    --ac-t1-fade: var(--ac-t1-fd-bd);
+    --ac-t2-fade: var(--ac-t2-fd-bd);
+
+    --ac-gd-fade-bd: var(--ac-gd-fd-bd);
+    --ac-pk-fade-bd: var(--ac-pk-fd-bd);
+    --ac-ye-fade-bd: var(--ac-ye-fd-bd);
+    --ac-lm-fade-bd: var(--ac-lm-fd-bd);
+    --ac-aq-fade-bd: var(--ac-aq-fd-bd);
+    --ac-la-fade-bd: var(--ac-la-fd-bd);
+    --ac-bn-fade-bd: var(--ac-bn-fd-bd);
+    --ac-ro-fade-bd: var(--ac-ro-fd-bd);
+    --ac-rd-fade-bd: var(--ac-rd-fd-bd);
+    --ac-og-fade-bd: var(--ac-og-fd-bd);
+    --ac-gn-fade-bd: var(--ac-gn-fd-bd);
+    --ac-cy-fade-bd: var(--ac-cy-fd-bd);
+    --ac-bu-fade-bd: var(--ac-bu-fd-bd);
+    --ac-vn-fade-bd: var(--ac-vn-fd-bd);
+    --ac-gy-fade-bd: var(--ac-gy-fd-bd);
+    --ac-pu-fade-bd: var(--ac-pu-fd-bd);
+    --ac-wn-fade-bd: var(--ac-wn-fd-bd);
+    --ac-ol-fade-bd: var(--ac-ol-fd-bd);
+    --ac-mn-fade-bd: var(--ac-mn-fd-bd);
+    --ac-se-fade-bd: var(--ac-se-fd-bd);
+    --ac-wt-fade-bd: var(--ac-wt-fd-bd);
+    --ac-bk-fade-bd: var(--ac-bk-fd-bd);
+    --ac-t1-fade-bd: var(--ac-t1-fd-bd);
+    --ac-t2-fade-bd: var(--ac-t2-fd-bd);
+
+    --ac-gd-fade: var(-ac-gd-fd);
+    --ac-gd-title: var(--ac-gd-tt);
+    --ac-pk-fade: var(-ac-pk-fd);
+    --ac-pk-title: var(--ac-pk-tt);
+    --ac-ye-fade: var(-ac-ye-fd);
+    --ac-ye-title: var(--ac-ye-tt);
+    --ac-lm-fade: var(-ac-lm-fd);
+    --ac-lm-title: var(--ac-lm-tt);
+    --ac-aq-fade: var(-ac-aq-fd);
+    --ac-aq-title: var(--ac-aq-tt);
+    --ac-la-fade: var(-ac-la-fd);
+    --ac-la-title: var(--ac-la-tt);
+    --ac-bn-fade: var(-ac-bn-fd);
+    --ac-bn-title: var(--ac-bn-tt);
+    --ac-ro-fade: var(-ac-ro-fd);
+    --ac-ro-title: var(--ac-ro-tt);
+    --ac-rd-fade: var(-ac-rd-fd);
+    --ac-rd-title: var(--ac-rd-tt);
+    --ac-og-fade: var(-ac-og-fd);
+    --ac-og-title: var(--ac-og-tt);
+    --ac-gn-fade: var(-ac-gn-fd);
+    --ac-gn-title: var(--ac-gn-tt);
+    --ac-cy-fade: var(-ac-cy-fd);
+    --ac-cy-title: var(--ac-cy-tt);
+    --ac-bu-fade: var(-ac-bu-fd);
+    --ac-bu-title: var(--ac-bu-tt);
+    --ac-vn-fade: var(-ac-vn-fd);
+    --ac-vn-title: var(--ac-vn-tt);
+    --ac-gy-fade: var(-ac-gy-fd);
+    --ac-gy-title: var(--ac-gy-tt);
+    --ac-pu-fade: var(-ac-pu-fd);
+    --ac-pu-title: var(--ac-pu-tt);
+    --ac-wn-fade: var(-ac-wn-fd);
+    --ac-wn-title: var(--ac-wn-tt);
+    --ac-ol-fade: var(-ac-ol-fd);
+    --ac-ol-title: var(--ac-ol-tt);
+    --ac-mn-fade: var(-ac-mn-fd);
+    --ac-mn-title: var(--ac-mn-tt);
+    --ac-se-fade: var(-ac-se-fd);
+    --ac-se-title: var(--ac-se-tt);
+    --ac-bk-fade: var(-ac-bk-fd);
+    --ac-bk-title: var(--ac-bk-tt);
+    --ac-t1-fade: var(-ac-t1-fd);
+    --ac-t1-title: var(--ac-t1-tt);
+    --ac-t2-fade: var(-ac-t2-fd);
+    --ac-t2-title: var(--ac-t2-tt);
+
+    --key-shadow: var(--kbd-sd);
+    --key-reflect:var(--kbd-reflect);
+    --key-bg-dk:var(--kbd-bg-dk);
+    --key-bg:var(--kbd-bg);
 
     /* 从 vlook 获取的变量 */
-    --m-v-f-fm-text: var(--v-f-fm-text),"Emojis Additional", emojis;
-    
+    --m-v-f-fm-text: var(--v-f-fm-text), "Emojis Additional", emojis;
+
     --m-v-f-fm-bd: var(--v-f-fm-bd);
 
-    --m-v-f-fm-code:var(--v-f-fm-code);
+    --m-v-f-fm-code: var(--v-f-fm-code);
 
     --m-v-f-fm-subtitle: var(--v-f-fm-subtitle);
     --m-v-f-fm-key: var(--v-f-fm-key);
     --m-v-r-s: var(--v-r-s);
     --m-v-r-b: var(--v-r-b);
-    --m-v-r-b-xc:var(--v-r-b-xc);
+    --m-v-r-b-xc: var(--v-r-b-xc);
 
-    --m-d-fc:   var(--d-fc);
-    --m-d-f-c:  var(--v-d-f-c);
-    --m-h-f:    var(--h-f);
-    --m-d-bc:   var(--d-bc); 
-    --m-d-bi:   var(--d-bi);
+    --m-d-fc: var(--d-fc);
+    --m-d-f-c: var(--v-d-f-c);
+    --m-h-f: var(--h-f);
+    --m-d-bc: var(--d-bc);
+    --m-d-bi: var(--d-bi);
     --m-d-fc-a: var(--d-fc-a-lg);
 
     --m-tbl-cell-padding: var(--tbl-cell-padding);
     --m-tbl-h-bd: var(--tbl-h-bd);
-    --m-tbl-td-bg:var(--tbl-td-bg);
+    --m-tbl-td-bg: var(--tbl-td-bg);
 
     --m-h-box-shadow: var(--h-box-shadow);
     --m-h-bg-start: var(--h-bg-start);
@@ -30,7 +134,7 @@
 
     --m-v-f-w-text: var(--v-f-w-text);
     --m-v-f-w-bd: var(--v-f-w-bd);
-    --m-v-f-w-title:var(--v-f-fm-title);
+    --m-v-f-w-title: var(--v-f-fm-title);
 
     --m-key-bg: var(--key-bg);
     --m-key-reflect: var(--key-reflect);
@@ -38,67 +142,93 @@
     --m-pn-c: var(--pn-c);
     --m-pn-c-a: var(--pn-c-a);
 
-    --m-ac-t1: var(--ac-t1);  /*t1,themeprimary */
-    --m-ac-t1-a: var(--ac-t1-a); 
-    --m-ac-t2: var(--ac-t2);  /*t2,themesecondary */
-    --m-ac-t2-a: var(--ac-t2-a); 
-    --m-ac-gd: var(--ac-gd);  /*gd,gold */
-    --m-ac-gd-a: var(--ac-gd-a); 
-    --m-ac-pk: var(--ac-pk);  /*pk,pink */
-    --m-ac-pk-a: var(--ac-pk-a); 
-    --m-ac-ye: var(--ac-ye);  /*ye,yellow */
-    --m-ac-ye-a: var(--ac-ye-a); 
-    --m-ac-lm: var(--ac-lm);  /*lm,lime */
-    --m-ac-lm-a: var(--ac-lm-a); 
-    --m-ac-aq: var(--ac-aq);  /*aq,aqua */
-    --m-ac-aq-a: var(--ac-aq-a); 
-    --m-ac-la: var(--ac-la);  /*la,lavender */
-    --m-ac-la-a: var(--ac-la-a); 
-    --m-ac-bn: var(--ac-bn);  /*bn,brown */
-    --m-ac-bn-a: var(--ac-bn-a); 
-    --m-ac-ro: var(--ac-ro);  /*ro,rose */
-    --m-ac-ro-a: var(--ac-ro-a); 
-    --m-ac-rd: var(--ac-rd);  /*rd,red */
-    --m-ac-rd-a: var(--ac-rd-a); 
-    --m-ac-og: var(--ac-og);  /*og,orange */
-    --m-ac-og-a: var(--ac-og-a); 
-    --m-ac-gn: var(--ac-gn);  /*gn,green */
-    --m-ac-gn-a: var(--ac-gn-a); 
-    --m-ac-cy: var(--ac-cy);  /*cy,cyan */
-    --m-ac-cy-a: var(--ac-cy-a); 
-    --m-ac-bu: var(--ac-bu);  /*bu,blue */
-    --m-ac-bu-a: var(--ac-bu-a); 
-    --m-ac-vn: var(--ac-vn);  /*vn,vine */
-    --m-ac-vn-a: var(--ac-vn-a); 
-    --m-ac-gy: var(--ac-gy);  /*gy,gray */
-    --m-ac-gy-a: var(--ac-gy-a); 
-    --m-ac-pu: var(--ac-pu);  /*pu,purple */
-    --m-ac-pu-a: var(--ac-pu-a); 
-    --m-ac-wn: var(--ac-wn);  /*wn,wine */
-    --m-ac-wn-a: var(--ac-wn-a); 
-    --m-ac-ol: var(--ac-ol);  /*ol,olives */
-    --m-ac-ol-a: var(--ac-ol-a); 
-    --m-ac-mn: var(--ac-mn);  /*mn,mineral */
-    --m-ac-mn-a: var(--ac-mn-a); 
-    --m-ac-se: var(--ac-se);  /*se,sea */
-    --m-ac-se-a: var(--ac-se-a); 
-    --m-ac-bk: var(--ac-bk);  /*bk,black */
-    --m-ac-bk-a: var(--ac-bk-a); 
+    --m-ac-t1: var(--ac-t1);
+    /*t1,themeprimary */
+    --m-ac-t1-a: var(--ac-t1-a);
+    --m-ac-t2: var(--ac-t2);
+    /*t2,themesecondary */
+    --m-ac-t2-a: var(--ac-t2-a);
+    --m-ac-gd: var(--ac-gd);
+    /*gd,gold */
+    --m-ac-gd-a: var(--ac-gd-a);
+    --m-ac-pk: var(--ac-pk);
+    /*pk,pink */
+    --m-ac-pk-a: var(--ac-pk-a);
+    --m-ac-ye: var(--ac-ye);
+    /*ye,yellow */
+    --m-ac-ye-a: var(--ac-ye-a);
+    --m-ac-lm: var(--ac-lm);
+    /*lm,lime */
+    --m-ac-lm-a: var(--ac-lm-a);
+    --m-ac-aq: var(--ac-aq);
+    /*aq,aqua */
+    --m-ac-aq-a: var(--ac-aq-a);
+    --m-ac-la: var(--ac-la);
+    /*la,lavender */
+    --m-ac-la-a: var(--ac-la-a);
+    --m-ac-bn: var(--ac-bn);
+    /*bn,brown */
+    --m-ac-bn-a: var(--ac-bn-a);
+    --m-ac-ro: var(--ac-ro);
+    /*ro,rose */
+    --m-ac-ro-a: var(--ac-ro-a);
+    --m-ac-rd: var(--ac-rd);
+    /*rd,red */
+    --m-ac-rd-a: var(--ac-rd-a);
+    --m-ac-og: var(--ac-og);
+    /*og,orange */
+    --m-ac-og-a: var(--ac-og-a);
+    --m-ac-gn: var(--ac-gn);
+    /*gn,green */
+    --m-ac-gn-a: var(--ac-gn-a);
+    --m-ac-cy: var(--ac-cy);
+    /*cy,cyan */
+    --m-ac-cy-a: var(--ac-cy-a);
+    --m-ac-bu: var(--ac-bu);
+    /*bu,blue */
+    --m-ac-bu-a: var(--ac-bu-a);
+    --m-ac-vn: var(--ac-vn);
+    /*vn,vine */
+    --m-ac-vn-a: var(--ac-vn-a);
+    --m-ac-gy: var(--ac-gy);
+    /*gy,gray */
+    --m-ac-gy-a: var(--ac-gy-a);
+    --m-ac-pu: var(--ac-pu);
+    /*pu,purple */
+    --m-ac-pu-a: var(--ac-pu-a);
+    --m-ac-wn: var(--ac-wn);
+    /*wn,wine */
+    --m-ac-wn-a: var(--ac-wn-a);
+    --m-ac-ol: var(--ac-ol);
+    /*ol,olives */
+    --m-ac-ol-a: var(--ac-ol-a);
+    --m-ac-mn: var(--ac-mn);
+    /*mn,mineral */
+    --m-ac-mn-a: var(--ac-mn-a);
+    --m-ac-se: var(--ac-se);
+    /*se,sea */
+    --m-ac-se-a: var(--ac-se-a);
+    --m-ac-bk: var(--ac-bk);
+    /*bk,black */
+    --m-ac-bk-a: var(--ac-bk-a);
     --m-ac-bk-fade: var(--ac-bk-fade);
-    --m-tbl-bd: var(--tbl-bd);
-    
+    --m-tbl-bd: var(--std-code-sd);   /*--std-code-sd*/
+
+
+
+
     /* 主题色 */
     --m-theme1-alt: var(--v-theme1-alt);
     --m-theme2-alt: var(--v-theme2-alt);
 
-    --m-theme1-alt-0-4: rgba(var(--m-theme1-alt),0.4);
-    --m-theme2-alt-0-4: rgba(var(--m-theme2-alt),0.4);
-    --m-theme1-alt-0-6: rgba(var(--m-theme1-alt),0.6);
-    --m-theme2-alt-0-6: rgba(var(--m-theme2-alt),0.6);
-    --m-theme1-alt-0-8: rgba(var(--m-theme1-alt),0.8);
-    --m-theme2-alt-0-8: rgba(var(--m-theme2-alt),0.8);
+    --m-theme1-alt-0-4: rgba(var(--m-theme1-alt), 0.4);
+    --m-theme2-alt-0-4: rgba(var(--m-theme2-alt), 0.4);
+    --m-theme1-alt-0-6: rgba(var(--m-theme1-alt), 0.6);
+    --m-theme2-alt-0-6: rgba(var(--m-theme2-alt), 0.6);
+    --m-theme1-alt-0-8: rgba(var(--m-theme1-alt), 0.8);
+    --m-theme2-alt-0-8: rgba(var(--m-theme2-alt), 0.8);
     --m-mark-bg: var(--m-theme2-alt-0-4);
-    --m-tag-bg:  var(--m-theme1-alt-0-4);
+    --m-tag-bg: var(--m-theme1-alt-0-4);
 
     /* 主题色2 */
     --m-theme1-background: var(--ac-t1);
@@ -107,95 +237,111 @@
     --m-theme1-on-background: var(--ac-t1-a-lg);
     --m-theme2-on-background: var(--ac-t2-a-lg);
 
-    --m-theme1-on-background:var(--v-theme1-on-background);
-    --m-theme2-on-background:var(--v-theme2-on-background);
+    --m-theme1-on-background: var(--v-theme1-on-background);
+    --m-theme2-on-background: var(--v-theme2-on-background);
 
     /* 段落设置 */
     --m-para-line-height: 1.625;
     --m-para-padding: 4px;
     --m-para-margin: 2px 0;
 
-    --m-para-text-color: var(--m-d-fc);   /* --b3-theme-on-background */
-    --m-para-text-color-lighter: #b9bdc1;   
-    --m-para-text-bg-color: var(--m-d-bc);   /* --b3-theme-background */
+    --m-para-text-color: var(--m-d-fc);
+    /* --b3-theme-on-background */
+    --m-para-text-color-lighter: #b9bdc1;
+    --m-para-text-bg-color: var(--m-d-bc);
+    /* --b3-theme-background */
 
     /* 行内代码设置 */
-    --m-inline-code-color:var(--code-t);
-    --m-inline-code-bg-color:var(--code-bg);
-    --m-inline-code-border:rgb(128, 128, 128) solid 1px;
-    --m-inline-code-radius: 6px;  /*--b3-border-radius*/
+    --m-inline-code-color: var(--code-t);
+    --m-inline-code-bg-color: var(--code-bg);
+    --m-inline-code-border: rgb(128, 128, 128) solid 1px;
+    --m-inline-code-radius: 6px;
+    /*--b3-border-radius*/
     --m-inline-code-font: var(--m-v-f-fm-bd);
 
     /* 代码块设置 */
-    --m-block-code-color:var(--m-d-fc);
-    --m-block-code-bg-color:var(--code-bg);
+    --m-block-code-color: var(--m-d-fc);
+    --m-block-code-bg-color: var(--code-bg);
     --m-block-code-border: var(--m-tbl-bd);
-    --m-block-code-radius: 6px;  /*--b3-border-radius*/
+    --m-block-code-radius: 6px;
+    /*--b3-border-radius*/
     --m-block-code-font: var(--m-v-f-fm-bd);
-    --m-block-code-action:  #cfd4d8;
+    --m-block-code-action: #cfd4d8;
 
 
     /* 引述块设置 */
-    --m-block-bq-color:var(--m-d-f-c);
-    --m-block-bq-bg-color:var(--m-theme1-alt-0-4);
-    --m-block-bq-border-radius:var(--m-v-r-b);
+    --m-block-bq-color: var(--m-d-f-c);
+    --m-block-bq-bg-color: var(--m-theme1-alt-0-4);
+    --m-block-bq-border-radius: var(--m-v-r-b);
 
 
     /* 下划线 */
-    --m-inline-u-border-bottom: 1px solid var(--m-theme2-background);  
+    --m-inline-u-border-bottom: 1px solid var(--m-theme2-background);
 
     /* 粗体 */
-    --m-inline-strong-font : var(--m-v-f-w-bd) 1em var(--m-v-f-fm-bd);  /* --b3-protyle-inline-strong-color */
-    --m-inline-strong-color :.var(--m-d-fc);  /* --b3-protyle-inline-strong-color */
+    --m-inline-strong-font: var(--m-v-f-w-bd) 1em var(--m-v-f-fm-bd);
+    /* --b3-protyle-inline-strong-color */
+    --m-inline-strong-color: .var(--m-d-fc);
+    /* --b3-protyle-inline-strong-color */
 
     /* 斜体 */
-    --m-inline-em-color :var(--m-d-fc);  /* --b3-protyle-inline-em-color */
-   
+    --m-inline-em-color: var(--m-d-fc);
+    /* --b3-protyle-inline-em-color */
+
     /* 删除线 */
     /* --m-inline-s-color :var(--m-d-fc);   */
-    --m-inline-s-color: var(--m-para-text-color-lighter);;  /* --b3-protyle-inline-s-color */
-    --m-inline-bq-s-color :#54575a;   
+    --m-inline-s-color: var(--m-para-text-color-lighter);
+    ;
+    /* --b3-protyle-inline-s-color */
+    --m-inline-bq-s-color: #54575a;
 
-   /* 高亮 */
-   --m-inline-mark-color :var(--m-d-fc);  /* --b3-protyle-inline-mark-color */
-   --m-inline-mark-bg-color: var(--m-mark-bg);  /* --b3-protyle-inline-mark-background */
+    /* 高亮 */
+    --m-inline-mark-color: var(--m-d-fc);
+    /* --b3-protyle-inline-mark-color */
+    --m-inline-mark-bg-color: var(--m-mark-bg);
+    /* --b3-protyle-inline-mark-background */
 
-   /* 键盘 */
-   --m-inline-kbd-color: var(--m-d-bc);  /* --b3-theme-on-surface */
-   --m-inline-kbd-bg-color: var(--m-key-bg);   /* --b3-theme-surface */  
-   --m-inline-kbd-font: var(--m-v-f-w-bd) .875em var(--m-v-f-fm-key);
-   border-radius: var(--m-v-r-s);
+    /* 键盘 */
+    --m-inline-kbd-color: var(--m-d-bc);
+    /* --b3-theme-on-surface */
+    --m-inline-kbd-bg-color: var(--m-key-bg);
+    /* --b3-theme-surface */
+    --m-inline-kbd-font: var(--m-v-f-w-bd) .875em var(--m-v-f-fm-key);
+    border-radius: var(--m-v-r-s);
 
-   /* 标签 */
-   --m-inline-tag-color: var(--m-d-fc);  /* --b3-protyle-inline-tag-color */
-   --m-v-tag-bgcolor: var(--m-tag-bg); 
-   /* --m-v-tag-icon: var(--m-theme1-background);  */
-   --m-v-tag-icon: var(--m-d-bc);
+    /* 标签 */
+    --m-inline-tag-color: var(--m-d-fc);
+    /* --b3-protyle-inline-tag-color */
+    --m-v-tag-bgcolor: var(--m-tag-bg);
+    /* --m-v-tag-icon: var(--m-theme1-background);  */
+    --m-v-tag-icon: var(--m-d-bc);
 
     /* 数据库 */
-   --m-table-background-color: var(--m-para-text-bg-color); /* --av-background */
-   
-   --m-head-item-bgcolor: var(--m-theme2-alt-0-6);
-   --m-head-item-color:var(--m-theme2-on-background);
-   --m-head-item-focus-bgcolor: var(--m-theme2-alt-0-8);
-   
-   /* 输入框颜色 */
-   --m-text-filed-bgcolor:var(--m-d-bc);/* #f3f2f0;*/
-   --m-text-filed-color: var(--m-d-fc);
+    --m-table-background-color: var(--m-para-text-bg-color);
+    /* --av-background */
 
-	/*导图*/
-	--b3-border-daotu: 2px solid #ffb8b8;
-	--b3-block-daotu:#FFF;
+    --m-head-item-bgcolor: var(--m-theme2-alt-0-6);
+    --m-head-item-color: var(--m-theme2-on-background);
+    --m-head-item-focus-bgcolor: var(--m-theme2-alt-0-8);
 
-   
+    /* 输入框颜色 */
+    --m-text-filed-bgcolor: var(--m-d-bc);
+    /* #f3f2f0;*/
+    --m-text-filed-color: var(--m-d-fc);
+
+    /*导图*/
+    --b3-border-daotu: 2px solid #ffb8b8;
+    --b3-block-daotu: #FFF;
+
+
     /* #region ———————————————————— 列表2看板 ———————————————————— */
 
     /* --kbline-board-bg-color: #e7e7e7; */
-    --kbline-board-bg-color: var(--m-para-text-bg-color); 
+    --kbline-board-bg-color: var(--m-para-text-bg-color);
     /* 主背景色 */
     /* 各个子项背景色 */
     /* --kbline-board-pa-color: #a1a2a5; */
-    --kbline-board-pa-color: var(--m-para-text-bg-color); 
+    --kbline-board-pa-color: var(--m-para-text-bg-color);
     /* 列表项的点 */
     --kbline-board-bg-color1: #fdfdfd;
     /* 各个子项背景色 */

@@ -231,4 +231,19 @@ html[data-theme-mode="dark"] {
     --b3-pdf-background6: #69B0F2;
     --b3-pdf-background7: #C885DA;
     --b3-pdf-dark: #212224;
+
+    /* 表格 */
+    --b3-table-even-background: rgba(255, 255, 255, .03);
+
+    /* 数据库 */
+    --b3-av-gallery-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px, var(--b3-border-color) 0px 0px 0px 1px;
+
+    /* 嵌入块 */
+    --b3-embed-background: transparent;
+
+    /* 引述块 */
+    --b3-bq-background: transparent;
+
+    /* 父块颜色 */
+    --b3-parent-background: var(--b3-theme-background);
 }

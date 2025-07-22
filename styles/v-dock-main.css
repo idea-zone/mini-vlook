@@ -33,11 +33,24 @@
     color: var(--m-menu-item-color-2) !important;
 }
 
+.b3-menu__item:has( [data-type="set-layout"]):hover,
+.b3-menu__item:hover [data-type="set-layout"]
+{
+    background-color:var(--b3-menu-background) !important;
+    color:var(--b3-theme-on-background) !important;
+}
+
 .b3-menu__item--custom:hover,
 .b3-menu__item--custom:hover > .b3-menu__label{
     color: var(--b3-theme-on-background)  !important;
     background-color: var(--b3-menu-background) !important;
 }
+
+.b3-menu__item:hover [data-type="set-layout"]:hover{
+    background-color: var(--m-menu-item-bg-color-2) !important;
+    color: var(--m-menu-item-color-2) !important;
+}
+
 
 /* 搜索框 */
 .b3-text-field:not(.b3-text-field--text):focus, .pcr-app .pcr-interaction .pcr-result:not(.b3-text-field--text):focus {
