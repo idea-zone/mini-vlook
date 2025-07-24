@@ -12,7 +12,7 @@
 #toolbar{
     position: relative !important;
     overflow: visible !important;
-	z-index: 3 !important;
+	z-index: 4 !important;
 }
 #minivlookToolbar{
 	width:24px;

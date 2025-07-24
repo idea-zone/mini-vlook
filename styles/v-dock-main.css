@@ -1082,6 +1082,13 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 }
 }
 
+
+[data-id="template"].b3-list-item--focus {
+    background: var(--m-pn-c) !important;
+    border: 1px solid var(--m-menu-item-bg-color-1) !important;
+    /* color: var(--m-menu-item-color-2)!important;
+    background: var(--m-menu-item-bg-color-2)!important; */
+}
 /* #endregion *************************** 弹出分栏 */
 
 
@@ -1432,4 +1439,6 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
     background: var(--m-theme2-alt-0-8) !important;
     color: var(--m-pn-c-a) !important;
 }
+
+
 
