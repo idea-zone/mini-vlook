@@ -70,6 +70,11 @@
     color: var(--m-theme2-background) !important;
 }
 
+/* 简单适配kanban */
+.av__kanban .av__cell{
+    border-right: 0px !important;
+}
+
 /* #endregion ******************** 数据表格的处理  */
 
 
