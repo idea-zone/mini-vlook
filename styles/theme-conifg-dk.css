@@ -4,7 +4,7 @@ html[data-theme-mode="dark"] {
     --b3-theme-primary: rgba(var(--m-theme2-alt),1);
     --b3-theme-primary-light: rgba(var(--m-theme2-alt), .54);
     --b3-theme-primary-lighter: rgba(var(--m-theme2-alt), .38);
-    --b3-theme-primary-lightest: rgba(var(--m-theme2-alt) .12);
+    --b3-theme-primary-lightest: rgba(var(--m-theme2-alt), .12);
 
     --b3-theme-secondary: rgba(var(--m-theme2-alt),1);
     

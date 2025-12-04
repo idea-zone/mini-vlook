@@ -1441,4 +1441,15 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 }
 
 
-
+.protyle-wysiwyg--select::after, .protyle-wysiwyg--hl::after {
+    background-color: var(--b3-theme-primary-lightest);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: " ";
+    left: 0;
+    top: 0;
+    z-index: 3;
+    pointer-events: none;
+    border-radius: var(--b3-border-radius);
+}
