@@ -4,7 +4,7 @@ import { setBlockAttrs } from "./api.js";
 import { InlineSpan, SiyuanSpan, VlookSpan } from "./domex.js";
 import { mv } from "./mv-util.js";
 import { VLookPluginEnter, VlookItemBase, CloaseCommonMenu } from "./theme-vlook-plugin.js";
-import {BqColorPluginEnter} from "./theme-vlook-bqcolor-plugin.js"
+import {BqColorPluginEnter,ColloutPluginEnter} from "./theme-vlook-bqcolor-plugin.js"
 //#region *********************** 辅助函数   ***********************
 
 /**
@@ -47,6 +47,7 @@ async function WzKeyUp(e) {
 async function WzLabelClick(e) {
   await VLookPluginEnter.WzLabelClick(e);
   await BqColorPluginEnter.WzLabelClick(e);
+  await ColloutPluginEnter.WzLabelClick(e);
 }
 
 function MenuShow(e) {
@@ -112,6 +113,7 @@ function InsertBlockquoteMenuItem(selectid, selecttype) {
   let selectview = commonMenu.querySelector('[id="blockquote"]');
   if (!readonly && updated) {
     if (!selectview) {
+      // TODO： 先注释掉默认的逻辑
       commonMenu.insertBefore(CalloutBlockquote(selectid, selecttype), updated);
       commonMenu.insertBefore(RainbowBlockquote(selectid, selecttype), updated);
       commonMenu.insertBefore(RainbowBlockquote2(selectid, selecttype), updated);
@@ -719,10 +721,16 @@ function ViewMonitor(event,bqstyle=null) {
   if (bqstyle !== null) {
     attrValue = bqstyle;
   }
-  console.log("ViewMonitor",attrName,attrValue);
   let blocks = document.querySelectorAll(
     `.protyle-wysiwyg [data-node-id="${id}"]`
   );
+
+  // 去掉 attrValue 前后的空串
+  attrValue = attrValue.trim();
+  if(attrValue===undefined || attrValue===null && attrValue ===''){
+    return;
+  }
+
   if (blocks) {
     blocks.forEach((block) => block.setAttribute(attrName, attrValue));
   }

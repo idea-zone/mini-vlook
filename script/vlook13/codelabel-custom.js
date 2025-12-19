@@ -24,9 +24,6 @@ function CodelabelEnable(){
 
     config.theme.codelabel.render.enable=!config.theme.codelabel.render.enable
 
-    // console.log("enable:"+config.theme.codelabel.render.enable);
-
-
     if (config.theme.codelabel.render.toolbar){
         // 更改菜单栏按钮状态
         toolbarItemChangeStatu(

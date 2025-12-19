@@ -43,6 +43,7 @@
 /* 引述块 */
 @import url(./styles/v-block-bq-style.css);
 @import url(./styles/custom-plugin/custom-bqcolor.css);
+@import url(./styles/custom-f-callout.css);
 
 @import url(./styles/custom-f-card.css);
 
@@ -57,6 +58,9 @@
 /*@import url(./styles/custom-plugin13/tab-bqe.css);*/
 @import url(./styles/custom-plugin13/codelabel-pg.css);
 @import url(./styles/custom-plugin13/mult-tag-lv.css);
+
+
+
 
 /* 解决 分栏引用下 display: inline-block 不起作用的问题 */
 .protyle-wysiwyg {

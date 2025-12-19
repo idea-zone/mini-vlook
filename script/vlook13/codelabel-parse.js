@@ -229,10 +229,8 @@ class CodeLabelParse {
                     isEmpty = true;
                     for(let v of values){
                        var vPat= RegExp(`^${v}$`);
-                       console.log(vPat);
                        if (vPat.test(value)){
                         isEmpty=false;
-                        console.log(isEmpty);
                         break;
                        }
                     }
@@ -426,7 +424,6 @@ class CodeLabelParse {
         this.customAttr = this.formatCustomAttr(this.customAttr, parseInfo, this.maps);
         for (let k in this.customAttr) {
             let v = this.formatCharInfo(this.customAttr[k]);
-            console.log(v);
             e.setAttribute(k, v);
         }
 
@@ -475,8 +472,6 @@ class CodeLabelParse {
                 let v = g.groups[k];
                 if (mv.Empty(k) === false) {
                     parseInfo[k] = v;
-                    console.log("v:");
-                    console.log(v);
                 }
             }
 

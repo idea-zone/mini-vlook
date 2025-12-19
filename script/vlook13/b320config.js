@@ -392,10 +392,6 @@ export var config = {
             },
             innerHTML: "<span>${value}</span>",
             renderEnd: (parse, element, oldHTML) => {
-              // 渲染完单个元素的回调.
-              console.log('text')
-              console.log(element)
-              console.log(oldHTML)
             },
           },
           { // 刮刮乐
@@ -465,7 +461,6 @@ export var config = {
             },
             innerHTML: "<span>${value}</span>",
             renderEnd: (parse, element, oldHTML) => {
-              console.log("tc: ")
               // 渲染完单个元素的回调.
               function bingOnClick(button) {
                 let value =
@@ -630,8 +625,6 @@ export var config = {
               // 如果 names 中包含 parse.parseInfo.colorTag 的值，则设置 element 的 class 为 parse.parseInfo.colorTag
               if(config.theme.common.colors.names.includes(parse.parseInfo.color)){
                let color = config.theme.common.colors.values[parse.parseInfo.color].newName
-               console.log("color",color)
-               console.log("element",element)
                let types = element.getAttribute("data-type")?.split(" ");
                // 移除 types 中的 code
                types = types.filter(item => item !== "code");
@@ -669,8 +662,6 @@ export var config = {
                  await setBlockAttrs(bid, attrs);
                }
               }
-
-              console.log(parse.parseInfo)
             },
           },
           { // 复选框
@@ -810,7 +801,6 @@ export var config = {
                 let md = mv
                   .GetLute()
                   .BlockDOM2StdMd(element.parentNode.parentNode.innerHTML);
-                console.log(md);
                 let kid = await mv.UpdateBlockByMd_API(id, md);
                 let dom = document.querySelectorAll(
                   `div[data-node-id="${kid}"]`
@@ -889,9 +879,6 @@ export var config = {
             innerHTML: '<span class="hide">${value}<span>',
             renderEnd: (parse, element, oldHTML) => {
               // 渲染完单个元素的回调.
-  
-              console.log(oldHTML)
-              console.log('renderEnd')
               // let parentNode = mv.GetSiyuanBlock(element);
               let id = mv.GetSiyuanBlockId(element);
   
@@ -958,13 +945,8 @@ export var config = {
                 let md = mv
                   .GetLute()
                   .BlockDOM2StdMd(element.parentNode.parentNode.innerHTML);
-                console.log(md);
                 let kid = await mv.UpdateBlockByMd_API(id, md);
-                console.log('...');
-                
                 let elm = await mv.GetMdByBlock_API(id);
-                console.log(elm);
-  
                 let dom = document.querySelectorAll(
                   `div[data-node-id="${kid}"]`
                 )[0];
@@ -1047,9 +1029,6 @@ export var config = {
   
               if (parse !== undefined && parse !== null)
                 parse = parse["parseInfo"];
-              console.log("lv1" + parse["lv1"]);
-              console.log("lv1" + parse["lv2"]);
-              console.log(parse);
   
               if (
                 parse["lv1"] !== undefined &&
@@ -1278,8 +1257,6 @@ export var config = {
               if (element.nodeType !== Node.ELEMENT_NODE) return;
               if (element.getAttribute("data-type") !== "code") return;
               
-              console.log("element",element);
-
               var id = mv.GetSiyuanBlockId(element);
   
               var funcPat = new RegExp('((?<time>\\d{1,2}:\\d{1,2})(?<ope>[+]))?(?<tlen>\\d+(.\\d+)?)(?<ttype>[smhd])');
@@ -1307,7 +1284,6 @@ export var config = {
                 let parentNode = mv.GetSiyuanBlock(element);
                 let id = mv.GetSiyuanBlockId(element);
                 var tmd = mv.GetLute().BlockDOM2StdMd(parentNode.innerHTML);
-                console.log(tmd);
                 let did = await mv.UpdateBlockByMd_API(id, tmd);
               };
 
@@ -1317,7 +1293,6 @@ export var config = {
                   "custom-" + name;
                 let attrValue = value;
                 
-                console.log("ViewMonitor",attrName,attrValue);
                 let blocks = document.querySelectorAll(
                   `.protyle-wysiwyg [data-node-id="${id}"]`
                 );
@@ -1343,7 +1318,6 @@ export var config = {
                   let ope = g.groups["ope"];
                   let endD = g.groups["tlen"];
                   let endType =g.groups["ttype"];  
-                  console.log(start,endD,endType);
                   await doTimeRange(start,endD,endType);
               }
   

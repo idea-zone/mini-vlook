@@ -259,7 +259,6 @@ class VlookSpan {
 
   static ClacAndSetWzStepsValue(dom){
         // 根据下面字符串拆分为数组 > / \ -> → ▸ ▶︎ 
-        console.log("dom",dom);
         let spantext =dom.textContent;
         let setps = spantext.split(/[>\\\/→▸▶︎]+/);      
         let newText = setps.join('>');
@@ -291,12 +290,10 @@ class VlookSpan {
      outline-style: var(--theme-wzline-pgbar-outline-style);
       */
       boxShadowValue = -40 * (1-(value+100) / 100);
-      console.warn("ClacAndSetPgBarValue::boxShadowValue", value);
       value = 0;
     }
 
 
-    console.log("pgbar::boxShadowValue", boxShadowValue);
     dom.style.setProperty("--theme-wzline-pgbar-setpValue", value + "%");
 
     if (
@@ -603,8 +600,6 @@ class SiyuanSpan {
         currentNode.nodeType === Node.ELEMENT_NODE
           ? currentNode.getAttribute("data-type")
           : null;
-
-      console.log("currentNode",currentNode);
 
       // 根据各个部分拆分
       // 修改下面各部分的 result 的 push 方法, 添加 styleInfo 信息, 添加 dataType 信息

@@ -153,9 +153,10 @@
   word-wrap: break-word;
 }
 
-.bq[custom-bqstyle]:not([custom-bqstyle=""])[custom-bqstyle~="close" i]
+/* 折叠状态：隐藏除第一行外的所有内容 */
+.bq[custom-bqstyle]:not([custom-bqstyle=""])[fold="1"]
   > *:not(:first-child),
-.bq[custom-bqstyle]:not([custom-bqstyle=""])[custom-bqstyle~="close" i]
+.bq[custom-bqstyle]:not([custom-bqstyle=""])[fold="1"]
   > *:not(:first-child)
   * {
   max-height: 0px;
@@ -166,16 +167,16 @@
   color: transparent;
   background-color: transparent;
 }
-.bq[custom-bqstyle]:not([custom-bqstyle=""])[custom-bqstyle~="close" i]
+.bq[custom-bqstyle]:not([custom-bqstyle=""])[fold="1"]
   > *:not(:first-child)
   * {
   display: none;
 }
-.bq[custom-bqstyle]:not([custom-bqstyle=""])[custom-bqstyle~="close" i] {
+.bq[custom-bqstyle]:not([custom-bqstyle=""])[fold="1"] {
   /* 上 右 下 左 */
   padding: 0.1em 0.75em 0.1em 0.75em !important;
 }
-.bq[custom-bqstyle]:not([custom-bqstyle=""])[custom-bqstyle~="close" i]
+.bq[custom-bqstyle]:not([custom-bqstyle=""])[fold="1"]
   > .p:first-child {
   margin-bottom: 0px !important;
 }
@@ -198,8 +199,8 @@
   /* padding: 60px 5px 5px 5px !important; */
 }
 
-/* 第一个段落: 后面的小箭头(展开状态) */
-.bq[custom-bqstyle]:not([custom-bqstyle=""])[custom-bqstyle~="open" i]
+/* 第一个段落: 后面的小箭头(展开状态) - 当没有 fold="1" 时 */
+.bq[custom-bqstyle]:not([custom-bqstyle=""]):not([fold="1"])
   > .p:first-child
   > div[contenteditable="true"]:after {
   /* content: '\2212'; */
@@ -210,8 +211,8 @@
   margin-left: 5px;
 }
 
-/* 第一个段落: 后面的小箭头(收缩状态) */
-.bq[custom-bqstyle]:not([custom-bqstyle=""])[custom-bqstyle~="close" i]
+/* 第一个段落: 后面的小箭头(收缩状态) - 当有 fold="1" 时 */
+.bq[custom-bqstyle]:not([custom-bqstyle=""])[fold="1"]
   > .p:first-child
   > div[contenteditable="true"]:after {
   content: "\003E"; /*大于符号 U+230 */

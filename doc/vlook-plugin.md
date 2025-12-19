@@ -1,3 +1,13 @@
+## 变更日志
+
+### 2025年1月 - 引述块折叠机制变更
+
+**变更说明**: 引述块的折叠控制从 `custom-bqstyle` 属性的 `open/close` 改为使用 `fold="1"` 属性，与 Callout 块保持一致。
+
+详细说明请查看：[changelog-fold-attribute.md](./changelog-fold-attribute.md)
+
+---
+
 * 微章、刮刮卡、面包屑、进度条的共同特征
 
   * VLOOK 元素类型和显示名称

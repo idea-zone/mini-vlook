@@ -191,7 +191,6 @@ mv.DeepHasAttrs =(dom,attrs,attvalue,endclass=null)=>{
     if (dom.getAttribute(attrs) === attvalue) return true;
     if (!mv.Empty(endclass)){
         if (dom.hasAttribute(endclass)){
-            console.log("检测到重点")
             return false;
         }
     }

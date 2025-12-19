@@ -1,4 +1,4 @@
-export { BqColorPluginEnter };
+export { BqColorPluginEnter,ColloutPluginEnter };
 import { setBlockAttrs } from "./api.js";
 import { InlineSpan } from "./domex.js";
 import { mv } from "./mv-util.js";
@@ -33,46 +33,36 @@ import {
 
 class BqColorPluginEnter {
   static WzLabelClick(e) {
+
     // 获取引用块的信息
     let bqColor = BqColorPluginEnter.GetBqCallout();
+
     if (
       bqColor === null ||
       bqColor === undefined ||
       mv.Empty(bqColor.attrValue)
     )
       return;
-    let attrValue = bqColor.bqDiv.getAttribute("custom-bqstyle");
-    if (mv.Empty(bqColor.attrValue) || mv.Empty(attrValue)) return;
+    if (mv.Empty(bqColor.attrValue)) return;
+    let attrs = bqColor.attrValue.split(" ");
+    // 使用 fold="1" 属性控制折叠，而不是 custom-bqstyle 中的 open/close
+    var tmp ={
+      id:bqColor.id,
+      attrName:bqColor.attrName,
+      attrValue:bqColor.attrValue,
+      isFold:bqColor.isFold,
+      callout:bqColor.bqDiv 
+    };
 
-    let attrs = attrValue.split(" ");
-
-    if (attrs.includes("fold")) {
-      // 判断点击位置是否是在 pDiv
-      let pDiv = bqColor.pDiv;
-      let click = e.target;
-      if (click === pDiv || BqColorPluginEnter.getP_DIV(click) === pDiv) {
-        if (bqColor.bqDiv.getAttribute("custom-bqstyle").includes("close")) {
-          // 移除数组 attrs 中的 close
-          const index = attrs.indexOf("close");
-          if (index > -1) {
-            attrs.splice(index, 1);
-          }
-          attrs.push("open");
-        } else if (
-          bqColor.bqDiv.getAttribute("custom-bqstyle").includes("open")
-        ) {
-          // 移除数组 attrs 中的 open
-          const index = attrs.indexOf("open");
-          if (index > -1) {
-            attrs.splice(index, 1);
-          }
-          attrs.push("close");
-        }
-      }
-      bqColor.attrValue = attrs.join(" ");
-      // 不更新API
-      BqColorPluginEnter.SetBqColorStyle(bqColor, false);
+    var callout = tmp.callout;
+    // 如果是折叠，移除折叠属性
+    if (callout && callout.hasAttribute('fold') && tmp.isFold) {
+      callout.removeAttribute('fold');
+    }else
+    {
+      callout.setAttribute('fold', '1');
     }
+    return;
   }
 
   static getVars(text) {
@@ -89,13 +79,47 @@ class BqColorPluginEnter {
   }
 
   /**
+   * 从 custom-bqstyle 属性中获取 callout 类型
+   * @returns {string|null} 返回找到的 callout({attr:"NOTE",foldable:true/false}) 类型，如果没有找到则返回 null
+   */
+  static getVarsByAtts(attrValue){
+    if (mv.Empty(attrValue)) return null;
+    // 按空格分组
+    let attrs = attrValue.split(" ").filter(attr => attr.trim() !== "");
+    
+    // 定义所有支持的 callout 类型
+    const calloutTypes = [
+      "NOTE", "TIP", "IMPORTANT", "WARNING", "CAUTION",
+      "note", "abstract", "info", "todo", "success", "question", 
+      "warning", "failure", "danger", "bug", "example", "quote"
+    ];
+    
+    let rest={
+      attr:"NOTE",
+      hasFold: false, // 是否支持折叠
+    }
+
+    // 判断是否有对应的 callout 类型
+    for (let attr of attrs) {
+      var attrWrap = attr.trim().toUpperCase();
+      if (calloutTypes.includes(attrWrap)) {
+        rest.attr = attr;
+        // 检查是否包含 fold 关键字（支持折叠）
+        rest.hasFold = attrs.includes('fold');
+       return rest;
+      }
+    }
+    return null;
+  }
+
+  /**
    * 获取引用块的信息:
    * @param {string} bqstyle 引用块的样式
    * @returns {object} 引用块的信息
    * @returns {
    *     id: string, // 块 ID
    *     attrName: string, // 块属性名
-   *     attrValue: string, // 块属性值
+   *     attrValue: string, // 块属性值（不再包含 open/close）
    *     bqDiv: Element, // 引用块的 div 元素
    *     pDiv: Element, // 引用块的 p 元素
    * }
@@ -109,34 +133,28 @@ class BqColorPluginEnter {
     if (pDiv !== bqDiv.firstChild) return null;
     if (focus.nodeType !== Node.TEXT_NODE) return null;
 
-    var text = focus.data?.replace(/[\u200B-\u200D\uFEFF]/g, "");
-    let vars = BqColorPluginEnter.getVars(text);
+    let attrText = bqDiv.getAttribute("custom-bqstyle");
+    let vars = BqColorPluginEnter.getVarsByAtts(attrText);
 
     let id = bqDiv.getAttribute("data-node-id");
     let attrName = "custom-bqstyle";
     let attrValue = bqstyle;
 
-    if (vars === null || vars === undefined || vars.length === 0) {
+    if (vars===null||vars===undefined||mv.Empty(vars.attr)) {
       attrValue = "";
     } else {
-      var type = vars?.groups?.type;
-      var foldable = vars?.groups?.foldable;
-      var title = vars?.groups?.title;
-      title = title?.replace(/[\u200B-\u200D\uFEFF]/g, "");
-
+      var type = vars?.attr;
       bqstyle = BqColorPluginEnter.Type2BqStyle(type);
-
-      if (foldable === "-") {
-        attrValue = bqstyle + " fold close";
-      } else if (foldable === "+") {
-        attrValue = bqstyle + " fold open";
-      } else {
-        attrValue = bqstyle;
-      }
+      // 构建 attrValue：只包含类型和 fold 标识，不包含 open/close
+      attrValue = bqstyle;
     }
+
+     // 判断 bqDiv 是否包含 fold=1
+     let isFold = (bqDiv.getAttribute("fold") || "0") === "1";
 
     return {
       id: id,
+      isFold:isFold,
       attrName: attrName,
       attrValue: attrValue,
       bqDiv: bqDiv,
@@ -156,16 +174,20 @@ class BqColorPluginEnter {
     let pDataType = pDiv.getAttribute("data-type");
     if (pDataType === "NodeParagraph") {
       let text = pDiv.firstChild.textContent;
-      let vars = BqColorPluginEnter.getVars(text);
+      // let vars = BqColorPluginEnter.getVars(text);
+
+      let attrText = divDiv.getAttribute("custom-bqstyle");
+      let vars = BqColorPluginEnter.getVarsByAtts(attrText);
+
+      // callout({attr:"NOTE",hasFold:true/false})
       if (vars == null || vars == undefined || vars.length == 0) {
+
         // 设置第一行的值
-        var foldable = vars?.groups?.foldable;
-        if (mv.Empty(foldable)) foldable = "";
-        var title = vars?.groups?.title;
-        if (mv.Empty(title)) title = "";
+        var title = text;
+        if (mv.Empty(title)) title = bqstyle;
         await mv.InsertPrependBlockByMd_API(
           id,
-          `[!${bqstyle}]${foldable}${title}`
+          `${title}`
         );
 
         // 更新属性
@@ -180,23 +202,23 @@ class BqColorPluginEnter {
         let attrs = {};
         attrs["custom-" + attrName] = attrValue;
         await setBlockAttrs(id, attrs);
+
       } else {
         // 设置第一行的值
-        var foldable = vars?.groups?.foldable;
-        if (mv.Empty(foldable)) foldable = "";
-        var title = vars?.groups?.title;
-        if (mv.Empty(title)) title = "";
-        else title = " " + title;
-        if (foldable === "-") {
-          attrValue = bqstyle + " fold close";
-        } else if (foldable === "+") {
-          attrValue = bqstyle + " fold open";
+        var hasFold = vars?.hasFold;
+        var title = text;
+        if (mv.Empty(title)) title = bqstyle;
+      
+        // 构建 attrValue：只包含类型和 fold 标识
+        if (hasFold) {
+          attrValue = bqstyle + " fold";
         } else {
           attrValue = bqstyle;
         }
+        
         let pid = mv.GetSiyuanBlockId(pDiv);
         if (pid !== null && pid !== undefined) {
-          await mv.UpdateBlockByMd_API(pid, `[!${bqstyle}]${foldable}${title}`);
+          await mv.UpdateBlockByMd_API(pid, `${title}`);
 
           // 更新属性
           let blocks = document.querySelectorAll(
@@ -429,8 +451,11 @@ class BqColorPluginEnter {
    * @param {KeyboardEvent} e 键盘事件
    */
   static async WzKeyUpCallout(e) {
-    // 获取 bqColor
+
+    return false;
+    // 获取 GetBqCallout
     let bqColor = BqColorPluginEnter.GetBqCallout();
+    
     // 设置 bqColor
     BqColorPluginEnter.SetBqColorStyle(bqColor);
   }
@@ -620,4 +645,87 @@ function getBlockSelected(e) {
     };
 
   return null;
+}
+
+class ColloutPluginEnter{
+  static WzLabelClick(e) {
+    // 获取引用块的信息
+    let bqColor = ColloutPluginEnter.GetBqCallout();
+   
+    if (bqColor === null|| bqColor === undefined|| mv.Empty(bqColor.id)) return null;
+
+    var tmp ={
+      id:bqColor.id,
+      attrName:bqColor.attrName,
+      attrValue:bqColor.attrValue,
+      isFold:bqColor.isFold,
+      callout:bqColor.bqDiv 
+    };
+
+    var callout = tmp.callout;
+    // 如果是折叠，移除折叠属性
+    if (callout && callout.hasAttribute('fold') && tmp.isFold) {
+      callout.removeAttribute('fold');
+    }else
+    {
+      callout.setAttribute('fold', '1');
+    }
+
+    return;
+  } 
+
+  static GetBqCallout(){
+    let focus = window.getSelection().anchorNode;
+    let pDiv = ColloutPluginEnter.getP_DIV(focus); // .callinfo
+    let bqDiv = ColloutPluginEnter.getCallout_DIV(pDiv); // callout
+
+    if (bqDiv === null) return null;
+    if (pDiv !== bqDiv.firstChild) return null;
+    if (focus.nodeType !== Node.TEXT_NODE) return null;
+
+    
+    let id = bqDiv.getAttribute("data-node-id");
+    let attrName ="data-subtype";
+    let attrValue= bqDiv.getAttribute(attrName);
+    // 判断 bqDiv 是否包含 fold=1
+    let isFold = (bqDiv.getAttribute("fold") || "0") === "1";
+
+
+    return {
+      id: id,
+      attrName: attrName,
+      attrValue: attrValue,
+      bqDiv: bqDiv,
+      pDiv: pDiv,
+      isFold:isFold
+    };
+  }
+
+  
+  /**
+   * 获取引用块的 div 元素
+   * @param {Node} node 节点
+   * @returns {Element} 引用块的 div 元素
+   */
+  static getCallout_DIV(node) {
+    let pDiv = node?.parentElement;
+    if (pDiv === null || pDiv === undefined) return null;
+    return pDiv.dataset.type === "NodeCallout" ? pDiv : null;
+  }
+
+  
+  /**
+   * 获取 p 元素
+   * @param {Node} node 节点
+   * @returns {Element} p 元素
+   */
+  static getP_DIV(node) {
+    node = node?.parentElement?.parentElement;
+    // 获取 node 的 class 属性，并判断是否包含 'callout-info'
+    if (node && node.classList && node.classList.contains('callout-info')) {
+      // 如果是 callout-info，则返回该节点
+      return node;
+    }
+    return null;
+  }
 }

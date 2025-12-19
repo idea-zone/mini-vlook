@@ -210,8 +210,6 @@ export class MessageboxYesNo {
         }, 1000);
         let i = 0;
         while (this.countdown.Seconds > 1 && i++ < 100) {
-            console.log(1)
-
         }
         func();
     }

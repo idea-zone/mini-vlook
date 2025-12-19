@@ -118,12 +118,10 @@ function AddWzLabel(e) {
 
   wzitem.OnKeyUp = async (e, args) => {
     return;
-    console.log("wzitem.OnKeyUp", args.dom);
     let spanList = args.dom;
     spanList.forEach((span) => {
       if (!span.HasDataType("wzlabel") && !span.dataType !== "em sub" && !span.dataType !== "sub em") {
         span.dataType = span.dataType + " wzlabel";
-        console.log("span.dataType", span.dataType);
       }
     });
   };
@@ -257,7 +255,6 @@ function AddWzLabelCHK(e) {
 
   wzitem.onSetWzLabel = async (e) => {
     await setWzLabel(e, "em code unchk", null, (siyuanSpan) => {
-      console.log("siyuanSpan", siyuanSpan);
       let span = siyuanSpan.InlineList[0];
       // 找到 siyuanSpan 中的 em unchk 或 em chked
       let emUnchk = siyuanSpan.InlineList.find(
@@ -302,7 +299,6 @@ function AddWzLabelCHK(e) {
       }
 
       let span2 = InlineSpan.Init("em unchk", "[ ]");
-      console.log("emCodeUnchk", emCodeUnchk);
       if (emCodeUnchk) {
         // 找到 emCodeUnchk 的位置, 在 emCodeUnchk 前面插入 em unchk
         let index = siyuanSpan.InlineList.indexOf(emCodeUnchk);
@@ -454,7 +450,6 @@ function AddWzLabelCount(e) {
 
   wzitem.onSetWzLabel = async (e) => {
     await setWzLabel(e, "em code count", null, (siyuanSpan) => {
-      console.log("siyuanSpan", siyuanSpan);
       let span = siyuanSpan.InlineList[0];
       // 找到 siyuanSpan 中的 em unchk 或 em chked
       let em = siyuanSpan.InlineList.find(
@@ -478,8 +473,6 @@ function AddWzLabelCount(e) {
       }
 
       let span2 = InlineSpan.Init("em count", "+[0]");
-      console.log("emCode", emCode);
-      console.log("siyuanSpan", siyuanSpan);
       if (emCode) {
         // 找到 emCodeUnchk 的位置, 在 emCodeUnchk 前面插入 em unchk
         let index = siyuanSpan.InlineList.indexOf(emCode);
@@ -617,10 +610,6 @@ function AddCoatingLabel(e) {
         emStrongDom = getNextSibling(emNo1Dom);
         emStrong = new InlineSpan(emStrongDom);
       }
-      console.log("emNo1", emNo1);
-      console.log("emStrong", emStrong);
-      console.log("emNo1Dom", emNo1Dom);
-      console.log("emStrongDom", emStrongDom);
 
       if (emNo1?.text == "••••"){
         // siyuanSpan.InlineList.splice(siyuanSpan.InlineList.indexOf(emShow), 1);
@@ -1009,7 +998,6 @@ class VlookItemBase {
 
         // 如果允许设置颜色，则包含颜色
         if (emSubNo4 && enableColor) spanList.push(new InlineSpan(emSubNo4));
-        console.log("Case1::spanList", spanList);
         return spanList;
       }
     }
@@ -1033,7 +1021,6 @@ class VlookItemBase {
         spanList.push(new InlineSpan(emCodeNo2));
         spanList.push(new InlineSpan(emNo3));
         if (emSubNo4 && enableColor) spanList.push(new InlineSpan(emSubNo4));
-        console.log("Case2::spanList", spanList);
         return spanList;
       }
     }
@@ -1047,7 +1034,6 @@ class VlookItemBase {
       spanList.push(new InlineSpan(emCodeNo2));
       spanList.push(new InlineSpan(emNo3));
       if (emSub3 && enableColor) spanList.push(new InlineSpan(emSub3));
-      console.log("Case3::spanList", spanList);
       return spanList;
     }
 
@@ -1072,7 +1058,6 @@ class VlookItemBase {
         // 如果是 em + em code + em + em sub
         if (emNo3) spanList.push(new InlineSpan(emNo3));
         if (emSubNo4 && enableColor) spanList.push(new InlineSpan(emSubNo4));
-        console.log("Case4::spanList", spanList);
         return spanList;
       }
     }
@@ -1090,7 +1075,6 @@ class VlookItemBase {
       spanList.push(new InlineSpan(emCode1));
       spanList.push(new InlineSpan(emNo2));
       if (emSubNo3 && enableColor) spanList.push(new InlineSpan(emSubNo3));
-      console.log("Case5::spanList", spanList);
       return spanList;
     }
 
@@ -1106,7 +1090,6 @@ class VlookItemBase {
     if (!emNo1 && emCode1 && !emNo2) {
       spanList.push(new InlineSpan(emCode1));
       if (emSubNo2 && enableColor) spanList.push(new InlineSpan(emSubNo2));
-      console.log("Case6::spanList", spanList);
       return spanList;
     }
 

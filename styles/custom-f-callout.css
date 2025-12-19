@@ -1,0 +1,651 @@
+/*
+ * NOTE、TIP、IMPORTANT、WARNING、CAUTION、ABSTRACT、TODO、DONE、SUCCESS、
+ * QUESTION、FAILURE、DANGER、BUG、EXAMPLE、QUOTE 类型 Callout 样式
+ * 基于 v-block-bq-style.css 的样式设置
+ */
+
+ :root{
+    /*NOTE,TIP、IMPORTANT、WARNING、CAUTION、ABSTRACT、TODO、DONE、SUCCESS、QUESTION、FAILURE、DANGER、BUG、EXAMPLE、QUOTE*/
+    /* NOTE */
+    --b3-callout-note: #4892e6;
+    --v-bq-collout-note-background: linear-gradient(
+        180deg,
+        var(--ac-bu) 2.5em,
+        var(--ac-bu-a) 2.5em,
+        var(--ac-bu-fade)
+    );
+    --v-bq-collout-note-border: var(--ac-bu-lg);
+    /* TIP */
+    --b3-callout-tip: #00bfbc;
+    --v-bq-collout-tip-background: linear-gradient(
+        180deg,
+        var(--ac-gn) 2.5em,
+        var(--ac-gn-a) 2.5em,
+        var(--ac-gn-fade)
+    );
+    --v-bq-collout-tip-border: var(--ac-gn-lg);
+    /* IMPORTANT */
+    --b3-callout-important: #086ddd;
+    --v-bq-collout-important-background: linear-gradient(
+        180deg,
+        var(--ac-pu) 2.5em,
+        var(--ac-pu-a) 2.5em,
+        var(--ac-pu-fade)
+    );
+    --v-bq-collout-important-border: var(--ac-pu-lg);
+    /* WARNING */
+    --b3-callout-warning: #f5822e;
+    --v-bq-collout-warning-background: linear-gradient(
+        180deg,
+        var(--ac-bn) 2.5em,
+        var(--ac-bn-a) 2.5em,
+        var(--ac-bn-fade)
+    );
+    --v-bq-collout-warning-border: var(--ac-bn-lg);
+    /* CAUTION */
+    --b3-callout-caution: #e93147;
+    --v-bq-collout-caution-background: linear-gradient(
+        180deg,
+        var(--ac-rd) 2.5em,
+        var(--ac-rd-a) 2.5em,
+        var(--ac-rd-fade)
+    );
+    --v-bq-collout-caution-border: var(--ac-rd-lg);
+    /* ABSTRACT */
+    --b3-callout-abstract: #00bfbc;
+    --v-bq-collout-abstract-background: linear-gradient(
+        180deg,
+        var(--ac-gn) 2.5em,
+        var(--ac-gn-a) 2.5em,
+        var(--ac-gn-fade)
+    );
+    --v-bq-collout-abstract-border: var(--ac-gn-lg);
+    /* TODO */
+    --b3-callout-todo: #086ddd;
+    --v-bq-collout-todo-background: linear-gradient(
+        180deg,
+        var(--ac-bu) 2.5em,
+        var(--ac-bu-a) 2.5em,
+        var(--ac-bu-fade)
+    );
+    --v-bq-collout-todo-border: var(--ac-bu-lg);
+    /* DONE/SUCCESS */
+    --b3-callout-done: #08b94e;
+    --b3-callout-success: #08b94e;
+    --v-bq-collout-success-background: linear-gradient(
+        180deg,
+        var(--ac-gn) 2.5em,
+        var(--ac-gn-a) 2.5em,
+        var(--ac-gn-fade)
+    );
+    --v-bq-collout-success-border: var(--ac-gn-lg);
+    /* QUESTION */
+    --b3-callout-question: #ec7500;
+    --v-bq-collout-question-background: linear-gradient(
+        180deg,
+        var(--ac-bn) 2.5em,
+        var(--ac-bn-a) 2.5em,
+        var(--ac-bn-fade)
+    );
+    --v-bq-collout-question-border: var(--ac-bn-lg);
+    /* FAILURE */
+    --b3-callout-failure: #e93147;
+    --v-bq-collout-failure-background: linear-gradient(
+        180deg,
+        var(--ac-rd) 2.5em,
+        var(--ac-rd-a) 2.5em,
+        var(--ac-rd-fade)
+    );
+    --v-bq-collout-failure-border: var(--ac-rd-lg);
+    /* DANGER */
+    --b3-callout-danger: #e93147;
+    --v-bq-collout-danger-background: linear-gradient(
+        180deg,
+        var(--ac-rd) 2.5em,
+        var(--ac-rd-a) 2.5em,
+        var(--ac-rd-fade)
+    );
+    --v-bq-collout-danger-border: var(--ac-rd-lg);
+    /* BUG */
+    --b3-callout-bug: #e93147;
+    --v-bq-collout-bug-background: linear-gradient(
+        180deg,
+        var(--ac-rd) 2.5em,
+        var(--ac-rd-a) 2.5em,
+        var(--ac-rd-fade)
+    );
+    --v-bq-collout-bug-border: var(--ac-rd-lg);
+    /* EXAMPLE */
+    --b3-callout-example: #7852ee;
+    --v-bq-collout-example-background: linear-gradient(
+        180deg,
+        var(--ac-pu) 2.5em,
+        var(--ac-pu-a) 2.5em,
+        var(--ac-pu-fade)
+    );
+    --v-bq-collout-example-border: var(--ac-pu-lg);
+    /* QUOTE */
+    --b3-callout-quote: #9f9f9f;
+    --v-bq-collout-quote-background: linear-gradient(
+        180deg,
+        var(--ac-gy) 2.5em,
+        var(--ac-gy-a) 2.5em,
+        var(--ac-gy-fade)
+    );
+    --v-bq-collout-quote-border: var(--ac-gy-lg);
+}
+
+.b3-typography .callout, .protyle-wysiwyg .callout {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* NOTE 类型的基础样式 */
+.b3-typography .callout[data-subtype=NOTE], 
+.protyle-wysiwyg .callout[data-subtype=NOTE] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-note-background);
+    border: 2px solid var(--v-bq-collout-note-border);
+}
+
+/* NOTE 类型的标题行样式 */
+.b3-typography .callout[data-subtype=NOTE] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=NOTE] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+/* NOTE 类型的图标 */
+.b3-typography .callout[data-subtype=NOTE] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=NOTE] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+/* 标题行-ICON */
+.protyle-wysiwyg[data-readonly=false] .callout-icon {
+    cursor: pointer;
+    padding: 4px;
+    border-radius: var(--b3-border-radius);
+    transition: var(--b3-background-transition);
+}
+
+.protyle-wysiwyg[data-readonly=false] .callout-title {
+    cursor: pointer;
+}
+
+/* 标题行-Title */
+.b3-typography .callout-title, 
+.protyle-wysiwyg .callout-title {
+    margin-left: 4px;
+    font-weight: 500;
+    font-size: 114%;
+    opacity: .86;
+    transition: var(--b3-color-transition);
+}
+
+/* 标题行内容 */
+.b3-typography .callout-content, 
+.protyle-wysiwyg .callout-content {
+    margin-top: 0.5em;
+}
+
+/* TIP 类型的基础样式 */
+.b3-typography .callout[data-subtype=TIP], 
+.protyle-wysiwyg .callout[data-subtype=TIP] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-tip-background);
+    border: 2px solid var(--v-bq-collout-tip-border);
+}
+
+/* TIP 类型的标题行样式 */
+.b3-typography .callout[data-subtype=TIP] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=TIP] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+/* TIP 类型的图标 */
+.b3-typography .callout[data-subtype=TIP] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=TIP] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+/* IMPORTANT 类型的基础样式 */
+.b3-typography .callout[data-subtype=IMPORTANT], 
+.protyle-wysiwyg .callout[data-subtype=IMPORTANT] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-important-background);
+    border: 2px solid var(--v-bq-collout-important-border);
+}
+
+/* IMPORTANT 类型的标题行样式 */
+.b3-typography .callout[data-subtype=IMPORTANT] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=IMPORTANT] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+/* IMPORTANT 类型的图标 */
+.b3-typography .callout[data-subtype=IMPORTANT] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=IMPORTANT] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+    font-weight: bolder;
+}
+
+/* WARNING 类型的基础样式 */
+.b3-typography .callout[data-subtype=WARNING], 
+.protyle-wysiwyg .callout[data-subtype=WARNING] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-warning-background);
+    border: 2px solid var(--v-bq-collout-warning-border);
+}
+
+/* WARNING 类型的标题行样式 */
+.b3-typography .callout[data-subtype=WARNING] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=WARNING] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+/* WARNING 类型的图标 */
+.b3-typography .callout[data-subtype=WARNING] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=WARNING] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+/* CAUTION 类型的基础样式 */
+.b3-typography .callout[data-subtype=CAUTION], 
+.protyle-wysiwyg .callout[data-subtype=CAUTION] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-caution-background);
+    border: 2px solid var(--v-bq-collout-caution-border);
+}
+
+/* CAUTION 类型的标题行样式 */
+.b3-typography .callout[data-subtype=CAUTION] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=CAUTION] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+/* CAUTION 类型的图标 */
+.b3-typography .callout[data-subtype=CAUTION] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=CAUTION] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+
+
+/* ABSTRACT 类型的基础样式 */
+.b3-typography .callout[data-subtype=ABSTRACT], 
+.protyle-wysiwyg .callout[data-subtype=ABSTRACT] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-abstract-background);
+    border: 2px solid var(--v-bq-collout-abstract-border);
+}
+
+.b3-typography .callout[data-subtype=ABSTRACT] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=ABSTRACT] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+.b3-typography .callout[data-subtype=ABSTRACT] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=ABSTRACT] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+/* TODO 类型的基础样式 */
+.b3-typography .callout[data-subtype=TODO], 
+.protyle-wysiwyg .callout[data-subtype=TODO] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-todo-background);
+    border: 2px solid var(--v-bq-collout-todo-border);
+}
+
+.b3-typography .callout[data-subtype=TODO] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=TODO] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+.b3-typography .callout[data-subtype=TODO] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=TODO] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+/* DONE 类型的基础样式 */
+.b3-typography .callout[data-subtype=DONE], 
+.protyle-wysiwyg .callout[data-subtype=DONE] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-success-background);
+    border: 2px solid var(--v-bq-collout-success-border);
+}
+
+.b3-typography .callout[data-subtype=DONE] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=DONE] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+.b3-typography .callout[data-subtype=DONE] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=DONE] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+/* SUCCESS 类型的基础样式 */
+.b3-typography .callout[data-subtype=SUCCESS], 
+.protyle-wysiwyg .callout[data-subtype=SUCCESS] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-success-background);
+    border: 2px solid var(--v-bq-collout-success-border);
+}
+
+.b3-typography .callout[data-subtype=SUCCESS] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=SUCCESS] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+.b3-typography .callout[data-subtype=SUCCESS] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=SUCCESS] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+/* QUESTION 类型的基础样式 */
+.b3-typography .callout[data-subtype=QUESTION], 
+.protyle-wysiwyg .callout[data-subtype=QUESTION] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-question-background);
+    border: 2px solid var(--v-bq-collout-question-border);
+}
+
+.b3-typography .callout[data-subtype=QUESTION] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=QUESTION] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+.b3-typography .callout[data-subtype=QUESTION] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=QUESTION] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+/* FAILURE 类型的基础样式 */
+.b3-typography .callout[data-subtype=FAILURE], 
+.protyle-wysiwyg .callout[data-subtype=FAILURE] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-failure-background);
+    border: 2px solid var(--v-bq-collout-failure-border);
+}
+
+.b3-typography .callout[data-subtype=FAILURE] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=FAILURE] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+.b3-typography .callout[data-subtype=FAILURE] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=FAILURE] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+/* DANGER 类型的基础样式 */
+.b3-typography .callout[data-subtype=DANGER], 
+.protyle-wysiwyg .callout[data-subtype=DANGER] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-danger-background);
+    border: 2px solid var(--v-bq-collout-danger-border);
+}
+
+.b3-typography .callout[data-subtype=DANGER] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=DANGER] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+.b3-typography .callout[data-subtype=DANGER] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=DANGER] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+/* BUG 类型的基础样式 */
+.b3-typography .callout[data-subtype=BUG], 
+.protyle-wysiwyg .callout[data-subtype=BUG] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-bug-background);
+    border: 2px solid var(--v-bq-collout-bug-border);
+}
+
+.b3-typography .callout[data-subtype=BUG] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=BUG] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+.b3-typography .callout[data-subtype=BUG] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=BUG] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+/* EXAMPLE 类型的基础样式 */
+.b3-typography .callout[data-subtype=EXAMPLE], 
+.protyle-wysiwyg .callout[data-subtype=EXAMPLE] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-example-background);
+    border: 2px solid var(--v-bq-collout-example-border);
+}
+
+.b3-typography .callout[data-subtype=EXAMPLE] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=EXAMPLE] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+.b3-typography .callout[data-subtype=EXAMPLE] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=EXAMPLE] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+/* QUOTE 类型的基础样式 */
+.b3-typography .callout[data-subtype=QUOTE], 
+.protyle-wysiwyg .callout[data-subtype=QUOTE] {
+    border-radius: var(--v-r-b, var(--b3-border-radius));
+    padding: 0.1em 0.75em 0.75em;
+    background: var(--v-bq-collout-quote-background);
+    border: 2px solid var(--v-bq-collout-quote-border);
+}
+
+.b3-typography .callout[data-subtype=QUOTE] .callout-info, 
+.protyle-wysiwyg .callout[data-subtype=QUOTE] .callout-info {
+    color: #fff;
+    margin-bottom: 1em;
+    margin-top: 0;
+    word-break: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+.b3-typography .callout[data-subtype=QUOTE] .callout-icon, 
+.protyle-wysiwyg .callout[data-subtype=QUOTE] .callout-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+}
+
+/* 前面的的竖线 */
+.b3-typography .callout[data-subtype=NOTE]::before, 
+.protyle-wysiwyg .callout[data-subtype=NOTE]::before,
+.b3-typography .callout[data-subtype=TIP]::before, 
+.protyle-wysiwyg .callout[data-subtype=TIP]::before,
+.b3-typography .callout[data-subtype=IMPORTANT]::before, 
+.protyle-wysiwyg .callout[data-subtype=IMPORTANT]::before,
+.b3-typography .callout[data-subtype=WARNING]::before, 
+.protyle-wysiwyg .callout[data-subtype=WARNING]::before,
+.b3-typography .callout[data-subtype=CAUTION]::before, 
+.protyle-wysiwyg .callout[data-subtype=CAUTION]::before,
+.b3-typography .callout[data-subtype=ABSTRACT]::before, 
+.protyle-wysiwyg .callout[data-subtype=ABSTRACT]::before,
+.b3-typography .callout[data-subtype=TODO]::before, 
+.protyle-wysiwyg .callout[data-subtype=TODO]::before,
+.b3-typography .callout[data-subtype=DONE]::before, 
+.protyle-wysiwyg .callout[data-subtype=DONE]::before,
+.b3-typography .callout[data-subtype=SUCCESS]::before, 
+.protyle-wysiwyg .callout[data-subtype=SUCCESS]::before,
+.b3-typography .callout[data-subtype=QUESTION]::before, 
+.protyle-wysiwyg .callout[data-subtype=QUESTION]::before,
+.b3-typography .callout[data-subtype=FAILURE]::before, 
+.protyle-wysiwyg .callout[data-subtype=FAILURE]::before,
+.b3-typography .callout[data-subtype=DANGER]::before, 
+.protyle-wysiwyg .callout[data-subtype=DANGER]::before,
+.b3-typography .callout[data-subtype=BUG]::before, 
+.protyle-wysiwyg .callout[data-subtype=BUG]::before,
+.b3-typography .callout[data-subtype=EXAMPLE]::before, 
+.protyle-wysiwyg .callout[data-subtype=EXAMPLE]::before,
+.b3-typography .callout[data-subtype=QUOTE]::before, 
+.protyle-wysiwyg .callout[data-subtype=QUOTE]::before {
+    background-color: transparent !important;
+}
+.b3-typography .callout::before, .protyle-wysiwyg .callout::before {
+    background-color: transparent !important;
+}
+
+
+
+.b3-typography .callout .callout-info:after, 
+.protyle-wysiwyg .callout .callout-info:after {
+    position:absolute;;
+    content: "\2228"; /* 逻辑与 V */
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    /* right: 20px; */
+    right: 25px;
+}
+
+
+.b3-typography .callout[fold~="1"] .callout-info:after, 
+.protyle-wysiwyg .callout[fold~="1"] .callout-info:after{
+    content: "\003E"; /*大于符号 U+230 */*/
+    position:absolute;;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    /* right: 20px; */
+    right: 25px;
+
+}
