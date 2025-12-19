@@ -1,5 +1,5 @@
 export { BqColorPluginEnter,ColloutPluginEnter };
-import { setBlockAttrs } from "./api.js";
+import { setBlockAttrs, transactions } from "./api.js";
 import { InlineSpan } from "./domex.js";
 import { mv } from "./mv-util.js";
 import {
@@ -32,7 +32,7 @@ import {
  */
 
 class BqColorPluginEnter {
-  static WzLabelClick(e) {
+  static async WzLabelClick(e) {
 
     // 获取引用块的信息
     let bqColor = BqColorPluginEnter.GetBqCallout();
@@ -42,8 +42,8 @@ class BqColorPluginEnter {
       bqColor === undefined ||
       mv.Empty(bqColor.attrValue)
     )
-      return;
-    if (mv.Empty(bqColor.attrValue)) return;
+      return false;
+    if (mv.Empty(bqColor.attrValue)) return false;
     let attrs = bqColor.attrValue.split(" ");
     // 使用 fold="1" 属性控制折叠，而不是 custom-bqstyle 中的 open/close
     var tmp ={
@@ -54,15 +54,76 @@ class BqColorPluginEnter {
       callout:bqColor.bqDiv 
     };
 
-    var callout = tmp.callout;
-    // 如果是折叠，移除折叠属性
-    if (callout && callout.hasAttribute('fold') && tmp.isFold) {
-      callout.removeAttribute('fold');
-    }else
-    {
-      callout.setAttribute('fold', '1');
+    // 计算新的折叠状态
+    let newIsFold = !tmp.isFold;
+
+    // 先提交事务到内核（进入撤销栈），再根据结果更新 DOM
+    try {
+      // 优先通过块元素获取对应的 protyle，确保使用当前编辑器的会话信息
+      let protyle = null;
+      const blockElement = document.querySelector(
+        `[data-node-id="${tmp.id}"]`
+      );
+      if (blockElement) {
+        const protyleContainer = blockElement.closest(".protyle");
+        if (protyleContainer && protyleContainer.__protyle) {
+          protyle = protyleContainer.__protyle;
+        }
+      }
+
+      // 兜底：退回到全局获取方式（主编辑器）
+      if (!protyle && typeof mv.GetProtyle === "function") {
+        protyle = mv.GetProtyle();
+      }
+
+      if (!protyle) return false;
+
+      const newFoldValue = newIsFold ? "1" : "";
+      const oldFoldValue = tmp.isFold ? "1" : "";
+
+      const transaction = {
+        doOperations: [
+          {
+            action: "setAttrs",
+            id: tmp.id,
+            data: JSON.stringify({ fold: newFoldValue }),
+          },
+        ],
+        undoOperations: [
+          {
+            action: "setAttrs",
+            id: tmp.id,
+            data: JSON.stringify({ fold: oldFoldValue }),
+          },
+        ],
+      };
+
+      const result = await transactions(protyle, [transaction]);
+      if (!result) return false;
+
+      // 将事务添加到 undo 栈，确保可以撤销
+      if (protyle.undo && protyle.undo.undoStack) {
+        protyle.undo.undoStack.push(transaction);
+        if (protyle.undo.hasUndo !== undefined) {
+          protyle.undo.hasUndo = true;
+        }
+      }
+
+      // 事务成功后，再同步一次前端 DOM，保证当前视图立即反映最新状态
+      const callout = tmp.callout;
+      if (callout) {
+        if (newIsFold) {
+          callout.setAttribute("fold", "1");
+        } else {
+          callout.removeAttribute("fold");
+        }
+      }
+    } catch (error) {
+      console.error("[BqColorPlugin] 保存 fold 状态失败:", error);
     }
-    return;
+
+    // 表示本次点击已被处理
+    return true;
   }
 
   static getVars(text) {
@@ -648,30 +709,114 @@ function getBlockSelected(e) {
 }
 
 class ColloutPluginEnter{
-  static WzLabelClick(e) {
+  static async WzLabelClick(e) {
     // 获取引用块的信息
     let bqColor = ColloutPluginEnter.GetBqCallout();
    
-    if (bqColor === null|| bqColor === undefined|| mv.Empty(bqColor.id)) return null;
+    if (bqColor === null || bqColor === undefined || mv.Empty(bqColor.id)) return false;
 
-    var tmp ={
-      id:bqColor.id,
-      attrName:bqColor.attrName,
-      attrValue:bqColor.attrValue,
-      isFold:bqColor.isFold,
-      callout:bqColor.bqDiv 
+    var tmp = {
+      id: bqColor.id,
+      attrName: bqColor.attrName,
+      attrValue: bqColor.attrValue,
+      isFold: bqColor.isFold,
+      callout: bqColor.bqDiv 
     };
 
-    var callout = tmp.callout;
-    // 如果是折叠，移除折叠属性
-    if (callout && callout.hasAttribute('fold') && tmp.isFold) {
-      callout.removeAttribute('fold');
-    }else
-    {
-      callout.setAttribute('fold', '1');
-    }
+    // 计算新的折叠状态
+    let newIsFold = !tmp.isFold;
 
-    return;
+    try {
+      // 封装一个通用的 protyle 获取方法，兼容不同挂载字段
+      const _getProtyleFromContainer = (container) => {
+        if (!container) return null;
+        if (container.__protyle) return container.__protyle;
+        if (container.protyle) return container.protyle;
+        return null;
+      };
+
+      let protyle = null;
+
+      // 1. 优先通过事件源向上寻找当前 protyle（当前点击所在编辑器）
+      if (e && e.target && e.target.closest) {
+        const fromEventProtyle = e.target.closest(".protyle");
+        protyle = _getProtyleFromContainer(fromEventProtyle);
+      }
+
+      // 2. 通过块元素获取对应的 protyle（根据块 ID 在各编辑器中查找）
+      if (!protyle && tmp.id) {
+        const blockElement = document.querySelector(
+          `[data-node-id="${tmp.id}"]`
+        );
+        if (blockElement) {
+          const protyleContainer = blockElement.closest(".protyle");
+          protyle = _getProtyleFromContainer(protyleContainer);
+        }
+      }
+
+      // 3. 兜底：退回到全局获取方式（主编辑器 / 当前活动文档）
+      if (!protyle && typeof mv.GetProtyle === "function") {
+        protyle = mv.GetProtyle();
+      }
+
+      // 依然没有拿到则直接返回，避免后续报错
+      if (!protyle) {
+        console.error("[ColloutPlugin] 无法获取 protyle 对象");
+        return false;
+      }
+
+      const newFoldValue = newIsFold ? "1" : "";
+      const oldFoldValue = tmp.isFold ? "1" : "";
+
+      // 构建事务：使用 setAttrs action
+      const transaction = {
+        doOperations: [
+          {
+            action: "setAttrs",
+            id: tmp.id,
+            data: JSON.stringify({ fold: newFoldValue }),
+          },
+        ],
+        undoOperations: [
+          {
+            action: "setAttrs",
+            id: tmp.id,
+            data: JSON.stringify({ fold: oldFoldValue }),
+          },
+        ],
+      };
+
+      // 提交事务
+      const result = await transactions(protyle, [transaction]);
+      if (!result) {
+        console.error("[ColloutPlugin] 事务提交失败");
+        return false;
+      }
+
+      // 将事务添加到 undo 栈，确保可以撤销
+      if (protyle.undo && protyle.undo.undoStack) {
+        protyle.undo.undoStack.push(transaction);
+        if (protyle.undo.hasUndo !== undefined) {
+          protyle.undo.hasUndo = true;
+        }
+      }
+
+      // 事务成功后，再同步一次前端 DOM，保证当前视图立即反映最新状态
+      const callout = tmp.callout;
+      if (callout) {
+        if (newIsFold) {
+          callout.setAttribute("fold", "1");
+        } else {
+          callout.removeAttribute("fold");
+        }
+      }
+
+      // 表示本次点击已被处理
+      return true;
+    } catch (error) {
+      console.error("[ColloutPlugin] 保存 fold 状态失败:", error);
+      return false;
+    }
   } 
 
   static GetBqCallout(){

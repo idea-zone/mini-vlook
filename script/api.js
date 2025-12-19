@@ -155,6 +155,7 @@ async function 交互业务(protyle, transactions = []) {
   const data = {
     app: ws_url.searchParams.get("app"),
     session: ws_url.searchParams.get("id"),
+    reqId: Date.now(), // 请求的唯一ID，使用当前时间戳
     transactions: transactions,
   };
   return 解析响应体(向思源请求数据(url, data));

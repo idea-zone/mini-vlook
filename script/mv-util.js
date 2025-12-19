@@ -369,9 +369,21 @@ mv.GetLute= ()=>{
  * 获取 protyle 属性
  */
  mv.GetProtyle = ()=>{
-    return siyuan.layout.centerLayout.children[0]
-                                        .children[0].model.editor
-                                        .protyle;
+    // return siyuan.layout.centerLayout.children[0]
+    //                                     .children[0].model.editor
+    //                                     .protyle;
+    return  getProtyle();
+}
+
+function getProtyle() {
+    try {
+        if(document.getElementById("sidebar")) return siyuan.mobile.editor.protyle;
+        const currDoc = siyuan?.layout?.centerLayout?.children.map(item=>item.children.find(item=>item.headElement?.classList.contains('item--focus') && (item.panelElement.closest('.layout__wnd--active')||item.panelElement.closest('[data-type="wnd"]')))).find(item=>item);
+        return currDoc?.model.editor.protyle;
+    } catch(e) {
+        console.error(e);
+        return null;
+    }
 }
 
 /**

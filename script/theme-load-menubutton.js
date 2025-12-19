@@ -45,6 +45,7 @@ async function WzKeyUp(e) {
 
 
 async function WzLabelClick(e) {
+  // 依次交给各模块处理，命中一个即停止，避免同一次点击被多处重复处理
   await VLookPluginEnter.WzLabelClick(e);
   await BqColorPluginEnter.WzLabelClick(e);
   await ColloutPluginEnter.WzLabelClick(e);
