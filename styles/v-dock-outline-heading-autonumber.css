@@ -25,22 +25,22 @@
 
 .sy__outline [data-subtype="h1"]{
     counter-increment: h1-counter;
-    counter-reset: h2-counter 0;
+    counter-reset:h2-counter 0 h3-counter 0 h4-counter 0 h5-counter 0 h6-counter 0;
 }
 
 .sy__outline [data-subtype="h2"]{
     counter-increment: h2-counter;
-    counter-reset: h3-counter 0;
+    counter-reset:  h3-counter 0 h4-counter 0 h5-counter 0 h6-counter 0;
 }
 
 .sy__outline [data-subtype="h3"]{
     counter-increment: h3-counter;
-    counter-reset: h4-counter 0;
+    counter-reset: h4-counter 0 h5-counter 0 h6-counter 0;
 }
 
 .sy__outline [data-subtype="h4"]{
     counter-increment: h4-counter;
-    counter-reset: h5-counter 0;
+    counter-reset:  h5-counter 0 h6-counter 0;
 }
 
 .sy__outline [data-subtype="h5"]{
