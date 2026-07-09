@@ -105,6 +105,7 @@
     --key-bg:var(--kbd-bg);
 
     /* 从 vlook 获取的变量 */
+    --std-code-shadow: var(--std-code-sd-lg);
     --m-v-f-fm-text: var(--v-f-fm-text), "Emojis Additional", emojis;
 
     --m-v-f-fm-bd: var(--v-f-fm-bd);
@@ -214,7 +215,8 @@
     --m-ac-bk-fade: var(--ac-bk-fade);
     --m-tbl-bd: var(--std-code-sd);   /*--std-code-sd*/
 
-
+    /* 面包屑动态 padding（由 JS 动态计算） */
+    --wz-breadcrumb-padding-x: 15px;  /* 默认左右 padding */
 
 
     /* 主题色 */

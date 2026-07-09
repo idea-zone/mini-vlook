@@ -59,13 +59,13 @@
 .b3-text-field, .pcr-app .pcr-interaction .pcr-result {
     border: 0;
     border-radius: var(--b3-border-radius);
-    box-shadow: inset 0 0 0 .6px var(--m-h-box-shadow) ;
+    box-shadow: inset 0 0 0 1px var(--b3-border-color);
     padding: 4px 8px;
     line-height: 20px;
     box-sizing: border-box;
-    color: var(--m-text-filed-color) !important;
+    color: var(--b3-theme-on-background);
     transition: box-shadow 120ms 0ms cubic-bezier(0, 0, 0.2, 1);
-    background-color: var(--m-text-filed-bgcolor) ;
+    background-color: var(--b3-theme-background);
     -webkit-appearance: none;
     font-variant-ligatures: none;
     font-size: 14px;
@@ -102,6 +102,7 @@
 .layout-tab-bar span[data-type="more"]{
     color: var(--m-menu-item-bg-color-1) !important;
 } */
+
 
 /* 仅内容编辑区域（不含标题栏） */
 .protyle-wysiwyg,.protyle-wysiwyg--attr{
@@ -280,9 +281,21 @@
 /* 侧边栏底色 */
 #dockLeft,
 #dockRight,
+#status{
+    background: var(--m-pn-c);
+}
+
+/* #dockLeft,
+#dockRight,
 #status,
 .layout-tab-container{
     background: var(--m-pn-c);
+} */
+
+/* TODO: 左侧面板颜色,等待抽取为公共变量*/
+.layout-tab-container,
+.layout-tab-container .block__icons{
+    background: #fcfcfd;
 }
 
 /* 左/右/底部 侧边栏按钮 */
@@ -325,22 +338,23 @@
 
 /* #region *************************** 顶部Dock ************************************* */
 
-#toolbar{
+html[data-frontend="desktop"] #toolbar{
     background: var(--m-menu-item-bg-color-1);
     color: var(--m-menu-item-color-1);
+    margin-bottom: 6px;
 }
 
 /* 按钮 */
-#toolbar .toolbar__item{
+html[data-frontend="desktop"] #toolbar .toolbar__item{
     color: var(--m-menu-item-color-1);
 }
-#toolbar .toolbar__item:hover{
+html[data-frontend="desktop"] #toolbar .toolbar__item:hover{
     background: var(--m-menu-item-bg-color-2);
     color: var(--m-menu-item-color-2);
 }
 
 /* 工作空间： [REN](Savor主题)  */
-body:not(.body--mobile,.body--window) #barWorkspace {
+html[data-frontend="desktop"] body.body--win32:not(.body--window) #barWorkspace {
     font-family: var(--m-v-f-fm-subtitle);
     border-radius: 4px;
     font-weight: bold;
@@ -350,7 +364,7 @@ body:not(.body--mobile,.body--window) #barWorkspace {
     color:  var(--m-menu-item-bg-color-1);
     text-transform: uppercase;
 }
-body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
+html[data-frontend="desktop"] body.body--win32:not(.body--window) #barWorkspace svg.toolbar__svg {
     margin-left: 2px;
     padding: 0px 5px 5px 5px;
 }
@@ -391,11 +405,11 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 /* 侧边栏标题区域的大图标：文档树、大纲、收集箱 、书签、标签、*/
 .block__logo
 {
-    background-color: var(--m-theme1-alt-0-6);
+    /* background-color: var(--m-theme1-alt-0-6);
     border-radius: var(--m-v-r-s);
-    color: var(--m-menu-item-color-1);
-    padding: 2px 5px;
-    margin-left: 8px;
+    color: var(--m-menu-item-color-1); */
+    padding: 6px;
+    margin-left: 10px;
 }
 .block__logo:hover{
     background: var(--m-menu-item-bg-color-2);
@@ -437,10 +451,14 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 .layout-tab-container .b3-list--background .b3-list-item:hover:not(.b3-list-item--focus):not(.dragover):not(.dragover__top):not(.dragover__bottom),
 .layout-tab-container .b3-list--background .b3-list-item--focus:not(.dragover)
 {
-    background: var(--m-pn-c);
+    background: #fcfcfd;
     border: 1px solid var(--m-menu-item-bg-color-1);
 }
 
+/* 取消并固定文档按钮*/
+.layout-tab-container.fn__flex-1{
+    overflow: hidden;
+}
 
 
 /* #endregion *************************** 左侧边栏 */
@@ -448,11 +466,11 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 /* #region *************************** 右侧边栏 ************************************* */
 
 .block__icons{
-    background: var(--m-pn-c) !important;
+    background: var(--m-pn-c);
 }
 /* 关系图、全局关系图、反链区域的面板背景色 */
 #layouts .layout-tab-container .graph__svg {
-    background: var(--m-pn-c) !important;
+    background: #fcfcfd !important;
 }
 
 /* 关系图、全局关系图 最大化的时候，顶部颜色 */
@@ -468,10 +486,11 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
     font-weight: bold;
     padding: 2px 10px;
     margin: 0px 5px 0px 5px;
-     background-color:var(--m-menu-item-color-1);
-    color:  var(--m-menu-item-bg-color-1);
+    background-color: var(--m-menu-item-bg-color-1);
+    color:  var(--m-menu-item-color-1);
     text-transform: uppercase;
 }
+
 
 /* 全局/关系图-更多设置面板 */
 .sy__globalGraph .graph__panel,
@@ -494,6 +513,12 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
     border-left: 1px solid var(--b3-border-color); */
 }
 
+html[data-frontend^="desktop"] body.body--win32 .fullscreen>.protyle-breadcrumb,
+html[data-frontend^="desktop"] body.body--win32 .fullscreen>.block__icons {
+    padding-left: 10px; 
+    padding-right: 10px; 
+}
+
 /* #endregion *************************** 右侧边栏 */
 
 /* #region *************************** 底侧边栏: 仿 Savor ************************************* */
@@ -507,19 +532,19 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 	bottom: 0px;
 	border: 0;
 }
-.body--win32>.fn__flex-1 {
+/* .body--win32>.fn__flex-1 {
 	overflow: visible;
-}
+} */
 .status__counter:not(:empty) {
 	border-radius: 5px;
 	/* background-color: var(--b3-theme-primary);
 	color: var(--b3-dock-stats-counter-color) !important; */
     color: var(--m-menu-item-color-1) !important;
     background: var(--m-menu-item-bg-color-1) !important;
-	padding: 0px 0 0 8px;
-	margin: 0px 7px 7px 7px;
+	padding: 0px 8px;
+	margin: 0px;
 	position: relative;
-	right: 28px;
+	right:25px;
 	height: 26px;
 	line-height: 26px;
 }
@@ -540,7 +565,7 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 	transition: max-width 300ms, opacity 300ms;
 	transition-delay: 2000ms;
 	position: relative;
-	right: 21px;
+	right:25px !important;
 	height: 26px;
 	line-height: 26px;
 }
@@ -560,7 +585,7 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 }
 .status #statusHelp {
 	position: relative;
-	right: 35px;
+	right: 45px;
 }
 .status #barDock {
 	position: absolute;
@@ -603,9 +628,9 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 	padding: 5px;
 }
 
-.body--win32>.fn__flex-1 {
+/* .body--win32>.fn__flex-1 {
 	overflow: visible;
-}
+} */
 
 .status #statusHelp {
 	color: var(--m-menu-item-color-1) !important;
@@ -635,13 +660,20 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 
 /* 把最有一个向上移动 */
 .dock#dockRight .dock__item:last-child {
-	margin-bottom: 40px !important;
 	bottom: 0px;
+}
+
+#status [data-location].toolbar__item {
+	margin-right: 40px !important;
 }
 
 /* 右侧 Docker 和底部状态栏保持一定距离 */
 .layout__dockr:not(.layout--float)  .fn__flex .block__icons~.fn__flex-1:not(.backlinkList) {
     padding-bottom: 26px;
+}
+/* toolbar下方整体 */
+body > div.fn__flex-1.fn__flex{
+ padding-bottom: 6px;
 }
 
 /* #endregion *************************** 底侧边栏   */
@@ -687,7 +719,7 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 }
 
 .sy__backlink .protyle-wysiwyg{
-    background: var(--m-pn-c) !important;
+    background: #fcfcfd !important;
 }
 
 .block__popover .block__icons,
@@ -703,27 +735,26 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 
 
 /* 新窗口 */
-
-
-.body--window:not(:has( #toolbar)) #layouts .fn__flex .layout-tab-bar,
-.body--window:not(:has( #toolbar)) #layouts .tab-header .item > .item__text
-/* ,.body--window:not(:has( #toolbar)) .layout__wnd--active .layout-tab-bar .item--focus>.item__text */
+html[data-frontend="desktop-window"] body.body--window:not(:has(#toolbar)) #layouts .fn__flex .layout-tab-bar,
+html[data-frontend="desktop-window"] body.body--window:not(:has(#toolbar)) #layouts .tab-header .item > .item__text
+/* ,html[data-frontend="desktop-window"] body.body--window:not(:has(#toolbar)) .layout__wnd--active .layout-tab-bar .item--focus>.item__text */
 {
     background: var(--m-menu-item-bg-color-1) !important;
     color: var(--m-menu-item-color-1) !important;
 }
 
-.body--window:not(:has( #toolbar)) .layout__wnd--active .layout-tab-bar .item--focus>.item__text{
+html[data-frontend="desktop-window"] body.body--window:not(:has(#toolbar)) .layout__wnd--active .layout-tab-bar .item--focus>.item__text{
     color: var(--m-menu-item-color-1) !important;
 }
 
-.body--window:not(:has( #toolbar)) [data-type="wnd"] .layout-tab-bar .item>.item__text{
+html[data-frontend="desktop-window"] body.body--window:not(:has(#toolbar)) [data-type="wnd"] .layout-tab-bar .item>.item__text{
     color: var(--m-menu-item-color-1) !important;
 }
 
 
-.body--window:not(:has( #toolbar)) [data-type="wnd"]  .dock--vertical .dock__item svg,
-.body--window:not(:has( #toolbar)) .toolbar__item svg, .block__icon svg{
+html[data-frontend="desktop-window"] body.body--window:not(:has(#toolbar)) [data-type="wnd"]  .dock--vertical .dock__item svg,
+html[data-frontend="desktop-window"] body.body--window:not(:has(#toolbar)) .toolbar__item svg,
+html[data-frontend="desktop-window"] body.body--window:not(:has(#toolbar)) .block__icon svg{
     color: var(--m-menu-item-color-1) !important;
 }
 
@@ -731,22 +762,49 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
     color: var(--b3-theme-on-surface-light) !important;
 }
 
-/* .body--window:not(:has( #toolbar)) [data-type="wnd"] .fn__flex .layout-tab-bar,
+.toolbar__window{
+    background-color: var(--m-menu-item-bg-color-1);
+    color:  var(--m-menu-item-color-1);
+    height: 44.5px;
+}
+
+.toolbar__window .toolbar__item{
+     height: 30px;
+     padding: 10px 13.5px 10px 13.5px;
+}
+
+html[data-frontend="desktop-window"]  .toolbar__item:hover,
+html[data-frontend="desktop-window"]  .toolbar__item svg:hover{
+    background-color: var(--m-menu-item-bg-color-2) !important;
+    color:  var(--m-menu-item-bg-color-2) !important;
+}
+
+
+ html[data-frontend="desktop-window"]  .layout-tab-bar{
+    height: 42px;
+}
+
+ html[data-frontend="desktop-window"] .layout-tab-bar .item
+ {
+    margin: 0px 0px;
+ }
+
+/* html[data-frontend="desktop-window"] body.body--window:not(:has(#toolbar)) [data-type="wnd"] .fn__flex .layout-tab-bar,
 .body--window [data-type="wnd"] .fn__flex .tab-header .item__text
 {
     background: var(--m-menu-item-bg-color-1) !important;
     color: var(--m-menu-item-color-1) !important;
 }
 
-.body--window:not(:has( #toolbar))   [data-type="wnd"] .layout-tab-bar .item>.item__text{
+html[data-frontend="desktop-window"] body.body--window:not(:has(#toolbar))   [data-type="wnd"] .layout-tab-bar .item>.item__text{
     color: var(--m-menu-item-color-1) !important;
 }
 
-.body--window:not(:has( #toolbar))  [data-type="wnd"]  .dock--vertical .dock__item svg, .toolbar__item svg, .block__icon svg{
+html[data-frontend="desktop-window"] body.body--window:not(:has(#toolbar))  [data-type="wnd"]  .dock--vertical .dock__item svg, .toolbar__item svg, .block__icon svg{
     color: var(--m-menu-item-color-1) !important;
 }
 
-.body--window:not(:has( #toolbar))  .protyle-breadcrumb .block__icon svg{
+html[data-frontend="desktop-window"] body.body--window:not(:has(#toolbar))  .protyle-breadcrumb .block__icon svg{
     color: var(--m-d-fc) !important;
 } */
 
@@ -789,6 +847,7 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 [data-type="wnd"]>.fn__flex  .layout-tab-bar .item--readonly{
     align-items: self-end !important;
     padding-left: 3px !important;
+    margin-bottom: 0px !important;
 }
 
 /* 标题块默认高度和颜色 */
@@ -841,6 +900,7 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
     align-items: center !important;
     padding-left: 10px !important;
     padding-right: 10px !important;
+    margin-bottom: 0px !important;
 
     background-color: var(--m-head-item-bgcolor);
     border-radius: 5px 5px 0px 0px;
@@ -848,7 +908,6 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
 /* [data-type="wnd"]>.fn__flex  .item--readonly .block__icon svg{
     color: var(--m-head-item-color) !important;
 } */
-
 
 /* #endregion *************************** 标题栏标签仿 OneNote软件 */
 
@@ -1103,7 +1162,7 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
     padding-left: 16px;
 }
 
-.body--window .card__main .block__icons{
+html[data-frontend="desktop-window"] body.body--window .card__main .block__icons{
     background-color: var(--b3-theme-background) !important;
 }
 
@@ -1452,4 +1511,17 @@ body:not(.body--mobile,.body--window) #barWorkspace svg.toolbar__svg {
     z-index: 3;
     pointer-events: none;
     border-radius: var(--b3-border-radius);
+}
+
+
+
+/* #region *************************** AI界面 ****************************/
+/* #endregion *************************** AI界面 ****************************   */
+
+
+/* 解决更多按钮右下角始终是圆角的问题 */
+.layout-tab-bar.layout-tab-bar--readonly > .item.item--readonly,
+.layout-tab-bar.layout-tab-bar--readonly > .item.item--readonly > .block__icon[data-type="more"],
+.layout-tab-bar.layout-tab-bar--readonly > .item.item--readonly > .block__icon[data-type="more"] > svg {
+    border-radius: 5px 5px 0 0 !important;
 }

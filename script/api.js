@@ -51,6 +51,7 @@ export {
   更新块 as updateBlock,
   以id获取思源块信息 as getBlockByID,
   获取块kramdown源码 as getBlockKramdown,
+  以id获取文档信息 as getDocInfo,
   获取系统字体列表 as getSysFonts,
   获取文件 as getFile,
   写入文件 as putFile,
@@ -313,6 +314,14 @@ async function 以id获取思源块信息(内容块id) {
   let sql = `select * from blocks where id ='${内容块id}'`;
   let data = await 以sql向思源请求块数据(sql);
   return data[0];
+}
+
+async function 以id获取文档信息(块id) {
+  let data = {
+    id: 块id,
+  };
+  let url = "/api/block/getDocInfo";
+  return 解析响应体(向思源请求数据(url, data));
 }
 
 async function 获取块kramdown源码(内容块id) {

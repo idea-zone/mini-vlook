@@ -1,6 +1,6 @@
 import { render, 获取文件Savor,写入文件Savor } from "./api.js";
 import { isKey } from "./hotkey.js";
-import { themeButton } from "./theme-load-switchbutton.js";
+import { applySavedThemeEffects, themeButton } from "./theme-load-switchbutton.js";
 import { appendToolbarBtn} from "./theme-load-tooltipbutton.js";
 import { ClickMonitor } from "./theme-load-menubutton.js";
 import { VLookPluginEnter, setWzLabel } from "./theme-vlook-plugin.js";
@@ -30,7 +30,16 @@ export var config = {
         }
       }
     }
-  } 
+  }
+}
+
+function safeInit(name, init) {
+  try {
+    return init();
+  } catch (error) {
+    console.warn(`[Mini-VLOOK] ${name} init failed`, error);
+    return null;
+  }
 }
 
 
@@ -40,53 +49,34 @@ export var config = {
 获取文件Savor("/data/snippets/MiniVlook.config.json", async (v) => {
   let funs = () => {
     setTimeout(() => {
-      if (isPhone()) {
-        // TODO: 针对 Phone 主题的优化，暂无
-        // loadStyle("/appearance/themes/Savor/style/module/mobile.css")
-        // console.log("==============>附加CSS和特性JS_已经执行<==============");
-      } else {
-        // const htmlTag = document.querySelector("html");
-        // const themeMode = htmlTag.getAttribute("data-theme-mode");
+      const env = window.theme?.env;
+      if (env?.isMobileLike || isPhone()) {
+        window.theme?.log?.("skip desktop init on mobile", env);
+        return;
+      }
 
-        // 加载主题按钮
-        themeButton(); //主题
+      safeInit("applySavedThemeEffects", () => applySavedThemeEffects());
+      safeInit("themeButton", () => themeButton({ applySaved: false }));
+      safeInit("appendToolbarBtn", () => appendToolbarBtn());
 
-        // 每次添加时打开 toolbar 按钮
-        document.addEventListener("selectionchange", async () => {
-            appendToolbarBtn(); //添加 toolbar 评论按钮
+      safeInit("selectionchange.appendToolbarBtn", () => {
+        window.theme?.addEventListener?.(document, "selectionchange", async () => {
+          safeInit("appendToolbarBtn.selectionchange", () => appendToolbarBtn());
         });
-        
-        let body = document.body;
-        body.addEventListener('keydown',async(e)=>{
+      });
+
+      safeInit("VLookPluginEnter.HandleShortcutKey", () => {
+        if (!document.body) return;
+        window.theme?.addEventListener?.(document.body, "keydown", async(e)=>{
           await VLookPluginEnter.HandleShortcutKey(e);
         });
+      });
 
+      safeInit("VLookPluginEnter.Init", () => VLookPluginEnter.Init());
+      safeInit("ClickMonitor", () => setTimeout(() => safeInit("ClickMonitor.delayed", () => ClickMonitor()), 3000));
+      safeInit("RenderVLook13", () => RenderVLook13());
 
-        VLookPluginEnter.Init();
-        setTimeout(() => ClickMonitor(), 3000);// 右键菜单
-
-        RenderVLook13();
-        
-        // concealMarkButton();//挖空
-
-        // tabbarVerticalButton();//垂直页签
-
-        // SpluginButton();//展开插件
-
-        // topbarfixedButton();//顶栏悬浮
-
-        // bulletThreading();//子弹线
-
-        // setTimeout(() => ClickMonitor(), 3000);//各种列表转xx
-
-        // collapsedListPreview();//折叠列表内容预览查看
-
-        // collapseExpand_Head_List()//鼠标中键标题、列表文本折叠/展开
-
-        //loadScript("/appearance/themes/Savor/comment/index.js");js批注评论
-
-        console.log("==============>附加CSS和特性JS_已经执行<==============");
-      }
+      window.theme?.log?.("附加CSS和特性JS_已经执行", env);
     }, 100);
   };
   if (v == null) {

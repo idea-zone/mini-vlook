@@ -2192,7 +2192,27 @@ class VLookPluginEnter {
     button.tgSelecttype = selecttype;
     button.item = item;
 
-    button.innerHTML = `<svg class="b3-menu__icon" style=""><use xlink:href="#iconFiles"></use></svg><span class="b3-menu__label">${label}</span>`;
+    // 判断是否为强调色（带感叹号）
+    let isEmphasis = color.includes('!');
+    // 获取颜色代码（去掉感叹号）
+    let colorCode = color.replace('!', '').toLowerCase();
+    // 构建 CSS 变量名
+    let cssVarName = `--ac-${colorCode}`;
+    
+    // 根据是否为强调色设置不同的样式
+    let iconStyle = '';
+    let labelStyle = '';
+    if (isEmphasis) {
+      // 强调色：图标和文字都使用该颜色，背景也带颜色
+      iconStyle = `color: var(${cssVarName}); fill: var(${cssVarName}); font-weight: bold;`;
+      labelStyle = `color: var(${cssVarName}); font-weight: bold; background: color-mix(in srgb, var(${cssVarName}) 15%, transparent); padding: 2px 6px; border-radius: 3px;`;
+    } else {
+      // 普通色：只有图标使用该颜色
+      iconStyle = `color: var(${cssVarName}); fill: var(${cssVarName});`;
+      labelStyle = '';
+    }
+
+    button.innerHTML = `<svg class="b3-menu__icon" style="${iconStyle}"><use xlink:href="#iconFiles"></use></svg><span class="b3-menu__label" style="${labelStyle}">${label}</span>`;
     //button.onclick = func;
     button.onclick = async (event) => {
       //// 获取 id 为 commonMenu 的元素

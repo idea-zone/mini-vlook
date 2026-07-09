@@ -24,6 +24,60 @@ window.theme = {
   }, // 添加在主题销毁时自动移除的监听器
 };
 
+function getMiniVlookEnvironment() {
+  const htmlDataset = document.documentElement.dataset;
+  const pathname = window.location.pathname;
+  let frontend = htmlDataset.frontend || null;
+  const backend = htmlDataset.backend || window.siyuan?.config?.system?.os || null;
+
+  if (!frontend) {
+    switch (true) {
+      case pathname.startsWith('/stage/build/app/window.html'):
+        frontend = 'desktop-window';
+        break;
+      case pathname.startsWith('/stage/build/desktop'):
+      case pathname.startsWith('/stage/build/app'):
+        frontend = 'desktop';
+        break;
+      case pathname.startsWith('/stage/build/mobile'):
+        frontend = 'mobile';
+        break;
+      default:
+        frontend = window.siyuan?.config?.appearance?.isMobile ? 'browser-mobile' : 'browser-desktop';
+        break;
+    }
+  }
+
+  const isDetachedWindow = frontend === 'desktop-window' || pathname.startsWith('/stage/build/app/window.html');
+  const isDesktopLike = ['desktop', 'desktop-window', 'browser-desktop'].includes(frontend) || isDetachedWindow;
+  const isMobileLike = ['mobile', 'browser-mobile'].includes(frontend) || window.siyuan?.config?.appearance?.isMobile === true;
+
+  return {
+    frontend,
+    backend,
+    pathname,
+    isDesktopLike,
+    isDetachedWindow,
+    isMobileLike,
+    isBrowser: frontend === 'browser-desktop' || frontend === 'browser-mobile',
+  };
+}
+
+window.theme.env = getMiniVlookEnvironment();
+window.theme.isDesktopLike = window.theme.env.isDesktopLike;
+window.theme.isDetachedWindow = window.theme.env.isDetachedWindow;
+window.theme.debug = (() => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('mini-vlook-debug') === '1'
+    || params.get('minivlookDebug') === '1'
+    || localStorage.getItem('MiniVLOOK.debug') === '1'
+    || localStorage.getItem('minivlookDebug') === '1'
+    || window.MiniVLOOK_DEBUG === true;
+})();
+window.theme.log = (...args) => {
+  if (window.theme?.debug) console.log('[Mini-VLOOK]', ...args);
+};
+
 /** 清除样式 **/
 window.destroyTheme = () => {
   // 删除主题加载的额外样式
@@ -102,13 +156,13 @@ function loadStyle(url, id, cssName) {
   return style;
 }
 
-/**简单判断目前思源是否是手机模式 */
+/**简单判断目前思源是否是移动端模式 */
 function isPhone() {
-  return document.getElementById("editor");
+  return window.theme?.env?.isMobileLike === true;
 }
 
 window.isMobile = function(){
-  return window.siyuan.config.appearance.isMobile;
+  return window.theme?.env?.isMobileLike === true;
 }
 
 //#endregion  *********************** Savor 相关 
@@ -163,23 +217,9 @@ window.theme.addURLParam = function (
 
 /**
  * 获取客户端模式
- * @returns {string} 'app' 或 'desktop' 或 'mobile'
+ * @returns {string} desktop-window、desktop、mobile、browser-desktop 或 browser-mobile
  */
-window.theme.clientMode = (() => {
-  const url = new URL(window.location.href);
-  switch (true) {
-      case url.pathname.startsWith('/stage/build/app/window.html'):
-          return 'window';
-      case url.pathname.startsWith('/stage/build/app'):
-          return 'app';
-      case url.pathname.startsWith('/stage/build/desktop'):
-          return 'desktop';
-      case url.pathname.startsWith('/stage/build/mobile'):
-          return 'mobile';
-      default:
-          return null;
-  }
-})();
+window.theme.clientMode = window.theme.env.frontend;
 
 /**
  * 获取语言模式
@@ -207,7 +247,19 @@ window.theme.root = (() => {
   return src.substring(0, src.lastIndexOf('/'));
 })();
 
+window.theme.log('init', {
+  frontend: window.theme.env.frontend,
+  backend: window.theme.env.backend,
+  pathname: window.theme.env.pathname,
+  themeStyle: Boolean(window.theme.element.themeStyle),
+  themeScript: Boolean(window.theme.element.themeScript),
+  toolbarEdit: Boolean(document.getElementById('toolbarEdit')),
+  windowControls: Boolean(document.getElementById('windowControls')),
+  protyleWysiwygCount: document.querySelectorAll('.protyle-wysiwyg').length,
+  protyleToolbarCount: document.querySelectorAll('.protyle-toolbar').length,
+});
 
-//#endregion *********************** 主题相关相关 
+
+//#endregion *********************** 主题相关相关
 import(window.theme.addURLParam(`${window.theme.root}/script/api.js`));
 import(window.theme.addURLParam(`${window.theme.root}/script/theme-load-by-config.js`));

@@ -33,6 +33,13 @@
     --b3-font-family-math: KaTeX_Math,"Emojis Additional", emojis;
     --b3-font-size: 14px;
 
+    /* 背景 */
+    --b3-body-background: #EBECF0;
+    --b3-body-background-hl-opacity: 0.24;
+    --b3-body-background-hl: 219, 86%, 57%;
+    --b3-layout-space: 4px;
+    --b3-layout-space-margin: -4px;
+
     /* 顶部工具栏 */
     --b3-toolbar-background: var(--m-theme1-background);
     --b3-toolbar-blur-background: var(--m-theme1-on-background);
@@ -57,6 +64,7 @@
 
     /* 菜单 */
     --b3-menu-background: var(--b3-theme-surface);
+    --b3-menu-icon-color: rgba(0, 0, 0, .6);
 
     /* 提示 */
     --b3-tooltips-background: var(--m-theme2-alt-0-8);  /*rgba(0, 0, 0, .9);*/
@@ -162,9 +170,8 @@
     --b3-highlight-background: #ffff00;
     --b3-highlight-current-background: #ff9632;
 
-    /* 下拉菜单 */
-    --b3-select-background: url("data:image/svg+xml;utf8,<svg fill='rgba(95, 99, 104, .68)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right 2px center var(--b3-theme-background);
-
+    /* 下拉菜单：底色与菜单保持一致，避免 select 嵌入菜单时出现色块 */
+    --b3-select-background: url("data:image/svg+xml;utf8,<svg fill='rgba(95, 99, 104, .68)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right 2px center var(--b3-menu-background);
     
     /* switch */
     --b3-switch-background: #e1e3e1;
@@ -176,9 +183,11 @@
     --b3-switch-checked-hover2: rgba(31, 31, 31, .06);
 
     /* 阴影 */
+    --b3-dock-shadow-color: rgba(0, 0, 0, .2);
     --b3-point-shadow: 0 0 1px 0 rgba(0, 0, 0, .1), 0 0 2px 0 rgba(0, 0, 0, .2);
     --b3-dialog-shadow: 0 8px 24px rgba(0, 0, 0, .2);
-    --b3-button-shadow: 0 5px 5px -3px rgb(0 0 0 / .2), 0 8px 10px 1px rgb(0 0 0 / .14), 0 3px 14px 2px rgb(0 0 0 / .12);
+    --b3-button-shadow: 0 1px 2px 0 rgb(0 0 0 / .3), 0 1px 3px 1px rgb(0 0 0 /.15);
+    --b3-button-active-shadow: 0 2px 3px 1px rgb(0 0 0 / .3), 0 2px 4px 2px rgb(0 0 0 /.15);
 
     /* 图表颜色 */
     --b3-graph-p-point: #076f7e;
@@ -192,11 +201,12 @@
     --b3-graph-listitem-point: #f65b00;
     --b3-graph-bq-point: #8d48e3;
     --b3-graph-callout-point: var(--b3-theme-success);
+    --b3-graph-callout-point: var(--b3-theme-success);
     --b3-graph-super-point: #dd79ff;
     --b3-graph-doc-point: #202124;
     --b3-graph-tag-point: #dbf32f;
     --b3-graph-asset-point: #05c091;
-    --b3-graph-line: #5f6368;
+    --b3-graph-line: rgba(0, 0, 0, .6);
     --b3-graph-ref-line: #d23f31;
     --b3-graph-tag-line: #5f6b06;
     --b3-graph-tag-tag-line: #dbf32f;
@@ -244,7 +254,7 @@
     --b3-callout-warning: var(--b3-highlight-current-background);
 
     /* 表格 */
-    --b3-table-even-background: rgba(0, 0, 0, .02);
+    --b3-table-even-background: rgba(0, 0, 0, .04);
 
     /* 数据库 */
     --b3-av-gallery-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px, var(--b3-border-color) 0px 0px 0px 1px;
@@ -259,25 +269,19 @@
     --b3-parent-background: var(--b3-theme-background);
 }
 
-/* 微软字体斜体会被相邻背景遮挡，将 arial 放置其前 https://github.com/siyuan-note/siyuan/issues/11841；"Segoe UI" 和 Noto-COLRv1-2.047 冲突，故移除。 */
-:root:lang(zh_CN) {
-    --b3-font-family: "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, Helvetica, "PingFang SC", "Luxi Sans", "DejaVu Sans", "Hiragino Sans GB", "Source Han Sans SC", arial, "Microsoft Yahei", sans-serif, emojis;
+/* 微软字体斜体会被相邻背景遮挡，将 arial 放置其前 https://github.com/siyuan-note/siyuan/issues/11841 */
+:root:lang(zh-CN) {
+    --b3-font-family: "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, Helvetica, "PingFang SC", "Luxi Sans", "DejaVu Sans", arial, "Microsoft Yahei", "Hiragino Sans GB", "Source Han Sans SC", sans-serif, emojis;
 }
 
-:root:lang(zh_CHT) {
-    --b3-font-family: "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, Helvetica, "PingFang TC", "Luxi Sans", "DejaVu Sans", "Hiragino Sans TC", "Source Han Sans TC", "Microsoft JhengHei", arial, sans-serif, emojis;
+:root:lang(zh-TW) {
+    --b3-font-family: "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, Helvetica, "PingFang TC", "Luxi Sans", "DejaVu Sans", arial, "Microsoft JhengHei", "Hiragino Sans TC", "Source Han Sans TC", sans-serif, emojis;
 }
 
-:root:lang(ja_JP) {
-    --b3-font-family: "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, Helvetica, "Luxi Sans", "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", arial, sans-serif, emojis;
-}
-
-/* https://github.com/siyuan-note/siyuan/issues/6440 */
-.protyle-action--order:after {
-    mix-blend-mode: multiply;
+:root:lang(ja) {
+    --b3-font-family: "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, Helvetica, "Luxi Sans", "DejaVu Sans", "Yu Gothic UI", arial, sans-serif, emojis;
 }
 
 .b3-typography .code-block, .protyle-wysiwyg .code-block {
     background-color: rgba(27, 31, 35, .05);
 }
-

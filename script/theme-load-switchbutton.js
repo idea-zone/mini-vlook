@@ -2,7 +2,8 @@
  * 在顶部导航栏添加按钮
  */
 export{
-    themeButton
+    themeButton,
+    applySavedThemeEffects
 }
 
 import { insertCreateBefore, addinsertCreateElement, AddEvent } from "./domex.js";
@@ -11,6 +12,148 @@ import { mv } from "./mv-util.js";
 
 
 //#region ***********************  在顶部导航栏添加主题按钮  ***********************
+
+const themeColorOptions = [
+  {
+    id: "mvButtonBug320",
+    label: "Bug320 配色",
+    styleId: "theme-color-style-MiniVook-bug320",
+    href: "/appearance/themes/mini-vlook/styles/vlook/vlook-30-x-bug320.css",
+    mode: "bug320",
+  },
+  {
+    id: "mvButtonAurora",
+    label: "Aurora 配色",
+    styleId: "theme-color-style-MiniVook-Aurora",
+    href: "/appearance/themes/mini-vlook/styles/vlook/vlook-30-x-aurora.css",
+    mode: "Aurora",
+  },
+  {
+    id: "mvButtonFrost",
+    label: "Frost 配色",
+    styleId: "theme-color-style-MiniVook-Frost",
+    href: "/appearance/themes/mini-vlook/styles/vlook/vlook-30-x-frost.css",
+    mode: "Frost",
+  },
+  {
+    id: "mvButtonFancy",
+    label: "Fancy 配色",
+    styleId: "theme-color-style-MiniVook-fancy",
+    href: "/appearance/themes/mini-vlook/styles/vlook/vlook-30-fancy.css",
+    mode: "fancy",
+  },
+  {
+    id: "mvButtonGeek",
+    label: "Geek 配色",
+    styleId: "theme-color-style-MiniVook-geek",
+    href: "/appearance/themes/mini-vlook/styles/vlook/vlook-30-geek.css",
+    mode: "geek",
+  },
+  {
+    id: "mvButtonHope",
+    label: "Hope 配色",
+    styleId: "theme-color-style-MiniVook-hope",
+    href: "/appearance/themes/mini-vlook/styles/vlook/vlook-30-hope.css",
+    mode: "hope",
+  },
+  {
+    id: "mvButtonJoint",
+    label: "Joint 配色",
+    styleId: "theme-color-style-MiniVook-joint",
+    href: "/appearance/themes/mini-vlook/styles/vlook/vlook-30-joint.css",
+    mode: "joint",
+  },
+  {
+    id: "mvButtonOwl",
+    label: "Owl 配色",
+    styleId: "theme-color-style-MiniVook-owl",
+    href: "/appearance/themes/mini-vlook/styles/vlook/vlook-30-owl.css",
+    mode: "owl",
+  },
+  {
+    id: "mvButtonSolaris",
+    label: "Solaris 配色",
+    styleId: "theme-color-style-MiniVook-solaris",
+    href: "/appearance/themes/mini-vlook/styles/vlook/vlook-30-solaris.css",
+    mode: "solaris",
+  },
+  {
+    id: "mvButtonThinking",
+    label: "Thinking 配色",
+    styleId: "theme-color-style-MiniVook-thinking",
+    href: "/appearance/themes/mini-vlook/styles/vlook/vlook-30-thinking.css",
+    mode: "thinking",
+  },
+];
+
+function canMountThemeToolbar() {
+  return !!(
+    document.getElementById("toolbarEdit") ||
+    document.getElementById("windowControls")
+  );
+}
+
+function loadThemeEffect(option) {
+  loadStyle(option.href, option.styleId).setAttribute("topicfilter", option.id);
+  document.body.setAttribute("mini-vlook-mode", option.mode);
+}
+
+function removeThemeEffect(option) {
+  document.getElementById(option.styleId)?.remove();
+  if (document.body.getAttribute("mini-vlook-mode") === option.mode) {
+    document.body.removeAttribute("mini-vlook-mode");
+  }
+}
+
+function clearThemeEffects() {
+  themeColorOptions.forEach((option) => removeThemeEffect(option));
+}
+
+function setToolbarButtonState(activeId) {
+  themeColorOptions.forEach((option) => {
+    const button = document.getElementById(option.id);
+    if (!button) return;
+    button.setAttribute(
+      "class",
+      `toolbar__item b3-tooltips b3-tooltips__sw ${option.id === activeId ? "button_on" : "button_off"}`,
+    );
+  });
+}
+
+function activateThemeEffect(option, persist = false) {
+  clearThemeEffects();
+  loadThemeEffect(option);
+  setToolbarButtonState(option.id);
+  if (persist) {
+    themeColorOptions.forEach((item) => setItem(item.id, item.id === option.id ? "1" : "0"));
+  }
+}
+
+function deactivateThemeEffect(option, persist = false) {
+  removeThemeEffect(option);
+  setToolbarButtonState(null);
+  if (persist) setItem(option.id, "0");
+}
+
+function logSavedThemeEffectsApplied() {
+  if (document.documentElement.dataset.frontend !== "desktop-window") return;
+  console.log("[Mini-VLOOK] saved theme effects applied", {
+    frontend: document.documentElement.dataset.frontend,
+    config: window.theme?.config,
+    dynamicColorStyles: [...document.querySelectorAll('[id^="theme-color-style"]')].map(x => x.id),
+    miniVlookMode: document.body.getAttribute("mini-vlook-mode"),
+    toolbarEdit: !!document.getElementById("toolbarEdit"),
+    windowControls: !!document.getElementById("windowControls"),
+    minivlookToolbar: !!document.getElementById("minivlookToolbar"),
+  });
+}
+
+function applySavedThemeEffects() {
+  const activeOption = themeColorOptions.find((option) => getItem(option.id) === "1");
+  clearThemeEffects();
+  if (activeOption) loadThemeEffect(activeOption);
+  logSavedThemeEffectsApplied();
+}
 
 // 1. 在顶部添加一个按钮
 
@@ -37,311 +180,88 @@ function minivlookThemeToolbarAddButton(
     if (savorToolbar == null) {
       var toolbarEdit = document.getElementById("toolbarEdit");
       var windowControls = document.getElementById("windowControls");
-  
-      if (toolbarEdit == null && barBack != null) {
+
+      if (toolbarEdit?.parentElement) {
+        savorToolbar = insertCreateBefore(toolbarEdit, "div", "minivlookToolbar");
+        savorToolbar.style.position = "relative";
+      } else if (windowControls?.parentElement) {
         savorToolbar = document.createElement("div");
         savorToolbar.id = "minivlookToolbar";
         windowControls.parentElement.insertBefore(savorToolbar, windowControls);
-      } else if (toolbarEdit != null) {
-        savorToolbar = insertCreateBefore(toolbarEdit, "div", "minivlookToolbar");
-        savorToolbar.style.position = "relative";
+      } else {
+        return null;
       }
     }
-  
+
+    if (!savorToolbar) return null;
+
     var addButton = addinsertCreateElement(savorToolbar, "div");
+    if (!addButton) return null;
+
     addButton.style.float = "top";
-  
     addButton.id = ButtonID;
     addButton.setAttribute("class", ButtonTitle + " button_off");
     addButton.setAttribute("aria-label", ButtonLabel);
-  
-    // 取消 Mode 的判断
-    if (window.theme.themeMode == Mode || true) {
-      var offNo = "0";
-      // 如果主题是暗色主题，默认选中样式
-      if (Mode == "dark") {
-        if (Memory == true) {
-          offNo = getItem(ButtonID);
-          if (offNo == "1") {
-            addButton.setAttribute("class", ButtonTitle + " button_on");
-            setItem(ButtonID, "0");
-            NoClickRunFun(addButton);
-            setItem(ButtonID, "1");
-          } else if (offNo != "0") {
-            offNo = "0";
-            setItem(ButtonID, "0");
-          }
-        }
-  
-        AddEvent(addButton, "click", () => {
-          if (offNo == "0") {
-            addButton.setAttribute("class", ButtonTitle + " button_on");
-            NoClickRunFun(addButton);
-            if (Memory != null) setItem(ButtonID, "1");
-            offNo = "1";
-            return;
-          }
-  
-          if (offNo == "1") {
-            addButton.setAttribute("class", ButtonTitle + " button_off");
-            OffClickRunFun(addButton);
-            if (Memory != null) setItem(ButtonID, "0");
-            offNo = "0";
-            return;
-          }
-        });
-      } else {
-        if (Memory == true) {
-          offNo = getItem(ButtonID);
-          if (offNo == "1") {
-            addButton.setAttribute("class", ButtonTitle + " button_on");
-            setItem(ButtonID, "0");
-            NoClickRunFun(addButton);
-            setItem(ButtonID, "1");
-          } else if (offNo != "0") {
-            offNo = "0";
-            setItem(ButtonID, "0");
-          }
-        }
-  
-        AddEvent(addButton, "click", () => {
-          if (offNo == "0") {
-            addButton.setAttribute("class", ButtonTitle + " button_on");
-            NoClickRunFun(addButton);
-            if (Memory != null) setItem(ButtonID, "1");
-            offNo = "1";
-            return;
-          }
-  
-          if (offNo == "1") {
-            addButton.setAttribute("class", ButtonTitle + " button_off");
-            OffClickRunFun(addButton);
-            if (Memory != null) setItem(ButtonID, "0");
-            offNo = "0";
-            return;
-          }
-        });
-      }
+
+    var offNo = Memory == true ? getItem(ButtonID) : "0";
+    if (offNo == "1") {
+      addButton.setAttribute("class", ButtonTitle + " button_on");
+    } else if (Memory == true && offNo != "0") {
+      setItem(ButtonID, "0");
     }
+
+    AddEvent(addButton, "click", () => {
+      const isActive = Memory == true && getItem(ButtonID) == "1";
+      if (!isActive) {
+        addButton.setAttribute("class", ButtonTitle + " button_on");
+        NoClickRunFun(addButton);
+        if (Memory != null) setItem(ButtonID, "1");
+        return;
+      }
+
+      addButton.setAttribute("class", ButtonTitle + " button_off");
+      OffClickRunFun(addButton);
+      if (Memory != null) setItem(ButtonID, "0");
+    });
+
+    return addButton;
 }
-  
+
 //去除主题所有滤镜还原按钮状态
 function qucuFiiter() {
 var Topicfilters = document.querySelectorAll("head [topicfilter]");
 Topicfilters.forEach((element) => {
     var offNo = getItem(element.getAttribute("topicfilter"));
     if (offNo == "1") {
-    document.getElementById(element.getAttribute("topicfilter")).click();
+    document.getElementById(element.getAttribute("topicfilter"))?.click();
     element.remove();
     }
 });
 }
 
+function mountThemeToolbarButtons() {
+  themeColorOptions.forEach((option) => {
+    minivlookThemeToolbarAddButton(
+      option.id,
+      "toolbar__item b3-tooltips b3-tooltips__sw",
+      option.label,
+      "light",
+      () => activateThemeEffect(option, true),
+      () => deactivateThemeEffect(option, true),
+      true,
+    );
+  });
+}
 
-function themeButton() {
+function themeButton(options = {}) {
+  const shouldApplySaved = options.applySaved !== false;
+  if (shouldApplySaved) applySavedThemeEffects();
 
-  minivlookThemeToolbarAddButton(
-    "mvButtonBug320",
-    "toolbar__item b3-tooltips b3-tooltips__sw",
-    "Bug320 配色",
-    "light",
-    (btn) => {
-    loadStyle(
-        "/appearance/themes/mini-vlook/styles/vlook/vlook-30-x-bug320.css",
-        "theme-color-style-MiniVook-bug320"
-    ).setAttribute("topicfilter", "mvButtonBug320");
-    document.body.setAttribute("mini-vlook-mode", "bug320");
-    qucuFiiter();
-    },
-    (btn) => {
-    document.getElementById("theme-color-style-MiniVook-bug320")?.remove();
-    document.body.removeAttribute("mini-vlook-mode");
-  },
-    true
-);
+  if (!canMountThemeToolbar()) {
+    window.theme?.log?.("toolbar unavailable, skip toolbar buttons only");
+    return;
+  }
 
-minivlookThemeToolbarAddButton(
-  "mvButtonAurora",
-  "toolbar__item b3-tooltips b3-tooltips__sw",
-  "Aurora 配色",
-  "light",
-  () => {
-  loadStyle(
-      "/appearance/themes/mini-vlook/styles/vlook/vlook-30-x-aurora.css",
-      "theme-color-style-MiniVook-Aurora"
-  ).setAttribute("topicfilter", "mvButtonAurora");
-  qucuFiiter();
-  document.body.setAttribute("mini-vlook-mode", "Aurora");
-  },
-  (btn) => {
-  document.getElementById("theme-color-style-MiniVook-Aurora")?.remove();
-  document.body.removeAttribute("mini-vlook-mode");
-  },
-  true
-);
-
-minivlookThemeToolbarAddButton(
-  "mvButtonFrost",
-  "toolbar__item b3-tooltips b3-tooltips__sw",
-  "Frost 配色",
-  "light",
-  () => {
-  loadStyle(
-      "/appearance/themes/mini-vlook/styles/vlook/vlook-30-x-frost.css",
-      "theme-color-style-MiniVook-Frost"
-  ).setAttribute("topicfilter", "mvButtonFrost");
-  qucuFiiter();
-  document.body.setAttribute("mini-vlook-mode", "Frost");
-  },
-  (btn) => {
-  document.getElementById("theme-color-style-MiniVook-Frost")?.remove();
-  document.body.removeAttribute("mini-vlook-mode");
-  },
-  true
-);
-
-minivlookThemeToolbarAddButton(
-    "mvButtonFancy",
-    "toolbar__item b3-tooltips b3-tooltips__sw",
-    "Fancy 配色",
-    "light",
-    () => {
-    loadStyle(
-        "/appearance/themes/mini-vlook/styles/vlook/vlook-30-fancy.css",
-        "theme-color-style-MiniVook-fancy"
-    ).setAttribute("topicfilter", "mvButtonFancy");
-    qucuFiiter();
-    document.body.setAttribute("mini-vlook-mode", "fancy");
-    },
-    (btn) => {
-    document.getElementById("theme-color-style-MiniVook-fancy")?.remove();
-    document.body.removeAttribute("mini-vlook-mode");
-    },
-    true
-);
-
-minivlookThemeToolbarAddButton(
-    "mvButtonGeek",
-    "toolbar__item b3-tooltips b3-tooltips__sw",
-    "Geek 配色",
-    "light",
-    () => {
-    loadStyle(
-        "/appearance/themes/mini-vlook/styles/vlook/vlook-30-geek.css",
-        "theme-color-style-MiniVook-geek"
-    ).setAttribute("topicfilter", "mvButtonGeek");
-    qucuFiiter();
-    document.body.setAttribute("mini-vlook-mode", "geek");
-    },
-    (btn) => {
-    document.getElementById("theme-color-style-MiniVook-geek")?.remove();
-    document.body.removeAttribute("mini-vlook-mode");
-    },
-    true
-);
-
-minivlookThemeToolbarAddButton(
-    "mvButtonHope",
-    "toolbar__item b3-tooltips b3-tooltips__sw",
-    "Hope 配色",
-    "light",
-    () => {
-    loadStyle(
-        "/appearance/themes/mini-vlook/styles/vlook/vlook-30-hope.css",
-        "theme-color-style-MiniVook-hope"
-    ).setAttribute("topicfilter", "mvButtonHope");
-    qucuFiiter();
-    document.body.setAttribute("mini-vlook-mode", "hope");
-    },
-    (btn) => {
-    document.getElementById("theme-color-style-MiniVook-hope")?.remove();
-    document.body.removeAttribute("mini-vlook-mode");
-    },
-    true
-);
-
-minivlookThemeToolbarAddButton(
-    "mvButtonJoint",
-    "toolbar__item b3-tooltips b3-tooltips__sw",
-    "Joint 配色",
-    "light",
-    () => {
-    loadStyle(
-        "/appearance/themes/mini-vlook/styles/vlook/vlook-30-joint.css",
-        "theme-color-style-MiniVook-joint"
-    ).setAttribute("topicfilter", "mvButtonJoint");
-    qucuFiiter();
-    document.body.setAttribute("mini-vlook-mode", "joint");
-    },
-    (btn) => {
-    document.getElementById("theme-color-style-MiniVook-joint")?.remove();
-    document.body.removeAttribute("mini-vlook-mode");
-    },
-    true
-);
-
-minivlookThemeToolbarAddButton(
-    "mvButtonOwl",
-    "toolbar__item b3-tooltips b3-tooltips__sw",
-    "Owl 配色",
-    "light",
-    () => {
-    loadStyle(
-        "/appearance/themes/mini-vlook/styles/vlook/vlook-30-owl.css",
-        "theme-color-style-MiniVook-owl"
-    ).setAttribute("topicfilter", "mvButtonOwl");
-    qucuFiiter();
-    document.body.setAttribute("mini-vlook-mode", "owl");
-    },
-    (btn) => {
-    document.getElementById("theme-color-style-MiniVook-owl")?.remove();
-    document.body.removeAttribute("mini-vlook-mode");
-    },
-    true
-);
-
-minivlookThemeToolbarAddButton(
-    "mvButtonSolaris",
-    "toolbar__item b3-tooltips b3-tooltips__sw",
-    "Solaris 配色",
-    "light",
-    () => {
-    loadStyle(
-        "/appearance/themes/mini-vlook/styles/vlook/vlook-30-solaris.css",
-        "theme-color-style-MiniVook-solaris"
-    ).setAttribute("topicfilter", "mvButtonSolaris");
-    qucuFiiter();
-    document.body.setAttribute("mini-vlook-mode", "solaris");
-    },
-    (btn) => {
-    document.getElementById("theme-color-style-MiniVook-solaris")?.remove();
-    document.body.removeAttribute("mini-vlook-mode");
-    },
-    true
-);
-
-
-minivlookThemeToolbarAddButton(
-    "mvButtonThinking",
-    "toolbar__item b3-tooltips b3-tooltips__sw",
-    "Thinking 配色",
-    "light",
-    () => {
-    loadStyle(
-        "/appearance/themes/mini-vlook/styles/vlook/vlook-30-thinking.css",
-        "theme-color-style-MiniVook-thinking"
-    ).setAttribute("topicfilter", "mvButtonThinking");
-    qucuFiiter();
-    document.body.setAttribute("mini-vlook-mode", "thinking");
-    },
-    (btn) => {
-    document.getElementById("theme-color-style-MiniVook-thinking")?.remove();
-    document.body.removeAttribute("mini-vlook-mode");
-    },
-    true
-);
-
-
+  mountThemeToolbarButtons();
 }
   //#endregion ***********************  在顶部导航栏添加主题按钮
-  

@@ -123,3 +123,8 @@ thead tr th{
 
 /* #endregion ******************** 普通表格的处理  */
 
+
+/* #region ******************** 其他的处理 ******************** */   
+.protyle-wysiwyg [data-node-id].li>.protyle-action {
+    color: var(--ac-t2) !important; 
+  }

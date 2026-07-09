@@ -229,6 +229,16 @@ span[data-type~="strong"][data-type~="mark"]::after {
     font-size: .8em;
 }
 
+span[data-type~="strong"][data-type~="mark"] + span[data-type~="em"][data-type~="sub"] {
+    color: var(--theme-wzline-valueColor);
+    background: color-mix(in srgb, var(--theme-wzline-valueBgColor)35%, white);
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+    line-height: 0.8;
+}
+
 span[data-type~="strong"][data-type~="mark"] {
     font-family: var(--v-f-fm-num)!important;
     font-size: .875em!important;
@@ -247,7 +257,8 @@ span[data-type~="em"][data-type~="mark"] {
     color: var(--d-fc);
     box-shadow: none;
     text-shadow: none;
-    padding: 5px 5px 5px 8px;
+     /*上右下左 - 使用动态计算的 padding */
+    padding: 5px var(--wz-breadcrumb-padding-x) 5px var(--wz-breadcrumb-padding-x);
     border-radius: var(--v-r-tag)0 0 var(--v-r-tag);
     border: 1px solid var(--d-bc);
     position: relative;
@@ -315,6 +326,7 @@ span[data-type~="em"][data-type~="mark"][style*="--wz-stepwise-text"]::before{
     background-color: var(--std-code-shadow);
     background: var(--std-code-shadow);
     box-shadow: none !important;
+  
 }
 
 

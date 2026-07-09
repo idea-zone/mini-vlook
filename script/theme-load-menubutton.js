@@ -31,9 +31,10 @@ function getBlockSelected(e) {
 //#endregion *********************** 辅助函数
 
 function ClickMonitor() {
-  window.addEventListener("mouseup", MenuShow);
-  window.addEventListener("click", WzLabelClick);
-  window.addEventListener("keyup",WzKeyUp)
+  const addEvent = window.theme?.addEventListener?.bind(window.theme) || ((target, ...args) => target.addEventListener(...args));
+  addEvent(window, "mouseup", MenuShow);
+  addEvent(window, "click", WzLabelClick);
+  addEvent(window, "keyup", WzKeyUp);
 }
 
 
@@ -90,15 +91,18 @@ function MenuShow(e) {
  */
 function InsertListViewMenuItem(selectid, selecttype) {
   let commonMenu = document.querySelector("#commonMenu .b3-menu__items");
+  if (!commonMenu) return;
+
   let updated = commonMenu.querySelector('[data-id="updateAndCreatedAt"]');
   let readonly = document.querySelector('[data-readonly="true"]');
   let selectview = commonMenu.querySelector('[id="viewselect"]');
-  if (!readonly && updated) {
-    if (!selectview) {
-      commonMenu.insertBefore(ViewSelect(selectid, selecttype), updated);
-      commonMenu.insertBefore(MenuSeparator(), updated);
-      window.theme.elements.add(selectview);
-    }
+  if (!readonly && updated && !selectview) {
+    const viewSelect = ViewSelect(selectid, selecttype);
+    const separator = MenuSeparator();
+    commonMenu.insertBefore(viewSelect, updated);
+    commonMenu.insertBefore(separator, updated);
+    window.theme?.elements?.add(viewSelect);
+    window.theme?.elements?.add(separator);
   }
 }
 
@@ -109,18 +113,25 @@ function InsertListViewMenuItem(selectid, selecttype) {
  */
 function InsertBlockquoteMenuItem(selectid, selecttype) {
   let commonMenu = document.querySelector("#commonMenu .b3-menu__items");
+  if (!commonMenu) return;
+
   let updated = commonMenu.querySelector('[data-id="updateAndCreatedAt"]');
   let readonly = document.querySelector('[data-readonly="true"]');
-  let selectview = commonMenu.querySelector('[id="blockquote"]');
-  if (!readonly && updated) {
-    if (!selectview) {
-      // TODO： 先注释掉默认的逻辑
-      commonMenu.insertBefore(CalloutBlockquote(selectid, selecttype), updated);
-      commonMenu.insertBefore(RainbowBlockquote(selectid, selecttype), updated);
-      commonMenu.insertBefore(RainbowBlockquote2(selectid, selecttype), updated);
-      commonMenu.insertBefore(MenuSeparator(), updated);
-      window.theme.elements.add(selectview);
-    }
+  let selectview = commonMenu.querySelector('[data-mini-vlook-menu="blockquote"]');
+  if (!readonly && updated && !selectview) {
+    const callout = CalloutBlockquote(selectid, selecttype);
+    const rainbow = RainbowBlockquote(selectid, selecttype);
+    const rainbow2 = RainbowBlockquote2(selectid, selecttype);
+    const separator = MenuSeparator();
+    callout.dataset.miniVlookMenu = "blockquote";
+    commonMenu.insertBefore(callout, updated);
+    commonMenu.insertBefore(rainbow, updated);
+    commonMenu.insertBefore(rainbow2, updated);
+    commonMenu.insertBefore(separator, updated);
+    window.theme?.elements?.add(callout);
+    window.theme?.elements?.add(rainbow);
+    window.theme?.elements?.add(rainbow2);
+    window.theme?.elements?.add(separator);
   }
 }
 
@@ -570,7 +581,19 @@ function CalloutBlockView(selectid, selecttype, title, attrName, attrValue) {
   button.setAttribute("custom-attr-value", `${attrValue}`);
   button.tgSelecttype = selecttype;
 
-  button.innerHTML = `<svg class="b3-menu__icon" style=""><use xlink:href="#iconFiles"></use></svg><span class="b3-menu__label">${title}</span>`;
+  // 为不同的 Callout 类型设置对应的颜色
+  let colorMap = {
+    'NOTE': '--ac-bu',      // 蓝色 - 信息
+    'TIP': '--ac-gn',       // 绿色 - 提示
+    'IMPORTANT': '--ac-pu', // 紫色 - 重要
+    'WARNING': '--ac-og',   // 橙色 - 注意
+    'CAUTION': '--ac-rd'    // 红色 - 警告
+  };
+  
+  let cssVarName = colorMap[attrValue] || '--d-fc';
+  let iconStyle = `color: var(${cssVarName}); fill: var(${cssVarName});`;
+  
+  button.innerHTML = `<svg class="b3-menu__icon" style="${iconStyle}"><use xlink:href="#iconFiles"></use></svg><span class="b3-menu__label">${title}</span>`;
   //button.onclick = func;
   button.onclick = async (event) => {
     let bqColor = await BqColorPluginEnter.SetBqFirtP(selectid,attrName,attrValue);
@@ -598,7 +621,27 @@ function ColorView(
   button.tgSelecttype = selecttype;
   button.item = item;
 
-  button.innerHTML = `<svg class="b3-menu__icon" style=""><use xlink:href="#iconFiles"></use></svg><span class="b3-menu__label">${label}</span>`;
+  // 判断是否为强调色（带感叹号）
+  let isEmphasis = color.includes('!');
+  // 获取颜色代码（去掉感叹号）
+  let colorCode = color.replace('!', '').toLowerCase();
+  // 构建 CSS 变量名
+  let cssVarName = `--ac-${colorCode}`;
+  
+  // 根据是否为强调色设置不同的样式
+  let iconStyle = '';
+  let labelStyle = '';
+  if (isEmphasis) {
+    // 强调色：图标和文字都使用该颜色，背景也带颜色
+    iconStyle = `color: var(${cssVarName}); fill: var(${cssVarName}); font-weight: bold;`;
+    labelStyle = `color: var(${cssVarName}); font-weight: bold; background: color-mix(in srgb, var(${cssVarName}) 15%, transparent); padding: 2px 6px; border-radius: 3px;`;
+  } else {
+    // 普通色：只有图标使用该颜色
+    iconStyle = `color: var(${cssVarName}); fill: var(${cssVarName});`;
+    labelStyle = '';
+  }
+  
+  button.innerHTML = `<svg class="b3-menu__icon" style="${iconStyle}"><use xlink:href="#iconFiles"></use></svg><span class="b3-menu__label" style="${labelStyle}">${label}</span>`;
   //button.onclick = func;
   button.onclick = async (event) => {
     ViewMonitor(event);

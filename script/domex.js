@@ -261,8 +261,13 @@ class VlookSpan {
         // 根据下面字符串拆分为数组 > / \ -> → ▸ ▶︎ 
         let spantext =dom.textContent;
         let setps = spantext.split(/[>\\\/→▸▶︎]+/);      
-        let newText = setps.join('>');
+        // 使用单个字符作为占位符，在 CSS 中会被渲染为 .label 效果
+        let newText = setps.join(' 〉');
+        let adjustedPadding = Math.round(5 * setps.length + 3);
+        // 设置 CSS 变量
         dom.style.setProperty("--wz-stepwise-text","'"+newText+"'");
+        dom.style.setProperty("--wz-breadcrumb-padding-x", adjustedPadding + "px");
+        
         let span = document.createElement("span");
         span.textContent = '';
         span.setAttribute("data-type","text");

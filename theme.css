@@ -94,3 +94,93 @@
     width: 32px;
 }
 
+/* ————————————————————————————————————大超级块，不用设置边框—————————————————————————————— */
+
+.protyle-wysiwyg [custom-f="sbempty"] .p{
+    margin-top: 0px;
+    margin-bottom: 0px;   
+}
+
+/* —————————————————————————————————————次超级块大小—————————————————————————————————————— */
+.protyle-wysiwyg [data-node-id].sb[custom-f="sbempty"][data-sb-layout="col"] .sb {
+    border: none !important;
+    border-radius: var(--b3-border-radius-none);
+    box-sizing: border-box;
+    margin: 0.1em 0 0.1em 0.1em;
+}
+
+.protyle-wysiwyg[custom-f="sbempty"] .sb {
+    border: none !important;
+    border-radius: var(--b3-border-radius-none);
+    box-sizing: border-box;
+    margin: 0.1em 0 0.1em 0.1em;
+}
+
+.protyle-wysiwyg[custom-f="sbempty"] .sb .sb{
+    border: none !important;
+    border-radius: var(--b3-border-radius-none);
+    box-sizing: border-box;
+    margin: 0.1em 0 0.1em 0.1em;
+}
+
+/*  —————————————————————————————————————分割线 ————————————————————————————————————— */
+/* 超级快中的分割线*/
+.protyle-wysiwyg [data-node-id].sb[custom-f="sbempty"] .hr{
+    height: 5px !important;
+}
+
+/* 超级快中的分割线*/
+
+.protyle-wysiwyg [data-node-id].sb[custom-f="sbempty"] .hr > div::after
+{
+    position: absolute;
+    content: " ";
+    height: 2px;
+    width: calc(100% - 1px);
+    left: 0;
+    top: 0px;
+}
+
+/* 带 sbempty 中的分割线 */
+.protyle-wysiwyg[custom-f~="sbempty"] .hr{
+    height: 5px !important;
+}
+
+.protyle-wysiwyg[custom-f~="sbempty"] .hr > div::after{
+    position: absolute;
+    content: " ";
+    height: 2px;
+    width: calc(100% - 1px);
+    left: 0;
+    top: 0px;
+}
+
+/*  —————————————————————————————————————分割线  */
+
+
+/*  ————————————————————————————————————— 表格 ————————————————————————————————————— */
+/* 超级快中的表格*/
+.protyle-wysiwyg [data-node-id].sb [data-av-type="table"] .av__container{
+    border: none !important;
+}
+
+
+.protyle-wysiwyg[custom-f="sbempty"] [data-av-type="table"] .av__container{
+    border: none !important;
+}
+
+/*  ————————————————————————————————————— 表格  */
+
+
+/*  ————————————————————————————————————— HTML ————————————————————————————————————— */
+/* 超级快中的HTML*/
+.protyle-wysiwyg [data-node-id].sb [data-type="NodeHTMLBlock"]{
+    border: none !important;
+}
+
+.protyle-wysiwyg[custom-f="sbempty"] [data-type="NodeHTMLBlock"]{
+    border: none !important;
+}
+
+/*  ————————————————————————————————————— HTML  */
+
