@@ -31,6 +31,7 @@ html[data-theme-mode="dark"] {
     --b3-font-family-graph: mononoki;
     --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji","Emojis Additional", emojis;
     --b3-font-family-math: KaTeX_Math,"Emojis Additional";
+    --b3-font-family-kbd: var(--b3-font-family-protyle);
     --b3-font-size: 14px;
 
     /* 背景 */
@@ -222,6 +223,7 @@ html[data-theme-mode="dark"] {
     /* 所见即所得行内元素颜色 */
     --b3-protyle-inline-strong-color:   inherit;
     --b3-protyle-inline-em-color:  inherit;
+    --b3-protyle-inline-u-color: inherit;
     --b3-protyle-inline-s-color:  inherit;
     --b3-protyle-inline-link-color: var(--m-theme1-background);
     --b3-protyle-inline-mark-background: var(--m-inline-mark-bg-color);
@@ -281,4 +283,8 @@ html[data-theme-mode="dark"]:lang(ja) {
 html[data-theme-mode="dark"] .b3-typography .code-block,
 html[data-theme-mode="dark"] .protyle-wysiwyg .code-block {
     background-color: var(--b3-protyle-code-background);
+}
+
+html[data-theme-mode="dark"] .b3-text-field::-webkit-calendar-picker-indicator {
+    filter: invert(1);
 }
