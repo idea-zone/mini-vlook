@@ -9,7 +9,7 @@
 
 html[data-theme-mode="dark"] .layout-tab-container,
 html[data-theme-mode="dark"] .layout-tab-container .block__icons {
-    background: var(--m-pn-c);
+    background: var(--m-left-panel-bg-color);
 }
 
 html[data-theme-mode="dark"] .layout-tab-container .layout__tab--active .b3-list--background .b3-list-item--focus,
@@ -310,10 +310,9 @@ html[data-theme-mode="dark"] .sy__backlink .protyle-wysiwyg {
     background: var(--m-pn-c);
 } */
 
-/* TODO: 左侧面板颜色,等待抽取为公共变量*/
 .layout-tab-container,
 .layout-tab-container .block__icons{
-    background: #fcfcfd;
+    background: var(--m-left-panel-bg-color);
 }
 
 /* 左/右/底部 侧边栏按钮 */
@@ -469,7 +468,7 @@ html[data-frontend="desktop"] body.body--win32:not(.body--window) #barWorkspace 
 .layout-tab-container .b3-list--background .b3-list-item:hover:not(.b3-list-item--focus):not(.dragover):not(.dragover__top):not(.dragover__bottom),
 .layout-tab-container .b3-list--background .b3-list-item--focus:not(.dragover)
 {
-    background: #fcfcfd;
+    background: var(--m-left-panel-bg-color);
     border: 1px solid var(--m-menu-item-bg-color-1);
 }
 
