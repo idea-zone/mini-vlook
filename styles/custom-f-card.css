@@ -28,9 +28,8 @@ html[data-theme-mode="dark"] {
   word-wrap: break-word;
   background-color: var(--card-bg-color);
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, .125);
+  border: 1px solid var(--card-bg-border-color) !important;
   border-radius: 0.25rem;
-  border: 1px rebeccapurple solid !important;
 }
 
 .protyle-wysiwyg [custom-f~="card"][custom-f~="card.img-top"]:not(:has( img))

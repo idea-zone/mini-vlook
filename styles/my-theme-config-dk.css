@@ -52,51 +52,51 @@ html[data-theme-mode="dark"] {
   --ac-t1-fade-bd: var(--ac-t1-fd-bd);
   --ac-t2-fade-bd: var(--ac-t2-fd-bd);
 
-  --ac-gd-fade: var(-ac-gd-fd);
+  --ac-gd-fade: var(--ac-gd-fd);
   --ac-gd-title: var(--ac-gd-tt);
-  --ac-pk-fade: var(-ac-pk-fd);
+  --ac-pk-fade: var(--ac-pk-fd);
   --ac-pk-title: var(--ac-pk-tt);
-  --ac-ye-fade: var(-ac-ye-fd);
+  --ac-ye-fade: var(--ac-ye-fd);
   --ac-ye-title: var(--ac-ye-tt);
-  --ac-lm-fade: var(-ac-lm-fd);
+  --ac-lm-fade: var(--ac-lm-fd);
   --ac-lm-title: var(--ac-lm-tt);
-  --ac-aq-fade: var(-ac-aq-fd);
+  --ac-aq-fade: var(--ac-aq-fd);
   --ac-aq-title: var(--ac-aq-tt);
-  --ac-la-fade: var(-ac-la-fd);
+  --ac-la-fade: var(--ac-la-fd);
   --ac-la-title: var(--ac-la-tt);
-  --ac-bn-fade: var(-ac-bn-fd);
+  --ac-bn-fade: var(--ac-bn-fd);
   --ac-bn-title: var(--ac-bn-tt);
-  --ac-ro-fade: var(-ac-ro-fd);
+  --ac-ro-fade: var(--ac-ro-fd);
   --ac-ro-title: var(--ac-ro-tt);
-  --ac-rd-fade: var(-ac-rd-fd);
+  --ac-rd-fade: var(--ac-rd-fd);
   --ac-rd-title: var(--ac-rd-tt);
-  --ac-og-fade: var(-ac-og-fd);
+  --ac-og-fade: var(--ac-og-fd);
   --ac-og-title: var(--ac-og-tt);
-  --ac-gn-fade: var(-ac-gn-fd);
+  --ac-gn-fade: var(--ac-gn-fd);
   --ac-gn-title: var(--ac-gn-tt);
-  --ac-cy-fade: var(-ac-cy-fd);
+  --ac-cy-fade: var(--ac-cy-fd);
   --ac-cy-title: var(--ac-cy-tt);
-  --ac-bu-fade: var(-ac-bu-fd);
+  --ac-bu-fade: var(--ac-bu-fd);
   --ac-bu-title: var(--ac-bu-tt);
-  --ac-vn-fade: var(-ac-vn-fd);
+  --ac-vn-fade: var(--ac-vn-fd);
   --ac-vn-title: var(--ac-vn-tt);
-  --ac-gy-fade: var(-ac-gy-fd);
+  --ac-gy-fade: var(--ac-gy-fd);
   --ac-gy-title: var(--ac-gy-tt);
-  --ac-pu-fade: var(-ac-pu-fd);
+  --ac-pu-fade: var(--ac-pu-fd);
   --ac-pu-title: var(--ac-pu-tt);
-  --ac-wn-fade: var(-ac-wn-fd);
+  --ac-wn-fade: var(--ac-wn-fd);
   --ac-wn-title: var(--ac-wn-tt);
-  --ac-ol-fade: var(-ac-ol-fd);
+  --ac-ol-fade: var(--ac-ol-fd);
   --ac-ol-title: var(--ac-ol-tt);
-  --ac-mn-fade: var(-ac-mn-fd);
+  --ac-mn-fade: var(--ac-mn-fd);
   --ac-mn-title: var(--ac-mn-tt);
-  --ac-se-fade: var(-ac-se-fd);
+  --ac-se-fade: var(--ac-se-fd);
   --ac-se-title: var(--ac-se-tt);
-  --ac-bk-fade: var(-ac-bk-fd);
+  --ac-bk-fade: var(--ac-bk-fd);
   --ac-bk-title: var(--ac-bk-tt);
-  --ac-t1-fade: var(-ac-t1-fd);
+  --ac-t1-fade: var(--ac-t1-fd);
   --ac-t1-title: var(--ac-t1-tt);
-  --ac-t2-fade: var(-ac-t2-fd);
+  --ac-t2-fade: var(--ac-t2-fd);
   --ac-t2-title: var(--ac-t2-tt);
 
   --key-shadow: var(--kbd-sd);
@@ -173,10 +173,10 @@ html[data-theme-mode="dark"] {
   --m-ac-bn: var(--ac-bn-dk);
   /*bn,brown */
   --m-ac-bn-a: var(--ac-bn-a-dk);
-  --m-ac-ro: var(--ac-ro-dk-dk);
+  --m-ac-ro: var(--ac-ro-dk);
   /*ro,rose */
   --m-ac-ro-a: var(--ac-ro-a-dk);
-  --m-ac-rd: var(--ac-rd-dk-dk);
+  --m-ac-rd: var(--ac-rd-dk);
   /*rd,red */
   --m-ac-rd-a: var(--ac-rd-a-dk);
   --m-ac-og: var(--ac-og-dk);
@@ -225,6 +225,8 @@ html[data-theme-mode="dark"] {
   --m-theme1-alt: var(--v-theme1-alt-dk);
   --m-theme2-alt: var(--v-theme2-alt-dk);
 
+  --m-theme1-alt-0-2: rgba(var(--m-theme1-alt), 0.2);
+  --m-theme2-alt-0-2: rgba(var(--m-theme2-alt), 0.2);
   --m-theme1-alt-0-4: rgba(var(--m-theme1-alt), 0.4);
   --m-theme2-alt-0-4: rgba(var(--m-theme2-alt), 0.4);
   --m-theme1-alt-0-6: rgba(var(--m-theme1-alt), 0.6);

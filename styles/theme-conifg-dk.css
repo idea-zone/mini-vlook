@@ -33,6 +33,13 @@ html[data-theme-mode="dark"] {
     --b3-font-family-math: KaTeX_Math,"Emojis Additional";
     --b3-font-size: 14px;
 
+    /* 背景 */
+    --b3-body-background: var(--m-d-bc);
+    --b3-body-background-hl-opacity: 0.22;
+    --b3-body-background-hl: 219, 86%, 57%;
+    --b3-layout-space: 4px;
+    --b3-layout-space-margin: -4px;
+
     /* 顶部工具栏 */
     --b3-toolbar-background: var(--m-theme1-background);
     --b3-toolbar-blur-background: var(--m-theme1-on-background);
@@ -56,6 +63,7 @@ html[data-theme-mode="dark"] {
     --b3-list-icon-hover: var(--m-theme2-alt-0-6);
     /* 菜单 */
     --b3-menu-background: var(--b3-theme-surface);
+    --b3-menu-icon-color: var(--b3-theme-on-surface-light);
 
     /* 提示 */
     --b3-tooltips-background: var(--m-theme2-alt-0-8);  /*#030303;*/
@@ -161,7 +169,7 @@ html[data-theme-mode="dark"] {
     --b3-highlight-current-background: #ff9632;
 
     /* 下拉菜单 */
-    --b3-select-background: url("data:image/svg+xml;utf8,<svg fill='rgba(154, 160, 166, .68)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right 2px center var(--b3-theme-background);
+    --b3-select-background: url("data:image/svg+xml;utf8,<svg fill='rgba(154, 160, 166, .68)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right 2px center var(--b3-menu-background);
 
     /* switch */
     --b3-switch-background: #444746;
@@ -173,9 +181,11 @@ html[data-theme-mode="dark"] {
     --b3-switch-checked-hover2: rgba(253, 252, 251, .10);
 
     /* 阴影 */
+    --b3-dock-shadow-color: rgba(0, 0, 0, .35);
     --b3-point-shadow: inset 0 .5px .5px .5px rgba(255, 255, 255, .09), 0 3px 6px rgba(0, 0, 0, .04), 0 0 0 0 transparent;
     --b3-dialog-shadow: 0 8px 24px #010409;
     --b3-button-shadow: 0 5px 5px -3px rgb(0 0 0 / .2), 0 8px 10px 1px rgb(0 0 0 / .14), 0 3px 14px 2px rgb(0 0 0 / .12);
+    --b3-button-active-shadow: 0 2px 3px 1px rgb(0 0 0 / .45), 0 2px 4px 2px rgb(0 0 0 / .25);
 
     /* 图表颜色 */
     --b3-graph-p-point: #076f7e;
@@ -254,4 +264,21 @@ html[data-theme-mode="dark"] {
 
     /* 父块颜色 */
     --b3-parent-background: var(--b3-theme-background);
+}
+
+html[data-theme-mode="dark"]:lang(zh-CN) {
+    --b3-font-family: "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, Helvetica, "PingFang SC", "Luxi Sans", "DejaVu Sans", arial, "Microsoft Yahei", "Hiragino Sans GB", "Source Han Sans SC", sans-serif, emojis;
+}
+
+html[data-theme-mode="dark"]:lang(zh-TW) {
+    --b3-font-family: "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, Helvetica, "PingFang TC", "Luxi Sans", "DejaVu Sans", arial, "Microsoft JhengHei", "Hiragino Sans TC", "Source Han Sans TC", sans-serif, emojis;
+}
+
+html[data-theme-mode="dark"]:lang(ja) {
+    --b3-font-family: "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, Helvetica, "Luxi Sans", "DejaVu Sans", "Yu Gothic UI", arial, sans-serif, emojis;
+}
+
+html[data-theme-mode="dark"] .b3-typography .code-block,
+html[data-theme-mode="dark"] .protyle-wysiwyg .code-block {
+    background-color: var(--b3-protyle-code-background);
 }
