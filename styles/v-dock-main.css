@@ -20,11 +20,6 @@ html[data-theme-mode="dark"] .layout-tab-container .b3-list--background .b3-list
     border: 1px solid var(--m-menu-item-bg-color-1);
 }
 
-html[data-theme-mode="dark"] #layouts .layout-tab-container .graph__svg,
-html[data-theme-mode="dark"] .sy__backlink .protyle-wysiwyg {
-    background: var(--b3-theme-background) !important;
-}
-
 
 /* 菜单项 */
 .b3-menu__item,
@@ -487,7 +482,7 @@ html[data-frontend="desktop"] body.body--win32:not(.body--window) #barWorkspace 
 }
 /* 关系图、全局关系图、反链区域的面板背景色 */
 #layouts .layout-tab-container .graph__svg {
-    background: #fcfcfd !important;
+    background: var(--m-left-panel-bg-color) !important;
 }
 
 /* 关系图、全局关系图 最大化的时候，顶部颜色 */
@@ -736,7 +731,7 @@ body > div.fn__flex-1.fn__flex{
 }
 
 .sy__backlink .protyle-wysiwyg{
-    background: #fcfcfd !important;
+    background: var(--m-left-panel-bg-color) !important;
 }
 
 .block__popover .block__icons,
